@@ -2,7 +2,7 @@ import {
     gelinPack
 } from './gelin/gelin.js';
 
-import upgrade from '../main/upgrade.js';
+import upgrade from './upgrade.js';
 
 game.import("extension",function(lib,game,ui,get,ai,_status){return {name:"错乱时空",content:function (config,pack){
    lib.config.show_rarity=true;
