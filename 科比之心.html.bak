@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+     body {
+         margin: 0;
+         padding: 0;
+         overflow: hidden;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         background: #000;
+         width: 100vw;
+         height: 100vh;
+     }
+     #game {
+         width: 375px;
+         height: 667px;
+         transform: scale(1.0);
+         transform-origin: center;
+     }
+     /* 页面上的文字元素，覆盖在画布上方 */
+     .game-text {
+         position: fixed;
+         left: 50%;
+         top: 20px;
+         transform: translateX(-50%);
+         color: #ffd700;
+         font: bold 24px Arial;
+         z-index: 999;
+     }
+     .score-text {
+         position: fixed;
+         left: 50%;
+         top: 60px;
+         transform: translateX(-50%);
+         color: #fff;
+         font: 24px Arial;
+         z-index: 999;
+     }
+ </style>
+</head>
+<body>
+<!-- 页面文字元素 -->
+<div class="game-text">科比之心</div>
+<div class="score-text" id="scoreDisplay">得分:0</div>
+
+<canvas id="game" width="375" height="667"></canvas>
+
+<script>
+const ctx = document.getElementById('game').getContext('2d');
+const scoreDisplay = document.getElementById('scoreDisplay');
+const playerImg = new Image();
+ playerImg.src = "./魔科比.jpg"; 
+ // 图片加载失败时标记
+ let imgLoadFailed = false;
+ playerImg.onerror = () => {
+   imgLoadFailed = true;
+ };
+const p = {
+  x: 175, y: 300, w: 20, h: 15,
+  targetX: 175, targetY: 300,
+  attackBuff: false,
+  buffTime: 0,
+  autoFire: false, // 新增：自动发射开关
+  autoFireTime: 0 // 新增：自动发射倒计时
+};
+const buffDuration = 80;
+const autoFireDuration = 80; // 新增：自动发射持续时间（8秒）
+const autoFireInterval = 300; // 新增：自动发射间隔（300毫秒/发）
+let autoFireTimer = null; // 新增：自动发射定时器
+let mountains = [], bullets = [], obstacles = [], props = [], score = 0;
+const mountainSpeed = 2;
+const gapWidth = 100;
+const gapStart = (375 - gapWidth) / 2;
+const gapEnd = gapStart + gapWidth;
+const mountainHp = 50;
+
+// 初始化山脉
+function initMts() {
+  mountains = [];
+  mountains.push({x: 0, y: 0, w: 50, h: 667, type: 'left', hp: mountainHp, maxHp: mountainHp});
+  mountains.push({x: 375-50, y: 0, w: 50, h: 667, type: 'right', hp: mountainHp, maxHp: mountainHp});
+  for(let i=0;i<8;i++){
+    let x;
+    do {
+      x = 60+Math.random()*(375-120);
+    } while (x + 40 < gapEnd && x > gapStart);
+    mountains.push({
+      x: x,
+      y: -100-Math.random()*400,
+      w: 40+Math.random()*50,
+      h: 60+Math.random()*80,
+      type: 'middle',
+      hp: mountainHp,
+      maxHp: mountainHp
+    });
+  }
+}
+
+// 生成障碍物
+function spawnObstacle() {
+  let size, hp;
+  const random = Math.random();
+  
+  if (score < 200) {
+    if (random < 0.9) {
+      size = 30 + Math.random() * 10;
+      hp = 3 + Math.floor(Math.random() * 3);
+    } else {
+      size = 45 + Math.random() * 10;
+      hp = 7 + Math.floor(Math.random() * 3);
+    }
+    hp = Math.min(hp, 9);
+  } else if (score < 500) {
+    if (random < 0.6) {
+      size = 30 + Math.random() * 10;
+      hp = 3 + Math.floor(Math.random() * 3);
+    } else if (random < 0.9) {
+      size = 40 + Math.random() * 15;
+      hp = 6 + Math.floor(Math.random() * 3);
+    } else {
+      size = 55 + Math.random() * 10;
+      hp = 9 + Math.floor(Math.random() * 4);
+    }
+    hp = Math.min(hp, 12);
+  } else {
+    if (random < 0.3) {
+      size = 30 + Math.random() * 10;
+      hp = 3 + Math.floor(Math.random() * 3);
+    } else if (random < 0.7) {
+      size = 40 + Math.random() * 15;
+      hp = 6 + Math.floor(Math.random() * 6);
+    } else {
+      size = 60 + Math.random() * 20;
+      hp = 13 + Math.floor(Math.random() * 8);
+    }
+    hp = Math.min(hp, 20);
+  }
+  
+  const maxHp = hp;
+  let speed = size < 50 ? 3 + Math.random() * 1 : 0.8 + Math.random() * 0.7;
+  
+  obstacles.push({
+    x: 60+Math.random()*(375-120 - size),
+    y: -size,
+    w: size,
+    h: size,
+    hp: maxHp,
+    maxHp: maxHp,
+    speed: speed
+  });
+}
+
+// 生成道具
+function spawnProp() {
+  if (Math.random() < 1) { 
+    // 新增：随机生成两种道具（type区分）
+    const propType = Math.random() > 0.5 ? "attack" : "autoFire";
+    props.push({
+      x: 70+Math.random()*(375-140 - 20),
+      y: -20,
+      w: 20,
+      h: 20,
+      speed: 1.5,
+      type: propType // 新增：道具类型标识
+    });
+  }
+}
+
+// 绘制玩家
+function drawPlayer() {
+  // 图片加载成功且未失败 → 显示图片
+  if (playerImg.complete && !imgLoadFailed) {
+    ctx.drawImage(playerImg, p.x, p.y, p.w, p.h);
+  } else {
+    // 无图/加载失败 → 显示原蓝色图案
+    ctx.fillStyle='#0ff';
+    ctx.fillRect(p.x, p.y, p.w, p.h);
+    ctx.fillRect(p.x+8, p.y-8, 4, 8);
+    ctx.strokeStyle='#fff';
+    ctx.lineWidth=2;
+    ctx.beginPath();
+    ctx.moveTo(p.x-3, p.y-3);
+    ctx.lineTo(p.x+23, p.y-3);
+    ctx.stroke();
+  }
+  
+  // 攻击buff提示文字
+  if (p.attackBuff) {
+    ctx.fillStyle='#f00';
+    ctx.font='12px Arial';
+    ctx.fillText(`攻击+2 (${Math.ceil(p.buffTime)})`, p.x - 15, p.y - 15);
+  }
+  if (p.autoFire) {
+     ctx.fillStyle='#4488ff';
+     ctx.font='12px Arial';
+     ctx.fillText(`自动发射 (${Math.ceil(p.autoFireTime)})`, p.x - 20, p.y - 30);
+   }
+}
+
+
+// 绘制障碍物
+function drawObstacles() {
+  obstacles.forEach(obs => {
+    const hue = 60 - (obs.hp / obs.maxHp) * 60;
+    ctx.fillStyle = `hsl(${hue}, 100%, 50%)`;
+    ctx.fillRect(obs.x, obs.y, obs.w, obs.h);
+    ctx.strokeStyle='#666';
+    ctx.lineWidth=2;
+    ctx.strokeRect(obs.x, obs.y, obs.w, obs.h);
+    
+    ctx.fillStyle='#333';
+    ctx.fillRect(obs.x, obs.y-10, obs.w, 6);
+    ctx.fillStyle='#f00';
+    const hpWidth = (obs.hp / obs.maxHp) * obs.w;
+    ctx.fillRect(obs.x, obs.y-10, hpWidth, 6);
+    
+    ctx.fillStyle='#fff';
+    ctx.font=`${Math.ceil(obs.w/5)}px Arial`;
+    ctx.textAlign='center';
+    ctx.fillText(`${obs.hp}/${obs.maxHp}`, obs.x + obs.w/2, obs.y + obs.h/2 + 5);
+  });
+}
+
+// 绘制山脉
+function drawMountains() {
+  mountains.forEach(m => {
+    const gray = 50 + (m.hp / m.maxHp) * 30;
+    ctx.fillStyle = `rgb(${gray},${gray},${gray})`;
+    ctx.fillRect(m.x, m.y, m.w, m.h);
+    ctx.strokeStyle='#666';
+    ctx.lineWidth=1;
+    ctx.strokeRect(m.x, m.y, m.w, m.h);
+    
+    if (m.type === 'middle') {
+      ctx.fillStyle='#fff';
+      ctx.font=`bold ${Math.ceil(m.w/4)}px Arial`;
+      ctx.textAlign='center';
+      ctx.textBaseline='middle';
+      ctx.fillText(`${m.hp}`, m.x + m.w/2, m.y + m.h/2);
+    }
+  });
+}
+
+// 绘制道具
+function drawProps() {
+  props.forEach(prop => {
+    if (prop.type === "attack") {
+      // 原有攻击buff道具：红色十字
+      ctx.fillStyle='#ff4444';
+      ctx.fillRect(prop.x, prop.y + 5, 20, 10);
+      ctx.fillRect(prop.x + 5, prop.y, 10, 20);
+    } else {
+      // 新增自动发射道具：蓝色圆形+闪电符号
+      ctx.fillStyle='#4488ff';
+      ctx.beginPath();
+      ctx.arc(prop.x + 10, prop.y + 10, 10, 0, Math.PI*2);
+      ctx.fill();
+      // 绘制简单闪电符号
+      ctx.strokeStyle='#fff';
+      ctx.lineWidth=2;
+      ctx.beginPath();
+      ctx.moveTo(prop.x + 5, prop.y + 10);
+      ctx.lineTo(prop.x + 10, prop.y + 5);
+      ctx.lineTo(prop.x + 15, prop.y + 10);
+      ctx.lineTo(prop.x + 10, prop.y + 15);
+      ctx.lineTo(prop.x + 5, prop.y + 10);
+      ctx.stroke();
+    }
+    ctx.strokeStyle='#fff';
+    ctx.lineWidth=2;
+    ctx.strokeRect(prop.x, prop.y, 20, 20);
+  });
+}
+
+// 绘制所有元素
+function draw() {
+  ctx.clearRect(0,0,375,667);
+  
+  drawMountains();
+  drawPlayer();
+  drawObstacles();
+  drawProps();
+  bullets.forEach(b=>{ctx.fillStyle='#f00'; ctx.fillRect(b.x, b.y, 3, 8);});
+  
+  // 更新页面文字的得分
+  scoreDisplay.textContent = `得分:${score}`;
+}
+
+// 平滑移动更新
+function updatePlayer() {
+  const speed = 3;
+  if (Math.abs(p.x - p.targetX) > speed) {
+    p.x += (p.targetX > p.x) ? speed : -speed;
+  } else {
+    p.x = p.targetX;
+  }
+  if (Math.abs(p.y - p.targetY) > speed) {
+    p.y += (p.targetY > p.y) ? speed : -speed;
+  } else {
+    p.y = p.targetY;
+  }
+}
+
+// 更新道具
+function updateProps() {
+  props = props.filter(prop => {
+    prop.y += prop.speed;
+    
+    if (p.x < prop.x + prop.w && p.x + p.w > prop.x && p.y < prop.y + prop.h && p.y + p.h > prop.y) {
+      if (prop.type === "attack") {
+        // 原有攻击buff逻辑
+        p.attackBuff = true;
+        p.buffTime = buffDuration;
+      } else {
+        // 新增自动发射逻辑
+        p.autoFire = true;
+        p.autoFireTime = autoFireDuration;
+        // 启动自动发射定时器
+        if (!autoFireTimer) {
+          autoFireTimer = setInterval(() => {
+            // 自动发射子弹（和手动点击逻辑一致）
+            if (bullets.length < 8) {
+              bullets.push({x: p.x+8.5, y: p.y-8});
+            }
+          }, autoFireInterval);
+        }
+      }
+      return false;
+    }
+    
+    return prop.y < 667;
+  });
+}
+
+
+// 更新游戏状态
+function update() {
+  updatePlayer();
+  updateProps();
+  
+  if (p.attackBuff) {
+    p.buffTime -= 16 / 1000;
+    if (p.buffTime <= 0) {
+      p.attackBuff = false;
+    }
+  }
+  if (p.autoFire) {
+     p.autoFireTime -= 16 / 1000;
+     if (p.autoFireTime <= 0) {
+       p.autoFire = false;
+       // 清除自动发射定时器
+       if (autoFireTimer) {
+         clearInterval(autoFireTimer);
+         autoFireTimer = null;
+       }
+     }
+   }
+  // 标记是否碰撞（避免重复弹窗）
+  let isCollided = false;
+  
+  mountains.forEach((m,i)=>{
+    if(isCollided) return; // 已碰撞则跳过后续检测
+    
+    if(m.type==='middle'){
+      m.y += mountainSpeed;
+      if(m.y > 667){
+        let x;
+        do {
+          x = 60+Math.random()*(375-120);
+        } while (x + 40 < gapEnd && x > gapStart);
+        m.y = -100-Math.random()*400;
+        m.x = x;
+        m.w = 40+Math.random()*50;
+        m.h = 60+Math.random()*80;
+        m.hp = mountainHp;
+      }
+    }
+    
+    bullets.forEach((b,j)=>{
+      if(b.x < m.x+m.w && b.x+3 > m.x && b.y < m.y+m.h && b.y+8 > m.y){
+        bullets.splice(j,1);
+        m.hp -= p.attackBuff ? 3 : 1;
+        if(m.hp <= 0){
+          score += 0;
+          if(m.type==='middle'){
+            m.y = 999;
+          } else {
+            m.hp = mountainHp;
+          }
+        }
+      }
+    });
+    
+    if(p.x < m.x+m.w && p.x+p.w > m.x && p.y < m.y+m.h && p.y+p.h > m.y){
+    if (autoFireTimer) clearInterval(autoFireTimer);
+      alert(`坠机！得分:${score}`);
+      isCollided = true;
+      // 终止游戏：清除循环和定时器
+      cancelAnimationFrame(loopId);
+      clearInterval(obstacleTimer);
+      clearInterval(propTimer);
+      if (parent.setSkillResult) parent.setSkillResult(score, false);
+    }
+  });
+  
+  if(isCollided) return; // 已碰撞则终止后续逻辑
+  
+  bullets = bullets.filter(b=>{b.y-=7;return b.y>0;});
+  
+  obstacles = obstacles.filter(obs => {
+    if(isCollided) return false; // 已碰撞则过滤所有障碍物
+    
+    obs.y += obs.speed;
+    
+    bullets.forEach((b,j)=>{
+      if(b.x < obs.x+obs.w && b.x+3 > obs.x && b.y < obs.y+obs.h && b.y+8 > obs.y){
+        bullets.splice(j,1);
+        obs.hp -= p.attackBuff ? 3 : 1;
+        if(obs.hp <= 0){
+          score += obs.maxHp * 15;
+          obs.y=999;
+        }
+      }
+    });
+    
+    if(p.x < obs.x+obs.w && p.x+p.w > obs.x && p.y < obs.y+obs.h && p.y+p.h > obs.y){
+    if (autoFireTimer) clearInterval(autoFireTimer);
+      alert(`坠机！得分:${score}`);
+      isCollided = true;
+      // 终止游戏：清除循环和定时器
+      cancelAnimationFrame(loopId);
+      clearInterval(obstacleTimer);
+      clearInterval(propTimer);
+      if (parent.setSkillResult) parent.setSkillResult(score, false);
+      return false;
+    }
+    
+    return obs.y < 667;
+  });
+}
+
+
+// 触摸/鼠标控制
+function getScaledPosition(e, canvas) {
+    const rect = canvas.getBoundingClientRect();
+    const scale = 1.0;
+    let x, y;
+    if (e.type.includes('touch')) {
+        x = e.touches[0].clientX;
+        y = e.touches[0].clientY;
+    } else {
+        x = e.clientX;
+        y = e.clientY;
+    }
+    const relativeX = (x - rect.left) / scale;
+    const relativeY = (y - rect.top) / scale;
+    return { x: relativeX, y: relativeY };
+}
+
+function touchMove(e) {
+    e.preventDefault();
+    const canvas = document.getElementById('game');
+    const pos = getScaledPosition(e, canvas);
+    p.targetX = pos.x - p.w/2;
+    p.targetY = pos.y - p.h/2;
+    p.targetX = Math.max(60, Math.min(375-60-p.w, p.targetX));
+    p.targetY = Math.max(50, Math.min(617-p.h, p.targetY));
+}
+
+function mouseMove(e) {
+    e.preventDefault();
+    const canvas = document.getElementById('game');
+    const pos = getScaledPosition(e, canvas);
+    p.targetX = pos.x - p.w/2;
+    p.targetY = pos.y - p.h/2;
+    p.targetX = Math.max(60, Math.min(375-60-p.w, p.targetX));
+    p.targetY = Math.max(50, Math.min(617-p.h, p.targetY));
+}
+
+function touchStart(e) {
+  e.preventDefault();
+  if(bullets.length<8) bullets.push({x:p.x+8.5, y:p.y-8});
+}
+
+// 绑定事件
+document.getElementById('game').addEventListener('touchmove', touchMove, {passive:false});
+document.getElementById('game').addEventListener('touchstart', touchStart, {passive:false});
+
+// 生成频率
+let loopId;
+const obstacleTimer = setInterval(spawnObstacle, 1200);
+const propTimer = setInterval(spawnProp, 8000);
+
+
+// 游戏循环
+initMts();
+function loop(){
+  loopId = requestAnimationFrame(loop);
+  draw();
+  update();
+}
+loop();
+</script>
+</body>
+</html>
