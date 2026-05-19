@@ -1,0 +1,524 @@
+/* 错乱时空背包样式*/
+/* 背包主页面容器 */
+#clsk_bag_page {
+  position: absolute !important;
+  width: 100% !important;
+  height: 100% !important;
+  left: 0 !important;
+  top: 0 !important;
+  border-radius: 8px !important;
+  background-color: rgba(20, 20, 20, 0.95) !important;
+  text-align: left !important;
+  overflow: hidden !important;
+  z-index: 2030 !important;
+  pointer-events: auto !important;
+  display: none !important;
+}
+#clsk_bag_page.active {
+  display: block !important;
+}
+
+/* 背包主内容容器 */
+#clsk_bag_mainContainer {
+  position: fixed !important;
+  top: 50% !important;
+  left: 3% !important;
+  transform: translateY(-50%) !important;
+  width: calc(89% + 35px) !important;
+  height: 90% !important;
+  background-color: #1a1a1a !important;
+  border: none !important;
+  border-radius: 8px !important;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.9) !important;
+  z-index: 2030 !important;
+  overflow: hidden !important;
+}
+
+/* 背包标题栏 */
+#clsk_bag_title {
+  position: relative !important;
+  width: calc(50% - 20px) !important;
+  height: 36px !important;
+  left: 15px !important;
+  top: 20px !important;
+  border-radius: 2px !important;
+  background: linear-gradient(to right, rgba(120, 88, 75, 1), rgba(200, 200, 200, 0)) !important;
+  font-family: lishu !important;
+  font-size: 18px !important;
+  line-height: 36px !important;
+  text-indent: 1em !important;
+  color: #ffd700 !important;
+  display: block !important;
+  z-index: 2032 !important;
+}
+
+/* 背包关闭按钮 */
+#clsk_bag_closeButton {
+  position: absolute !important;
+  width: 65px !important;
+  height: 35px !important;
+  top: 0 !important;
+  right: 5px !important;
+  border-left: 0.5px solid rgba(30, 30, 30, 0.8) !important;
+  border-right: 0.5px solid rgba(30, 30, 30, 0.8) !important;
+  text-align: center !important;
+  line-height: 35px !important;
+  font-size: 28px !important;
+  cursor: pointer !important;
+  transition: all 0.2s !important;
+  z-index: 2032 !important;
+  color: #fff !important;
+}
+#clsk_bag_closeButton:hover {
+  background: linear-gradient(to bottom, rgba(200, 0, 0, 1), rgba(200, 200, 200, 0)) !important;
+  color: #ffd700 !important;
+}
+
+/* 分类标签容器  */
+#clsk_bag_tabContainer {
+  position: absolute !important;
+  top: 60px !important;
+  left: 15px !important;
+  width: calc(100% - 30px) !important;
+  height: 45px !important;
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  gap: 10px !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  padding-bottom: 10px !important;
+  box-sizing: border-box !important;
+  z-index: 2031 !important;
+  margin: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: 
+    10px 0 8px -8px rgba(120,88,75,0.5) inset,
+    -10px 0 8px -8px rgba(120,88,75,0.5) inset;
+}
+
+/* 分类标签滚动条 */
+#clsk_bag_tabContainer::-webkit-scrollbar {
+  height: 8px !important;
+}
+#clsk_bag_tabContainer::-webkit-scrollbar-track {
+  background: rgba(50, 50, 50, 0.5) !important;
+  border-radius: 4px !important;
+}
+#clsk_bag_tabContainer::-webkit-scrollbar-thumb {
+  background-color: #ffd700 !important;
+  border-radius: 4px !important;
+}
+#clsk_bag_tabContainer::-webkit-scrollbar-thumb:hover {
+  background-color: #ffc107 !important;
+}
+
+/* 分类标签按钮 */
+.clsk_bag_tabButton {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+  min-width: 90px !important;
+  height: 35px !important;
+  padding: 0 12px !important;
+  margin: 0 !important;
+  text-align: center !important;
+  cursor: pointer !important;
+  border-radius: 6px !important;
+  border: 2px solid #666 !important;
+  background-color: rgba(50, 50, 50, 0.9) !important;
+  color: #ddd !important;
+  font-family: lishu !important;
+  font-size: 16px !important;
+  font-weight: bold !important;
+  transition: all 0.3s !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+  user-select: none !important;
+  line-height: 1.2 !important;
+  letter-spacing: 1px !important;
+  box-sizing: border-box !important;
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  transform: none !important;
+}
+.clsk_bag_tabButton:hover:not(.active) {
+  background-color: rgba(70, 70, 70, 0.95) !important;
+  color: #fff !important;
+  border-color: #888 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+}
+.clsk_bag_tabButton.active {
+  background-color: rgba(144, 238, 144, 0.95) !important;
+  color: #ffd700 !important;
+  border-color: #ffd700 !important;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5) !important;
+}
+
+/* 物品网格容器 */
+#clsk_bag_gridContainer {
+  position: absolute !important;
+  top: 115px !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: calc(100% - 115px) !important;
+  overflow: auto !important;
+  padding: 15px !important;
+  box-sizing: border-box !important;
+  z-index: 2031 !important;
+}
+
+/* 物品网格容器滚动条 */
+#clsk_bag_gridContainer::-webkit-scrollbar {
+  width: 8px !important;
+}
+#clsk_bag_gridContainer::-webkit-scrollbar-track {
+  background: rgba(20, 20, 20, 0.5) !important;
+  border-radius: 4px !important;
+}
+#clsk_bag_gridContainer::-webkit-scrollbar-thumb {
+  background-color: rgba(120, 88, 75, 0.7) !important;
+  border-radius: 4px !important;
+}
+#clsk_bag_gridContainer::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(140, 108, 95, 0.9) !important;
+}
+
+/* 物品网格布局 */
+#clsk_bag_grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, 60px) !important;
+  gap: 15px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* 物品格子样式 */
+.clsk_bag_item_slot {
+  width: 60px !important;
+  height: 60px !important;
+  position: relative !important;
+  border-radius: 6px !important;
+  overflow: hidden !important;
+  cursor: pointer !important;
+  background: rgba(50, 50, 50, 0.9) !important;
+  border: 2px solid #666 !important;
+  box-sizing: border-box !important;
+  transition: all 0.2s !important;
+}
+/* 背包物品图片 */
+.clsk_bag_item_slot img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    object-position: center center !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    z-index: 1 !important;
+    padding: 2px !important;
+}
+
+.clsk_bag_item_slot.empty {
+  background: rgba(40, 40, 40, 0.6) !important;
+  border-color: #444 !important;
+  cursor: default !important;
+}
+.clsk_bag_item_slot:not(.empty):hover {
+  transform: translateY(-2px) !important;
+  border-color: #888 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* 物品数量文本 */
+.clsk_bag_item_count {
+  position: absolute !important;
+  right: 4px !important;
+  bottom: 2px !important;
+  font-family: lishu !important;
+  font-size: 14px !important;
+  font-weight: bold !important;
+  color: #fff !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+  z-index: 2 !important;
+}
+
+/* 物品名称hover显示 */
+.clsk_bag_item_name {
+  position: absolute !important;
+  left: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  padding: 3px 0 !important;
+  background-color: rgba(20, 20, 20, 0.85) !important;
+  font-family: lishu !important;
+  font-size: 12px !important;
+  color: #ffd700 !important;
+  text-align: center !important;
+  z-index: 3 !important;
+  transform: translateY(100%) !important;
+  transition: transform 0.2s ease !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+.clsk_bag_item_slot:not(.empty):hover .clsk_bag_item_name {
+  transform: translateY(0) !important;
+}
+
+/* 武将选择列表专属样式  */
+.clsk_char_select_bg {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: rgba(0, 0, 0, 0.9) !important;
+  z-index: 99999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.clsk_char_select_box {
+  width: auto !important;
+  max-width: 800px !important;
+  min-width: 300px !important;
+  min-height: 300px !important;
+  max-height: 80vh !important;
+  padding: 20px !important;
+  background: #1a1a1a !important;
+  border: 2px solid #ffd700 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 0 20px rgba(255,215,0,0.5) !important;
+  overflow-y: auto !important;
+  box-sizing: border-box !important;
+}
+.clsk_char_select_title {
+  color: #ffd700 !important;
+  font-family: lishu !important;
+  font-size: 20px !important;
+  margin: 0 0 20px 0 !important;
+  text-align: center !important;
+}
+.clsk_char_list {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 15px !important;
+  justify-content: center !important;
+  width: 100% !important;
+  min-height: 200px !important;
+  box-sizing: border-box !important;
+}
+.clsk_char_card {
+  width: 100px !important;
+  flex: 0 0 100px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  cursor: pointer !important;
+  padding: 10px !important;
+  border: 2px solid #666 !important;
+  border-radius: 6px !important;
+  background: rgba(50,50,50,0.9) !important;
+  transition: all 0.2s !important;
+  box-sizing: border-box !important;
+}
+.clsk_char_card:hover {
+  border-color: #ffd700 !important;
+  background: rgba(70,70,70,0.9) !important;
+  transform: translateY(-3px) !important;
+}
+.clsk_char_img {
+  width: 80px !important;
+  height: 80px !important;
+  object-fit: cover !important;
+  border-radius: 4px !important;
+  border: 1px solid #ffd700 !important;
+}
+
+.clsk_char_name {
+  color: #fff !important;
+  font-family: lishu !important;
+  font-size: 14px !important;
+  margin: 8px 0 0 0 !important;
+  text-align: center !important;
+  white-space: normal !important; /* 允许换行 */
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  width: 100% !important;
+  line-height: 1.3 !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important; /* 最多显示2行 */
+  -webkit-box-orient: vertical !important;
+}
+
+.clsk_lucky_dialog {
+  background-color: rgba(0, 0, 0, 0.95) !important;
+  z-index: 2050 !important; 
+}
+
+.clsk_lucky_tabBtn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 120px !important;
+  height: 35px !important;
+  padding: 0 12px !important;
+  margin: 0 5px !important;
+  cursor: pointer !important;
+  border-radius: 6px !important;
+  border: 2px solid #666 !important;
+  background-color: rgba(50, 50, 50, 0.9) !important;
+  color: #ddd !important;
+  font-family: lishu !important;
+  font-size: 16px !important;
+  font-weight: bold !important;
+}
+.clsk_lucky_tabBtn.active {
+  background-color: rgba(144, 238, 144, 0.95) !important;
+  color: #ffd700 !important;
+  border-color: #ffd700 !important;
+}
+
+.clsk_lucky_btn {
+  font-family: lishu !important;
+  cursor: pointer !important;
+  user-select: none !important;
+  padding: 8px 20px !important;
+  border-radius: 6px !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+  background: #333 !important;
+  border: 2px solid #666 !important;
+  color: #fff !important;
+  min-width: 100px !important;
+}
+.clsk_lucky_btn.large {
+  padding: 12px 30px !important;
+  min-width: 120px !important;
+  font-size: 18px !important;
+}
+
+.clsk_item_slot.clsk_rarity_common { border-color: #FFFFFF !important; }
+.clsk_item_slot.clsk_rarity_uncommon { border-color: #4CAF50 !important; }
+.clsk_item_slot.clsk_rarity_rare { border-color: #1E90FF !important; }
+.clsk_item_slot.clsk_rarity_epic { border-color: #9370DB !important; }
+.clsk_item_slot.clsk_rarity_legendary { border-color: #FFD700 !important; }
+.clsk_item_slot.clsk_rarity_mythic { border-color: #FF4444 !important; }
+
+.clsk_item_grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, 70px) !important;
+  gap: 20px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  justify-content: center !important;
+}
+.clsk_item_wrap {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  width: 70px !important;
+}
+.clsk_item_slot {
+  width: 70px !important;
+  height: 70px !important;
+  position: relative !important;
+  border-radius: 6px !important;
+  overflow: hidden !important;
+  background: rgba(50, 50, 50, 0.9) !important;
+  border: 2px solid #666 !important;
+  box-sizing: border-box !important;
+}
+.clsk_item_slot img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  padding: 3px !important;
+  box-sizing: border-box !important;
+}
+.clsk_item_count {
+  position: absolute !important;
+  right: 4px !important;
+  bottom: 2px !important;
+  font-family: lishu !important;
+  font-size: 14px !important;
+  font-weight: bold !important;
+  color: #fff !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8) !important;
+}
+
+.clsk_item_text {
+  font-family: lishu !important;
+  font-size: 12px !important;
+  color: #fff !important;
+  text-align: center !important;
+  margin-top: 5px !important;
+  line-height: 1.3 !important;
+  width: 100% !important;
+  word-break: break-word !important; 
+  white-space: normal !important; 
+  overflow: visible !important; 
+  text-overflow: clip !important; 
+  display: block !important;
+}
+
+
+.clsk_lucky_modal_bg {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: rgba(0, 0, 0, 0.92) !important;
+  z-index: 2060 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.clsk_lucky_modal_box {
+  width: 90% !important;
+  max-width: 700px !important;
+  min-width: 300px !important;
+  min-height: 400px !important;
+  max-height: 80vh !important;
+  background: #1a1a1a !important;
+  border: 2px solid #ffd700 !important;
+  border-radius: 8px !important;
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+}
+.clsk_lucky_modal_title {
+  font-family: lishu !important;
+  font-size: 22px !important;
+  color: #ffd700 !important;
+  text-align: center !important;
+  padding: 15px 20px !important;
+  border-bottom: 1px solid #666 !important;
+  flex-shrink: 0 !important;
+}
+.clsk_lucky_modal_content {
+  flex: 1 !important;
+  min-height: 250px !important;
+  overflow-y: auto !important;
+  padding: 20px !important;
+  box-sizing: border-box !important;
+}
+.clsk_lucky_modal_btnGroup {
+  padding: 15px 20px !important;
+  border-top: 1px solid #666 !important;
+  display: flex !important;
+  gap: 20px !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
+}

@@ -1,0 +1,220 @@
+.cl_soul {
+    color: rgb(0, 255, 239);
+    text-decoration: underline;
+}
+
+.cl_ranshao {
+    color: rgb(255, 99, 9);
+    text-decoration: underline;
+}
+
+.cl_wudi {
+    color: rgb(255, 255, 0);
+    text-decoration: underline;
+}
+
+.cl_jiaoxie {
+    color: rgb(214, 161, 0);
+    text-decoration: underline;
+}
+
+.cl_hanleng {
+    color: rgb(173, 255, 252);
+    text-decoration: underline;
+}
+
+.cl_shufu {
+    color: rgb(68, 0, 210);
+    text-decoration: underline;
+}
+
+.cl_mabi {
+    color: rgb(0, 115, 98);
+    text-decoration: underline;
+}
+
+.cl_jingmo {
+    color: rgb(188, 29, 207);
+    text-decoration: underline;
+}
+
+.cl_shencard {
+    color: rgb(236, 210, 114);
+    text-decoration: underline;
+}
+
+.cl_kabala {
+    color: rgb(210, 205, 128);
+    text-decoration: underline;
+}
+
+.cl_tongling {
+    color: #f4a460; /* 浅木色/暖橙色 */
+    text-decoration: underline;
+    padding-left: 20px;
+    position: relative;
+}
+.cl_tongling::before {
+    content: "✦";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #ffd700; /* 金色星号 */
+    font-size: 0.9em;
+}
+
+.cl_gouzhuji {
+    color: #f4a460; /* 浅木色/暖橙色 */
+    text-decoration: underline;
+    padding-left: 20px;
+    position: relative;
+}
+.cl_gouzhuji::before {
+    content: "✶";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #ffd700; /* 金色星号 */
+    font-size: 0.9em;
+}
+
+
+.cl_jieshaobeijing {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 999;
+}
+
+.cl_skilltip {
+    width: 20%;
+    min-height: 5%;
+    left: 50%;
+    top: 50%;
+    font-size: 16px;
+    color: #ccad76;
+    font-family: \'shousha\';
+    background-color: rgba(36, 29, 19, 0.85);
+    border: #523a24 3px solid;
+    border-radius: 10px;
+    position: absolute;
+    display: block;
+    padding: 8px;
+    transform: translate(-50%, -50%);
+    transition: none;
+}
+
+.cl_wuxian {
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    text-shadow: 1.5px 1.5px 1px #89feff;
+    
+    /* 渐变彩虹底色 */
+    background: linear-gradient(90deg, #ffd1a3, #d1ffa3, #9effce, #9effff, #ffc1ff);
+    background-size: 500% 100%;
+    
+    /* 文字裁剪渐变（核心） */
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    
+    /* 换行也能保持渐变（多行文字正常） */
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+
+    /* 流光动画 */
+    animation: colorGo2 6s linear infinite;
+}
+
+/* 流光关键帧：横向移动渐变 */
+@keyframes colorGo2 {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* 兼容旧webkit内核（部分游戏内嵌浏览器） */
+@-webkit-keyframes colorGo2 {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/*背景按钮*/
+.clsk_menu {
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 0 0 5px #fff, 0 0 10px #ff00de, 0 0 15px #00deff;
+  padding: 8px 15px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #ff0080, #ff8c00, #fff200, #00ff6a, #00c8ff, #8c00ff);
+  background-size: 600% 600%;
+  border: 1px solid rgba(255,255,255,0.3);
+  display: inline-block;
+  transition: all 0.3s;
+  display: block !important;
+  margin: 0 auto !important;
+  text-align: center !important;
+  width: fit-content !important;
+  min-width: 120px !important;
+  padding: 8px 20px !important;
+  animation: rainbow 3s ease infinite;
+}
+
+@keyframes rainbow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.clsk_menu:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 15px #ff00de, 0 0 30px #00deff;
+  cursor: pointer;
+}
+
+.fellow_small {
+  transform: scale(0.3) !important;
+}
+
+.glow-text {
+  position: relative;
+  letter-spacing: 5px;
+  color: #fff; 
+  -webkit-box-reflect: below 1px linear-gradient(transparent, #0004);
+  outline: none;
+  text-shadow: 
+    0 0 10px #00deff,
+    0 0 20px #00deff,
+    0 0 40px #00deff,
+    0 0 80px #03bcf4;
+}
+
+.aezs-text {
+  position: relative;
+  letter-spacing: 5px;
+  color: #fff; 
+  -webkit-box-reflect: below 1px linear-gradient(transparent, #0004);
+  outline: none;
+  text-shadow: 
+    0 0 10px #ff2400,
+    0 0 20px #ff2400,
+    0 0 40px #ff2400,
+    0 0 80px #b21900;
+}
