@@ -1,0 +1,1797 @@
+import {
+	initGouzhu
+} from './gouzhu.js';
+import {
+	initGalgame
+} from './galgame.js';
+import {
+	initBuff
+} from './buff.js';
+
+let gl_version = 46;
+export function gelinPack(lib, game, ui, get, ai, _status, datasrc) {
+	if (!lib.gl_custom) lib.gl_custom = {};
+	if (!lib.gl_custom.cards) lib.gl_custom.cards = [];
+	if (!lib.gl_custom.mp) lib.gl_custom.mp = [];
+	if (!lib.gl_custom.triggerUp) lib.gl_custom.triggerUp = [];
+	if (!lib.gl_custom.speed) lib.gl_custom.speed = [];
+	if (!window.galgame) window.galgame = {};
+	if (!window.galgame.text) window.galgame.text = {};
+	if (!window.galgame.func) window.galgame.func = {};
+	if (!window.galgame.inits) window.galgame.inits = [];
+	if (!lib.arenaReady) lib.arenaReady = [];
+	if (!lib.element.player.inits) {
+		lib.element.player.inits = [];
+	}
+	if (!lib.element.card.inits) {
+		lib.element.card.inits = [];
+	}
+	if (!lib.gl_version) {
+		lib.onprepare.push(function() {
+			game.gl_loadData();
+			window.lib = lib;
+			window.game = game;
+			window.ui = ui;
+			window.get = get;
+			window.ai = ai;
+			window._status = _status;
+		});
+	}
+	if (lib.gl_version && lib.gl_version >= gl_version) return;
+	lib.gl_version = gl_version;
+	game.gl_loadData = function() {
+		initGouzhu(lib, game, ui, get, ai, _status, datasrc);
+		initGalgame(lib, game, ui, get, ai, _status, datasrc);
+		initBuff(lib, game, ui, get, ai, _status);
+		//在主代码中输入ui.gl_wider=true;可以加宽弹窗信息
+		lib.arenaReady.push(function() {
+			if (ui.gl_wider === true) {
+				ui.window.classList.add('wider');
+			}
+		});
+		//卡牌太多的情况下，搜索卡牌机制
+		ui.create.gl_chooseCard = function(list, sp, prompt) {
+			/** @type { Dialog } */
+			var dialog;
+			/** 筛选卡牌的信息 */
+			var node = ui.create.div(".caption.pointerspan");
+
+			dialog = ui.create.dialog("hidden");
+			dialog.classList.add("noupdate");
+			dialog.classList.add("scroll1");
+			dialog.classList.add("scroll2");
+			dialog.classList.add("scroll3");
+			dialog.classList.add("fullwidth");
+			dialog.classList.add("fullheight");
+			dialog._scrollset = true;
+			if (prompt) dialog.addText('<div class="text center" style="font-size:20px;">' + prompt + "</div>", false);
+
+			dialog.capt = {
+				//特殊检索
+				sp: [],
+				//类型
+				type: [],
+				//点数
+				number: [],
+				//花色
+				suit: [],
+			};
+			if (sp) {
+				for (var i in sp) dialog.capt.sp.push(i);
+			}
+			for (var i of list) {
+				//点数划分
+				if (i.number) dialog.capt.number.add(i.number);
+				//类型划分
+				if (Array.isArray(i)) {
+					if (lib.card[i[2]]) dialog.capt.type.add(lib.card[i[2]].type);
+				} else if (i.name) {
+					dialog.capt.type.add(lib.card[i.name].type);
+				}
+				//花色划分
+				if (i.suit) dialog.capt.suit.add(i.suit);
+			}
+			//点数排序
+			var getSort = function(str) {
+				switch (str) {
+					case "heart":
+					case "basic":
+						return 1;
+					case "diamond":
+					case "equip":
+						return 2;
+					case "spade":
+					case "trick":
+						return 3;
+					case "club":
+					case "delay":
+						return 4;
+					default:
+						return 5;
+				}
+			}
+			dialog.capt.number.sort(function(a, b) {
+				return a > b ? 1 : -1;
+			});
+			//类型排序
+			dialog.capt.type.sort(function(a, b) {
+				return getSort(a) > getSort(b) ? 1 : -1;
+			});
+			//花色排序
+			dialog.capt.suit.sort(function(a, b) {
+				return getSort(a) > getSort(b) ? 1 : -1;
+			});
+			var newlined = false;
+			/** 点击筛选中的按钮 */
+			var clickCapt = function(e) {
+				if (_status.dragged) {
+					return;
+				}
+				const type = this.type;
+				if (this.classList.contains("thundertext")) {
+					delete dialog[this.type];
+					delete dialog[this.type + 'node'];
+					this.classList.remove("thundertext");
+					if (this.touchlink) this.touchlink.classList.remove("thundertext");
+					if (this.type == 'sp') {
+						delete dialog.spList;
+					}
+				} else {
+					if (dialog[this.type + 'node']) {
+						dialog[this.type + 'node'].classList.remove("thundertext");
+						if (dialog[this.type + 'node'].touchlink) dialog[this.type + 'node'].touchlink.classList.remove("thundertext");
+					}
+					dialog[this.type + 'node'] = this;
+					this.classList.add("thundertext");
+					if (this.touchlink) this.touchlink.classList.add("thundertext");
+					if (this.type == 'sp') {
+						dialog.spList = sp[this.link](dialog.buttons, dialog);
+					}
+					dialog[this.type] = this.link;
+				}
+				for (var i = 0; i < dialog.buttons.length; i++) {
+					restoreState(dialog.buttons[i]);
+					dialog.buttons[i].classList.remove("nodisplay");
+					for (var capt in dialog.capt) {
+						if (!dialog[capt]) continue;
+						if (capt == 'pack') {
+							if (!lib.cardPack[dialog.pack]) continue;
+							if (!lib.cardPack[dialog.pack][dialog.buttons[i].link.name]) {
+								dialog.buttons[i].classList.add("nodisplay");
+							}
+						} else if (capt == 'sp') {
+							if (!dialog.spList) continue;
+							if (!dialog.spList.includes(dialog.buttons[i])) dialog.buttons[i].classList.add("nodisplay");
+						} else if (dialog.buttons[i][capt] != dialog[capt]) {
+							dialog.buttons[i].classList.add("nodisplay");
+						}
+					}
+				}
+				if (e) {
+					e.stopPropagation();
+				}
+			}
+			// 自由选牌
+			dialog.addEventListener(lib.config.touchscreen ? "touchend" : "mouseup", function() {
+				_status.clicked2 = true;
+			});
+			newlined = document.createElement("div");
+			newlined.style.display = "block";
+			if (get.is.phoneLayout()) {
+				newlined.style.fontSize = "32px";
+			} else {
+				newlined.style.fontSize = "22px";
+			}
+			newlined.style.textAlign = "center";
+			node.appendChild(newlined);
+
+			for (var type in dialog.capt) {
+				//就一个还折腾个啥？
+				if (dialog.capt[type].length < 2) continue;
+				for (i = 0; i < dialog.capt[type].length; i++) {
+					var span = ui.create.div(".tdnode.pointerdiv.shadowed.reduce_radius.reduce_margin");
+					span.style.margin = "3px";
+					span.innerHTML = get.translation(dialog.capt[type][i]);
+					newlined.appendChild(span);
+					newlined[dialog.capt[type][i]] = span;
+					if (type == 'number') span.innerHTML = get.strNumber(dialog.capt[type][i]);
+					span.type = type;
+					span.link = dialog.capt[type][i];
+					span.addEventListener(lib.config.touchscreen ? "touchend" : "click", clickCapt);
+				}
+				if (['type', 'number'].includes(type) || (type == 'sp' && dialog.capt[type].length > 3)) ui.create.node("br", newlined);
+			}
+			// 搜索框，by Curpond
+			/** @type { Element } */
+			// @ts-expect-error ignore
+			const container = dialog.querySelector(".content-container>.content");
+			const Searcher = ui.create.div(".searcher.caption");
+			const input = document.createElement("input").css({
+				textAlign: "center",
+				border: "solid 2px #294510",
+				borderRadius: "6px",
+				fontWeight: "bold",
+				fontSize: "21px",
+			});
+			const div = ui.create.div(".searcher.find");
+			input.placeholder = "支持正则搜索";
+			//使用click事件搜索，因为用input事件，难以解决按下a键会触发自动托管的bug
+			let find = ui.create.button(["find", "搜索"], "tdnodes");
+			find.style.display = "inline";
+			const restoreState = btn => {
+				if (btn.style.display == "none") {
+					btn.style.display = "";
+				}
+			};
+			const updateFind = () => {
+				const {
+					value
+				} = input;
+				const reg = new RegExp(value);
+				for (let btn of dialog.buttons) {
+					if (reg.test(get.translation(btn.link)) || reg.test(get.translation(btn.link + "_ab"))) {
+						btn.classList.remove("nodisplay");
+					} else {
+						btn.classList.add("nodisplay");
+					}
+				}
+			};
+			find.addEventListener("click", updateFind);
+			input.onkeydown = function(e) {
+				e.stopPropagation();
+				if (e.code == "Enter") {
+					updateFind();
+				}
+			};
+			//阻止冒泡以防止触发窗口被拖动而无法选中文字
+			input.onmousedown = function(e) {
+				e.stopPropagation();
+			};
+			Searcher.append(input, find);
+			container.prepend(Searcher);
+
+			dialog.add(node);
+			if (get.itemtype(list) == 'cards') {
+				dialog.add([list, "card"]);
+			} else {
+				dialog.add([list, "vcard"]);
+			}
+			dialog.add(ui.create.div(".placeholder"));
+			for (i = 0; i < dialog.buttons.length; i++) {
+				dialog.buttons[i].type = lib.card[dialog.buttons[i].name].type;
+			}
+			return dialog;
+		}
+		lib.element.player.gl_chooseButtonCard = function() {
+			var list, sp, prompt, data = [];
+			for (var argument of arguments) {
+				if (get.itemtype(argument) == "cards") {
+					list = argument;
+				} else if (!Array.isArray(argument) && typeof argument == 'object') {
+					sp = argument;
+				} else if (typeof argument == 'string') {
+					prompt = argument;
+				} else {
+					data.push(argument);
+				}
+			}
+			if (!list) list = [];
+			data.push(ui.create.gl_chooseCard(list, sp, prompt));
+			return this.chooseButton(...data);
+		}
+		//回转主要阶段时
+		lib.skill.gl_phaseReset = {
+			trigger: {
+				player: ['phaseZhunbeiBefore', 'phaseJudgeBefore', 'phaseDrawBefore', 'phaseUseBefore', 'phaseDiscardBefore', 'phaseJieshuBefore'],
+			},
+			firstDo: true,
+			direct: true,
+			content: function() {
+				trigger.pushHandler(trigger.getDefaultHandlerType(), (event, option) => {
+					event.trigger('gl_phaseReset');
+				})
+			}
+		}
+		game.addGlobalSkill('gl_phaseReset');
+		//获取技能弹窗，通过result.links获取结果值;
+		//实例：
+		//var list=['rende','zhiheng','jianxiong']
+		//player.chooseButtonSkill(list,'天才：请选择要获得的技能');
+		lib.element.player.chooseButtonSkill = function(list, prompt) {
+			var dialog = ui.create.dialog(prompt || '请选择一项的技能', 'hidden');
+			dialog.forcebutton = true;
+			for (var i = 0; i < list.length; i++) {
+				var node = ui.create.caption('<div class="popup pointerdiv" style="width:80%;display:inline-block"><div class="skill">【' + get.translation(list[i]) + '】</div><div>' + lib.translate[list[i] + '_info'] + '</div></div>', dialog.content);
+				dialog.buttons.add(node);
+				var click = lib.config.touchscreen ? 'touchend' : 'click';
+				node.addEventListener(click, ui.click.button);
+				node.style.width = 'calc(100% - 30px)';
+				node.style.position = 'unset';
+				node.link = list[i];
+			}
+			return this.chooseButton(dialog);
+		}
+		//简单的异时点发动技能
+		lib.element.player.gl_useSkill = function() {
+			var skill, forced, nofilter, targets, target, cards, card, trigger, obj, player = this;
+			for (var argument of arguments) {
+				if (argument == 'nofilter') {
+					nofilter = true;
+				} else if (typeof argument == 'string') {
+					skill = argument;
+				} else if (get.itemtype(argument) == "cards") {
+					cards = argument.slice(0);
+				} else if (get.itemtype(argument) == "card") {
+					card = argument;
+				} else if (get.itemtype(argument) == "player") {
+					target = argument;
+				} else if (get.itemtype(argument) == "players") {
+					targets = argument.slice(0);
+				} else if (typeof argument == 'boolean') {
+					forced = argument;
+				} else if (get.itemtype(argument) == "event") {
+					trigger = argument;
+				} else if (typeof argument == 'object') {
+					obj = argument;
+				}
+			}
+			var info = lib.skill[skill];
+			if (!info) return;
+			if (card && !cards) {
+				cards = [card];
+			}
+			if (target && !targets) {
+				targets = [target];
+			}
+			if (!trigger) trigger = _status.event;
+			var nouse = function() {
+				if (nofilter) return;
+				_status.event.next.remove(next);
+				player.popup('发动失败', 'fire');
+				game.log(player, '想要发动', '【' + get.skillTranslation(skill, player) + '】', '，但是失败了！');
+			}
+			if (info.trigger) {
+				var next = game.createTrigger("gl_useSkill", skill, player, trigger);
+				next.set('targets', targets);
+				next.set('target', target);
+				next.set('cards', cards);
+				next.set('card', card);
+				next.set('step', 1);
+				//存在cost的话revealed会把cost覆盖掉，加上cost内的函数无法确定，干脆不管了。
+				if (forced && typeof info.cost !== "function") {
+					next.set('revealed', forced);
+				}
+				//这是个泛用的判断是否为强制发动的属性，没有实际作用，触发技的情况太复杂需要自己在被发动的技能中进行处理。
+				next.set('forced', forced);
+				for (var type in obj) {
+					next.set(type, obj[type]);
+				}
+				if (info.filter && !info.filter(trigger, player, next._trigger.name)) {
+					nouse();
+				}
+			} else {
+				var next = player.chooseToUse();
+				next.set('name', 'gl_useSkill');
+				next.backup(skill);
+				if (targets) {
+					next.set('filterTarget', function(card, player, target) {
+						return _status.event.targets.includes(target);
+					});
+					next.set('selectTarget', -1);
+					next.set('targets', targets.slice(0));
+				}
+				if (cards) {
+					next.set('filterCard', function(card) {
+						return _status.event.cards.includes(card);
+					});
+					next.set('selectCard', -1);
+					next.set('cards', cards.slice(0));
+				}
+				next.set('norestore', true);
+				next.set('forced', forced);
+				for (var type in obj) {
+					next.set(type, obj[type]);
+				}
+				next.set('prompt', "【" + get.skillTranslation(skill, player) + "】");
+				next.set('prompt2', info.prompt || lib.translate[skill + '_info']);
+				if (info.filter && !info.filter(trigger, player)) {
+					nouse();
+				}
+				if (info.viewAs && typeof info.viewAs !== "function") {
+					if (info.viewAsFilter && info.viewAsFilter(player) === false) nouse();
+					if (event.filterCard && !event.filterCard(get.autoViewAs(info.viewAs, "unsure"), player, trigger)) nouse();
+				}
+			}
+			return next;
+		}
+		//给单个角色的技能增加技能时点。
+		//game.me.gl_addTrigger('yiji',{global:'useCardAfter'});
+		lib.element.player.gl_addTrigger = function(skill, obj) {
+			const info = lib.skill[skill];
+			if (!info) {
+				console.error(new ReferenceError(`Cannot find ${skill} in lib.skill, failed to add ${skill}'s trigger to ${this.name}`));
+				return;
+			}
+			if (!this.playerid) return;
+			if (!obj || typeof obj != 'object') return;
+			var player = this;
+			const setTrigger = (role, evt) => {
+				const name = player.playerid + "_" + role + "_" + evt;
+				if (!lib.hook[name]) lib.hook[name] = [];
+				lib.hook[name].add('gl_mingzhi');
+				lib.hookmap[evt] = true;
+				if (!player.storage.gl_trigger) player.storage.gl_trigger = {};
+				if (!player.storage.gl_trigger[name]) player.storage.gl_trigger[name] = [];
+				player.storage.gl_trigger[name].add(skill);
+			};
+			for (const role in obj) {
+				let evts = obj[role];
+				if (!Array.isArray(evts)) evts = [evts];
+				evts.forEach(evt => setTrigger(role, evt));
+			}
+			if (_status.event && _status.event.addTrigger) _status.event.addTrigger(skill, player);
+			_status.event.clearStepCache();
+			return player;
+		}
+		//竞速模式
+		//开启竞速模式
+		game.gl_openSpeed = function() {
+			game.gl_speed = true;
+			if (!_status.isRoundFilter) {
+				_status.gl_roundNum = 0;
+				_status.isRoundFilter = function(event, player) {
+					_status.gl_roundNum++;
+					if (_status.gl_roundNum > game.players.length) {
+						_status.gl_roundNum = 0;
+						return true;
+					}
+					return false;
+				}
+			}
+			for (var player of game.players) {
+				player.node.gl_timer.show();
+			}
+		}
+		if (game.gl_speed) game.gl_openSpeed();
+		//关闭竞速模式
+		game.gl_closeSpeed = function() {
+			delete game.gl_speed;
+			if (_status.isRoundFilter) {
+				delete _status.isRoundFilter;
+			}
+			for (var player of game.players) {
+				player.node.gl_timer.hide();
+			}
+		}
+		lib.onphase.push(function() {
+			if (game.gl_speed) {
+				var list = get.players(lib.sort.seat);
+				var minTimer = Infinity;
+				for (var current of list) {
+					var time = (100 - current.gl_speed) / get.gl_speed(current);
+					if (time < minTimer) minTimer = time;
+				}
+				for (var current of list) {
+					current.gl_changeSpeed(get.gl_speed(current) * minTimer);
+					if (_status.event.player.gl_speed != 100 && current.gl_speed == 100) _status.event.player = current;
+				}
+				var next = game.createEvent('speedPhase', false);
+				next.player = _status.event.player;
+				next.setContent(function() {
+					'step 0'
+					for (var evt of event.parent.next) {
+						if (evt.name == 'phase') evt.player = player;
+					}
+					game.delay(2);
+					'step 1'
+					player.gl_changeSpeed(-100);
+				});
+			}
+		});
+		//计算行动值
+		lib.element.player.gl_changeSpeed = function(num) {
+			if (!game.gl_speed) return;
+			if (!num) num = 0;
+			var player = this;
+			player.gl_speed += num;
+			var div = player.node.gl_speed;
+			if (player.gl_speed > 100) {
+				player.gl_speed = 100;
+			} else if (player.gl_speed < 0) {
+				player.gl_speed = 0;
+			}
+			div.style.width = player.gl_speed + '%';
+		}
+		//计算速度
+		get.gl_speed = function(player) {
+			if (!game.gl_speed) return 0;
+			var num = 10;
+			for (var func of lib.gl_custom.speed) {
+				num = func(player, num);
+			}
+			num = game.checkMod(player, num, 'gl_speed', player);
+			if (num < 3) {
+				num = 3;
+			}
+			if (num > 30) {
+				num = 30;
+			}
+			if (isNaN(num)) return 3;
+			return num;
+		}
+		//播放CG
+		//实例game.gl_cg('格林笔记/image/zaibian.mp4','nopause','noskip','nofeature');不暂停游戏，不能跳过，不进行特写；
+		game.gl_cg = function() {
+			var next = game.createEvent('gl_cg', false);
+			for (var argument of arguments) {
+				if (argument == 'nopause') {
+					next.nopause = true;
+				} else if (argument == 'noskip') {
+					next.noskip = false;
+				} else if (argument == 'nofeature') {
+					next.nofeature = true;
+				} else if (typeof argument == 'string') {
+					next.src = argument;
+				} else if (typeof argument == 'function') {
+					next.callback = argument;
+				}
+			}
+			next.setContent('gl_cg');
+			return next;
+		}
+		lib.element.content.gl_cg = function() {
+			if (!event.src) return;
+			game.broadcastAll(function(src, callback, nofeature, noskip, nopause) {
+				if (ui.backgroundMusic) ui.backgroundMusic.pause();
+					var background = ui.create.div('.cg', ui.window);
+				var cg = galgame.cg(lib.assetURL + 'extension/' + src, function() {
+					ui.window.removeChild(this.parentNode);
+					if (ui.backgroundMusic && ui.backgroundMusic.duration) ui.backgroundMusic.play();
+					if (nopause !== true) game.resume();
+					if (typeof callback == 'function') callback();
+				}, noskip,background);
+				if (nofeature) background.style.zIndex = '0';
+				if (nopause !== true) game.pause();
+			}, event.src, event.callback, event.nofeature, event.noskip, event.nopause);
+		}
+		//置于武将牌上直至回合结束
+		//实例：player.gl_gainExpansions(player.getCards('h'));将所有手牌置于武将牌上直至此回合结束为止。
+		lib.element.player.gl_gainExpansions = function(cards) {
+			this.addTempSkill('gl_gainExpansions');
+			this.addToExpansion('giveAuto', cards, this).gaintag.add('gl_gainExpansions');
+		}
+		lib.skill.gl_gainExpansions = {
+			charlotte: true,
+			superCharlotte: true,
+			intro: {
+				markcount: "expansion",
+				mark: function(dialog, storage, player) {
+					var cards = player.getExpansions('gl_gainExpansions');
+					if (player.isUnderControl(true)) dialog.addAuto(cards);
+					else return '共有' + get.cnNumber(cards.length) + '张牌';
+				},
+				onunmark: function(storage, player) {
+					var cards = player.getExpansions('gl_gainExpansions');
+					player.gain(cards, 'draw');
+					game.log(player, '收回了' + get.cnNumber(cards.length) + '张牌');
+				},
+			},
+			mark: true,
+		}
+		lib.translate.gl_gainExpansions = '盖牌';
+		//环境牌
+		lib.translate.gl_map = '环境';
+		game.gl_changeMap = function(card) {
+			if (!card || get.itemtype(card) != "card") return;
+			if (ui.gl_map && ui.gl_map.card == card) return;
+			var node = ui.create.div('.background.upper.land');
+			node.style.backgroundImage = card.style.backgroundImage || card.node.image.style.backgroundImage;
+			node.destroy = function() {
+				var node = this;
+				var info = lib.card[node.card.name];
+				var player = get.owner(this);
+				if (player) player.discard(node.card);
+				for (var skill of info.mapSkills) {
+					game.removeGlobalSkill(skill);
+				}
+				this.classList.add('hidden');
+				setTimeout(function() {
+					node.remove();
+				}, 3000);
+				if (ui.gl_map == this) {
+					ui.gl_map = null;
+				}
+			}
+			if (ui.gl_map) {
+				document.body.insertBefore(node, ui.gl_map);
+				ui.gl_map.destroy();
+			} else {
+				node.classList.add('hidden');
+				document.body.insertBefore(node, ui.window);
+				ui.refresh(node);
+				node.classList.remove('hidden');
+			}
+			ui.gl_map = node;
+			node.card = card;
+			var info = lib.card[node.card.name];
+			for (var skill of info.mapSkills) {
+				game.addGlobalSkill(skill);
+			}
+			return node;
+		}
+		//唯一装备
+		lib.element.content.gl_uniqueEquip = function() {
+			'step 0'
+			event.players = game.players.slice(0);
+			event.info = get.info(card, false);
+			'step 1'
+			if (event.players.length) {
+				var type = get.subtype(card, false);
+				var current = event.players.shift();
+				var cards = current.getCards("e", card => {
+					return get.subtype(card, false) == type;
+				}).filter((card) => {
+					return lib.filter.canBeReplaced(card, current);
+				});
+				current.lose(cards, "visible").set("type", "equip").set("getlx", false).swapEquip = true;
+				if (event.info.loseThrow) {
+					current.$throw(cards, 1000);
+				}
+				event.parent.swapped = true;
+				event.redo();
+			}
+		}
+		//无效某一项技能
+		//实例：
+		//player.gl_awakenSkill('rende');无效玩家的仁德技能
+		//player.gl_restoreSkill('rende');恢复玩家的仁德技能
+		lib.skill.gl_awakenSkill = {
+			init: function(player, skill) {
+				player.addSkillBlocker(skill);
+			},
+			onremove: function(player, skill) {
+				player.removeSkillBlocker(skill);
+			},
+			charlotte: true,
+			skillBlocker: function(skill, player) {
+				return player.storage.gl_awakenSkill.includes(skill);
+			},
+		}
+		lib.element.player.gl_awakenSkill = function(skill) {
+			if (!this.storage.gl_awakenSkill) this.storage.gl_awakenSkill = [];
+			this.storage.gl_awakenSkill.add(skill);
+			this.addSkill('gl_awakenSkill');
+			return this;
+		}
+		lib.element.player.gl_restoreSkill = function(skill) {
+			if (!this.storage.gl_awakenSkill) this.storage.gl_awakenSkill = [];
+			this.storage.gl_awakenSkill.remove(skill);
+			if (this.storage.gl_awakenSkill.length == 0) this.removeSkill('gl_awakenSkill');
+			return this;
+		}
+		//便捷的调整某项技能的发动次数
+		//实例：player.gl_statSKill('zhiheng',-1);制衡已经发动过的次数-1
+		lib.element.player.gl_statSKill = function() {
+			var skill, range, num = 0,
+				id = '';
+			for (var argument of arguments) {
+				if (argument == 'round') {
+					range = ['round', 1];
+				} else if (typeof argument == 'number') {
+					num = argument;
+				} else if (typeof argument == 'string') {
+					skill = argument;
+				} else if (get.itemtype(argument) == 'player') {
+					id = argument.playerid;
+				} else if (Array.isArray(argument)) {
+					range = argument;
+				} else if (typeof argument == 'object') {
+					//兼容旧写法
+					if (argument.phase) range = ['phase', argument.phase];
+					if (argument.round) range = ['round', argument.round];
+				}
+			}
+			if (!skill) return;
+			if (!range) range = ['phase', 1];
+			skill += id;
+			if (!this.getStat().skill[skill]) this.getStat().skill[skill] = 0;
+			this.getStat().skill[skill] += num;
+			var count = 0;
+			if (range[0] == 'round') {
+				var round = 0;
+				for (var i = 1; i <= this.stat.length; i++) {
+					count += (this.stat[this.stat.length - i].skill[skill] || 0);
+					if (this.stat[this.stat.length - i].isRound) round++;
+					if (round >= range[1]) break;
+				}
+			}
+			if (range[0] == 'phase') {
+				for (var i = 1; i <= range[1]; i++) {
+					count += (this.stat[this.stat.length - i].skill[skill] || 0);
+				}
+			}
+			return count;
+		}
+		//指定事件结束后仅一次执行某些效果
+		//实例：player.gl_eventAfter('zhiheng',function(){player.draw();});回合结束后摸一张牌
+		lib.element.player.gl_eventAfter = function(id, func, event) {
+			if (!event) {
+				event = _status.event.getParent('phase');
+				if (!event || event.name != 'phase') return {};
+			}
+			var id = id + '_' + this.playerid;
+			if (!event.gl_eventAfter) event.gl_eventAfter = {};
+			if (!event.gl_eventAfter[id]) {
+				var next = game.createEvent('gl_eventAfter', false);
+				next.player = this;
+				next.setContent(func);
+				_status.event.next.remove(next);
+				event.after.unshift(next);
+				event.gl_eventAfter[id] = next;
+			}
+			return event.gl_eventAfter[id];
+		}
+		//重置所有技能
+		//实例：player.resetSkills();类似王凌的宗族技。
+		lib.element.player.resetSkills = function() {
+			var player = this;
+			var skills = player.getStockSkills(true, true);
+			game.expandSkills(skills);
+			var resetSkills = [];
+			var suffixs = ['used', 'round', 'block', 'blocker'];
+			for (var skill of skills) {
+				var info = get.info(skill);
+				if (typeof info.usable == 'number') {
+					if (player.hasSkill('counttrigger') && player.storage.counttrigger[skill] && player.storage.counttrigger[skill] >= 1) {
+						delete player.storage.counttrigger[skill];
+						resetSkills.add(skill);
+					}
+					if (typeof get.skillCount(skill) == 'number' && get.skillCount(skill) >= 1) {
+						delete player.getStat('skill')[skill];
+						resetSkills.add(skill);
+					}
+				}
+				if (info.round && player.storage[skill + '_roundcount']) {
+					delete player.storage[skill + '_roundcount'];
+					resetSkills.add(skill);
+				}
+				if (player.storage[`temp_ban_${skill}`]) {
+					delete player.storage[`temp_ban_${skill}`];
+				}
+				if (player.awakenedSkills.includes(skill)) {
+					player.restoreSkill(skill);
+					resetSkills.add(skill);
+				}
+				for (var suffix of suffixs) {
+					if (player.hasSkill(skill + '_' + suffix)) {
+						player.removeSkill(skill + '_' + suffix);
+						resetSkills.add(skill);
+					}
+				}
+			}
+			if (resetSkills.length) {
+				var str = '';
+				for (var i of resetSkills) {
+					str += '【' + get.translation(i) + '】、';
+				}
+				game.log(player, '重置了技能', '#g' + str.slice(0, -1));
+			}
+			return resetSkills;
+		}
+		//发动某某场合描述的技能
+		lib.element.player.gl_delay = function(skill) {
+			if (!lib.skill[skill] || !lib.skill[skill].gl_delay) return;
+			var parent = _status.event.getParent();
+			while (parent.getParent(2).name != 'phaseLoop') {
+				parent = parent.parent;
+			}
+			if (!parent.gl_delay || !parent.next.includes(parent.gl_delay)) {
+				var next = game.createEvent('gl_delay', false, parent);
+				next.setContent('gl_delay');
+				parent.gl_delay = next;
+			}
+			if (!parent.gl_delay.gl_delayList) parent.gl_delay.gl_delayList = {};
+			var list = parent.gl_delay.gl_delayList;
+			if (!list[this.playerid]) list[this.playerid] = {};
+			if (!list[this.playerid][skill]) list[this.playerid][skill] = 0;
+			list[this.playerid][skill]++;
+			return parent.gl_delay;
+		}
+		lib.element.content.gl_delay = function() {
+			'step 0'
+			event.targets = game.filterPlayer(function(current) {
+				return event.gl_delayList[current.playerid];
+			});
+			event.targets.sort(lib.sort.seat);
+			'step 1'
+			if (event.targets.length) {
+				event.current = event.targets.shift();
+			} else {
+				event.finish();
+			}
+			'step 2'
+			event.list = [];
+			for (var skill in event.gl_delayList[event.current.playerid]) {
+				if (!lib.skill[skill].gl_delay.filter || lib.skill[skill].gl_delay.filter(event.current, event)) {
+					event.list.push(skill);
+				}
+			}
+			'step 3'
+			if (!event.list || event.list.length == 0) {
+				event.goto(1);
+				return;
+			}
+			if (event.list.length == 1) {
+				event._result = {
+					bool: true,
+					links: event.list,
+				}
+			} else {
+				var dialog = ui.create.dialog('hidden');
+				dialog.forcebutton = true;
+				for (var i = 0; i < event.list.length; i++) {
+					var node = ui.create.caption('<div class="popup pointerdiv" style="width:80%;display:inline-block"><div class="skill">【' + get.translation(event.list[i]) + '】</div><div>' + lib.translate[event.list[i] + '_info'] + '</div></div>', dialog.content);
+					dialog.buttons.add(node);
+					var click = lib.config.touchscreen ? 'touchend' : 'click';
+					node.addEventListener(click, ui.click.button);
+					node.style.width = 'calc(100% - 30px)';
+					node.style.position = 'unset';
+					node.link = event.list[i];
+				}
+				event.current.chooseButton(dialog, '选择以下一个技能发动').set('forceDie', true).set('includeOut', true);
+			}
+			'step 4'
+			if (result.bool) {
+				var skill = result.links[0];
+				event.link = result.links[0];
+				var next = game.createEvent(skill);
+				next.player = event.current;
+				next.getNum = function(num) {
+					var player = this.player;
+					var skill = this.name;
+					var event = this.parent;
+					if (typeof num == 'number') {
+						event.gl_delayList[player.playerid][skill] += num;
+					} else if (num === 'prompt') {
+						return '（剩余' + (event.gl_delayList[player.playerid][skill] - 1) + '次）';
+					}
+					return event.gl_delayList[player.playerid][skill];
+				}
+				next.setContent(lib.skill[skill].gl_delay.content);
+			}
+			'step 5'
+			delete event.gl_delayList[event.current.playerid][event.link];
+			event.goto(2);
+		}
+		//登记获得牌的标签
+		lib.skill.gl_gaintag = {
+			trigger: {
+				player: "gainBefore",
+			},
+			priority: 651656,
+			firstDo: true,
+			popup: false,
+			forced: true,
+			filter: function(event, player) {
+				return event.cards && event.cards.length;
+			},
+			content: function() {
+				var cards = trigger.cards;
+				trigger.gaintag_map = {};
+				for (var i = 0; i < cards.length; i++) {
+					if (cards[i].gaintag && cards[i].gaintag.length) {
+						trigger.gaintag_map[cards[i].cardid] = cards[i].gaintag.slice(0);
+					}
+				}
+			},
+		}
+		game.addGlobalSkill('gl_gaintag');
+		//阵法技
+		//切换阵法队列
+		lib.element.player.gl_changeZhenfa = function(source) {
+			var next = game.createEvent('gl_changeZhenfa');
+			next.player = this;
+			if (get.itemtype(source) !== 'player' && source !== false) source = this;
+			next.source = source;
+			next.setContent('gl_changeZhenfa');
+			return next;
+		}
+		lib.element.content.gl_changeZhenfa = function() {
+			if (source && source.storage.gl_zhenfa) {
+				player.storage.gl_zhenfa = source.storage.gl_zhenfa;
+			} else {
+				player.storage.gl_zhenfa = source;
+			}
+			if (player.storage.gl_zhenfa) {
+				player.markSkill('gl_zhenfa');
+			} else {
+				player.unmarkSkill('gl_zhenfa');
+			}
+		}
+		//判断两名角色是否处于相同阵法队列
+		get.gl_zhenfa = function(player, target) {
+			if (!player || !target) return;
+			if (!player.storage.gl_zhenfa || !target.storage.gl_zhenfa) return false;
+			if (!player.isAlive() || !target.isAlive()) return false;
+			return player.storage.gl_zhenfa == target.storage.gl_zhenfa;
+		}
+		//获取所有与自己处于相同阵法队列的角色
+		get.gl_zhenfaAll = function(player, bool) {
+			var targets = game.filterPlayer(function(current) {
+				return get.gl_zhenfa(player, current);
+			});
+			if (bool) targets.remove(player);
+			return targets;
+		}
+		lib.skill.gl_zhenfa = {
+			intro: {
+				content: function(storage, player) {
+					var targets = get.gl_zhenfaAll(player, true);
+					if (targets.length) {
+						return '你与' + get.translation(targets) + '处于相同的阵法队列';
+					}
+					return '你独自处于阵法队列当中';
+				},
+				onunmark: function(storage, player) {
+					delete player.storage.gl_zhenfa;
+				},
+			},
+		};
+		lib.translate.gl_zhenfa = "阵法";
+		//武装技
+		lib.skill.gl_wuzhuang = {
+			enable: "phaseUse",
+			filter: function(event, player) {
+				var list = [],
+					info;
+				var storage = player.storage.gl_wuzhuang;
+				var skills = player.getSkills(false, false);
+				for (var i = 0; i < skills.length; i++) {
+					info = get.info(skills[i]);
+					if (storage && storage.includes(skills[i])) continue;
+					if (info.zhuSkill && !player.hasZhuSkill(skills[i])) continue;
+					if (info.gl_wuzhuang) return true;
+				}
+				return false;
+			},
+			chooseButton: {
+				dialog: function(event, player) {
+					var list = [],
+						info;
+					var storage = player.storage.gl_wuzhuang;
+					var skills = player.getSkills(false, false);
+					for (var i = 0; i < skills.length; i++) {
+						info = get.info(skills[i]);
+						if (storage && storage.includes(skills[i])) continue;
+						if (info.zhuSkill && !player.hasZhuSkill(skills[i])) continue;
+						if (info.gl_wuzhuang) {
+							var wuzhuang = info.gl_wuzhuang;
+							if (typeof wuzhuang == 'function') {
+								wuzhuang = wuzhuang();
+							}
+							if (Array.isArray(wuzhuang)) {
+								for (var j = 0; j < wuzhuang.length; j++) {
+									list.push([skills[i], '', wuzhuang[j].name]);
+								}
+							} else {
+								list.push([skills[i], '', wuzhuang.name]);
+							}
+						}
+					}
+					return ui.create.dialog('选择一项技能武装化', [list, 'vcard']);
+				},
+				check: function(button) {
+					var name = button.link[2];
+					var info = lib.card[name];
+					var equipValue = info.ai.equipValue;
+					if (equipValue == undefined) {
+						equipValue = info.ai.basic.equipValue;
+					}
+					return equipValue;
+				},
+				backup: function(links, player) {
+					return {
+						card: links[0],
+						delay: false,
+						filterCard: function() {
+							return false
+						},
+						selectCard: -1,
+						viewAs: {
+							name: links[0][2]
+						},
+						precontent: function() {
+							var result = event.result;
+							event.parent.finish();
+							var skill = lib.skill.gl_wuzhuang_backup.card[0];
+							var card = lib.skill.gl_wuzhuang_backup.card[2];
+							player.gl_wuzhuang(skill, result.targets[0], card);
+							var evt = _status.event.getParent('phaseUse');
+							if (evt && evt.name == 'phaseUse') {
+								player.gl_eventAfter('gl_wuzhuang', function() {
+									delete player.storage.gl_wuzhuang;
+								}, evt);
+							}
+							if (!player.storage.gl_wuzhuang) {
+								player.storage.gl_wuzhuang = [];
+							}
+							player.storage.gl_wuzhuang.push(skill);
+						},
+					}
+				},
+			},
+			ai: {
+				order: function(item, player) {
+					var info, order = 0;
+					var storage = player.storage.gl_wuzhuang;
+					var skills = player.getSkills(false, false);
+					for (var i = 0; i < skills.length; i++) {
+						info = get.info(skills[i]);
+						if (storage && storage.includes(skills[i])) continue;
+						if (info.zhuSkill && !player.hasZhuSkill(skills[i])) continue;
+						if (info.gl_wuzhuang) {
+							var wuzhuang = info.gl_wuzhuang;
+							if (typeof wuzhuang == 'function') {
+								wuzhuang = wuzhuang();
+							}
+							var num = 0;
+							if (Array.isArray(wuzhuang)) {
+								for (var j = 0; j < wuzhuang.length; j++) {
+									var name = wuzhuang[j].name;
+									if (lib.card[name] && lib.card[name].ai && lib.card[name].ai.order) {
+										if (typeof lib.card[name].ai.order == 'function') {
+											num = lib.card[name].ai.order.apply(this, arguments);
+										} else {
+											num = lib.card[name].ai.order;
+										}
+										if (num > order) order = num;
+									}
+								}
+							} else {
+								var name = wuzhuang.name;
+								if (lib.card[name] && lib.card[name].ai && lib.card[name].ai.order) {
+									if (typeof lib.card[name].ai.order == 'function') {
+										num = lib.card[name].ai.order.apply(this, arguments);
+									} else {
+										num = lib.card[name].ai.order;
+									}
+									if (num > order) order = num;
+								}
+							}
+						}
+					}
+					return order;
+				},
+				result: {
+					player: 1,
+				},
+				threaten: 1.5,
+			},
+		};
+		lib.translate.gl_wuzhuang = "武装";
+		lib.translate.gl_wuzhuang_backup = "武装";
+		lib.element.player.gl_wuzhuang = function(skill, target, direct) {
+			var player = this;
+			if (!player.hasSkill(skill)) return;
+			var card = get.info(skill).gl_wuzhuang;
+			if (typeof card == 'function') card = card();
+			if (Array.isArray(card)) {
+				if (direct) {
+					for (var i = 0; i < card.length; i++) {
+						if (card[i].name == direct) {
+							card = game.createCard(card[i]);
+							break;
+						}
+					}
+				}
+				if (get.itemtype(card) != 'card') {
+					card = game.createCard(card[0]);
+				}
+			} else {
+				card = game.createCard(card);
+			}
+			card.storage.gl_wuzhuang = {
+				player: player,
+				skill: skill
+			};
+			card.gl_yansheng = true;
+			if (!target) target = player;
+			target.equip(card);
+			player.disableSkill('gl_wuzhuang' + skill, skill);
+		}
+		game.addGlobalSkill('gl_wuzhuang');
+		//清理衍生卡
+		lib.skill.gl_discard = {
+			trigger: {
+				global: ["cardsDiscardAfter", "loseAfter"],
+			},
+			firstDo: true,
+			direct: true,
+			filter: function(event, player) {
+				for (var i = 0; i < event.cards.length; i++) {
+					if (!event.cards[i].gl_yansheng) continue;
+					if (get.position(event.cards[i], true) == 'd') return true;
+				}
+				return false;
+			},
+			content: function() {
+				for (var i = 0; i < trigger.cards.length; i++) {
+					if (!trigger.cards[i].gl_yansheng) continue;
+					if (get.position(trigger.cards[i], true) != 'd') continue;
+					trigger.cards[i].delete();
+					var storage = trigger.cards[i].storage.gl_wuzhuang
+					if (!storage || storage.player != player) continue;
+					player.enableSkill('gl_wuzhuang' + storage.skill);
+				}
+			},
+		}
+		game.addGlobalSkill('gl_discard');
+		//侍从技
+		lib.skill.gl_shicong = {
+			trigger: {
+				player: "damageBefore"
+			},
+			priority: 100,
+			firstDo: true,
+			filter: function(event, player) {
+				if (!player.storage.gl_shicong) return false;
+				var list = player.storage.gl_shicong;
+				var bool = player.hasSkill('subplayer');
+				for (var skill in list) {
+					if (bool && list[skill].includes(player.storage.subplayer.name2)) return true;
+					if (!player.hasSkill(skill, false, false)) continue;
+					for (var subPlayer of list[skill]) {
+						if (player.hasSkill(subPlayer)) return true;
+					}
+				}
+				return false;
+			},
+			direct: true,
+			content: function() {
+				'step 0'
+				if (player.hasSkill('subplayer')) {
+					player.chooseBool('即将受到伤害是否切换回本体？');
+				} else {
+					event.goto(2);
+				}
+				'step 1'
+				if (result.bool) {
+					player.exitSubPlayer();
+				}
+				event.finish();
+				'step 2'
+				var skills = [];
+				var list = player.storage.gl_shicong;
+				for (var skill in list) {
+					if (!player.hasSkill(skill, false, false)) continue;
+					for (var subPlayer of list[skill]) {
+						if (player.hasSkill(subPlayer)) skills.push(subPlayer);
+					}
+				}
+				var dialog = ui.create.dialog('即将受到伤害，是否调遣一名随从？', 'hidden');
+				dialog.add([skills, 'character']);
+				player.chooseButton(dialog);
+				'step 3'
+				if (result.bool) {
+					player.callSubPlayer(result.links[0]);
+				}
+			},
+		}
+		lib.translate.gl_shicong = "侍从";
+		game.addGlobalSkill('gl_shicong');
+		lib.element.player.gl_shicong = function(skill) {
+			if (!skill) return;
+			var next = game.createEvent('gl_shicong', false);
+			next.player = this;
+			next.link = skill;
+			next.setContent('gl_shicong');
+			return next;
+		}
+		lib.element.content.gl_shicong = function() {
+			var skill = event.link;
+			if (!player.hasSkill(skill)) return;
+			var info = get.info(skill).gl_shicong;
+			if (!info) return;
+			if (!player.storage.gl_shicong) player.storage.gl_shicong = {};
+			for (var i in player.storage.gl_shicong) {
+				if (i == skill) return;
+			}
+			var nameinfo = lib.character[info.name];
+			var image;
+			if (nameinfo) {
+				for (var i = 0; i < nameinfo[4].length; i++) {
+					if (nameinfo[4][i].indexOf('ext:') == 0) image = nameinfo[4][i];
+				}
+			}
+			var hp = get.infoHp(info.hp);
+			var maxHp = get.infoMaxHp(info.hp);
+			var subPlayer = player.addSubPlayer({
+				name: info.name,
+				skills: info.skills,
+				hp: hp,
+				image: image,
+				maxHp: maxHp,
+				hs: get.cards(4),
+				skill: skill,
+				sex: info.sex || 'male',
+				group: info.group || 'qun',
+				intro: '此随从与你的【' + get.translation(skill) + '】共存亡。',
+				intro2: '此随从与你的【' + get.translation(skill) + '】共存亡。',
+				onremove: function(player) {
+					player.storage.gl_shicong[skill].remove(subPlayer);
+					if (player.storage.gl_shicong[skill].length == 0) player.disableSkill('gl_shicong' + skill, skill);
+				}
+			});
+			if (!player.storage.gl_shicong[skill]) player.storage.gl_shicong[skill] = [];
+			player.storage.gl_shicong[skill].push(subPlayer);
+		}
+		//给主动技能追加COST相关概念
+		lib.skill.gl_useSkillCost = {
+			trigger: {
+				player: 'useSkillBefore'
+			},
+			filter: function(event, player) {
+				return lib.skill[event.skill] && typeof lib.skill[event.skill].cost == 'function';
+			},
+			direct: true,
+			firstDo: true,
+			content: function() {
+				'step 0'
+				var info = get.info(trigger.skill);
+				var next = game.createEvent(`${trigger.skill}_cost`);
+				next.player = player;
+				next.targets = trigger.targets;
+				next.cards = trigger.cards;
+				next.card = trigger.card;
+				next.skillHidden = trigger.skillHidden;
+				next.indexedData = trigger.indexedData;
+				if (info.forceDie) next.set("forceDie", true);
+				if (info.forceOut) next.set("includeOut", true);
+				next.skill = trigger.skill;
+				next.setContent(info.cost);
+				'step 1'
+				if (result.bool) {
+					if (get.itemtype(result.targets) == "players") {
+						trigger.targets = result.targets.slice(0);
+					}
+					if (get.itemtype(result.cards) === "cards") {
+						trigger.cards = result.cards.slice(0);
+					}
+					if ("cost_data" in result) trigger.cost_data = result.cost_data;
+					trigger.indexedData = event.indexedData;
+				} else {
+					trigger.cancel();
+					player.popup('发动失败', 'fire');
+					game.log(player, '想要发动', '【' + get.skillTranslation(trigger.skill, player) + '】', '，但是失败了！');
+				}
+			}
+		}
+		game.addGlobalSkill('gl_useSkillCost');
+		//条件技
+		lib.element.player.gl_costLog = function(skill, target) {
+			var next = game.createEvent('gl_costLog', false);
+			next.player = this;
+			next.link = _status.event;
+			next.skill = skill;
+			next.setContent(function() {
+				if (!event.link.result || !event.link.result.bool) {
+					player.popup('发动失败', 'fire');
+					game.log(player, '想要发动', '【' + get.skillTranslation(event.skill, player) + '】', '，但是失败了！');
+				}
+			});
+			_status.event.next.remove(next);
+			_status.event.after.push(next);
+			if (!_status.event.costs) _status.event.costs = [];
+			if (!_status.event.inital) _status.event.inital = {};
+		}
+		//数字选择器
+		//实例：player.chooseCount([0,99],50);从0到99选一个数字，初始数字为50；
+		lib.element.player.chooseCount = function() {
+			var next = game.createEvent('chooseCount');
+			for (var i = 0; i < arguments.length; i++) {
+				if (typeof arguments[i] == 'number') {
+					next.num = arguments[i];
+				} else if (typeof arguments[i] == 'string') {
+					next.str = arguments[i];
+				} else if (get.itemtype(arguments[i]) == 'select') {
+					next.arr = arguments[i];
+				} else if (typeof arguments[i] == 'function') {
+					if (next.filterNum) next.ai = arguments[i];
+					next.filterNum = arguments[i];
+				}
+			}
+			next.player = this;
+			if (!next.arr) next.arr = [0, 99];
+			if (!next.str) next.str = '请选择一个数字';
+			if (!next.num) next.num = next.arr[0];
+			//先检查一下有没有合法数字，不然卡死了。
+			if (next.filterNum && !next.filterNum(next.num)) {
+				for (var i = next.arr[0]; i < next.arr[1]; i++) {
+					if (next.filterNum(i)) {
+						next.num = i;
+						break;
+					}
+					//真就一个合法数字都没有，搞个锤子呦.....
+					if (i == next.arr[1]) _status.event.next.remove(next);
+				}
+			}
+			next.setContent('chooseCount');
+			next._args = Array.from(arguments);
+			return next;
+		}
+		lib.element.content.chooseCount = function() {
+			'step 0'
+			if (event.isMine()) {
+				event.dialog = ui.create.dialog(event.str);
+				event.count = ui.create.control('-', event.num, '+');
+				var list = event.count.childNodes;
+				for (var node of list) {
+					node.removeEventListener(lib.config.touchscreen ? 'touchend' : 'click', ui.click.control);
+				}
+				list[0].style.width = '20px';
+				list[0].addEventListener(lib.config.touchscreen ? 'touchend' : 'click', function() {
+					do {
+						event.num--;
+						if (event.num < event.arr[0]) event.num = event.arr[1];
+					} while (event.filterNum && !event.filterNum(event.num));
+					list[1].innerHTML = event.num;
+				});
+				list[1].style.width = '60px';
+				list[1].addEventListener(lib.config.touchscreen ? 'touchend' : 'click', function() {
+					//到这还不合法，你在干啥呀？！
+					if (!event.filterNum || event.filterNum(event.num)) {
+						event._result = {
+							num: event.num,
+						}
+						event.count.close();
+						event.dialog.close();
+						game.resume();
+					}
+				});
+				list[2].style.width = '20px';
+				list[2].addEventListener(lib.config.touchscreen ? 'touchend' : 'click', function() {
+					do {
+						event.num++;
+						if (event.num > event.arr[1]) event.num = event.arr[0];
+					} while (event.filterNum && !event.filterNum(event.num));
+					list[1].innerHTML = event.num;
+				});
+				game.pause();
+			} else if (event.isOnline()) {
+				event.send();
+			} else {
+				event.result = 'ai';
+			}
+			'step 1'
+			if (event.result == 'ai') {
+				if (event.ai) {
+					event.num = event.ai(event.getParent(), player);
+				} else {
+					event.num = 0;
+				}
+				if (event.num == false) {
+					event.num = 0;
+				}
+				if (event.num == true) {
+					event.num = event.arr[1];
+				}
+				//再检查一下是否合法。
+				while ((event.filterNum && !event.filterNum(event.num)) || event.arr[0] > event.num || event.arr[1] < event.num) {
+					if (event.arr[0] > event.num) {
+						event.num++;
+					} else if (event.arr[1] < event.num) {
+						event.num--;
+					}
+				}
+				event.result = {
+					num: event.num,
+				}
+			}
+			var result = event.result || result;
+			event.result = result;
+		}
+		//便捷的永久状态变化
+		lib.element.player.gl_permanent = function(key, num) {
+			if (!this.hasSkill('gl_permanent')) this.addSkill('gl_permanent');
+			if (typeof num != 'number') num = 1;
+			this.storage.gl_permanent[key] += num;
+			this.syncStorage('gl_permanent');
+			this.markSkill('gl_permanent');
+		};
+		lib.skill.gl_permanent = {
+			charlotte: true,
+			init: function(player) {
+				if (!player.storage.gl_permanent) {
+					player.storage.gl_permanent = {
+						handcard: 0,
+						draw: 0,
+						use: 0,
+						to: 0,
+						from: 0,
+						attack:0,
+					};
+				}
+			},
+			mark: true,
+			intro: {
+				content: function(storage, player) {
+					var str = '';
+					var storage = player.storage.gl_permanent;
+					str += '摸牌阶段摸牌数：' + (storage.draw + 2) + '</br>';
+					str += '当前手牌上限：' + player.getHandcardLimit() + '</br>';
+					str += '攻击距离：' + (storage.from + 1) + '</br>';
+					str += '防御距离：' + (storage.to + 1) + '</br>';
+					str += '攻击范围：' + (storage.attack + 1) + '</br>';
+					str += '出杀上限：' + (storage.use + 1);
+					return str;
+				},
+			},
+			mod: {
+				maxHandcard: function(player, num) {
+					return num + player.storage.gl_permanent.handcard;
+				},
+				globalFrom: function(from, to, distance) {
+					return distance - from.storage.gl_permanent.from;
+				},
+				globalTo: function(from, to, current) {
+					return current + to.storage.gl_permanent.to;
+				},
+				cardUsable: function(card, player, num) {
+					if (card.name == 'sha') return num + player.storage.gl_permanent.use;
+				},
+				attackRange:function(player, num) {
+					return num + player.storage.gl_permanent.attack;
+				},
+			},
+			trigger: {
+				player: "phaseDrawBegin2",
+			},
+			silent: true,
+			forced: true,
+			filter: function(event, player) {
+				return !event.numFixed;
+			},
+			content: function() {
+				trigger.num += player.storage.gl_permanent.draw;
+			},
+		}
+		lib.translate.gl_permanent = '状态变化';
+		lib.translate.gl_permanent_info = '';
+		//明置技，只对触发类技能进行封锁，主动技能需要自行写禁止发动的
+		lib.skill.gl_mingzhi = {
+			hookTrigger: {
+				block: function(event, player, name, skill) {
+					const info = get.info(skill);
+					if (!info) {
+						console.error(new ReferenceError("缺少info的技能:", skill));
+						return false;
+					}
+					if (game.checkMod(player, skill, event,'unchanged', 'gl_blockSkill', player) === true) return true;
+					if (info.gl_mingzhi !== true) return false;
+					return !game.expandSkills(player.hiddenSkills.slice(0)).includes(skill);
+				},
+			},
+			init: function(player) {
+				var list = game.expandSkills(player.hiddenSkills.slice(0));
+				for (var i = 0; i < list.length; i++) {
+					var info = get.info(list[i]);
+					if (info.gl_mingzhi) {
+						game.addGlobalSkill(list[i]);
+					}
+				}
+			},
+			onChooseToRespond: function(event) {
+				var player = event.player;
+				event._skillChoice = game.expandSkills(player.getSkills("invisible").concat(lib.skill.global)).filter((skill) => lib.filter.filterEnable(event, player, skill) && !lib.skill.gl_mingzhi.hookTrigger.block(event, player, event.triggername, skill));
+			},
+			onChooseToUse: function(event) {
+				var player = event.player;
+				event._skillChoice = game.expandSkills(player.getSkills("invisible").concat(lib.skill.global)).filter((skill) => lib.filter.filterEnable(event, player, skill) && !lib.skill.gl_mingzhi.hookTrigger.block(event, player, event.triggername, skill));
+			},
+		}
+		game.addGlobalSkill('gl_mingzhi');
+		lib.element.player.inits.add(function(player) {
+			lib.skill.gl_mingzhi.init(player);
+			if (!player._hookTrigger) {
+				player._hookTrigger = [];
+			}
+			player._hookTrigger.add('gl_mingzhi');
+			//登场双将
+			var info = lib.character[player.name1];
+			for (var character2 of info[4]) {
+				if (character2.indexOf('gl_character2:') == 0) {
+					player.addAvatar2(character2.slice(14));
+					break;
+				}
+			}
+			//初始化速度
+			if (!player.node.gl_timer) {
+				var timer = ui.create.div('.gl_speed', player);
+				player.node.gl_timer = timer;
+				var div = ui.create.div(timer);
+				player.node.gl_speed = ui.create.div(div);
+				ui.refresh(player.node.gl_speed);
+				player.gl_speed = 0;
+				if (!game.gl_speed) player.node.gl_timer.hide();
+			}
+		});
+		//移除副将
+		lib.element.player.removeAvatar2 = function() {
+			return this.changeCharacter([this.name1]);
+		}
+		//增加副将
+		lib.element.player.addAvatar2 = function(name) {
+			return this.changeCharacter([this.name1, name]);
+		}
+		//卡牌变幻
+		lib.element.card.gl_replaceCard = function(data) {
+			var player = get.owner(this);
+			var card = this;
+			if (player) {
+				var node = player.$throw(card, 2000);
+				for (var i of Object.keys(lib.element.card)) {
+					node[i] = lib.element.card[i];
+				}
+				setTimeout(function() {
+					node.hide();
+				}, 500);
+				setTimeout(function() {
+					node.buildNode();
+					node.init(data);
+				}, 700);
+				setTimeout(function() {
+					node.show();
+				}, 900);
+				setTimeout(function() {
+					node.moveDelete(player);
+					player.removeEquipTrigger(card);
+					card.init(data);
+					player.$equip(card);
+				}, 1400);
+			} else {
+				card.init(data);
+			}
+		}
+		//暗置角色
+		//实例：player.$hideCharacter(2);0为暗置主将，1为暗置副将，2为全部暗置
+		lib.element.player.$hideCharacter = function(num, bool) {
+			if (num == 0 && this.isUnseen(0)) {
+				return;
+			}
+			if (num == 1 && (!this.name2 || this.isUnseen(1))) {
+				return;
+			}
+			if (this.isUnseen(2)) {
+				return;
+			}
+			game.addVideo('hideCharacter', this, num);
+			var info = lib.character[this.name1 || this.name];
+			var skills = info[3].slice(0);
+			var exclude = [];
+			for (i = 0; i < this.skills.length; i++) {
+				if (lib.skill[this.skills[i]].temp || lib.skill[this.skills[i]].charlotte) exclude.push(this.skills[i]);
+			}
+			this.clearSkills(true, ...exclude);
+			if (num != 1) {
+				if (!this.hiddenSkills) this.hiddenSkills = [];
+				this.hiddenSkills.addArray(skills);
+				skills = [];
+			}
+			var info2;
+			if (this.name2) {
+				info2 = lib.character[this.name2];
+			}
+			if (num != 0) {
+				if (!this.hiddenSkills) this.hiddenSkills = [];
+				if (info2) this.hiddenSkills.addArray(info2[3]);
+			} else if (info2) {
+				skills = skills.concat(info2[3]);
+			}
+			game.broadcastAll(function(player, num) {
+				if (num != 1) {
+					player.name = 'unknown';
+					player.sex = 'male';
+					if (!_status.video && get.mode() != "guozhan") player.classList.add("unseen_show");
+					player.classList.add(_status.video ? 'unseen_v' : 'unseen');
+					if (!player.node.name_seat && !_status.video) {
+						player.node.name_seat = ui.create.div(".name.name_seat", get.verticalStr(get.translation(player.name)), player);
+						player.node.name_seat.dataset.nature = get.groupnature(player.group);
+					}
+				}
+				if (num != 0 && lib.character[player.name2]) {
+					if (!_status.video && get.mode() != "guozhan") player.classList.add("unseen2_show");
+					player.classList.add(_status.video ? 'unseen2_v' : 'unseen2');
+				}
+				player.storage.rawHp = player.hp;
+				player.storage.rawMaxHp = player.maxHp;
+				player.hp = 1;
+				player.maxHp = 1;
+			}, this, num);
+			if (bool) {
+				skills.add('g_hidden_ai');
+			}
+			for (var i = 0; i < skills.length; i++) {
+				this.addSkill(skills[i]);
+			}
+			this.checkConflict();
+			this.update();
+			lib.skill.gl_mingzhi.init(this);
+			return this;
+		};
+		//体力吸取
+		//实例：player.vampire(target);
+		lib.element.player.vampire = function() {
+			var target, num;
+			for (var i = 0; i < arguments.length; i++) {
+				if (typeof arguments[i] == 'number') {
+					num = arguments[i];
+				} else if (get.itemtype(arguments[i]) == 'player') {
+					target = arguments[i];
+				}
+			}
+			var next = target.loseHp(num);
+			var next2 = game.createEvent('vampire', false);
+			_status.event.next.remove(next2);
+			next.after.push(next2);
+			next2.player = this;
+			next2.target = target;
+			next2.cause = next;
+			next2.setContent(function() {
+				var num = event.cause.num;
+				if (event.cause._triggered != 5) {
+					game.log(player, '吸取了', target, get.cnNumber(num) + '点体力');
+					player.recover(num);
+				};
+			});
+			return next;
+		};
+		//交换判定区
+		//实例：player.swapJudge(target);
+		lib.element.player.swapJudge = function(target) {
+			var next = game.createEvent('swapJudge');
+			next.player = this;
+			next.target = target;
+			next.setContent('swapJudge');
+			return next;
+		};
+		lib.element.content.swapJudge = function() {
+			'step 0'
+			game.log(player, '和', target, '交换了判定区中的牌');
+			event.cards = [player.getCards('j'), target.getCards('j')];
+			game.loseAsync({
+				player: player,
+				target: target,
+				cards1: event.cards[0],
+				cards2: event.cards[1],
+			}).setContent("swapHandcardsx");
+			'step 1'
+			var card;
+			for (var i = 0; i < event.cards[1].length; i++) {
+				card = event.cards[1][i];
+				if (card.viewAs) {
+					player.addJudge({
+						name: card.viewAs
+					}, [card]);
+				} else {
+					player.addJudge(card);
+				}
+			}
+			for (var i = 0; i < event.cards[0].length; i++) {
+				card = event.cards[0][i];
+				if (card.viewAs) {
+					target.addJudge({
+						name: card.viewAs
+					}, [card]);
+				} else {
+					target.addJudge(card);
+				}
+			}
+		}
+		//效果改变
+		lib.skill.gl_cardContent = {
+			trigger: {
+				player: 'useCardToBefore'
+			},
+			forced: true,
+			filter: function(event, player) {
+				var obj = event.card.huanxiang;
+				if (!obj) return false;
+				if (typeof obj == 'string') return true;
+				if (typeof obj == 'object') {
+					if (obj.players && obj.players.includes(event.target)) return true;
+					if (typeof obj[event.target.playerid] == 'string') return true;
+				}
+				return false;
+			},
+			priority: 50,
+			silent: true,
+			content: function() {
+				var obj = trigger.card.huanxiang;
+				var name;
+				if (typeof obj == 'string') {
+					name = lib.card[obj].content;
+				} else if (typeof obj[trigger.target.playerid] == 'string') {
+					name = lib.card[obj[trigger.target.playerid]].content;
+				} else {
+					name = lib.card[obj.name].content;
+				}
+				trigger.setContent(name);
+			},
+			forced: true,
+			popup: false,
+		}
+		game.addGlobalSkill('gl_cardContent');
+		//退场机制（假死机制）
+		lib.element.player.gl_retreat = function(bool) {
+			var next = game.createEvent('gl_retreat');
+			next.player = this;
+			if (bool) next.all = true;
+			next.setContent('gl_retreat');
+			return next;
+		}
+		lib.element.content.gl_retreat = function() {
+			'step 0'
+			if (event.all !== true) event._notrigger.addArray(game.players.concat(game.dead).remove(player));
+			event.trigger('dieBefore');
+			'step 1'
+			event.trigger('dieBegin');
+			'step 2'
+			event.trigger('die');
+			'step 3'
+			event.trigger('dieEnd');
+			'step 4'
+			event.trigger('dieAfter');
+		}
+		//抛硬币
+		//实例：game.gl_throwCoin(true);一定是正面。如果为false则一定是背面，不填则随机
+		game.gl_throwCoin = function(bool, text) {
+			var bool, pause, text;
+			for (var argument of arguments) {
+				if (typeof argument == 'boolean') {
+					bool = argument;
+				} else if (typeof argument == 'string') {
+					text = argument;
+				}
+			}
+			if (bool !== true && bool !== false) {
+				bool = Math.random() < 0.5 ? true : false;
+			}
+			_status.event._result = {
+				bool: bool
+			}
+			if (!_status.paused) {
+				game.pause();
+				pause = true;
+			}
+			game.broadcastAll(function(bool, pause, text) {
+				var coinContainer = ui.create.div('.fullsize.dice-container', ui.window);
+				ui.window.classList.add('dicepaused');
+				var coin = ui.create.div('.kp_coin', coinContainer);
+				var z = 20;
+				var node;
+				for (var i = 0; i <= z; i++) {
+					node = ui.create.div(coin);
+					node.style.transform = 'translateZ(' + i + 'px)';
+					if (i == z) {
+						node.innerHTML = text || '童话';
+					}
+				}
+				coinContainer.appendChild(coin);
+				if (bool === true) {
+					coin.classList.add('kp_coin_true');
+				} else {
+					coin.classList.add('kp_coin_false');
+				}
+
+				coin.addEventListener('webkitAnimationEnd', function() {
+					setTimeout(function() {
+						coinContainer.delete();
+						ui.window.classList.remove('dicepaused');
+					}, 300);
+					if (pause) setTimeout(game.resume, 800);
+				});
+			}, bool, pause, text);
+			return bool;
+		}
+	}
+};
