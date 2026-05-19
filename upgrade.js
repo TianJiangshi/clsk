@@ -29,7 +29,7 @@ export default async (manual = false) => {
     for (const p of [proxy, ...proxyList.filter(x => x !== proxy)]) {
         try {
             // 加时间戳防缓存
-            const url = `${p}https://raw.githubusercontent.com/TianJiangshi/clsk/manifest.json?${Date.now()}`;
+            const url = `${p}https://raw.githubusercontent.com/TianJiangshi/clsk/main/manifest.json?${Date.now()}`;
             const controller = new AbortController();
             const timer = setTimeout(() => controller.abort(), 10000);
             const res = await fetch(url, { signal: controller.signal });
@@ -113,7 +113,7 @@ export default async (manual = false) => {
             prog.setProgressValue(i + 1);
             try {
                 // 每个文件都加时间戳
-                const url = `${proxy}https://raw.githubusercontent.com/TianJiangshi/clsk/${file}?${Date.now()}`;
+                const url = `${proxy}https://raw.githubusercontent.com/TianJiangshi/clsk/main/${file}?${Date.now()}`;
                 const controller = new AbortController();
                 const timer = setTimeout(() => controller.abort(), 15000);
                 const res = await fetch(url, { signal: controller.signal });
