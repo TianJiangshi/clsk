@@ -1,8 +1,8 @@
-window.version = '当前版本：12.8.7（小叶子）';
+window.version = '当前版本：12.8.7（小叶子）.bug修复版';
 window.clskchangelog = {
   '2026年5月19日': {
     'version': '版本：12.8.7',
-    'info': '<br><li>新增武将【小叶子】<br><li>新增功能：在线更新',
+    'info': '<br><li>新增武将【小叶子】<br><li>新增功能：在线更新<br><li>bug修复追加：修复了武将【疑奥特之王】技能幽默的结算问题。<br><li>bug修复追加：修复了武将【疑麦克斯】技能【诈败】报错的bug。<br><li>bug修复追加：武将【超神圣龙】移出比赛将池',
     'character': ["小叶子"],
     'cards': [],
   },

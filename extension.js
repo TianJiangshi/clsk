@@ -64713,10 +64713,8 @@ else if (type == 'equip') {
                 content:function(){
                    player.storage.幽默++;
                    if(player.storage.幽默>3||trigger.name=="die"){
-                    player.die()._triggered = null;
+                    player.die();
                     player.delete();
-                    player.remove();
-                    game.removePlayer(player);
                     /*var a = player.getFriends(false);
                     if(a.length<=0)game.over(false);
                     */
@@ -64860,9 +64858,9 @@ else if (type == 'equip') {
                for(var i of cards){
                   if(target.canUse(i,player))target.useCard(i,player);
                   else target.gain(i,'gain2');
-                  cards.remove(i);
-               }            
-               player.storage.诈败.card.push(get.cards(num));
+               }        
+               target.storage.诈败.card=[];
+               target.storage.诈败.card=target.storage.诈败.card.concat(get.cards(num));
             }, player,cards,target,num);
                   }
                }
@@ -71423,7 +71421,7 @@ else if (type == 'equip') {
   };
     if(lib.device||lib.node){
         //比赛将池
-        game.bisaijiangchi=["SP哥莫拉","龙骑士黑魔术少女","界黑岩射手","拉弥亚","巴图","SP尼克","传承艾瑞珂","提丰","界华法琳","黍","左乐","玛恩纳","瑕光","仙人·漩涡鸣人","霞露零","月亮伊布","火神蛾","杨戬","Herobrine","特莉波卡","雷吉奇卡斯","阿米娅","乌尔比安","陈千语","源·天将士","蕾缪安","SP惊蛰","SP星熊","无敌","伏妖","法纳斯","望","对神兵器·肯扎特","新SP陈","耶芙娜","SP傀影","刻俄柏","SP推进之王","cl_关银屏","cl_吕玲绮","SP神荀彧","cl_神赵云","cl_孙策","璀璨圣龙","夜刀神十香","诱宵美九","镜野七罪","星宫六喰","本条二亚","魔科比","慢直升机","慢佐巴杨","凋灵","塑心","潘多拉","SP史尔特尔","山中队员","佩丽卡","庄方宜","超神圣龙","雷德","魔赵云","嗔韩氏五虎","嗔高览","骑拉帝纳-别种形态","魔沙福林","疑麦克斯","疑奥特之王","疑百特星人","疑巴顿","小叶子"];
+        game.bisaijiangchi=["SP哥莫拉","龙骑士黑魔术少女","界黑岩射手","拉弥亚","巴图","SP尼克","传承艾瑞珂","提丰","界华法琳","黍","左乐","玛恩纳","瑕光","仙人·漩涡鸣人","霞露零","月亮伊布","火神蛾","杨戬","Herobrine","特莉波卡","雷吉奇卡斯","阿米娅","乌尔比安","陈千语","源·天将士","蕾缪安","SP惊蛰","SP星熊","无敌","伏妖","法纳斯","望","对神兵器·肯扎特","新SP陈","耶芙娜","SP傀影","刻俄柏","SP推进之王","cl_关银屏","cl_吕玲绮","SP神荀彧","cl_神赵云","cl_孙策","璀璨圣龙","夜刀神十香","诱宵美九","镜野七罪","星宫六喰","本条二亚","魔科比","慢直升机","慢佐巴杨","凋灵","塑心","潘多拉","SP史尔特尔","山中队员","佩丽卡","庄方宜","雷德","魔赵云","嗔韩氏五虎","嗔高览","骑拉帝纳-别种形态","魔沙福林","疑麦克斯","疑奥特之王","疑百特星人","疑巴顿","小叶子"];
         for(var name in 错乱时空.character){
             if(!错乱时空.character[name][4])错乱时空.character[name][4]=[];
             var currentSkinIndex = 0;
