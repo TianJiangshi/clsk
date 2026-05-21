@@ -1,5 +1,5 @@
 {
-  "version": "12.8.7bug修复版",
+  "version": "12.8.7bug二修版",
   "files": {
     "21号·XXI.jpg": "05df0e0904af94d11dbd1717eac56b5240cf5627",
     "Herobrine.jpg": "fd4aae01ec2f74208192a0c6133c85cab085c5a8",
@@ -94,8 +94,8 @@
     "emo/clsk/9.gif": "27897a2cd168510792f8c90db3511ecc50995f76",
     "extension.css": "48e1807ba76fb41d7f4a4ab62e1d53d3c43d8886",
     "extension.css.bak": "3949a1953f5160ad2e936fa98b72a9ac914b8c85",
-    "extension.js": "524370bf4fa65f22d9021504cbe3a81854e012f5",
-    "extension.js.bak": "64b0f93097c1b86751097e7e101c32a5f182ceb7",
+    "extension.js": "ddc2411ddeec852a6572a5723de570530fa5ef44",
+    "extension.js.bak": "40c72e3131baa978759bcf5571d668ddd61328ea",
     "gelin/buff.js": "41cf7fb7da3b1073c2109c9526e555da1db50eb6",
     "gelin/fazhen.png": "b700dc0f2bf4df52157611b6b06d9f0bc0768f59",
     "gelin/galgame.css": "065cce093afae3fa5856d43cf698dff7ebe14f72",
@@ -113,8 +113,8 @@
     "tujian.css.bak": "7e2d9f675ffc51c6da4a9c3dad5deebe0735b447",
     "tujian.js": "86b8155792ab9ce23f43f94653a0669808824f67",
     "tujian.js.bak": "0a06290e8a3f97b94d0bd00c4c867bc37dc8a893",
-    "update.js": "474502a518f53c96f6be1974451e4711b0508e98",
-    "update.js.bak": "4ff631d52e7646e994eefd438158ddcc00dcc7d6",
+    "update.js": "654d7c18c80b68dbea845db4176c2346ebb0dba5",
+    "update.js.bak": "474502a518f53c96f6be1974451e4711b0508e98",
     "upgrade.js": "6a5bdafac6faf757d954b4961ae5dae7ea5679ff",
     "upgrade.js.bak": "4509ada6f21b73d7a0446524efdefd6ba6f88312",
     "七实·盾斧形态.jpg": "9dcc636a70f78f6246cb4b15abc0f30a69ccca6d",

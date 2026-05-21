@@ -49582,7 +49582,7 @@ shuffledCards.forEach(cardData => {
             "灶火":{
                 mod:{
                         gl_blockSkill: function(player, skill) {
-               if(skill.name=='燃烧'||skill.name=='燃烧_damage')return true;
+               if(skill=='燃烧'||skill=='燃烧_damage')return true;
 					},
                 },
                 trigger:{
@@ -64649,7 +64649,7 @@ else if (type == 'equip') {
             "炎头":{
                 mod:{
                         gl_blockSkill: function(player, skill) {
-               if(skill.name=='燃烧'||skill.name=='燃烧_damage'||skill.name=='流血')return true;
+               if(skill=='燃烧'||skill=='燃烧_damage'||skill=='流血')return true;
 					},
                 },
                 trigger:{
@@ -64713,7 +64713,7 @@ else if (type == 'equip') {
                 content:function(){
                    player.storage.幽默++;
                    if(player.storage.幽默>3||trigger.name=="die"){
-                    player.die();
+                    player.die()._triggered=null;
                     player.delete();
                     /*var a = player.getFriends(false);
                     if(a.length<=0)game.over(false);
@@ -65057,71 +65057,15 @@ else if (type == 'equip') {
                 },
             },
             "兔械":{
-                 init:function(player){
-                      player.storage.兔械=0;
-                      player.syncStorage("兔械");
-                 },
-                clickableFilter:function(player) {
-                  return player.hasSkill("兔械")&&player.storage.兔械>0;
-               },
-               clickable:function(player) {
-                 if (player.isUnderControl(true)) {
-                     player.storage.兔械--;
-                     player.syncStorage("兔械");
-                     player.draw();
-                 }
-               },     
-               mark: true,
-               intro: {
-                 mark(dialog, content, player, event, skill) {
-                if (player != game.me) {
-                    return get.translation(player) + "机械兔子帮手全力运作中...";
-                }
-                if (!player.hasSkill(skill)) {
-                    return;
-                }
-                const intronode = ui.create.div(".menubutton.pointerdiv", "点击发动", function () {
-                    if (!this.classList.contains("disabled")) {
-                        this.classList.add("disabled");
-                        this.style.opacity = 0.5;
-                        lib.skill[skill].clickable(player);
-                    }
-                });
-                if (!_status.gameStarted || !player.isUnderControl(true) || !lib.skill[skill].clickableFilter(player)) {
-                    intronode.classList.add("disabled");
-                    intronode.style.opacity = 0.5;
-                }
-                const cards = lib.skill[skill].getCards(player);
-                if (cards.length) {
-                    dialog.add(intronode);
-                    dialog.add(cards);
-                } else {
-                    dialog.add(intronode);
-                }
-            },
-        },
-               getCards(player) {
-            const cards = [];
-            if (game.online) {
-                return game.requestSkillData("兔械", "getTopCards", 10000);
-            } else {
-                if (ui.cardPile.hasChildNodes !== false) {
-                    cards.addArray(Array.from(ui.cardPile.childNodes).slice(0,player.storage.兔械));
-                }
-            }
-            return cards;
-        },
-        sync: {
-            getTopCards(client) {
-            //这里client就是指player
-            //用于适配联机
-                const cards = [];
-                if (ui.cardPile.hasChildNodes !== false) {
-                    cards.addArray(Array.from(ui.cardPile.childNodes).slice(0,client.storage.兔械));
-                }
-                return cards;
-            },
-        },
+                init:function(player){
+                    player.storage.兔械=0;
+                    player.syncStorage("兔械");
+                },
+                clickableFilter(player) {
+                    return player.hasSkill("兔械")&&player.storage.兔械>0;
+                },
+                forced: true,
+                locked: false,
                 enable:"phaseUse",
                 usable:1,
                 position:"he",
@@ -65129,11 +65073,83 @@ else if (type == 'equip') {
                 selectCard:[1,Infinity],
                 prompt:"弃置任意张牌并获得等量的“兔械”标记。",
                 check:function (card){
-        return 6-get.value(card)
-    },
+                    return 6-get.value(card)
+                },
                 content:function (){
-                  player.storage.兔械+=event.cards.length;
-                  player.syncStorage("兔械");
+                    player.storage.兔械+=event.cards.length;
+                    player.syncStorage("兔械");
+                    game.log(player, `增加了${player.storage.兔械}点`)
+                },
+                clickable(player) {
+                    if (!player.isUnderControl(true)) return;
+                    const action = lib.skill.兔械.getDrawAct(player);
+                    if (action instanceof Promise) {
+                        action.then(() => {});
+                    } else {
+                        lib.skill.兔械.doDrawCard(player);
+                    }
+                },
+                getDrawAct(player) {
+                    if (game.online) {
+                        return game.requestSkillData("兔械", "playerDrawCard", 10000);
+                    }
+                    return true;
+                },
+                sync: {
+                    playerDrawCard(client) {
+                        lib.skill.兔械.doDrawCard(client);
+                        return true;
+                    },
+                },
+                doDrawCard(player) {
+                    if(!player || !player.isAlive()) return;
+                    player.storage.兔械--;
+                    player.syncStorage("兔械");
+                    player.draw();
+                },
+                mark: true,
+                marktext: "兔",
+                intro: {
+                    markcount(storage = 0, player) {
+                        return 1;
+                    },
+                    mark(dialog, content, player, event, skill) {
+                        if (player != game.me) {
+                            return get.translation(player) + "机械兔子帮手全力运作中...";
+                        }
+                        if (!player.hasSkill(skill)) {
+                            return;
+                        }
+                        const intronode = ui.create.div(".menubutton.pointerdiv", "点击发动", function () {
+                            if (!this.classList.contains("disabled")) {
+                                this.classList.add("disabled");
+                                this.style.opacity = 0.5;
+                                lib.skill[skill].clickable(player);
+                            }
+                        });
+                        if (!_status.gameStarted || !player.isUnderControl(true) || !lib.skill[skill].clickableFilter(player)) {
+                            intronode.classList.add("disabled");
+                            intronode.style.opacity = 0.5;
+                        }
+                        const cards = lib.skill[skill].getCards(player);
+                        if (cards.length) {
+                            dialog.add(intronode);
+                            dialog.add(cards);
+                        } else {
+                            dialog.add(intronode);
+                        }
+                    },
+                },
+                getCards(player) {
+                    const cards = [];
+                    if (game.online) {
+                        return game.requestSkillData("兔械", "getTopCards", 10000);
+                    } else {
+                        if (ui.cardPile.hasChildNodes !== false) {
+                            cards.addArray(Array.from(ui.cardPile.childNodes).slice(0,player.storage.兔械));
+                        }
+                    }
+                    return cards;
                 },
             },
             "清扫":{
