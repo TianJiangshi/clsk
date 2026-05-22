@@ -65394,7 +65394,7 @@ else if (type == 'equip') {
 			        player:"phaseBegin",
 			    },
 			    zhuSkill:true,
-			    async content:function(event,trigger,player){
+			    async content(event,trigger,player){
 			       const {result:{targets}} = await player.chooseTarget([2,Infinity],get.prompt('缔友'),'选择至少两名角色，令这些角色摸一张牌',function(card,player,target){
             return target!=player;
         }).set('ai',function(target){
@@ -65404,6 +65404,7 @@ else if (type == 'equip') {
                   if(targets?.length){
                     for(var i of targets)i.draw();
                   }
+               }
 			},
             "斩落众神头颅的那片废墟":{
    ronghe:function(player,card, log, init) {
