@@ -65184,8 +65184,7 @@ else if (type == 'equip') {
 				   if(get.type(event.card)!="trick")return false;
 				   return true;
 				},
-				content: function() {
-				    player.draw();
+				content: function() {			    
 				    player.storage.博览.push(trigger.card.name);				    
 					var skill = get.gainableSkills(function(info, skill, i) {
 						if (!lib.translate[skill]) return false;
@@ -65193,7 +65192,7 @@ else if (type == 'equip') {
 						return lib.translate[skill + '_info'].includes(`【${get.translation(trigger.card.name)}】`);
 					}).randomGet();
 					if(skill){
-					game.broadcastAll(function (player) {
+					game.broadcastAll(function (player,skill) {
 					   player.addSkill(skill);
 					   player.removeSkill("博览_skill");
 				       if(Array.isArray(lib.skill['博览_skill'].trigger.player)==false){
@@ -65221,7 +65220,7 @@ else if (type == 'equip') {
                         }
                     }
                      player.addSkill("博览_skill");
-                     },player);
+                     },player,skill);
 				   }                     
 				},	
 				subSkill:{
@@ -65250,6 +65249,7 @@ else if (type == 'equip') {
 				},
 			},
 			"魔法":{
+		     	usable:1,
 			    enable: "phaseUse",			    
 	          	filter(event, player) {
 			if (!event.魔法.some(info =>
@@ -71516,9 +71516,9 @@ else if (type == 'equip') {
             "清扫":"清扫",
             "清扫_info":"每回合限1次，其他角色弃置牌时，你可以将其手牌中所有与这些牌同名的牌置入弃牌堆。",
             "博览":"博览",
-            "博览_info":"一名角色使用锦囊牌后，若你没有记录此牌，你可以摸一张牌记录此牌，并获得一个描述与此牌有关的技能，你发动此法获得的技能时需弃一张牌，否则此次发动无效。",
+            "博览_info":"一名角色使用锦囊牌后，若你没有记录此牌，你可以记录此牌并获得一个描述与此牌有关的技能，你发动此法获得的技能时需弃一张牌，否则此次发动无效。",
             "魔法":"魔法",
-            "魔法_info":"出牌阶段，你可以将一个描述相关的技能当作你以【博览】记录的牌使用。",
+            "魔法_info":"出牌阶段限1次，你可以将一个描述相关的技能当作你以【博览】记录的牌使用。",
             "缔友":"缔友",
             "缔友_info":"主公技，你的回合开始时，你可以选择至少两名角色，令这些角色摸一张牌。",
             "_日常任务_杀一下":"",
