@@ -38,7 +38,7 @@ const originalRarity = ui.create.rarity;
    //S级武将
    lib.rank.rarity.rare.addArray(["能天使","星熊","斯卡蒂","蓝染惣右介","怪盗基德","格拉尼","王·雷伊","史尔特尔","阿尔宙斯","陈","琦玉","孙悟空","王·卡修斯","小智","界喜羊羊","龙右","幸福蛋","米龙","李狗蛋","冰伊布","阿勃梭鲁","星尘龙","狙射树枭","机械热核龙","薇薇安娜","胡地","红","杜小龙","王·布莱克","界江户川柯南","龙斯","吉里","黄昏之鬃","拂晓之翼","大鱼人","黑岩射手","秽土斑","影骨术士","守望之龙","冰影恶魔","克苏鲁教徒","游击队传令兵","刺客首领","瑕光","幽灵鲨","魔化骑士","cl_孙策","慢直升机","慢佐巴杨","对神兵器·肯扎特","孙胜男","盛怒","妒","魂灵圣杯","尼卢火","嗔韩氏五虎","疑百特星人"]);
    //SS级武将
-   lib.rank.rarity.epic.addArray(["赛文奥特曼","百慕拉","黑","帝国星人","无序","圣灵谱尼","泥岩","神张飞","神马超","kuailong","界龙右","破坏龙-甘多拉","白岩射手","迷迭香","老爹","龙骑士黑魔术少女","界黑岩射手","界帕路奇犽","拉弥亚","21号·XXI","巴图","SP尼克","传承塔娜","露西亚·深红囚影","夜刀神十香","氷芽川四糸乃","时崎狂三","五河琴里","夕弦&耶俱矢","诱宵美九","镜野七罪","鸢一折纸","萨米","冻结傀儡","镜野七罪-幻化","界华法琳","拉弥亚-人鱼形态","死亡之翼","狼啸战士","仙人·漩涡鸣人","死神棺","杨戬","火神蛾","乌尔比安","霞露零","魔化至高骑士","cl_神赵云","星宫六喰","七实·芒星之迹","七实·盾斧形态","慢莱特兄弟","摆烂的猫","魔科比","托生莲座","本条二亚","SP推进之王","陈千语","界米龙","塑心","佩丽卡","魔赵云","嗔高览","魔沙福林","疑奥特之王","疑麦克斯"]);
+   lib.rank.rarity.epic.addArray(["赛文奥特曼","百慕拉","黑","帝国星人","无序","圣灵谱尼","泥岩","神张飞","神马超","kuailong","界龙右","破坏龙-甘多拉","白岩射手","迷迭香","老爹","龙骑士黑魔术少女","界黑岩射手","界帕路奇犽","拉弥亚","21号·XXI","巴图","SP尼克","传承塔娜","露西亚·深红囚影","夜刀神十香","氷芽川四糸乃","时崎狂三","五河琴里","夕弦&耶俱矢","诱宵美九","镜野七罪","鸢一折纸","萨米","冻结傀儡","镜野七罪-幻化","界华法琳","拉弥亚-人鱼形态","死亡之翼","狼啸战士","仙人·漩涡鸣人","死神棺","杨戬","火神蛾","乌尔比安","霞露零","魔化至高骑士","cl_神赵云","星宫六喰","七实·芒星之迹","七实·盾斧形态","慢莱特兄弟","摆烂的猫","魔科比","托生莲座","本条二亚","SP推进之王","陈千语","界米龙","塑心","佩丽卡","魔赵云","嗔高览","魔沙福林","疑奥特之王","疑麦克斯","紫悦"]);
    //SSS级武将
    lib.rank.rarity.legend.addArray(["迪迦奥特曼","迪迦奥特曼强力形态","迪迦奥特曼空中形态","奥特曼","赫拉格","毁灭姿态","爱国者-行军姿态","暗影大帝","雷霆圣堂","煌炎之剑","皇帝的利刃","圣主","索托斯","塔维尔","亚弗戈蒙","御龙魔猿","塔露拉","不死的黑蛇","加坦杰厄","佐加","血舌","神之血","夜魔","尤贝尔","尤贝尔-被憎恶的骑士","尤贝尔-极度悲伤的魔龙","璀璨圣剑·龙尊","圣光飞龙","龙尊护卫","盘古","蒸汽骑士","无垠回荡克雷松","奈克洛兹玛","界史尔特尔","界蓝染惣右介","界夜莺","凯尔希","界琦玉","夕","界怪盗基德","SP临光","界孙悟空","界柒","霜星","界陈","界闪灵","界傀影","班基拉斯","龙破坏之剑士","界龙破坏之剑士","重岳","吉普莉尔","成龙","界阿尔宙斯","曼达拉","达克莱伊","浊心斯卡蒂","SP德克萨斯","SP哥莫拉","令","年","SP金古桥","苍响-百战勇者","尼克","溺尸","小泉红子","界帝牙卢卡","传承艾瑞珂","提丰","界龙斯","菲尔","反转·鸢一折纸","缪尔赛思","Mon3tr","犹格·索托斯","苍响-剑之王","光辉大神","怒惊","谎言与欺诈","璀璨圣堂","耀阳","圣达拉","传承艾瑞珂-破阵","杀戮之塔","坚盾剑怪刀剑","坚盾剑怪盾牌","谋孙悟空","黍","虚幻机甲","死亡战龙","烈血幕府将军","烈血幕府将军狂暴","Mrs.宁","玛恩纳","左乐","SP圣灵谱尼","cl_吕玲绮","cl_关银屏","莱希拉姆","捷克罗姆","月亮伊布","灵吉菩萨","神龙右","SP姆西斯哈","特莉波卡","雷吉奇卡斯","阿米娅","天命人","SP阿尔宙斯","余","SP艾雷王","源·天将士","蕾缪安","SP惊蛰","SP星熊","柒","雷鸣","反转·夜刀神十香","反转·氷芽川四糸乃","崇宫澪","反转·本条二亚","cl_袁绍","cl_黄盖","无敌","伏妖","法纳斯","女帝","昆仑","无限未来","诺雅","望","新SP陈","奎隆一","奎隆三","耶芙娜","SP崇宫澪","SP傀影","圣光宝剑","璀璨圣龙","黄金圣盾","黄金圣盾·龙尊","黄金圣堂","黄金圣龙","刻俄柏","凋灵","潘多拉","SP史尔特尔","庄方宜","超神圣龙","超神圣堂","超神浩劫·龙尊","雷德","骑拉帝纳-别种形态","骑拉帝纳-起源形态","究","疑巴顿","小叶子"]);
    //EX级武将
@@ -10792,6 +10792,7 @@ lib.gl_custom.cards.push(function(player,list){
             "疑百特星人":["male","wei",3,["泄密","执计"],["des:生存能力：C，攻击强度：C，辅助能力：C，杂耍能力：C"]],
             "疑巴顿":["female","shu",4,["焰射","毒喙","焚翼","掠食"],["des:生存能力：A+，攻击强度：A+，辅助能力：B+，杂耍能力：A"]],
             "小叶子":["female","wei",3,["兔械","清扫"],["des:生存能力：C+，攻击强度：C+，辅助能力：A-，杂耍能力：A"]],
+            "紫悦":["female","qun",3,["博览","魔法","缔友"],["zhu","des:生存能力：C，攻击强度：C+，辅助能力：C，杂耍能力：A+"]],
             //"图鉴注意事项":["none","none",0,[],["des:<font color=#f00>孩子们，注意了，在图鉴里使用切换皮肤后，游戏内武将的原皮会消失，需要在图鉴里切换会原皮才能复原，作者和豆包奋斗几个小时没能修好bug，已经认怂了，就这样吧。</font>","unseen","ext:错乱时空/源·天将士.jpg"]],
            //"测试":["none","qun",4,["seer_huaixin","seer_zhaohui"],["测试"]],
         },
@@ -10895,6 +10896,7 @@ lib.gl_custom.cards.push(function(player,list){
 				"longzunxilie":["璀璨圣龙","黄金圣龙","超神圣龙"],
 				"moxingsishuai":["界龙斯","龙斯","吉里","菲尔","萨米"],
 				"yuezhanxilie":["夜刀神十香","氷芽川四糸乃","时崎狂三","五河琴里","夕弦&耶俱矢","诱宵美九","镜野七罪","鸢一折纸","反转·鸢一折纸","星宫六喰","反转·夜刀神十香","反转·氷芽川四糸乃","本条二亚","崇宫澪","反转·本条二亚","SP崇宫澪"],
+				"小马宝莉":["紫悦"],
 				"zuozhelaopo":["缪尔赛思","Mrs.宁","摆烂的猫","陈千语"],
 				"蚀心入魔·Man":["魔科比","慢直升机","慢佐巴杨","慢莱特兄弟"],
 				"蚀心入魔·嗔":["魔赵云","嗔韩氏五虎","嗔高览","嗔八十三万"],
@@ -44506,7 +44508,7 @@ return event.player.countCards('h')>=4||event.player.hp>=4;
         for(var i=0;i<skills.length;i++){
             if(!lib.skill[skills[i]].charlotte)list.push(skills[i]);
         };
-            if(list.length>0)player.chooseControl(list).set('prompt','请选择要转移的技能').set('ai',function(){return event.skills.randomGet()});
+            if(list.length>0)player.chooseControl(list).set('prompt','请选择要转移的技能').set('ai',function(){return list.randomGet()});
         }else{
             event.finish();
         }
@@ -65110,9 +65112,9 @@ else if (type == 'equip') {
                 mark: true,
                 marktext: "兔",
                 intro: {
-                    markcount(storage = 0, player) {
+                    /*markcount(storage = 0, player) {
                         return 1;
-                    },
+                    },*/
                     mark(dialog, content, player, event, skill) {
                         if (player != game.me) {
                             return get.translation(player) + "机械兔子帮手全力运作中...";
@@ -65168,6 +65170,241 @@ else if (type == 'equip') {
                     trigger.player.lose(cards,ui.discardPile);                 
                 },
             },
+            "博览":{
+                init:function(player){
+                   player.storage.博览=[];
+                   player.storage.博览_skill=[];
+                },
+				trigger: {
+					global:'useCard'
+				},
+				frequent: true,
+				filter(event, player) {
+				   if(player.storage.博览.includes(event.card.name))return false;
+				   if(get.type(event.card)!="trick")return false;
+				   return true;
+				},
+				content: function() {
+				    player.draw();
+				    player.storage.博览.push(trigger.card.name);				    
+					var skill = get.gainableSkills(function(info, skill, i) {
+						if (!lib.translate[skill]) return false;
+						if (!lib.translate[skill + '_info']) return false;
+						return lib.translate[skill + '_info'].includes(`【${get.translation(trigger.card.name)}】`);
+					}).randomGet();
+					if(skill){
+					game.broadcastAll(function (player) {
+					   player.addSkill(skill);
+					   player.removeSkill("博览_skill");
+				       if(Array.isArray(lib.skill['博览_skill'].trigger.player)==false){
+    lib.skill['博览_skill'].trigger.player=["useSkillBegin","useCard"];
+                     }
+                     lib.skill['博览_skill'].trigger.player.add(skill+'Begin');                     
+                     player.storage.博览_skill.push(skill);
+                     var info=lib.skill[skill];
+                     if(info&&info.group&&info.group.length){
+                        for(var g of info.group){
+                           lib.skill['博览_skill'].trigger.player.add(g+'Begin');
+                           player.storage.博览_skill.push(g);
+                        }
+                    }
+                    if(info&&info.derivation&&info.derivation.length){
+                        for(var d of info.derivation){
+                          lib.skill['博览_skill'].trigger.player.add(d+'Begin');
+                          player.storage.博览_skill.push(d);
+                        }
+                    }
+                    if(info&&info.subSkill&&Object.keys(info.subSkill).length>0){
+                        for(var s of Object.keys(info.subSkill)){
+                          lib.skill['博览_skill'].trigger.player.add(skill+'_'+s+'Begin');
+                          player.storage.博览_skill.push(skill+'_'+s);
+                        }
+                    }
+                     player.addSkill("博览_skill");
+                     },player);
+				   }                     
+				},	
+				subSkill:{
+				   skill:{
+				       trigger:{				         
+				       },
+				       filter:function(event,player){
+				           if((event.name=="useCard"||event.skill)&&!player.storage.博览_skill.includes(event.skill))return false;
+				           return true;
+				       },
+				       direct:true,
+				       forced:true,
+				       content:function (){
+        "step 0"
+        player.chooseToDiscard('博览：弃置一张牌，否则'+get.translation(trigger.skill||trigger.name)+'无效','he').set('ai',function(card){
+                return 12-get.value(card);
+        });
+        "step 1"
+        if(result.bool==false){
+            trigger.cancel();
+        }
+    },
+				       sub:true,
+				       sourceSkill:"博览",
+				   }
+				},
+			},
+			"魔法":{
+			    enable: "phaseUse",			    
+	          	filter(event, player) {
+			if (!event.魔法.some(info =>
+					event.filterCard({
+						name: info[2],
+						nature: info[3],
+						isCard: true,
+					}, player, event))) return false;
+			var skills = player.skills.slice(0);
+			for (var i = 0; i < skills.length; i++) {
+				var name = skills[i];
+				if (lib.skill[name].fixed) continue;
+				if (!lib.translate[name] || lib.translate[name].length == 0) continue;
+				if (!lib.translate[name + '_info'] || lib.translate[name + '_info'].length == 0) {
+					continue;
+				}
+				for(var n of player.storage.博览)if(lib.translate[name + '_info'].includes(get.translation(n)))return true;			
+			}
+			return false;
+		},
+		onChooseToUse(event) {
+			if (!event.魔法) {
+				var str = "";
+				var skills = event.player.skills.slice(0);
+				skills.forEach(skill => {
+					var info = get.info(skill);
+					if (!info || info.charlotte) {
+						return;
+					}
+					var translation = get.skillInfoTranslation(skill, event.player);
+					str += translation;
+				});
+				event.set("魔法", lib.skill.魔法.getInclusion(str, null, event.player));
+			}
+		},
+		getInclusion(str, checkCard, player) {
+			let list = [];
+			const names = Object.keys(lib.card);
+			for (const name of names) {
+				let type = get.type(name);
+				if (!["trick"].includes(type)||!player.storage.博览.includes(name)) {
+					continue;
+				}
+				/*const reg = `【${get.translation(name)}】`;		
+					if (!str.includes(reg)) {
+						continue;
+					}
+					if (checkCard && checkCard.name == name) {
+						return true;
+					}*/					
+					list.push([type, "", name]);
+				
+			}
+			if (checkCard) {
+				return false;
+			}
+			return list;
+		},
+		chooseButton: {
+			dialog(event, player) {
+				var skills = player.skills.slice(0);
+				var list = [];
+				for (var i = 0; i < skills.length; i++) {
+					var name = skills[i];			
+					if (lib.skill[name].fixed) continue;
+					if (!lib.translate[name] || lib.translate[name].length == 0) continue;
+					if (!lib.translate[name + '_info'] || lib.translate[name + '_info'].length == 0) {
+						continue;
+					}
+					for(var n of player.storage.博览)if(lib.translate[name + '_info'].includes(get.translation(n)))list.push(name);				
+				}
+				var dialog = ui.create.dialog('请选择一项的技能，将其当卡牌使用', 'hidden');
+				var cards = event.魔法.filter(info => {
+					return event.filterCard({
+						name: info[2],
+						nature: info[3],
+						isCard: true,
+					}, player, event);
+				});
+				dialog.add([cards, "vcard"]);
+				dialog.forcebutton = true;
+				for (var i = 0; i < list.length; i++) {
+					var node = ui.create.caption('<div class="popup pointerdiv" style="width:80%;display:inline-block"><div class="skill">【' + get.translation(list[i]) + '】</div><div>' + lib.translate[list[i] + '_info'] + '</div></div>', dialog.content);
+					dialog.buttons.add(node);
+					var click = lib.config.touchscreen ? 'touchend' : 'click';
+					node.addEventListener(click, ui.click.button);
+					node.style.width = 'calc(100% - 30px)';
+					node.style.position = 'unset';
+					node.link = list[i];
+				}
+				return dialog;
+			},
+			select: 2,
+			filter(button, player) {
+				if (ui.selected.buttons.length){
+				    if(typeof ui.selected.buttons[0].link == typeof button.link)return false;
+				    if(typeof ui.selected.buttons[0].link=="object"){
+				    var sinfo=lib.translate[button.link+'_info']				    
+				    if(sinfo.includes(get.translation(ui.selected.buttons[0].link[2])))return true;
+				   }
+				   if(typeof ui.selected.buttons[0].link=="string"){
+				    var sinfo=lib.translate[ui.selected.buttons[0].link+'_info']				    
+				    if(sinfo.includes(get.translation(button.link[2])))return true;
+				   }
+				   return false;
+				} 				
+				//if (typeof button.link == "string") return true;
+				if (ui.selected.buttons.length<=0)return true;
+				/*return _status.event.getParent().filterCard({
+					name: button.link[2],
+					nature: button.link[3],
+					isCard: true,
+				}, player, _status.event.getParent());*/
+			},
+			backup(links, player) {
+				if (typeof links[0] == "object") {
+					links.reverse();
+				}
+				return {
+					filterCard: () => false,
+					selectCard: -1,
+					popname: true,
+					viewAs: {
+						name: links[1][2],
+						nature: links[1][3],
+						skill: links[0],
+						isCard: true,
+					},
+					log: false,
+					precontent() {
+						player.removeSkill(event.result.card.skill);
+					},
+				};
+			},
+			prompt(links, player) {
+				return "将" + get.translation(links[0]) + "当【" + (get.translation(links[1][3]) || "") + get.translation(links[1][2]) + "】使用";
+			},
+		},
+			},
+			"缔友":{
+			    trigger:{
+			        player:"phaseBegin",
+			    },
+			    zhuSkill:true,
+			    async content:function(event,trigger,player){
+			       const {result:{targets}} = await player.chooseTarget([2,Infinity],get.prompt('缔友'),'选择至少两名角色，令这些角色摸一张牌',function(card,player,target){
+            return target!=player;
+        }).set('ai',function(target){
+            var player=_status.event.player;
+            return get.attitude(player,target)>0;
+        });
+                  if(targets?.length){
+                    for(var i of targets)i.draw();
+                  }
+			},
             "斩落众神头颅的那片废墟":{
    ronghe:function(player,card, log, init) {
     if (init !== false) {
@@ -68570,6 +68807,7 @@ else if (type == 'equip') {
             "疑巴顿_prefix": "疑",
             "疑巴顿":"疑巴顿",
             "小叶子":"小叶子",
+            "紫悦":"紫悦",
             "tengyun":"腾云",
             "zhanyi":"战意值",
             "yaoguang":"怒气值",
@@ -68594,6 +68832,7 @@ else if (type == 'equip') {
             "蚀心入魔·Man":"蚀心入魔·Man",
             "蚀心入魔·嗔":"蚀心入魔·嗔",
             "蚀心入魔·疑":"蚀心入魔·疑",
+            "小马宝莉":"小马宝莉",
             "shenhua":"<font color='#f00' style='text-shadow: 0 0 2px #fff, 0 0 5px #f00, 0 0 8px #f00, 0 0 12px #f00 !important;'>神话</font>",
             "冲锋":"冲锋",
             "冲锋_info":"锁定技，摸牌阶段，你额外摸一张牌",
@@ -71275,6 +71514,12 @@ else if (type == 'equip') {
             "兔械_info":"瞬发技，①出牌阶段限1次，你可以弃置任意张牌并获得等量的“兔械”标记，牌堆顶X张牌始终对你可见。②你消耗可以一个“兔械”并摸一张牌。（X为你“兔械”标记的数量）",
             "清扫":"清扫",
             "清扫_info":"每回合限1次，其他角色弃置牌时，你可以将其手牌中所有与这些牌同名的牌置入弃牌堆。",
+            "博览":"博览",
+            "博览_info":"一名角色使用锦囊牌后，若你没有记录此牌，你可以摸一张牌记录此牌，并获得一个描述与此牌有关的技能，你发动此法获得的技能时需弃一张牌，否则此次发动无效。",
+            "魔法":"魔法",
+            "魔法_info":"出牌阶段，你可以将一个描述相关的技能当作你以【博览】记录的牌使用。",
+            "缔友":"缔友",
+            "缔友_info":"主公技，你的回合开始时，你可以选择至少两名角色，令这些角色摸一张牌。",
             "_日常任务_杀一下":"",
             "_日常任务_杀一下_info":"",
             "_日常任务_当浮一大白":"",
@@ -71437,7 +71682,7 @@ else if (type == 'equip') {
   };
     if(lib.device||lib.node){
         //比赛将池
-        game.bisaijiangchi=["SP哥莫拉","龙骑士黑魔术少女","界黑岩射手","拉弥亚","巴图","SP尼克","传承艾瑞珂","提丰","界华法琳","黍","左乐","玛恩纳","瑕光","仙人·漩涡鸣人","霞露零","月亮伊布","火神蛾","杨戬","Herobrine","特莉波卡","雷吉奇卡斯","阿米娅","乌尔比安","陈千语","源·天将士","蕾缪安","SP惊蛰","SP星熊","无敌","伏妖","法纳斯","望","对神兵器·肯扎特","新SP陈","耶芙娜","SP傀影","刻俄柏","SP推进之王","cl_关银屏","cl_吕玲绮","SP神荀彧","cl_神赵云","cl_孙策","璀璨圣龙","夜刀神十香","诱宵美九","镜野七罪","星宫六喰","本条二亚","魔科比","慢直升机","慢佐巴杨","凋灵","塑心","潘多拉","SP史尔特尔","山中队员","佩丽卡","庄方宜","雷德","魔赵云","嗔韩氏五虎","嗔高览","骑拉帝纳-别种形态","魔沙福林","疑麦克斯","疑奥特之王","疑百特星人","疑巴顿","小叶子"];
+        game.bisaijiangchi=["SP哥莫拉","龙骑士黑魔术少女","界黑岩射手","拉弥亚","巴图","SP尼克","传承艾瑞珂","提丰","界华法琳","黍","左乐","玛恩纳","瑕光","仙人·漩涡鸣人","霞露零","月亮伊布","火神蛾","杨戬","Herobrine","特莉波卡","雷吉奇卡斯","阿米娅","乌尔比安","陈千语","源·天将士","蕾缪安","SP惊蛰","SP星熊","无敌","伏妖","法纳斯","望","对神兵器·肯扎特","新SP陈","耶芙娜","SP傀影","刻俄柏","SP推进之王","cl_关银屏","cl_吕玲绮","SP神荀彧","cl_神赵云","cl_孙策","璀璨圣龙","夜刀神十香","诱宵美九","镜野七罪","星宫六喰","本条二亚","魔科比","慢直升机","慢佐巴杨","凋灵","塑心","潘多拉","SP史尔特尔","山中队员","佩丽卡","庄方宜","雷德","魔赵云","嗔韩氏五虎","嗔高览","骑拉帝纳-别种形态","魔沙福林","疑麦克斯","疑奥特之王","疑百特星人","疑巴顿","小叶子","紫悦"];
         for(var name in 错乱时空.character){
             if(!错乱时空.character[name][4])错乱时空.character[name][4]=[];
             var currentSkinIndex = 0;
