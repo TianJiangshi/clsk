@@ -84,10 +84,10 @@ export default async (manual = false) => {
             needUpdate.push(filePath);
             continue;
         }
-        const isImageVideo = filePath.endsWith('.jpg') || filePath.endsWith('.gif') || filePath.endsWith('.png') || filePath.endsWith('.mp4') || filePath.endsWith('.mp3');
+        /*const isImageVideo = filePath.endsWith('.jpg') || filePath.endsWith('.gif') || filePath.endsWith('.png') || filePath.endsWith('.mp4') || filePath.endsWith('.mp3');
         if (isImageVideo) {
             continue;
-        }
+        }*/
         try {
             const buf = await crypto.subtle.digest('SHA-1', await game.promises.readFile(localFullPath));
             const localHash = Array.from(new Uint8Array(buf), x => hex[x]).join('');

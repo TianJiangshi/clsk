@@ -1,5 +1,5 @@
 {
-  "version": "12.8.8",
+  "version": "12.8.8bug修复版",
   "files": {
     "21号·XXI.jpg": "05df0e0904af94d11dbd1717eac56b5240cf5627",
     "Herobrine.jpg": "fd4aae01ec2f74208192a0c6133c85cab085c5a8",
@@ -113,10 +113,10 @@
     "tujian.css.bak": "7e2d9f675ffc51c6da4a9c3dad5deebe0735b447",
     "tujian.js": "86b8155792ab9ce23f43f94653a0669808824f67",
     "tujian.js.bak": "0a06290e8a3f97b94d0bd00c4c867bc37dc8a893",
-    "update.js": "03992fae86b7e072982a7b8b01e8d1d648c7d75e",
-    "update.js.bak": "99a5ef2805abad867115ac8226ab03e44e1fced7",
-    "upgrade.js": "6a5bdafac6faf757d954b4961ae5dae7ea5679ff",
-    "upgrade.js.bak": "4509ada6f21b73d7a0446524efdefd6ba6f88312",
+    "update.js": "63a23db108a4a6727f619d268364a5ad7ea11f63",
+    "update.js.bak": "d955a57dabcbd2dcea59cababd188bcc42ec4219",
+    "upgrade.js": "ffdbef6b23a414a2b1d72e889bc7919c39eb9edf",
+    "upgrade.js.bak": "6a5bdafac6faf757d954b4961ae5dae7ea5679ff",
     "七实·盾斧形态.jpg": "9dcc636a70f78f6246cb4b15abc0f30a69ccca6d",
     "七实·芒星之迹.jpg": "f7200dac2b7d09d2dc91d7e7a6177cd4e8d5cb51",
     "不息恶火.jpg": "fe99f2d7597ff0af61e91a7e3a1ad3b793147283",
