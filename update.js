@@ -1,5 +1,11 @@
-window.version = '当前版本：12.8.9（慷慨与诚实）';
+window.version = '当前版本：12.9.0（乐观与善良）';
 window.clskchangelog = {
+  '2026年5月24日': {
+    'version': '版本：12.9.0',
+    'info': '<br><li>修复了武将【苹果嘉儿】技能【诚实】流失体力无效的bug。<br><li>修复bug武将？？？不可知的规则使用时黑屏卡死的bugbugbugbugbugbugbugbugbugbugbug。<br><li>新增武将【碧琪】<br><li>新增武将【柔柔】',
+    'character': ["碧琪","柔柔"],
+    'cards': [],
+  },
   '2026年5月23日': {
     'version': '版本：12.8.9',
     'info': '<br><li>修复了武将【死神棺】技能【木乃伊】受到无来源伤害时报错的bug。<br><li>修复了武将【疑麦克斯】技能【诈败】在联机中会将客机卡出去的bug。<br><li>调整了武将【紫悦】技能【博览】的效果<br><li>新增武将【珍奇】<br><li>新增武将【苹果嘉儿】',

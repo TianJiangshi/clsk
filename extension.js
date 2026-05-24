@@ -38,7 +38,7 @@ const originalRarity = ui.create.rarity;
    //S级武将
    lib.rank.rarity.rare.addArray(["能天使","星熊","斯卡蒂","蓝染惣右介","怪盗基德","格拉尼","王·雷伊","史尔特尔","阿尔宙斯","陈","琦玉","孙悟空","王·卡修斯","小智","界喜羊羊","龙右","幸福蛋","米龙","李狗蛋","冰伊布","阿勃梭鲁","星尘龙","狙射树枭","机械热核龙","薇薇安娜","胡地","红","杜小龙","王·布莱克","界江户川柯南","龙斯","吉里","黄昏之鬃","拂晓之翼","大鱼人","黑岩射手","秽土斑","影骨术士","守望之龙","冰影恶魔","克苏鲁教徒","游击队传令兵","刺客首领","瑕光","幽灵鲨","魔化骑士","cl_孙策","慢直升机","慢佐巴杨","对神兵器·肯扎特","孙胜男","盛怒","妒","魂灵圣杯","尼卢火","嗔韩氏五虎","疑百特星人"]);
    //SS级武将
-   lib.rank.rarity.epic.addArray(["赛文奥特曼","百慕拉","黑","帝国星人","无序","圣灵谱尼","泥岩","神张飞","神马超","kuailong","界龙右","破坏龙-甘多拉","白岩射手","迷迭香","老爹","龙骑士黑魔术少女","界黑岩射手","界帕路奇犽","拉弥亚","21号·XXI","巴图","SP尼克","传承塔娜","露西亚·深红囚影","夜刀神十香","氷芽川四糸乃","时崎狂三","五河琴里","夕弦&耶俱矢","诱宵美九","镜野七罪","鸢一折纸","萨米","冻结傀儡","镜野七罪-幻化","界华法琳","拉弥亚-人鱼形态","死亡之翼","狼啸战士","仙人·漩涡鸣人","死神棺","杨戬","火神蛾","乌尔比安","霞露零","魔化至高骑士","cl_神赵云","星宫六喰","七实·芒星之迹","七实·盾斧形态","慢莱特兄弟","摆烂的猫","魔科比","托生莲座","本条二亚","SP推进之王","陈千语","界米龙","塑心","佩丽卡","魔赵云","嗔高览","魔沙福林","疑奥特之王","疑麦克斯","紫悦","珍奇","苹果嘉儿"]);
+   lib.rank.rarity.epic.addArray(["赛文奥特曼","百慕拉","黑","帝国星人","无序","圣灵谱尼","泥岩","神张飞","神马超","kuailong","界龙右","破坏龙-甘多拉","白岩射手","迷迭香","老爹","龙骑士黑魔术少女","界黑岩射手","界帕路奇犽","拉弥亚","21号·XXI","巴图","SP尼克","传承塔娜","露西亚·深红囚影","夜刀神十香","氷芽川四糸乃","时崎狂三","五河琴里","夕弦&耶俱矢","诱宵美九","镜野七罪","鸢一折纸","萨米","冻结傀儡","镜野七罪-幻化","界华法琳","拉弥亚-人鱼形态","死亡之翼","狼啸战士","仙人·漩涡鸣人","死神棺","杨戬","火神蛾","乌尔比安","霞露零","魔化至高骑士","cl_神赵云","星宫六喰","七实·芒星之迹","七实·盾斧形态","慢莱特兄弟","摆烂的猫","魔科比","托生莲座","本条二亚","SP推进之王","陈千语","界米龙","塑心","佩丽卡","魔赵云","嗔高览","魔沙福林","疑奥特之王","疑麦克斯","紫悦","珍奇","苹果嘉儿","碧琪","柔柔"]);
    //SSS级武将
    lib.rank.rarity.legend.addArray(["迪迦奥特曼","迪迦奥特曼强力形态","迪迦奥特曼空中形态","奥特曼","赫拉格","毁灭姿态","爱国者-行军姿态","暗影大帝","雷霆圣堂","煌炎之剑","皇帝的利刃","圣主","索托斯","塔维尔","亚弗戈蒙","御龙魔猿","塔露拉","不死的黑蛇","加坦杰厄","佐加","血舌","神之血","夜魔","尤贝尔","尤贝尔-被憎恶的骑士","尤贝尔-极度悲伤的魔龙","璀璨圣剑·龙尊","圣光飞龙","龙尊护卫","盘古","蒸汽骑士","无垠回荡克雷松","奈克洛兹玛","界史尔特尔","界蓝染惣右介","界夜莺","凯尔希","界琦玉","夕","界怪盗基德","SP临光","界孙悟空","界柒","霜星","界陈","界闪灵","界傀影","班基拉斯","龙破坏之剑士","界龙破坏之剑士","重岳","吉普莉尔","成龙","界阿尔宙斯","曼达拉","达克莱伊","浊心斯卡蒂","SP德克萨斯","SP哥莫拉","令","年","SP金古桥","苍响-百战勇者","尼克","溺尸","小泉红子","界帝牙卢卡","传承艾瑞珂","提丰","界龙斯","菲尔","反转·鸢一折纸","缪尔赛思","Mon3tr","犹格·索托斯","苍响-剑之王","光辉大神","怒惊","谎言与欺诈","璀璨圣堂","耀阳","圣达拉","传承艾瑞珂-破阵","杀戮之塔","坚盾剑怪刀剑","坚盾剑怪盾牌","谋孙悟空","黍","虚幻机甲","死亡战龙","烈血幕府将军","烈血幕府将军狂暴","Mrs.宁","玛恩纳","左乐","SP圣灵谱尼","cl_吕玲绮","cl_关银屏","莱希拉姆","捷克罗姆","月亮伊布","灵吉菩萨","神龙右","SP姆西斯哈","特莉波卡","雷吉奇卡斯","阿米娅","天命人","SP阿尔宙斯","余","SP艾雷王","源·天将士","蕾缪安","SP惊蛰","SP星熊","柒","雷鸣","反转·夜刀神十香","反转·氷芽川四糸乃","崇宫澪","反转·本条二亚","cl_袁绍","cl_黄盖","无敌","伏妖","法纳斯","女帝","昆仑","无限未来","诺雅","望","新SP陈","奎隆一","奎隆三","耶芙娜","SP崇宫澪","SP傀影","圣光宝剑","璀璨圣龙","黄金圣盾","黄金圣盾·龙尊","黄金圣堂","黄金圣龙","刻俄柏","凋灵","潘多拉","SP史尔特尔","庄方宜","超神圣龙","超神圣堂","超神浩劫·龙尊","雷德","骑拉帝纳-别种形态","骑拉帝纳-起源形态","究","疑巴顿","小叶子"]);
    //EX级武将
@@ -10795,6 +10795,8 @@ lib.gl_custom.cards.push(function(player,list){
             "紫悦":["female","qun",3,["博览","魔法","缔友"],["zhu","des:生存能力：C，攻击强度：C+，辅助能力：C，杂耍能力：A+"]],
             "珍奇":["female","qun",3,["华丽","慷慨"],["des:生存能力：D+，攻击强度：B+，辅助能力：C，杂耍能力：D"]],
             "苹果嘉儿":["female","qun",4,["苹园","诚实","牛仔"],["des:生存能力：C，攻击强度：B，辅助能力：B，杂耍能力：C+"]],
+            "碧琪":["female","qun",4,["预感","乐观","派对"],["des:生存能力：A-，攻击强度：C，辅助能力：C，杂耍能力：C"]],
+            "柔柔":["female","qun",3,["安抚","善良","凝视"],["des:生存能力：C+，攻击强度：D-，辅助能力：B+，杂耍能力：C+"]],
             //"图鉴注意事项":["none","none",0,[],["des:<font color=#f00>孩子们，注意了，在图鉴里使用切换皮肤后，游戏内武将的原皮会消失，需要在图鉴里切换会原皮才能复原，作者和豆包奋斗几个小时没能修好bug，已经认怂了，就这样吧。</font>","unseen","ext:错乱时空/源·天将士.jpg"]],
            //"测试":["none","qun",4,["seer_huaixin","seer_zhaohui"],["测试"]],
         },
@@ -10898,7 +10900,7 @@ lib.gl_custom.cards.push(function(player,list){
 				"longzunxilie":["璀璨圣龙","黄金圣龙","超神圣龙"],
 				"moxingsishuai":["界龙斯","龙斯","吉里","菲尔","萨米"],
 				"yuezhanxilie":["夜刀神十香","氷芽川四糸乃","时崎狂三","五河琴里","夕弦&耶俱矢","诱宵美九","镜野七罪","鸢一折纸","反转·鸢一折纸","星宫六喰","反转·夜刀神十香","反转·氷芽川四糸乃","本条二亚","崇宫澪","反转·本条二亚","SP崇宫澪"],
-				"小马宝莉":["紫悦","珍奇","苹果嘉儿"],
+				"小马宝莉":["紫悦","珍奇","苹果嘉儿","碧琪","柔柔"],
 				"zuozhelaopo":["缪尔赛思","Mrs.宁","摆烂的猫","陈千语"],
 				"蚀心入魔·Man":["魔科比","慢直升机","慢佐巴杨","慢莱特兄弟"],
 				"蚀心入魔·嗔":["魔赵云","嗔韩氏五虎","嗔高览","嗔八十三万"],
@@ -65428,7 +65430,7 @@ else if (type == 'equip') {
                if(get.type(card)=="equip") return 13;
                  },
                  maxHandcard:function (player,num){
-                 return num+3;
+                 return num+6;
                 },
 		      },
 		    },
@@ -65468,10 +65470,11 @@ else if (type == 'equip') {
                      filterTarget:function(card,player,target){
                   return target.hasSkill("慷慨")&&target.countCards("he")>0;
                 },
-                     prompt:"选择一名拥有【慷慨】技能的角色，获得其任意张牌。",
+                     prompt:"选择一名拥有【慷慨】技能的角色。",
                      content:function(){
                         "step 0";
-        var next = player.choosePlayerCard(target, "he", [1, target.countCards("he")], get.prompt("慷慨", target)/*, "allowChooseAll"*/);
+        var next = player.choosePlayerCard(target, "he", [1, Math.min(target.hp, target.countCards("he"))])/*, "allowChooseAll"*/;
+        next.set("prompt","获得"+get.translation(target)+"至多"+Math.min(target.hp, target.countCards("he"))+"张牌");
         next.set("ai", function (button) {
             var val = get.value(button.link);
             if (button.link == _status.event.target.getEquip(2)) {
@@ -65537,7 +65540,7 @@ else if (type == 'equip') {
         return !event.card.isCard || !event.cards || !event.cards.length;
     },
     content:function(){
-       trigger.player.loseHp;
+       trigger.player.loseHp();
     },
     global:"诚实_view",
     subSkill:{
@@ -65570,6 +65573,187 @@ else if (type == 'equip') {
         },
                 },
 			},
+			"预感":{
+    trigger:{
+        player:["chooseToRespondBegin","chooseToUseBegin"],
+    },
+    forced:true,
+    filter:function(event,player){
+        if(_status.currentPhase==player)return false
+        var cards=[];
+        var max=Math.min(ui.cardPile.childNodes.length,3);
+        for(var i=0;i<max;i++){
+            var card=ui.cardPile.childNodes[i];
+            if(event.filterCard(card,player,event)){
+                cards.push(card);
+            }
+        }
+        if(cards.length)return true;
+        return false;
+    },
+    content:function(){
+        var cards=[];
+        var max=Math.min(ui.cardPile.childNodes.length,3);
+        for(var i=0;i<max;i++){
+            var card=ui.cardPile.childNodes[i];
+            if(trigger.filterCard(card,player,trigger)){
+                cards.push(card);
+            }
+        }
+        if(cards.length){
+            player.gain(cards,'draw');
+            game.log(player,'获得了'+get.cnNumber(cards.length)+'张牌');
+        }
+    },
+    ai:{
+        respondSha:true,
+        respondShan:true,
+        effect:{
+            target:function(card,player,target,effect){
+                if(get.tag(card,'respondShan')) return 0.7;
+                if(get.tag(card,'respondSha')) return 0.7;
+            },
+        },
+    },
+    hiddenCard:function(player,name){
+        var max=Math.min(ui.cardPile.childNodes.length,3);
+        for(var i=0;i<max;i++){
+            var card=ui.cardPile.childNodes[i];
+            if(card.name==name) return true;
+        }
+        return false;
+    },
+             },
+             "乐观":{
+                trigger:{
+                    player:"judgeBefore",
+                },
+                forced:true,
+                content:function (){
+    var num=trigger.judge(trigger.player.judging[0]);   
+    var eve=ui.cardPile.childNodes[0];
+    for(var i=0;i<ui.cardPile.childElementCount;i++){
+        var card=ui.cardPile.childNodes[i];
+        if(trigger.judge(card)>num){
+            trigger.player.judging[0]=card;
+            trigger.position.appendChild(card);
+            eve=card;
+            num=trigger.judge(card);
+         }
+        };  
+        ui.cardPile.insertBefore(eve,ui.cardPile.firstChild);
+        game.updateRoundNumber();
+       },
+            },
+            "派对":{
+                usable:1,                
+                enable:"phaseUse",
+                async content(event,trigger,player){                   
+                  const func = async target=>{
+                    const {result:{bool,judge,suit}} = await target.judge(function(card){
+            if(get.suit(card)=='heart'&&target.hp<target.maxHp) return 2;
+            if(get.suit(card)=='diamond') return 1;
+            if(get.suit(card)=='club') return -1;
+            if(get.suit(card)=='spade') return -2;
+            return 0;
+            });
+                    if(bool){
+                        if(suit=="heart")target.recover();
+                        if(suit=="diamond")target.draw();
+                        if(suit=="club")target.chooseToDiscard(1,'he',true);
+                        if(suit=="spade")target.loseHp();
+                    }
+                  }
+                  await game.doAsyncInOrder(game.players, func);
+                },
+            },
+            "安抚":{
+                trigger:{
+                   global:"damageBefore",
+                },
+                filter:function(event,player){
+                   return get.distance(player,event.player)<=1&&event.source&&event.source.countCards("he")>0;
+                },
+                check:function (event,player){
+                       return get.attitude(player,event.player)>0;
+                },
+                async content(event,trigger,player){
+        const {result:{cards}} = await player.choosePlayerCard(trigger.source, "he", [1, trigger.source.countCards("he")], "allowChooseAll")
+        .set("prompt","重铸"+get.translation(trigger.source)+"任意张牌")
+        .set("ai", function (button) {
+            var val = get.value(button.link);
+            if (get.color(button.link)=="black") {
+                return 2 * (val + 3);
+            }
+            return val;
+        })
+        .set("forceAuto", true)
+        .setHiddenSkill(event.name);
+        
+        if(cards.length>0){
+           await trigger.source.recast(cards);
+           if(trigger.source.countCards('he',{color:'black'})<=0)trigger.cancel();
+        }
+                     },
+            },
+            "善良":{
+                trigger:{
+                     source:"damageBegin1",
+                },
+                forced:true,
+                async content(event,trigger,player){
+                        trigger.cancel();
+                        var choices = ["选项一","选项二"];
+                        var choiceList = ["令"+get.translation(trigger.player)+"摸两张牌","令"+get.translation(trigger.player)+"回复一点体力"];
+                        var {result:{control}}=await player
+            .chooseControl(choices,'cancel')
+            .set("choiceList", choiceList)
+            .set("prompt", get.prompt("善良"))
+            .set('ai',function(event,player,card){
+             var player=_status.event.player;
+             if(get.attitude(player,trigger.player)<=0)return false;
+        });
+                         if(control=="选项一"){
+                            trigger.player.draw(2);
+                         }
+                         if(control=="选项二"){
+                            trigger.player.recover();
+                         }
+                },
+            },
+            "凝视":{
+                 trigger:{
+                     global:"phaseBegin",
+                 },
+                 getCards(player) {
+            const cards = [];
+            for (var i = 0; i <player.countCards('hes'); i++) {
+                var card = player.getCards('hes')[i];
+                if (get.tag(card,"damage")) cards.add(card);
+            }
+            return cards;
+    },
+                 filter:function(event,player){
+                     return get.info("凝视").getCards(player).length>=2&&event.player!=player;
+                 },
+                 check:function (event,player){
+                       return get.attitude(player,event.player)<=0&&player.maxHp-player.hp<=1;
+                },
+                 content:function(){
+                     "step 0"
+                     player.chooseToDiscard(2,'凝视：是否弃置两张伤害牌并流失一点体力在【'+get.translation(trigger.player)+'】判定区置入一张乐不思蜀？','hes').set('filterCard',function(card){
+          return get.tag(card,'damage');
+           }).set('ai',function(card){
+                return 15-get.value(card);
+           })
+              
+              "step 1"
+              if(result.bool){
+                 player.loseHp();
+                 trigger.player.addJudge(game.createCard('lebu'));
+               }
+                  },
+            },
             "斩落众神头颅的那片废墟":{
    ronghe:function(player,card, log, init) {
     if (init !== false) {
@@ -68975,6 +69159,8 @@ else if (type == 'equip') {
             "紫悦":"紫悦",
             "珍奇":"珍奇",
             "苹果嘉儿":"苹果嘉儿",
+            "碧琪":"碧琪",
+            "柔柔":"柔柔",
             "tengyun":"腾云",
             "zhanyi":"战意值",
             "yaoguang":"怒气值",
@@ -71688,15 +71874,27 @@ else if (type == 'equip') {
             "缔友":"缔友",
             "缔友_info":"主公技，你的回合开始时，你可以选择至少两名角色，令这些角色摸一张牌。",
             "华丽":"华丽",
-            "华丽_info":"锁定技，你的手牌上限+3，你的装备牌点数均视为13，花色均视为♦️",
+            "华丽_info":"锁定技，你的手牌上限+6，你的装备牌点数均视为13，花色均视为♦️",
             "慷慨":"慷慨",
-            "慷慨_info":"①其他角色出牌阶段限1次，其可以获得你任意张牌。②回合开始时，你从牌堆里获得牌直至点数之和大于你以①失去的牌点数之和。",
+            "慷慨_info":"①其他角色出牌阶段限1次，其可以获得你至多X张牌（X为你的体力值）。②回合开始时，你从牌堆里获得牌直至点数之和大于你以①失去的牌点数之和。",
             "苹园":"苹园",
             "苹园_info":"回合开始时，你从游戏外获得X张【五谷丰登】并从牌堆/弃牌堆获得一张【木牛流马】（X为当前游戏轮数）",
             "诚实":"诚实",
             "诚实_info":"锁定技，你的牌始终对其他角色可见，一名角色使用/打出虚拟或转化牌时，其流失一点体力。",
             "牛仔":"牛仔",
             "牛仔_info":"锁定技，你的【顺手牵羊】无距离限制且可以额外指定2个目标。",
+            "预感":"预感",
+            "预感_info":"锁定技，你的回合外，当你需要使用或打出时，若牌堆顶前三张牌有你需要的牌，你获得那些牌。",
+            "乐观":"乐观",
+            "乐观_info":"锁定技，你的判定结果尽可能向好的结果发展。",
+            "派对":"派对",
+            "派对_info":"出牌阶段限1次，你可以令所有角色进行一次判定，若结果为♠️：其流失一点体力；♣️：其弃置一张牌；♦️：其摸一张牌；♥️：其回复一点体力。",
+            "安抚":"安抚",
+            "安抚_info":"你距离1以内的角色受到伤害时，你可以重铸伤害来源任意张牌，若重铸后伤害来源手牌中没有黑色牌，此伤害无效。",
+            "善良":"善良",
+            "善良_info":"锁定技，你造成伤害时，此伤害-1，然后你可以令目标摸两张牌或回复一点体力。",
+            "凝视":"凝视",
+            "凝视_info":"其他角色的回合开始时，你可以弃置两张伤害牌并流失一点体力，在其判定区置入一张【乐不思蜀】",
             "_日常任务_杀一下":"",
             "_日常任务_杀一下_info":"",
             "_日常任务_当浮一大白":"",
@@ -71859,7 +72057,7 @@ else if (type == 'equip') {
   };
     if(lib.device||lib.node){
         //比赛将池
-        game.bisaijiangchi=["SP哥莫拉","龙骑士黑魔术少女","界黑岩射手","拉弥亚","巴图","SP尼克","传承艾瑞珂","提丰","界华法琳","黍","左乐","玛恩纳","瑕光","仙人·漩涡鸣人","霞露零","月亮伊布","火神蛾","杨戬","Herobrine","特莉波卡","雷吉奇卡斯","阿米娅","乌尔比安","陈千语","源·天将士","蕾缪安","SP惊蛰","SP星熊","无敌","伏妖","法纳斯","望","对神兵器·肯扎特","新SP陈","耶芙娜","SP傀影","刻俄柏","SP推进之王","cl_关银屏","cl_吕玲绮","SP神荀彧","cl_神赵云","cl_孙策","璀璨圣龙","夜刀神十香","诱宵美九","镜野七罪","星宫六喰","本条二亚","魔科比","慢直升机","慢佐巴杨","凋灵","塑心","潘多拉","SP史尔特尔","山中队员","佩丽卡","庄方宜","雷德","魔赵云","嗔韩氏五虎","嗔高览","骑拉帝纳-别种形态","魔沙福林","疑麦克斯","疑奥特之王","疑百特星人","疑巴顿","小叶子","紫悦","珍奇","苹果嘉儿"];
+        game.bisaijiangchi=["SP哥莫拉","龙骑士黑魔术少女","界黑岩射手","拉弥亚","巴图","SP尼克","传承艾瑞珂","提丰","界华法琳","黍","左乐","玛恩纳","瑕光","仙人·漩涡鸣人","霞露零","月亮伊布","火神蛾","杨戬","Herobrine","特莉波卡","雷吉奇卡斯","阿米娅","乌尔比安","陈千语","源·天将士","蕾缪安","SP惊蛰","SP星熊","无敌","伏妖","法纳斯","望","对神兵器·肯扎特","新SP陈","耶芙娜","SP傀影","刻俄柏","SP推进之王","cl_关银屏","cl_吕玲绮","SP神荀彧","cl_神赵云","cl_孙策","璀璨圣龙","夜刀神十香","诱宵美九","镜野七罪","星宫六喰","本条二亚","魔科比","慢直升机","慢佐巴杨","凋灵","塑心","潘多拉","SP史尔特尔","山中队员","佩丽卡","庄方宜","雷德","魔赵云","嗔韩氏五虎","嗔高览","骑拉帝纳-别种形态","魔沙福林","疑麦克斯","疑奥特之王","疑百特星人","疑巴顿","小叶子","紫悦","珍奇","苹果嘉儿","碧琪","柔柔"];
         for(var name in 错乱时空.character){
             if(!错乱时空.character[name][4])错乱时空.character[name][4]=[];
             var currentSkinIndex = 0;
