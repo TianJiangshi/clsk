@@ -1,5 +1,11 @@
-window.version = '当前版本：12.9.0（乐观与善良）';
+window.version = '当前版本：12.9.1（小马宝莉）';
 window.clskchangelog = {
+  '2026年5月25日': {
+    'version': '版本：12.9.1',
+    'info': '<br><li>修复了武将【苹果嘉儿】技能【诚实】每回合只能使用一次的bug。<br><li>武将【碧琪】体力调整为3。<br><li>新增武将【云宝】',
+    'character': ["云宝"],
+    'cards': [],
+  },
   '2026年5月24日': {
     'version': '版本：12.9.0',
     'info': '<br><li>修复了武将【苹果嘉儿】技能【诚实】流失体力无效的bug。<br><li>修复bug武将？？？不可知的规则使用时黑屏卡死的bugbugbugbugbugbugbugbugbugbugbug。<br><li>新增武将【碧琪】<br><li>新增武将【柔柔】',
