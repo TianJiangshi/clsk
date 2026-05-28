@@ -9629,6 +9629,7 @@ Object.defineProperty(game, 'over', {
 	game.soulGame=false;
 	game.clsk_bgm=false;
 	game.clsk_神元素=[];
+	game.clsk_焰链=[];
 	game.clsk_sfzs=false;
 	lib.message.server.local_clsk_jswj=function(id,data){
 	   var me = get.connectNickname();
@@ -65674,13 +65675,13 @@ else if (type == 'equip') {
                    global:"damageBefore",
                 },
                 filter:function(event,player){
-                   return get.distance(player,event.player)<=1&&event.source&&event.source.countCards("he")>0;
+                   return get.distance(player,event.player)<=1&&event.source&&event.source.countCards("he")>0&&!player.storage.安抚;
                 },
                 check:function (event,player){
                        return get.attitude(player,event.player)>0;
                 },
                 async content(event,trigger,player){
-        const {result:{cards}} = await player.choosePlayerCard(trigger.source, "he", [1, trigger.source.countCards("he")], "allowChooseAll")
+        const {result:{links}} = await player.chooseCardButton([1,Infinity],trigger.source,trigger.source.getCards('h'))
         .set("prompt","重铸"+get.translation(trigger.source)+"任意张牌")
         .set("ai", function (button) {
             var val = get.value(button.link);
@@ -65692,11 +65693,30 @@ else if (type == 'equip') {
         .set("forceAuto", true)
         .setHiddenSkill(event.name);
         
-        if(cards.length>0){
-           await trigger.source.recast(cards);
+        if(links.length>0){
+           await trigger.source.recast(links);
            if(trigger.source.countCards('he',{color:'black'})<=0)trigger.cancel();
+           else player.storage.安抚=true;
         }
                      },
+                group:["安抚_phase"],
+                subSkill:{
+                   phase:{
+                     trigger:{
+                         global:"phaseEnd",
+                     },
+                     forced:true,
+                     filter:function(event,player){
+                        return player.storage.安抚;
+                     },
+                     direct:true,
+                     content:function(){
+                        player.storage.安抚=false;
+                     },
+                     sub:true,
+                     sourceSkill:"安抚",
+                   }
+                },
             },
             "善良":{
                 trigger:{
@@ -65946,10 +65966,10 @@ else if (type == 'equip') {
                     player.storage.可获得结晶库.remove(j);
                         }
                         player.storage.结晶A=["J格拉尼","J傀影","JHerobrine","J德克萨斯","J玫兰莎","J艾雅法拉","J山中队员","J特莉波卡","J灵吉菩萨","J迷迭香"];
-                        player.storage.结晶S=["J蓝染惣右介","J斯卡蒂","J米龙","J小智","J阿米娅","J银灰","J红"];
-                        player.storage.结晶SS=["J黑岩射手","J时崎狂三","J霜星","J冰伊布","J吕玲绮","J关银屏","J瑕光","J提丰","J浊心斯卡蒂"];
+                        player.storage.结晶S=["J斯卡蒂","J米龙","J小智","J阿米娅","J银灰","J红","J霞露零"];
+                        player.storage.结晶SS=["J蓝染惣右介","J黑岩射手","J时崎狂三","J霜星","J冰伊布","J吕玲绮","J关银屏","J瑕光","J提丰","J浊心斯卡蒂"];
                         player.storage.结晶SSS=["J界蓝染惣右介","J神龙右","J年","JSP哥莫拉","J传承艾瑞珂","JSP临光","J界史尔特尔","J吉普莉尔","J夕","JSP德克萨斯","J界华法琳","J左乐","J阿勃梭鲁","J重岳","J五河琴里","J泥岩","J界柒"];
-                        player.storage.创世神话=["J光辉大神","JSP阿尔宙斯","JSP索托斯","JSP姆西斯哈","J圣灵谱尼"];
+                        player.storage.创世神话=["J光辉大神","JSP阿尔宙斯","JSP索托斯","JSP姆西斯哈","J圣灵谱尼","JSP亚弗戈蒙"];
                         player.storage.真实之我=["JMrs.宁"];
                         game.broadcastAll(function (player) {
     player.useSkill("神元素_start");
@@ -66147,9 +66167,16 @@ else if (type == 'equip') {
                         if(i.name=="J迷迭香"){
                             player.addTempSkill("J超感",{player:"phaseBefore"});
                         }
+                        if(i.name=="J霞露零"){
+                            player.addTempSkill("J斩灵",{player:"phaseBefore"});
+                        }
                         if(i.name=="J圣灵谱尼"){
                             player.storage.神话之力+=1;
                             player.addTempSkill("J光荣之梦",{player:"phaseBefore"});
+                        }
+                        if(i.name=="JSP亚弗戈蒙"){
+                            player.storage.神话之力+=1;
+                            player.addTempSkill("J焰链",{player:"phaseBefore"});
                         }
                         if(i.name=="J光辉大神"){
                             player.storage.神话之力+=1;
@@ -67445,6 +67472,139 @@ else if (type == 'equip') {
         trigger.player.addSkill('折戟');
     },
                         sub:true,
+                    },
+                },
+            },
+            "J斩灵":{
+                usable:1,
+                enable:"phaseUse",
+                filter:function(event,player){
+                   return game.hasPlayer(function(current){
+                return current.gl_getMp('cl_tongling')>0;
+            });
+                },
+                nobracket:true,
+                filterTarget:function (card,player,target){
+                 return target.gl_getMp('cl_tongling')>0;
+                },              
+                async content(event,trigger,player){
+                    var a=event.target;
+                    a.gl_changeMp(-1,'cl_tongling').forceDie=true; 
+                    player.addSkill("J斩灵_suo");
+                },
+                ai:{
+                    order:2,
+                    result:{
+                        target:-10,
+                    },
+                },
+               subSkill:{
+                  suo:{
+                      trigger:{
+                   player:["gl_changeMpBegin"],
+                },
+                filter:function(event,player){
+                   if(event.type&&event.type=="cl_tongling"&&event.num>0)return true;
+                },
+                content:function(){
+                    trigger.cancel();
+                    player.removeSkill("J斩灵_suo");
+                },
+                      forced:true,
+                      sub:true,
+                      sourceSkill:"斩灵",
+                  },
+               }
+            },
+             "J焰链":{
+                 mark:true,
+                 zhuanhuanji: true,
+                 marktext: "☯",
+                 intro: {
+                    content: function (storage, player, skill) {
+                        if (player.storage.J焰链==true) return '一名其他角色横置后，你可以夺取其一个技能和区域内所有牌。';
+                        if(!player.storage.J焰链) return '一名其他角色横置后，你可以夺取其一点体力上限并删除其一个技能。';
+                    },
+                },
+                trigger:{
+                    global:"linkAfter",
+                },
+                filter:function (event,player){
+        return event.player!=player&&event.player.isLinked();
+    },
+             async content(event,trigger,player){
+                 var list=[];
+                 var skills=trigger.player.getSkills(true,false);
+                 for(var i=0;i<skills.length;i++){
+            if(!lib.skill[skills[i]].charlotte)list.push(skills[i]);
+        }
+                 if(list.length>0){
+                   var one = await player.chooseControl(list).forResult();
+                list.remove(one.control);
+                trigger.player.removeSkill(one.control);
+                if(player.storage.J焰链)player.addSkill(one.control);
+              }    
+                if(player.storage.J焰链){
+                  player.gain(trigger.player.getCards('hej'),trigger.player,'giveAuto');
+                }else{
+                  trigger.player.loseMaxHp();
+                  player.gainMaxHp();
+                } 
+                player.changeZhuanhuanji('J焰链');
+             },
+             group:["J焰链_lian"],
+             subSkill:{
+                lian:{
+                   filter:function (event,player){
+        return player.countCards('h',{suit:'club'})>0;
+    },
+                enable:"phaseUse",
+                usable:1,
+                nobracket:true,
+                filterCard:function (card){
+        return get.suit(card)=='club';
+    },
+                position:"he",
+                viewAs:{
+                    name:"tiesuo",
+                },
+                prompt:"将一张♣️牌当【铁索连环】使用",
+                check:function (card){return 15-get.value(card)},
+                ai:{
+                    order:10,
+                    result:{
+                        player:10,
+                        target:2,
+                    },
+                    basic:{
+                        order:7.2,
+                        useful:4.5,
+                        value:9.2,
+                    },
+                },
+                   sub:true,
+                   sourceSkill:"J焰链",
+                }
+             },
+            },
+            "J焰链惩罚":{
+                     trigger:{
+                            global:["linkBefore","enterGame"],
+                        },
+                        forced:true,
+                        direct:true,
+                        filter:function (event,player){
+                return event.player.isLinked()==(event.name=='link')&&game.clsk_焰链.includes(event.player);
+            },
+                        content:function (){
+                if(trigger.name!='link') trigger.player.link(true);
+                else trigger.cancel();
+            },
+                ai:{
+                    effect:{
+                        target:function (card){
+                if(card.name=='tiesuo') return 'zeroplayertarget';
+            },
                     },
                 },
             },
@@ -71383,9 +71543,17 @@ else if (type == 'equip') {
            "J特莉波卡":"特莉波卡",
            "J特莉波卡_info":"【死神狩猎】<br>每回合限1次，你造成伤害时可以将此次伤害改为为<a class='cl_soul' onclick=\"javascript:window.cl_souldamage();\">灵魂伤害</a>，然后你回复等量的<a class='cl_soul' onclick=\"javascript:window.cl_soulhp();\">灵魂体力</a>并摸一张牌。",
            "J光荣之梦":"光荣之梦",
-           "J光荣之梦_info":"结束阶段，你可以翻面并获得所有其他角色一张牌，然后再获得所有其他角色x点护甲值（x为当前游戏轮数）。若你未因此获得护甲值，你回复一点体力并取消翻面。",
+           "J光荣之梦_info":"结束阶段，你可以翻面并获得所有其他角色一张牌，然后再获得所有其他角色x点护甲值（x为当前游戏轮数）。若你未因此获得护甲值，你回复一点体力并取消翻面。",         
            "J圣灵谱尼":"圣灵谱尼",
            "J圣灵谱尼_info":"【光荣之梦】<br>结束阶段，你可以翻面并获得所有其他角色一张牌，然后再获得所有其他角色x点护甲值（x为当前游戏轮数）。若你未因此获得护甲值，你回复一点体力并取消翻面。",
+           "J斩灵":"斩灵",
+           "J斩灵_info":"出牌阶段限1次，你可以选择一名通灵点大于0的角色，令其减少1个通灵点，然后其下次增加的通灵点无效。",
+           "J霞露零":"霞露零",
+           "J霞露零_info":"【斩灵】<br>出牌阶段限1次，你可以选择一名通灵点大于0的角色，令其减少1个通灵点，然后其下次增加的通灵点无效。",
+           "J焰链":"焰链",
+           "J焰链_info":"转换技，出牌阶段你可以将一张♣️牌当【铁索连环】使用（此效果每回合限1次），一名角色进入横置状态后，你可以，阴：夺取其一点体力上限并删除其一个技能。阳：夺取其一个技能和其区域内所有牌。",
+           "JSP亚弗戈蒙":"犹格·索托斯",
+           "JSP亚弗戈蒙_info":"【焰链】<br>转换技，出牌阶段你可以将一张♣️牌当【铁索连环】使用（此效果每回合限1次），一名角色进入横置状态后，你可以，阴：夺取其一点体力上限并删除其一个技能。阳：夺取其一个技能和其区域内所有牌。",
            "J乱火":"乱火",
            "J乱火_info":"锁定技，摸牌阶段，你进行一次判定，然后你额外摸x张牌。（x为判定点数/4，向上取整）",
            "J艾雅法拉":"艾雅法拉",
@@ -71866,7 +72034,7 @@ else if (type == 'equip') {
             "承天佑":"承天佑",
             "承天佑_info":"锁定技，你受到的伤害减少X%（X为你当前通灵点乘3，最终伤害向上取整）",
             "万钧雷":"万钧雷",
-            "万钧雷_info":"<a class='cl_tongling' onclick=\"javascript:window.cl_tongling();\">通灵技（9）</a>，你造成雷电伤害时+1。<br><li>通灵强化：技能【惊霆决】、【承天佑】计算通灵点时，额外计算4点。",
+            "万钧雷_info":"<a class='cl_tongling' onclick=\"javascript:window.cl_tongling();\">通灵技（9）</a>，你造成雷电伤害时+1。<br><li>通灵强化：技能【惊霆诀】、【承天佑】计算通灵点时，额外计算4点。",
             "一息万变":"一息万变",
             "一息万变_info":"锁定技，①一名角色回合开始时，你从弃牌堆获得一张雷属性伤害牌，从牌堆获得一张梅花牌。②你的雷属性伤害牌可以当作任意牌使用或打出。",
             "天殇":"天殇",
@@ -71982,7 +72150,7 @@ else if (type == 'equip') {
             "派对":"派对",
             "派对_info":"出牌阶段限1次，你可以令所有角色进行一次判定，若结果为♠️：其流失一点体力；♣️：其弃置一张牌；♦️：其摸一张牌；♥️：其回复一点体力。",
             "安抚":"安抚",
-            "安抚_info":"你距离1以内的角色受到伤害时，你可以重铸伤害来源任意张牌，若重铸后伤害来源手牌中没有黑色牌，此伤害无效。",
+            "安抚_info":"你距离1以内的角色受到伤害时，你可以观看并重铸伤害来源任意张牌，若重铸后伤害来源手牌中没有黑色牌，此伤害无效，否则此技能本回合失效。",
             "善良":"善良",
             "善良_info":"锁定技，你造成伤害时，此伤害-1，然后你可以令目标摸两张牌或回复一点体力。",
             "凝视":"凝视",
@@ -75678,6 +75846,29 @@ if(!lib.config.characters.includes("错乱时空")){lib.config.characters.push("
                 },
                 fullimage:true,
             },
+            "J霞露零":{
+                image:"ext:错乱时空/霞露零.jpg",
+                type:"结晶",
+                toself:true,
+                filterTarget:function (card,player,target){
+        return target==player;
+    },
+                enable:function(event,player){
+                if(player.name=="源·天将士")return true;
+    },
+                selectTarget:-1,
+                content:function (){
+                    if(player.name=="源·天将士"){
+                        player.storage.结晶投影.push(card);
+                        player.storage.结晶库.remove(card.name);
+                        player.flashAvatar("霞露零", "霞露零");
+                        game.broadcastAll(function (player) {
+                 game.playAudio('..', 'extension', '错乱时空', '音频','J霞露零' + '.mp3')
+                     }, player)
+                    }
+                },
+                fullimage:true,
+            },
             "J艾雅法拉":{
                 image:"ext:错乱时空/艾雅法拉.jpg",
                 type:"结晶",
@@ -75873,6 +76064,40 @@ if(!lib.config.characters.includes("错乱时空")){lib.config.characters.push("
                         game.broadcastAll(function (player) {
                  game.playAudio('..', 'extension', '错乱时空', '音频','JSP姆西斯哈' + '.mp3')
                      }, player)
+                    }
+                   }else{
+                       player.die()._triggered=null;
+                   }
+                },
+                fullimage:true,
+            },
+            "JSP亚弗戈蒙":{
+                image:"ext:错乱时空/SP亚弗戈蒙.jpg",
+                type:"结晶",
+                toself:true,
+                filterTarget:function (card,player,target){
+        return target==player;
+    },
+                enable:function(event,player){
+                if(player.name=="源·天将士")return true;
+    },
+                selectTarget:-1,
+                content:function (){
+                    if(player.name=="源·天将士"){
+                    if((player.storage.结晶投影.find(cardx=>cardx.name=="JSP索托斯")||player.storage.结晶库.includes("JSP索托斯"))&&Math.random()<0.1&&!player.storage.亚弗投影){
+                        player.storage.结晶投影.push(card);
+                        player.storage.结晶库.remove(card.name);
+                        player.flashAvatar("SP亚弗戈蒙", "SP亚弗戈蒙");
+                        player.storage.亚弗投影=true;
+                        game.broadcastAll(function (player) {
+                 game.playAudio('..', 'extension', '错乱时空', '音频','JSP亚弗戈蒙' + '.mp3')
+                     }, player)
+                    }else{
+                        var skills=player.getSkills(true,false);
+                        for(var i of skills)player.removeSkill(i);                                 
+                        player.link(true);      
+                        game.addGlobalSkill("J焰链惩罚");   
+                        game.clsk_焰链.push(player);    
                     }
                    }else{
                        player.die()._triggered=null;
