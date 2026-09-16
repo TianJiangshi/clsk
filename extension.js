@@ -36,11 +36,11 @@ const originalRarity = ui.create.rarity;
    //A+级武将
    //lib.rank.rarity.common.addArray();
    //S级武将
-   lib.rank.rarity.rare.addArray(["能天使","星熊","斯卡蒂","蓝染惣右介","怪盗基德","格拉尼","王·雷伊","史尔特尔","阿尔宙斯","陈","琦玉","孙悟空","王·卡修斯","小智","界喜羊羊","龙右","幸福蛋","米龙","李狗蛋","冰伊布","阿勃梭鲁","星尘龙","狙射树枭","机械热核龙","薇薇安娜","胡地","红","杜小龙","王·布莱克","界江户川柯南","龙斯","吉里","黄昏之鬃","拂晓之翼","大鱼人","黑岩射手","秽土斑","影骨术士","守望之龙","冰影恶魔","克苏鲁教徒","游击队传令兵","刺客首领","瑕光","幽灵鲨","魔化骑士","cl_孙策","慢直升机","慢佐巴杨","对神兵器·肯扎特","孙胜男","盛怒","妒","魂灵圣杯","尼卢火","嗔韩氏五虎","疑百特星人"]);
+   lib.rank.rarity.rare.addArray(["能天使","星熊","斯卡蒂","蓝染惣右介","怪盗基德","格拉尼","王·雷伊","史尔特尔","阿尔宙斯","陈","琦玉","孙悟空","王·卡修斯","小智","界喜羊羊","龙右","幸福蛋","米龙","李狗蛋","冰伊布","阿勃梭鲁","星尘龙","狙射树枭","机械热核龙","薇薇安娜","胡地","红","杜小龙","王·布莱克","界江户川柯南","龙斯","吉里","黄昏之鬃","拂晓之翼","大鱼人","黑岩射手","秽土斑","影骨术士","守望之龙","冰影恶魔","克苏鲁教徒","游击队传令兵","刺客首领","幽灵鲨","魔化骑士","cl_孙策","慢直升机","慢佐巴杨","对神兵器·肯扎特","孙胜男","盛怒","妒","魂灵圣杯","尼卢火","嗔韩氏五虎","疑百特星人","SP傀影"]);
    //SS级武将
-   lib.rank.rarity.epic.addArray(["赛文奥特曼","百慕拉","黑","帝国星人","无序","圣灵谱尼","泥岩","神张飞","神马超","kuailong","界龙右","破坏龙-甘多拉","白岩射手","迷迭香","老爹","龙骑士黑魔术少女","界黑岩射手","界帕路奇犽","拉弥亚","21号·XXI","巴图","SP尼克","传承塔娜","露西亚·深红囚影","夜刀神十香","氷芽川四糸乃","时崎狂三","五河琴里","夕弦&耶俱矢","诱宵美九","镜野七罪","鸢一折纸","萨米","冻结傀儡","镜野七罪-幻化","界华法琳","拉弥亚-人鱼形态","死亡之翼","狼啸战士","仙人·漩涡鸣人","死神棺","杨戬","火神蛾","乌尔比安","霞露零","魔化至高骑士","cl_神赵云","星宫六喰","七实·芒星之迹","七实·盾斧形态","慢莱特兄弟","摆烂的猫","魔科比","托生莲座","本条二亚","SP推进之王","陈千语","界米龙","塑心","佩丽卡","魔赵云","嗔高览","魔沙福林","疑奥特之王","疑麦克斯","紫悦","珍奇","苹果嘉儿","碧琪","柔柔","云宝"]);
+   lib.rank.rarity.epic.addArray(["赛文奥特曼","百慕拉","黑","帝国星人","无序","圣灵谱尼","泥岩","神张飞","神马超","kuailong","界龙右","破坏龙-甘多拉","白岩射手","迷迭香","老爹","龙骑士黑魔术少女","界黑岩射手","界帕路奇犽","拉弥亚","21号·XXI","巴图","SP尼克","传承塔娜","露西亚·深红囚影","夜刀神十香","氷芽川四糸乃","时崎狂三","五河琴里","夕弦&耶俱矢","诱宵美九","镜野七罪","鸢一折纸","萨米","冻结傀儡","镜野七罪-幻化","界华法琳","拉弥亚-人鱼形态","死亡之翼","狼啸战士","仙人·漩涡鸣人","死神棺","杨戬","火神蛾","乌尔比安","霞露零","魔化至高骑士","cl_神赵云","星宫六喰","七实·芒星之迹","七实·盾斧形态","慢莱特兄弟","摆烂的猫","魔科比","托生莲座","本条二亚","SP推进之王","陈千语","界米龙","塑心","佩丽卡","魔赵云","嗔高览","魔沙福林","疑奥特之王","疑麦克斯","紫悦","珍奇","苹果嘉儿","碧琪","柔柔","云宝","瑕光","洛世琦"]);
    //SSS级武将
-   lib.rank.rarity.legend.addArray(["迪迦奥特曼","迪迦奥特曼强力形态","迪迦奥特曼空中形态","奥特曼","赫拉格","毁灭姿态","爱国者-行军姿态","暗影大帝","雷霆圣堂","煌炎之剑","皇帝的利刃","圣主","索托斯","塔维尔","亚弗戈蒙","御龙魔猿","塔露拉","不死的黑蛇","加坦杰厄","佐加","血舌","神之血","夜魔","尤贝尔","尤贝尔-被憎恶的骑士","尤贝尔-极度悲伤的魔龙","璀璨圣剑·龙尊","圣光飞龙","龙尊护卫","盘古","蒸汽骑士","无垠回荡克雷松","奈克洛兹玛","界史尔特尔","界蓝染惣右介","界夜莺","凯尔希","界琦玉","夕","界怪盗基德","SP临光","界孙悟空","界柒","霜星","界陈","界闪灵","界傀影","班基拉斯","龙破坏之剑士","界龙破坏之剑士","重岳","吉普莉尔","成龙","界阿尔宙斯","曼达拉","达克莱伊","浊心斯卡蒂","SP德克萨斯","SP哥莫拉","令","年","SP金古桥","苍响-百战勇者","尼克","溺尸","小泉红子","界帝牙卢卡","传承艾瑞珂","提丰","界龙斯","菲尔","反转·鸢一折纸","缪尔赛思","Mon3tr","犹格·索托斯","苍响-剑之王","光辉大神","怒惊","谎言与欺诈","璀璨圣堂","耀阳","圣达拉","传承艾瑞珂-破阵","杀戮之塔","坚盾剑怪刀剑","坚盾剑怪盾牌","谋孙悟空","黍","虚幻机甲","死亡战龙","烈血幕府将军","烈血幕府将军狂暴","Mrs.宁","玛恩纳","左乐","SP圣灵谱尼","cl_吕玲绮","cl_关银屏","莱希拉姆","捷克罗姆","月亮伊布","灵吉菩萨","神龙右","SP姆西斯哈","特莉波卡","雷吉奇卡斯","阿米娅","天命人","SP阿尔宙斯","余","SP艾雷王","源·天将士","蕾缪安","SP惊蛰","SP星熊","柒","雷鸣","反转·夜刀神十香","反转·氷芽川四糸乃","崇宫澪","反转·本条二亚","cl_袁绍","cl_黄盖","无敌","伏妖","法纳斯","女帝","昆仑","无限未来","诺雅","望","新SP陈","奎隆一","奎隆三","耶芙娜","SP崇宫澪","SP傀影","圣光宝剑","璀璨圣龙","黄金圣盾","黄金圣盾·龙尊","黄金圣堂","黄金圣龙","刻俄柏","凋灵","潘多拉","SP史尔特尔","庄方宜","超神圣龙","超神圣堂","超神浩劫·龙尊","雷德","骑拉帝纳-别种形态","骑拉帝纳-起源形态","究","疑巴顿","小叶子"]);
+   lib.rank.rarity.legend.addArray(["迪迦奥特曼","迪迦奥特曼强力形态","迪迦奥特曼空中形态","奥特曼","赫拉格","毁灭姿态","爱国者-行军姿态","暗影大帝","雷霆圣堂","煌炎之剑","皇帝的利刃","圣主","索托斯","塔维尔","亚弗戈蒙","御龙魔猿","塔露拉","不死的黑蛇","加坦杰厄","佐加","血舌","神之血","夜魔","尤贝尔","尤贝尔-被憎恶的骑士","尤贝尔-极度悲伤的魔龙","璀璨圣剑·龙尊","圣光飞龙","龙尊护卫","盘古","蒸汽骑士","无垠回荡克雷松","奈克洛兹玛","界史尔特尔","界蓝染惣右介","界夜莺","凯尔希","界琦玉","夕","界怪盗基德","SP临光","界孙悟空","界柒","霜星","界陈","界闪灵","界傀影","班基拉斯","龙破坏之剑士","界龙破坏之剑士","重岳","吉普莉尔","成龙","界阿尔宙斯","曼达拉","达克莱伊","浊心斯卡蒂","SP德克萨斯","SP哥莫拉","令","年","SP金古桥","苍响-百战勇者","尼克","溺尸","小泉红子","界帝牙卢卡","传承艾瑞珂","提丰","界龙斯","菲尔","反转·鸢一折纸","缪尔赛思","Mon3tr","犹格·索托斯","苍响-剑之王","光辉大神","怒惊","谎言与欺诈","璀璨圣堂","耀阳","圣达拉","传承艾瑞珂-破阵","杀戮之塔","坚盾剑怪刀剑","坚盾剑怪盾牌","谋孙悟空","黍","虚幻机甲","死亡战龙","烈血幕府将军","烈血幕府将军狂暴","Mrs.宁","玛恩纳","左乐","SP圣灵谱尼","cl_吕玲绮","cl_关银屏","莱希拉姆","捷克罗姆","月亮伊布","灵吉菩萨","神龙右","SP姆西斯哈","特莉波卡","雷吉奇卡斯","阿米娅","天命人","SP阿尔宙斯","余","SP艾雷王","源·天将士","蕾缪安","SP惊蛰","SP星熊","柒","雷鸣","反转·夜刀神十香","反转·氷芽川四糸乃","崇宫澪","反转·本条二亚","cl_袁绍","cl_黄盖","无敌","伏妖","法纳斯","女帝","昆仑","无限未来","诺雅","望","新SP陈","奎隆一","奎隆三","耶芙娜","SP崇宫澪","圣光宝剑","璀璨圣龙","黄金圣盾","黄金圣盾·龙尊","黄金圣堂","黄金圣龙","刻俄柏","凋灵","潘多拉","SP史尔特尔","庄方宜","超神圣龙","超神圣堂","超神浩劫·龙尊","雷德","骑拉帝纳-别种形态","骑拉帝纳-起源形态","究","疑巴顿","小叶子","cl_神钟会","瘟神·钟会","卡拉","SP提丰","疾光玛恩纳","提雷克","兰德斯"]);
    //EX级武将
    lib.rank.rarity.shenhua=[];
    lib.rank.rarity.shenhua.addArray(["SP索托斯","神圣灵谱尼","神阿尔宙斯","SP亚弗戈蒙"]);
@@ -1038,7 +1038,7 @@ lib.element.player.CLSKZhongVideoFull = async function (characterName, duration)
             }
             return `${name}.jpg`;
         };
-        //获取武将名对应立绘路径
+        //获取牌名对应立绘路径
         game.cardsrc = function (name) {
             const info = lib.card[name];
             if (info) {
@@ -1059,34 +1059,47 @@ lib.element.player.CLSKZhongVideoFull = async function (characterName, duration)
             }
         };
         game.cl_mp4 = async function (name) {
-            return new Promise((resolve) => {
-                const video = document.createElement('video');
-                video.src = `extension/错乱时空/${name}.mp4`;
-                video.style.cssText = 'z-index: 999; height: 100%; width: 100%; position: fixed; object-fit: cover; left: 0; right: 0; mix-blend-mode: screen; pointer-events: none;';
-                video.autoplay = true;
-                video.loop = false;
-                const backButton = document.createElement('div');
-                backButton.innerHTML = '返回游戏'; //文字内容
-                backButton.style.cssText = 'z-index: 999; position: absolute; bottom: 10px; right: 10px; color: red; font-size: 16px; padding: 5px 10px; background: rgba(0, 0, 0, 0.3);';
-                backButton.onclick = function () {
-                    backButton.remove();
-                    video.remove();
-                    resolve();
-                }; //设置返回按钮的点击事件
-                document.body.appendChild(video); //document上面创建video元素之后不要立刻贴上,加一个延迟可以略过前面的播放框,配置越烂延迟越大
-                document.body.appendChild(backButton);
-                video.addEventListener('error', function () {
-                    backButton.remove();
-                    video.remove();
-                    resolve();
-                });
-                video.addEventListener('ended', function () {
-                    backButton.remove();
-                    video.remove();
-                    resolve();
-                });
-            });
-        }; //播放mp4
+    return new Promise((resolve) => {
+        const video = document.createElement('video');
+        video.src = `extension/错乱时空/${name}.mp4`;
+        // 末尾临时加上 opacity:0，仅用于加载期间隐藏
+        video.style.cssText = 'z-index: 999; height: 100%; width: 100%; position: fixed; object-fit: cover; left: 0; right: 0; mix-blend-mode: screen; pointer-events: none; opacity:0;';
+        video.autoplay = true;
+        video.loop = false;
+        video.preload = "auto";
+
+        const backButton = document.createElement('div');
+        backButton.innerHTML = '返回游戏';
+        backButton.style.cssText = 'z-index: 999; position: absolute; bottom: 10px; right: 10px; color: red; font-size: 16px; padding: 5px 10px; background: rgba(0, 0, 0.3); opacity:0;';
+        backButton.onclick = function () {
+            backButton.remove();
+            video.remove();
+            resolve();
+        };
+
+        document.body.appendChild(video);
+        document.body.appendChild(backButton);
+
+        video.addEventListener('canplaythrough', function () {
+            void video.offsetWidth;
+            video.style.opacity = "";
+            backButton.style.opacity = "1";
+        });
+
+        video.addEventListener('error', function () {
+            backButton.remove();
+            video.remove();
+            resolve();
+        });
+        video.addEventListener('ended', function () {
+            backButton.remove();
+            video.remove();
+            resolve();
+        });
+    });
+};
+
+
     };
     video();
 
@@ -7853,6 +7866,12 @@ function loadClskEmotions() {
         15,
         "extension/错乱时空/emo/clsk"
     );
+    clsk_addEmotionPack(
+        "clsk_kala",
+        "卡拉",
+        7,
+        "extension/错乱时空/emo/kala"
+    );
 }
 
 function CLSK_Emotion_TitleClick(uiintro, packList) {
@@ -9510,9 +9529,20 @@ Object.defineProperty(game, 'over', {
 	   庄方宜_mingzuo:1,
 	},
     //皮肤
-    game.cl_skin=["阿米娅","蕾缪安","SP惊蛰","星宫六喰","夜刀神十香","氷芽川四糸乃","SP姆西斯哈","陈千语","凋灵","蝶恋花·潘多拉","通灵始祖·究"],
+    game.cl_skin=["阿米娅","蕾缪安","SP惊蛰","星宫六喰","夜刀神十香","氷芽川四糸乃","SP姆西斯哈","陈千语","凋灵","蝶恋花·潘多拉","通灵始祖·究","无上神·无敌"],
+ game.clsk_getPlayerSkinPath=function(player) {
+     if (!player || !player.node || !player.node.avatar) return "";
+     const bgStr = player.node.avatar.style.backgroundImage;
+     const match = bgStr.match(/url\("?(.*?)"?\)/);
+     if (!match) return "";
+     return match[1];
+ }
     //bgm
-    game.clsk_cbgm=["庄方宜"]
+    game.clsk_cbgm=["庄方宜"];
+    //出场台词
+    game.clsk_caudio=["无敌"]
+    //特殊死亡语音
+    game.clsk_daudio=["无上神·无敌"]
     lib.element.player.soulhp;
     lib.element.player.maxsoulhp;
     lib.element.player.cl_sgys=0;
@@ -9522,49 +9552,59 @@ Object.defineProperty(game, 'over', {
     lib.element.player.cl_frombasic=0;
     lib.element.player.cl_tobasic=0;
     //小数点摸牌取整
-    lib.element.player.draw = function() {
-    var next = game.createEvent("draw");
-    next.player = this;
-    const event = _status.event;
-    for (var i = 0; i < arguments.length; i++) {
-        if (get.itemtype(arguments[i]) == "player") {
-            next.source = arguments[i];
-        } else if (typeof arguments[i] == "number") {
-            next.num = Math.ceil(arguments[i]);
-        } else if (typeof arguments[i] == "boolean") {
-            next.animate = arguments[i];
-        } else if (arguments[i] == "nodelay") {
-            next.animate = false;
-            next.$draw = true;
-        } else if (arguments[i] == "visible") {
-            next.visible = true;
-        } else if (arguments[i] == "bottom") {
-            next.bottom = true;
-        } else if (typeof arguments[i] == "object" && arguments[i] && arguments[i].drawDeck != undefined) {
-            next.drawDeck = arguments[i].drawDeck;
-        }
-    }
-    if (typeof next.num != "number") {
-        next.num = 1;
-    }
-    if (next.num <= 0) {
-        _status.event.next.remove(next);
-        next.resolve();
-    }
-    if (get.itemtype(next.source) != "player") {
-        const source = event.player;
-        if (source) {
-            next.source = source;
-        }
-    }
-    next.setContent("draw");
-    if (lib.config.mode == "stone" && _status.mode == "deck" && next.drawDeck == undefined && !next.player.isMin() && next.num > 1) {
-        next.drawDeck = 1;
-    }
-    next.result = [];
-    next.gaintag = [];
-    return next;
-},
+    lib.element.player.draw = function () {
+		var next = game.createEvent("draw");
+		next.player = this;
+		const event = _status.event;
+		var args = arguments;
+		if (args.length === 1 && typeof args[0] === "object" && !Array.isArray(args[0]) && args[0] != null && get.itemtype(args[0]) == null) {
+			Object.assign(next, args[0]);
+			if (args[0].nodelay) {
+				delete next.nodelay;
+				next.animate = false;
+				next.$draw = true;
+			}
+		} else {
+			for (var i = 0; i < args.length; i++) {
+				if (get.itemtype(args[i]) == "player") {
+					next.source = args[i];
+				} else if (typeof args[i] == "number") {
+					next.num = Math.floor(args[i]);
+				} else if (typeof args[i] == "boolean") {
+					next.animate = args[i];
+				} else if (args[i] == "nodelay") {
+					next.animate = false;
+					next.$draw = true;
+				} else if (args[i] == "visible") {
+					next.visible = true;
+				} else if (args[i] == "bottom") {
+					next.bottom = true;
+				} else if (typeof args[i] == "object" && args[i] && args[i].drawDeck != undefined) {
+					next.drawDeck = args[i].drawDeck;
+				}
+			}
+		}
+		if (typeof next.num != "number") {
+			next.num = 1;
+		}
+		if (next.num <= 0) {
+			_status.event.next.remove(next);
+			next.resolve();
+		}
+		if (get.itemtype(next.source) != "player") {
+			const source = event.player;
+			if (source) {
+				next.source = source;
+			}
+		}
+		next.setContent("draw");
+		if (lib.config.mode == "stone" && _status.mode == "deck" && next.drawDeck == undefined && !next.player.isMin() && next.num > 1) {
+			next.drawDeck = 1;
+		}
+		next.result = [];
+		if (next.gaintag == null) next.gaintag = [];
+		return next;
+	};
     lib.element.player.cs1s=function(str,time){
         if(!time)time=2;
     	str=str.replace(/##assetURL##/g,lib.assetURL);
@@ -9614,7 +9654,24 @@ Object.defineProperty(game, 'over', {
 							delete _status.addChatEntry;
 						}
 					}
-    },    
+    };    
+    //兰德斯适配
+    const oldplayinit=lib.element.player.init;
+    lib.element.player.init=function(character, character2, skill, update){
+        var next = game.createEvent("changeCharacter");
+        next.setContent("gunmu");
+        next.player=this;
+        return oldplayinit.call(this,character, character2, skill, update);
+    };
+    const oldplayreinit=lib.element.player.reinit;
+    lib.element.player.reinit=function(from, to, maxHp, online) {
+        var next = game.createEvent("changeCharacter");
+        next.setContent("gunmu");
+        next.player=this;
+        return oldplayreinit.call(this,from, to, maxHp, online);
+    };
+    lib.element.content.gunmu=function(){
+    };
     lib.element.player.initSoul = async function() {
 		var player = this;
 		if (typeof player.maxsoulhp != 'number') {
@@ -9631,6 +9688,7 @@ Object.defineProperty(game, 'over', {
 	game.clsk_神元素=[];
 	game.clsk_焰链=[];
 	game.clsk_sfzs=false;
+	game.clsk_die=[[],[]];
 	lib.message.server.local_clsk_jswj=function(id,data){
 	   var me = get.connectNickname();
 	   var medata = lib.config.clsk_jswj || [];
@@ -9968,6 +10026,58 @@ for (var i in character) {
 				//console.error(`已为玩家添加【${trimedEquipName}】的技能：`, list);
 			}
 		};
+		lib.element.player.tongling=function(character,mp4,effect1,effect2){
+        var next = game.createEvent('tongling');
+		next.player = this;
+		next.character=character;
+		next.mp4=mp4;
+		next.effect1=effect1;
+		next.effect2=effect2;
+        next.setContent('tongling');
+		return next;
+    };
+    lib.element.content.tongling=function(){
+          'step 0'
+          event.trigger("tongling");
+          if(player.gl_getMp('cl_tongling')>=player.gl_getMaxMp('cl_tongling')&&player.storage.已通灵<2)event.goto(1);
+          else event.finish();
+                   
+          'step 1'
+          if(typeof event.effect1=="function")event.effect1(player);
+          
+          "step 2"
+ 	 // 鸽子
+          var _cl_char=event.character;  // 联机闭包里event不同步，先取出传给客机
+          var _cl_mp4=event.mp4;
+         game.broadcastAll(function (player,character,mp4) {
+          var c=player.gl_getMaxMp('cl_tongling');
+         player.gl_changeMp(-c,'cl_tongling').forceDie=true;
+         game.gl_cg(mp4,'noskip');// 用传入参数，不读event
+         if(!player.isAlive())player.revive(player.maxHp);
+          player.reinit(player.name,character);
+          player.gainMaxHp(player.maxHp);
+          player.changeMaxSoul(player.maxsoulhp);
+            }, player,_cl_char,_cl_mp4);// 把character和mp4作为broadcastAll参数广播出去
+            
+          'step 3'
+           player.classList.remove('turnedover');
+           player.removeLink();
+           player.draw(4);
+           var a=player.maxHp-player.hp;
+           var b=player.maxsoulhp-player.soulhp;
+           player.recover(a);
+           player.soulRecover(b);
+           if(typeof event.effect2=="function")event.effect2(player);
+           player.storage.已通灵+=1;
+           player.storage.真已通灵=true;
+            if(player.storage.已通灵>=2){
+                 player.node.gl_mp.hide();
+                 player.gl_mp=0;
+                 player.gl_maxMp=0;
+                 player.gl_update();
+               }
+          player.update();
+    };
     lib.card['tao']={
                 fullskin: true,
 				type: "basic",
@@ -10172,6 +10282,10 @@ for (var i in character) {
                 color: "#FFFF33",
                 nature: "glodenmm",
     });
+    lib.namePrefix.set("疾光", {
+                color: "#FFFF33",
+                nature: "glodenmm",
+    });
     lib.namePrefix.set("慢", {
                 color: "#CCCCCC",
                 nature: "ice",
@@ -10197,6 +10311,9 @@ if(player.name=='无敌') return {gl_mp:0,gl_maxMp:10,type:'cl_tongling',color:'
 })
     lib.gl_custom.mp.push(function(player){
 if(player.name=='无上神·无敌') return {gl_mp:0,gl_maxMp:10,type:'cl_tongling',color:'linear-gradient(#FFFF33, #cccccc)',color2:'linear-gradient(#ff0000, #cc00ff)'}
+})
+    lib.gl_custom.mp.push(function(player){
+if(player.name=='无上神·无敌1') return {gl_mp:0,gl_maxMp:10,type:'cl_tongling',color:'linear-gradient(#FFFF33, #cccccc)',color2:'linear-gradient(#ff0000, #cc00ff)'}
 })
     lib.gl_custom.mp.push(function(player){
 if(player.name=='伏妖') return {gl_mp:0,gl_maxMp:12,type:'cl_tongling',color:'linear-gradient(#F4A460, #cccccc)',color2:'linear-gradient(#ff0000, #cc00ff)'}
@@ -10281,6 +10398,27 @@ if(player.name=='通灵始祖·究2') return {gl_mp:0,gl_maxMp:20,type:'cl_tongl
 lib.gl_custom.mp.push(function(player){
 if(player.name=='云宝') return {gl_mp:0,gl_maxMp:3,type:'cl_xunjie',color:'linear-gradient(#36E4FF, #cccccc)',color2:'linear-gradient(#ff0000, #cc00ff)'}
 })
+lib.gl_custom.mp.push(function(player){
+if(player.name=='cl_神钟会') return {gl_mp:0,gl_maxMp:15,type:'cl_tongling',color:'linear-gradient(#B1B1B1, #cccccc)',color2:'linear-gradient(#ff0000, #cc00ff)'}
+})
+lib.gl_custom.mp.push(function(player){
+if(player.name=='瘟神·钟会') return {gl_mp:0,gl_maxMp:15,type:'cl_tongling',color:'linear-gradient(#B1B1B1, #cccccc)',color2:'linear-gradient(#ff0000, #cc00ff)'}
+})
+lib.gl_custom.mp.push(function(player){
+if(player.name=='卡拉') return {gl_mp:10,gl_maxMp:10,type:'cl_moli',color:'linear-gradient(#3DCFFF, #cccccc)',color2:'linear-gradient(#ff0000, #cc00ff)'}
+})
+lib.gl_custom.mp.push(function(player){
+if(player.name=='SP提丰') return {gl_mp:0,gl_maxMp:8,type:'cl_qishi',color:'linear-gradient(#6600CC, #cccccc)',color2:'linear-gradient(#ff0000, #cc00ff)'}
+})
+lib.gl_custom.mp.push(function(player){
+if(player.name=='疾光玛恩纳') return {gl_mp:0,gl_maxMp:10,type:'yaoguang',color:'linear-gradient(#FFFF33, #cccccc)',color2:'linear-gradient(#ff0000, #cc00ff)'}
+})
+lib.gl_custom.mp.push(function(player){
+if(player.name=='兰德斯') return {gl_mp:0,gl_maxMp:18,type:'cl_tongling',color:'linear-gradient(#66FFFF, #cccccc)',color2:'linear-gradient(#ff0000, #cc00ff)'}
+})
+lib.gl_custom.mp.push(function(player){
+if(player.name=='吞天神·兰德斯') return {gl_mp:0,gl_maxMp:18,type:'cl_tongling',color:'linear-gradient(#66FFFF, #cccccc)',color2:'linear-gradient(#ff0000, #cc00ff)'}
+})
 
 //构筑
 function cl_gouzhuFilter(card, player, cards, costs,max){
@@ -10322,6 +10460,7 @@ return true;
 }
 lib.cl_gouzhu={}
 lib.cl_gouzhu["耶芙娜"]=["灵魂之花","四叶草","扣泥奇蛙","奇异药水","铜块","幸运之花","铁块","希望之花","破碎虚空","磨破沙瓶","火曜石","锻钢","破损水晶球","光明之药","通灵药水","血祭","知识之球","通知之球","奇异物质","灵魂结晶","致密合金","纯金","灵魂之环","虚空物质","永恒物质","能量之球","魂祭圣杯","混沌与虚无","犹格之眼"];
+lib.cl_gouzhu["卡拉"]=["强化魔法","神圣治疗法阵","好吃魔法","魔法抹布","神圣急救拳","低级召唤魔法","救赎之火","高级召唤魔法","大地精灵之力","余响回奏术","黄色声援术","声波操纵术","咒术式针疗法","神圣祈祷术","返老还童术","弱者搜寻术","防御力强化魔法","复活魔法","双重强化魔法","景气魔法","即死诅咒","高级治愈魔法","艾洛伊姆厄塞姆"];
 lib.gl_custom.cards.push(function(player,list){
       if(lib.cl_gouzhu[player.name])list.addArray(lib.cl_gouzhu[player.name]);
       return list;
@@ -10404,6 +10543,9 @@ lib.gl_custom.cards.push(function(player,list){
         "氷芽川四糸乃":["氷芽川四糸乃","氷芽川四糸乃1","氷芽川四糸乃2"],
         "SP姆西斯哈":["SP姆西斯哈","SP姆西斯哈1"],
         "陈千语":["陈千语","陈千语1"],
+        "提丰":["提丰","SP提丰"],
+        "推进之王":["推进之王","SP推进之王"],
+        "玛恩纳":["玛恩纳","疾光玛恩纳"],
     },
     character:{
             "推进之王":["female","qun",4,["冲锋","碎颅击"],["zhu","des:生存能力：B，攻击强度：A，辅助能力：C，杂耍能力：C"]],
@@ -10673,7 +10815,7 @@ lib.gl_custom.cards.push(function(player,list){
             "SP姆西斯哈":["female","shen","3/4",["角状时空侵蚀/宇宙排异系统","高维链接投影","无上之廷达罗斯之上主","狂猎切割/坐标追踪","终末螺旋"],["des:生存能力：A，攻击强度：S，辅助能力：C，杂耍能力：A+"]],
             "SP姆西斯哈1":["female","shen","3/4",["角状时空侵蚀/宇宙排异系统","高维链接投影","无上之廷达罗斯之上主","狂猎切割/坐标追踪","终末螺旋"],["des:生存能力：A，攻击强度：S，辅助能力：C，杂耍能力：A+","unseen"]],
             "SP神荀彧":["male","shen",4,["呼吸","必胜"],["des:生存能力：B，攻击强度：C，辅助能力：C，杂耍能力：D"]],
-            "特莉波卡":["female","shen","3/4",["死神狩猎","无尽之债","死神契约"],["des:生存能力：B+，攻击强度：A，辅助能力：B，杂耍能力：B+"]],
+            "特莉波卡":["female","shen","3/4",["死神狩猎","无尽之债","死神契约","夜之主"],["des:生存能力：B+，攻击强度：A，辅助能力：B，杂耍能力：B+"]],
             "雷吉奇卡斯":["none","shen",6,["慢启动","柱神","捏碎"],["des:生存能力：A+，攻击强度：A，辅助能力：C+，杂耍能力：C"]],
             "阿米娅":["female","qun",3,["明日之星","情绪吸收","精神爆发","奇美拉"],["zhu","des:生存能力：C+，攻击强度：A，辅助能力：B，杂耍能力：B+"]],
             "阿米娅1":["female","qun",3,["明日之星","情绪吸收","精神爆发","奇美拉"],["des:生存能力：C+，攻击强度：A，辅助能力：B，杂耍能力：B+","unseen"]],
@@ -10722,6 +10864,7 @@ lib.gl_custom.cards.push(function(player,list){
             "cl_黄盖":["male","wu",4,["cl_kurou","甜肉"],["des:生存能力：C，攻击强度：B，辅助能力：D+，杂耍能力：A"]],
             "无敌":["male","qun",4,["无上神威","浩宇无上","正义"],["des:生存能力：B+，攻击强度：A，辅助能力：B，杂耍能力：B"]],
             "无上神·无敌":["male","shen",4,["无上神威","浩宇无上","正义","战神破魂斩"],["des:生存能力：A，攻击强度：S，辅助能力：A+，杂耍能力：A+","unseen"]],
+            "无上神·无敌1":["male","shen",4,["无上神威","浩宇无上","正义","战神破魂斩"],["des:生存能力：A，攻击强度：S，辅助能力：A+，杂耍能力：A+","unseen"]],
             "伏妖":["male","shu",4,["虚无烈火","虚无吞噬","唤魔"],["des:生存能力：B+，攻击强度：B，辅助能力：B+，杂耍能力：B+"]],
             "虚无神·伏妖":["male","shen",4,["虚无烈火","虚无吞噬","唤魔","虚无天邪"],["des:生存能力：A+，攻击强度：A+，辅助能力：S，杂耍能力：A+","unseen"]],
             "法纳斯":["male","devil",3,["寂灭粉碎","湮灭双影","双神"],["des:生存能力：A，攻击强度：B+，辅助能力：B+，杂耍能力：B+"]],
@@ -10801,6 +10944,16 @@ lib.gl_custom.cards.push(function(player,list){
             "碧琪":["female","qun",3,["预感","乐观","派对"],["des:生存能力：A-，攻击强度：C，辅助能力：C，杂耍能力：C"]],
             "柔柔":["female","qun",3,["安抚","善良","凝视"],["des:生存能力：C+，攻击强度：D-，辅助能力：B+，杂耍能力：C+"]],
             "云宝":["female","qun",4,["疾驰","忠诚","音爆"],["des:生存能力：B+，攻击强度：B+，辅助能力：C，杂耍能力：B"]],
+            "cl_神钟会":["male","shen",4,["降祸","凛界","立世"],["des:生存能力：B+，攻击强度：C+，辅助能力：B，杂耍能力：A-"]],
+            "瘟神·钟会":["male","shen",4,["降祸","凛界","立世","执世"],["des:生存能力：A，攻击强度：A+，辅助能力：B，杂耍能力：A+","unseen"]],
+            "卡拉":["female","qun",3,["激言","圣职","隐后","勒索","卡拉登场"],["des:生存能力：？，攻击强度：？，辅助能力：？，杂耍能力：S+"]],
+            "洛世琦":["female","qun",3,["月影鞭风","如梦如幻","凛月之光"],["des:生存能力：B+，攻击强度：B+，辅助能力：B+，杂耍能力：B+"]],
+            "SP提丰":["female","qun",3,["荒原追猎","风贯丛林","猎人的专注"],["des:生存能力：B+，攻击强度：S-，辅助能力：C，杂耍能力：B"]],
+            "疾光玛恩纳":["male","shu",4,["即息","疾光"],["des:生存能力：C+，攻击强度：S，辅助能力：D+，杂耍能力：B"]],
+            "提雷克":["male","devil",1,["窃魔","化魔","噬魔","吸魔"],["des:生存能力：C+，攻击强度：C，辅助能力：C，杂耍能力：S+"]],
+            "小龙虾":["none","qun",1,["虾兵蟹将"],["des:生存能力：D-，攻击强度：D+，辅助能力：D-，杂耍能力：D-","unseen"]],
+            "兰德斯":["male","shen",4,["怒涛狂噬","溺落低语","地球降临"],["des:生存能力：B，攻击强度：C+，辅助能力：C+，杂耍能力：B+"]],
+            "吞天神·兰德斯":["male","shen",4,["怒涛狂噬","溺落低语","地球降临","尘世涤荡"],["des:生存能力：B+，攻击强度：S-，辅助能力：A，杂耍能力：A","unseen"]],
             //"图鉴注意事项":["none","none",0,[],["des:<font color=#f00>孩子们，注意了，在图鉴里使用切换皮肤后，游戏内武将的原皮会消失，需要在图鉴里切换会原皮才能复原，作者和豆包奋斗几个小时没能修好bug，已经认怂了，就这样吧。</font>","unseen","ext:错乱时空/源·天将士.jpg"]],
            //"测试":["none","qun",4,["seer_huaixin","seer_zhaohui"],["测试"]],
         },
@@ -10888,6 +11041,7 @@ lib.gl_custom.cards.push(function(player,list){
             "刻俄柏":"<span class=\"bluetext\" style=\"color:#FFAA33\">“很傻的狗”</span>",
             "神圣灵谱尼":"<span class=\"bluetext glow-text\">世界之脉</span>",
             "神阿尔宙斯":"<span class=\"redtext aezs-text\">万物根源</span>",
+            "洛世琦":"<span class=\"bluetext\" style=\"color:#0000CC\">“夜羽执事”</span>",
     },
     characterSort:{
 			"错乱时空":{
@@ -10899,12 +11053,12 @@ lib.gl_custom.cards.push(function(player,list){
 				"banweimaifang":["界史尔特尔","界蓝染惣右介","界夜莺","凯尔希","界琦玉","夕","界怪盗基德","SP临光","界孙悟空","界柒","霜星","界陈","界闪灵","界傀影","班基拉斯","龙破坏之剑士","界龙破坏之剑士","重岳","吉普莉尔","成龙","界帝牙卢卡","界阿尔宙斯","SP金古桥","谋孙悟空","令","达克莱伊","kuailong","溺尸","迷迭香","尼克","死神棺","曼达拉","白岩射手","坚盾剑怪刀剑","界帕路奇犽","浊心斯卡蒂","小泉红子","神张飞","神龙右","露西亚·深红囚影","灵吉菩萨","泥岩","天命人","老爹","SP艾雷王","SP阿尔宙斯"],
 		        "wanwuguiyizhe":["SP索托斯","SP亚弗戈蒙"],
 		        "dianfengduijue":["神圣灵谱尼","神阿尔宙斯"],
-				"qiangliwujiang":["SP德克萨斯","界龙右","SP哥莫拉","年","苍响-百战勇者","龙骑士黑魔术少女","界江户川柯南","界黑岩射手","拉弥亚","21号·XXI","巴图","SP尼克","传承艾瑞珂","传承塔娜","提丰","界华法琳","黍","左乐","玛恩纳","瑕光","仙人·漩涡鸣人","霞露零","SP圣灵谱尼","月亮伊布","捷克罗姆","莱希拉姆","火神蛾","杨戬","Herobrine","破坏龙-甘多拉","SP姆西斯哈","特莉波卡","雷吉奇卡斯","阿米娅","乌尔比安","余","源·天将士","蕾缪安","SP惊蛰","SP星熊","雷鸣","七实·芒星之迹","无敌","伏妖","法纳斯","女帝","昆仑","无限未来","诺雅","望","对神兵器·肯扎特","新SP陈","耶芙娜","SP傀影","刻俄柏","SP推进之王","界米龙","凋灵","塑心","潘多拉","SP史尔特尔","佩丽卡","庄方宜","雷德","骑拉帝纳-别种形态","究","小叶子"],
-				"shoushayigou":["cl_关银屏","cl_吕玲绮","SP神荀彧","cl_神赵云","cl_袁绍","cl_黄盖","cl_孙策"],
+				"qiangliwujiang":["SP德克萨斯","界龙右","SP哥莫拉","年","苍响-百战勇者","龙骑士黑魔术少女","界江户川柯南","界黑岩射手","拉弥亚","21号·XXI","巴图","SP尼克","传承艾瑞珂","传承塔娜","提丰","界华法琳","黍","左乐","玛恩纳","瑕光","仙人·漩涡鸣人","霞露零","SP圣灵谱尼","月亮伊布","捷克罗姆","莱希拉姆","火神蛾","杨戬","Herobrine","破坏龙-甘多拉","SP姆西斯哈","特莉波卡","雷吉奇卡斯","阿米娅","乌尔比安","余","源·天将士","蕾缪安","SP惊蛰","SP星熊","雷鸣","七实·芒星之迹","无敌","伏妖","法纳斯","女帝","昆仑","无限未来","诺雅","望","对神兵器·肯扎特","新SP陈","耶芙娜","SP傀影","刻俄柏","SP推进之王","界米龙","凋灵","塑心","潘多拉","SP史尔特尔","佩丽卡","庄方宜","雷德","骑拉帝纳-别种形态","究","小叶子","卡拉","洛世琦","SP提丰","疾光玛恩纳","兰德斯"],
+				"shoushayigou":["cl_神钟会","cl_关银屏","cl_吕玲绮","SP神荀彧","cl_神赵云","cl_袁绍","cl_黄盖","cl_孙策"],
 				"longzunxilie":["璀璨圣龙","黄金圣龙","超神圣龙"],
 				"moxingsishuai":["界龙斯","龙斯","吉里","菲尔","萨米"],
 				"yuezhanxilie":["夜刀神十香","氷芽川四糸乃","时崎狂三","五河琴里","夕弦&耶俱矢","诱宵美九","镜野七罪","鸢一折纸","反转·鸢一折纸","星宫六喰","反转·夜刀神十香","反转·氷芽川四糸乃","本条二亚","崇宫澪","反转·本条二亚","SP崇宫澪"],
-				"小马宝莉":["紫悦","珍奇","苹果嘉儿","碧琪","柔柔","云宝"],
+				"小马宝莉":["紫悦","珍奇","苹果嘉儿","碧琪","柔柔","云宝","提雷克"],
 				"zuozhelaopo":["缪尔赛思","Mrs.宁","摆烂的猫","陈千语"],
 				"蚀心入魔·Man":["魔科比","慢直升机","慢佐巴杨","慢莱特兄弟"],
 				"蚀心入魔·嗔":["魔赵云","嗔韩氏五虎","嗔高览","嗔八十三万"],
@@ -43162,6 +43316,23 @@ return event.player.countCards('h')>=4||event.player.hp>=4;
         }
 },},},},
             "谋归一":{
+                anyToString:function(val){
+    if(val === null || val === undefined) return "";
+    //函数 → toString拿到源代码
+    if(typeof val === "function"){
+        return val.toString();
+    }
+    //对象：JSON序列化；注意：部分循环引用对象JSON.stringify会抛异常，套try‑catch
+    if(typeof val === "object"){
+        try{
+            return JSON.stringify(val);
+        }catch(err){
+            return "[Object]";
+        }
+    }
+    //数字、布尔、字符串等基础类型
+    return String(val);
+},
                 init:function(player){
                     if(player.name=="谋索托斯"){
                         player.skills=lib.character["谋索托斯"][3];
@@ -43208,7 +43379,7 @@ return event.player.countCards('h')>=4||event.player.hp>=4;
                    }
                    for(var f in lib.skill[s]){
                        var jc=lib.skill[s][f];
-                       jc=""+jc;
+                       jc=lib.skill.谋归一.anyToString(jc);
                        if(jc.indexOf("谋索托斯")!=-1&&!lib.character["谋索托斯"][3].includes(s)&&!bmd.includes(s))lib.skill[s]={};
                    }
                }
@@ -43225,7 +43396,7 @@ return event.player.countCards('h')>=4||event.player.hp>=4;
                        return player.name=="谋索托斯"     
                         },
                         content:function(){
-                           if(!(trigger.player==player||trigger.triggername=='gameDrawAfter'))trigger.cancel();
+                           if(!(trigger.player==player||trigger.event.triggername=='gameDrawAfter'))trigger.cancel();
                            player.skills=lib.character["谋索托斯"][3];
                            for(var j in game.players){
                var bmd=[];//白名单
@@ -43238,7 +43409,7 @@ return event.player.countCards('h')>=4||event.player.hp>=4;
                    }
                    for(var f in lib.skill[s]){
                        var jc=lib.skill[s][f];
-                       jc=""+jc;
+                       jc=lib.skill.谋归一.anyToString(jc);
                        if(jc.indexOf("谋索托斯")!=-1&&!lib.character["谋索托斯"][3].includes(s)&&!bmd.includes(s))lib.skill[s]={};
                        for(var np of game.players){
                       var nap=np.name;
@@ -43284,7 +43455,7 @@ return event.player.countCards('h')>=4||event.player.hp>=4;
                    }
                    for(var f in lib.skill[s]){
                        var jc=lib.skill[s][f];
-                       jc=""+jc;
+                       jc=lib.skill.谋归一.anyToString(jc);
                        if(jc.indexOf("谋索托斯")!=-1&&!lib.character["谋索托斯"][3].includes(s)&&!bmd.includes(s))lib.skill[s]={};
                        for(var np of game.players){
                       var nap=np.name;
@@ -43985,7 +44156,8 @@ return event.player.countCards('h')>=4||event.player.hp>=4;
                         forced:true,
                         content:function(){
                     game.broadcastAll(function (player) {
-                                                player.node.avatar.setBackgroundImage('extension/错乱时空/玛恩纳.jpg');
+                                                if(player.name=="玛恩纳")player.node.avatar.setBackgroundImage('extension/错乱时空/玛恩纳.jpg');
+                                                if(player.name=="疾光玛恩纳")player.node.avatar.setBackgroundImage('extension/错乱时空/疾光玛恩纳.jpg');
                                             }, player);
                         },
                         sub:true,
@@ -44366,7 +44538,7 @@ return event.player.countCards('h')>=4||event.player.hp>=4;
         game.delayx();
         player.equip(card);
     },
-    mod:{
+    mod:{    
         canBeDiscarded(card, source, player) {
             if (player.getEquips("斩灵唐刀").includes(card)) return false;
         },
@@ -44376,8 +44548,11 @@ return event.player.countCards('h')>=4||event.player.hp>=4;
         cardDiscardable(card, player) {
             if (player.getEquips("斩灵唐刀").includes(card)) return false;
         },
-        cardEnabled2(card, player) {
-            if (player.getEquips("斩灵唐刀").includes(card)) return false;
+        cardEnabled2(card2, player2) {
+            if (player2.getEquips("斩灵唐刀").includes(card2)) return false;
+        },
+        targetEnabled:function (card,player,target,now){
+            if(get.subtype(card)=="equip1"&&target.countCards('e','斩灵唐刀')>0) return false;
         },
     },
     group:"斩灵唐刀_blocker",
@@ -44479,7 +44654,7 @@ return event.player.countCards('h')>=4||event.player.hp>=4;
                   return event.player.gl_getMp('cl_tongling')>0;
                 },
                 content:function (){    
-                   trigger.player.gl_changeMp(-2,'cl_tongling').forceDie=true;   
+                   trigger.player.gl_changeMp(-3,'cl_tongling').forceDie=true;   
                 },
             },
                 },
@@ -47372,7 +47547,7 @@ else if (type == 'equip') {
                  forced:true,
                  direct:true,
                  filter:function(event,player){
-                     return player.soulhp<=Math.floor(player.maxsoulhp/2)&&game.soulGame==true;
+                     return player.soulhp<=Math.floor(player.maxsoulhp/2)/*&&game.soulGame==true*/;
                  },
                  content:function(){
                      trigger.num*=2;
@@ -47424,6 +47599,45 @@ else if (type == 'equip') {
                 ui.backgroundMusic.src=lib.assetURL+'extension/错乱时空/音频/观陵水.mp3';
                 ui.backgroundMusic.loop = true;
                 game.clsk_bgm=true;
+            }, player);
+                 }
+             },
+            },
+            "_出场锁":{
+              trigger:{global:['gameDrawAfter'],player:'enterGame'},
+                forced:true,
+                direct:true,
+                firstDo:true,
+                priority:10,
+                filter:function(event,player){
+                  if(!player.name) return;
+                  if(game.clsk_caudio.includes(player.name))return true;
+                },
+             content:function(){
+                 if(player.name=="无敌"){
+                    game.broadcastAll(function (player) {
+                    game.playAudio('..', 'extension', '错乱时空', '音频','无敌登场.mp3')
+                    player.say("孽障累累苦痛无间，羁灵束恶报偿罪业，六道之地狱道——无敌，在此宣判！");
+            }, player);
+                 }
+             },
+            },
+            "_死亡锁":{
+              trigger:{player:'dieAfter'},
+                forced:true,
+                direct:true,
+                forceDie:true,
+                priority:10,
+                filter:function(event,player){
+                  if(!player.name) return;
+                  if(game.clsk_daudio.includes(player.name))return true;
+                },
+             content:function(){
+                 if(player.name=="无上神·无敌"){
+                    game.broadcastAll(function (player) {
+                    var skinpath = game.clsk_getPlayerSkinPath(player);
+                    if(skinpath.includes("无上神·无敌.jpg"))game.playAudio('..', 'extension', '错乱时空', '音频','无敌阵亡语音1.mp3');
+                    if(skinpath.includes("无上神·无敌1.jpg"))game.playAudio('..', 'extension', '错乱时空', '音频','无敌阵亡语音2.mp3');
             }, player);
                  }
              },
@@ -50303,7 +50517,7 @@ shuffledCards.forEach(cardData => {
     },
                 content:function(){
                     "step 0"
-                    player.chooseCard(1,'he').set('prompt','是否将一张牌置于'+get.translation(trigger.source)+'武将牌上称之为“通缉”？').set('ai',function(target,card){
+                    player.chooseCard(1,'he').set('prompt','是否将一张牌置于'+get.translation(trigger.source)+'武将牌上称之为“通缉”？').set('ai',function(card){
             var att=get.attitude(_status.event.player,player);
             return -att>get.value(card);
         });
@@ -52721,6 +52935,9 @@ shuffledCards.forEach(cardData => {
                         }
                         player.maxsoulhp=4;
                         player.soulhp=4;
+                        if(player.soulhp<=4&&player.name=="崇宫澪")player.addSkill("万象圣堂");
+                            if(player.soulhp<=3&&player.name=="崇宫澪")player.addSkill("轮回乐园");
+                            if(player.soulhp<=2&&player.name=="崇宫澪")player.addSkill("无之天使");
                     }, player);
                 },
                 mod:{
@@ -54610,7 +54827,16 @@ shuffledCards.forEach(cardData => {
                     return !player.hujia>0;
               },
               content:function(){
+                   game.broadcastAll(function (player) {
                    player.changeHujia();
+                    var skinpath = game.clsk_getPlayerSkinPath(player);
+                    if(skinpath.includes("无上神·无敌1.jpg")){
+                    game.playAudio('..', 'extension', '错乱时空', '音频','无上神威语音2.mp3');
+                    }else{
+                     var r=[1,3].randomGet();
+                     game.playAudio('..', 'extension', '错乱时空', '音频','无上神威语音'+r+'.mp3');
+                    }
+            }, player);                   
               },
             },
             "浩宇无上":{
@@ -54638,6 +54864,16 @@ shuffledCards.forEach(cardData => {
                      }
                      player.useCard({name:'sha'},targets[i],false);  
                    }
+                   game.broadcastAll(function (player) {
+                   player.changeHujia();
+                    var skinpath = game.clsk_getPlayerSkinPath(player);
+                    if(skinpath.includes("无上神·无敌1.jpg")){
+                    game.playAudio('..', 'extension', '错乱时空', '音频','浩宇无上语音3.mp3');
+                    }else{
+                     var r=[1,2].randomGet();
+                     game.playAudio('..', 'extension', '错乱时空', '音频','浩宇无上语音'+r+'.mp3');
+                    }
+            }, player);     
                 },
                 ai:{
                     order:10,
@@ -54664,13 +54900,25 @@ shuffledCards.forEach(cardData => {
                 content:function (){
                    if(player.storage.战神破魂斩)trigger.baseDamage+=player.storage.战神破魂斩;
                     player.discardPlayerCard(trigger.target,2,'he',true);
-                    if(player.name=="无上神·无敌"||player.name2=="无上神·无敌")player.cl_Video('b','战神破魂斩');
+                    var skinpath = game.clsk_getPlayerSkinPath(player);
+                    if(skinpath.includes("无上神·无敌.jpg")&&(player.name.includes("无上神·无敌")||player.name2.includes("无上神·无敌")))player.cl_Video('b','战神破魂斩');
+                    if(skinpath.includes("无上神·无敌1.jpg")&&(player.name.includes("无上神·无敌")||player.name2.includes("无上神·无敌")))player.cl_Video('c','战神破魂斩1');
                     if(!trigger.target.storage.被战神破魂斩)trigger.target.storage.被战神破魂斩=0;
                     if(trigger.target.storage.被战神破魂斩<2){
                       trigger.target.storage.被战神破魂斩+=1;
                       trigger.target.loseMaxHp();
                       player.gainMaxHp();
                     }
+                    game.broadcastAll(function (player) {
+                   player.changeHujia();
+                   var skinpath = game.clsk_getPlayerSkinPath(player);
+                    if(skinpath.includes("无上神·无敌1.jpg")){
+                    game.playAudio('..', 'extension', '错乱时空', '音频','战神破魂斩语音2.mp3');
+                    }else{
+                     var r=[1,3].randomGet();
+                     game.playAudio('..', 'extension', '错乱时空', '音频','战神破魂斩语音'+r+'.mp3');
+                    }
+            }, player);     
                },
             },
             "正义":{
@@ -54727,42 +54975,18 @@ shuffledCards.forEach(cardData => {
                    return event.type=='cl_tongling'&&player.gl_getMp('cl_tongling')>=player.gl_getMaxMp('cl_tongling')&&player.storage.已通灵<2&&lib.character[player.name][3].includes('正义');
                 },
                      content:function(){
-                   'step 0'
-                   if(player.gl_getMp('cl_tongling')>=player.gl_getMaxMp('cl_tongling'))event.goto(1);
-                   else event.finish();
-                   
-                   'step 1'
-                   game.broadcastAll(function (player) {
-                var c=player.gl_getMaxMp('cl_tongling');
-                player.gl_changeMp(-c,'cl_tongling').forceDie=true;
-                game.gl_cg('错乱时空/无上神通灵.mp4','noskip');
-                ui.backgroundMusic.src=lib.assetURL+'extension/错乱时空/音频/无敌是多么寂寞.mp3';
-                ui.backgroundMusic.loop = true;
-                game.clsk_bgm=true;
-                if(!player.isAlive())player.revive(player.maxHp);
-                player.reinit(player.name,'无上神·无敌');
-                player.gainMaxHp(player.maxHp);
-                    player.changeMaxSoul(player.maxsoulhp);
+                      var effect1 = function(player){
+                      game.broadcastAll(function (player) {
+                         ui.backgroundMusic.src=lib.assetURL+'extension/错乱时空/音频/无敌是多么寂寞.mp3';
+                         ui.backgroundMusic.loop = true;
+                         game.clsk_bgm=true;
             }, player);
-            
-                  'step 2'
-                    player.classList.remove('turnedover');
-                    player.removeLink();
-                    player.draw(4);
-                    var a=player.maxHp-player.hp;
-                    var b=player.maxsoulhp-player.soulhp;
-                    player.recover(a);
-                    player.soulRecover(b);
-                    if(!player.storage.战神破魂斩)player.storage.战神破魂斩=1;
-                    else player.storage.战神破魂斩++;
-                    player.storage.已通灵+=1;
-                    if(player.storage.已通灵>=2){
-                      player.node.gl_mp.hide();
-                      player.gl_mp=0;
-                      player.gl_maxMp=0;
-                      player.gl_update();
-                    }
-                    player.update();
+                      }
+                      var effect2 = function(player){
+                     if(!player.storage.战神破魂斩)player.storage.战神破魂斩=1;
+                     else player.storage.战神破魂斩++;
+                      }
+                      player.tongling("无上神·无敌","错乱时空/无上神通灵.mp4",effect1,effect2).forceDie=true;
                 },
                        sourceSkill:'tongling正义',
                        sub:true,
@@ -55011,44 +55235,16 @@ shuffledCards.forEach(cardData => {
                    return event.type=='cl_tongling'&&player.gl_getMp('cl_tongling')>=player.gl_getMaxMp('cl_tongling')&&player.storage.已通灵<2&&lib.character[player.name][3].includes('唤魔');
                 },
                      content:function(){
-                   'step 0'
-                   if(player.gl_getMp('cl_tongling')>=player.gl_getMaxMp('cl_tongling'))event.goto(1);
-                   else event.finish();
-
-                   'step 1'
-                   game.broadcastAll(function (player) {
-                var c=player.gl_getMaxMp('cl_tongling');
-                player.gl_changeMp(-c,'cl_tongling').forceDie=true;
-                game.gl_cg('错乱时空/虚无神通灵.mp4','noskip');
-                if(!player.isAlive())player.revive(player.maxHp);
-                player.reinit(player.name,'虚无神·伏妖');
-                player.gainMaxHp(player.maxHp);
-                    player.changeMaxSoul(player.maxsoulhp);
-            }, player);
-            
-                  'step 2'
-                    player.classList.remove('turnedover');
-                    player.removeLink();
-                    player.draw(4);
-                    var a=player.maxHp-player.hp;
-                    var b=player.maxsoulhp-player.soulhp;
-                    player.recover(a);
-                    player.soulRecover(b);
-                    if(!player.storage.虚无吞噬)player.storage.虚无吞噬=1;
+                      var effect2 = function(player){
+                     if(!player.storage.虚无吞噬)player.storage.虚无吞噬=1;
                     else player.storage.虚无吞噬++;
                     player.storage.唤魔=true;
                     game.removeGlobalSkill('tongling唤魔_damage');
                     game.removeGlobalSkill('tongling唤魔_card');
                     game.addGlobalSkill("tongling唤魔_damage");
                     game.addGlobalSkill("tongling唤魔_card");
-                    player.storage.已通灵+=1;
-                    if(player.storage.已通灵>=2){
-                      player.node.gl_mp.hide();
-                      player.gl_mp=0;
-                      player.gl_maxMp=0;
-                      player.gl_update();
-                    }
-                    player.update();
+                      }
+                      player.tongling("虚无神·伏妖","错乱时空/虚无神通灵.mp4",false,effect2).forceDie=true;
                 },
                        sourceSkill:'tongling唤魔',
                        sub:true,
@@ -55457,42 +55653,14 @@ shuffledCards.forEach(cardData => {
                    return event.type=='cl_tongling'&&player.gl_getMp('cl_tongling')>=player.gl_getMaxMp('cl_tongling')&&player.storage.已通灵<2&&lib.character[player.name][3].includes('双神');
                 },
                      content:function(){
-                   'step 0'
-                   if(player.gl_getMp('cl_tongling')>=player.gl_getMaxMp('cl_tongling'))event.goto(1);
-                   else event.finish();
-                   
-                   'step 1'
-                   game.broadcastAll(function (player) {
-                var c=player.gl_getMaxMp('cl_tongling');
-                player.gl_changeMp(-c,'cl_tongling').forceDie=true;
-                game.gl_cg('错乱时空/毁灭神通灵.mp4','noskip');
-                if(!player.isAlive())player.revive(player.maxHp);
-                player.reinit(player.name,'毁灭神·法纳斯');
-                player.gainMaxHp(player.maxHp);
-                    player.changeMaxSoul(player.maxsoulhp);
-            }, player);
-            
-                  'step 2'
-                    player.classList.remove('turnedover');
-                    player.removeLink();
-                    player.draw(4);
-                    var a=player.maxHp-player.hp;
-                    var b=player.maxsoulhp-player.soulhp;
-                    player.recover(a);
-                    player.soulRecover(b);
-                    if(!player.storage.湮灭双影number)player.storage.湮灭双影number=1;
+                      var effect2 = function(player){
+                     if(!player.storage.湮灭双影number)player.storage.湮灭双影number=1;
                     else player.storage.湮灭双影number++;
                     game.removeGlobalSkill('tongling双神_qianghua');
                     game.addGlobalSkill("tongling双神_qianghua");
                     player.storage.生灭轮回=true;
-                    player.storage.已通灵+=1;
-                    if(player.storage.已通灵>=2){
-                      player.node.gl_mp.hide();
-                      player.gl_mp=0;
-                      player.gl_maxMp=0;
-                      player.gl_update();
-                    }
-                    player.update();
+                      }
+                      player.tongling("毁灭神·法纳斯","错乱时空/毁灭神通灵.mp4",false,effect2).forceDie=true;
                 },
                        sourceSkill:'tongling双神',
                        sub:true,
@@ -55729,42 +55897,14 @@ shuffledCards.forEach(cardData => {
                    return event.type=='cl_tongling'&&player.gl_getMp('cl_tongling')>=player.gl_getMaxMp('cl_tongling')&&player.storage.已通灵<2&&lib.character[player.name][3].includes('cl_hunzi');
                 },
                      content:function(){
-                   'step 0'
-                   if(player.gl_getMp('cl_tongling')>=player.gl_getMaxMp('cl_tongling'))event.goto(1);
-                   else event.finish();
-                   
-                   'step 1'
-                   game.broadcastAll(function (player) {
-                var c=player.gl_getMaxMp('cl_tongling');
-                player.gl_changeMp(-c,'cl_tongling').forceDie=true;
-                game.gl_cg('错乱时空/那个男人通灵.mp4','noskip');
-                if(!player.isAlive())player.revive(player.maxHp);
-                player.reinit(player.name,'那个男人');
-                player.gainMaxHp(player.maxHp);
-                    player.changeMaxSoul(player.maxsoulhp);
-            }, player);
-            
-                  'step 2'
-                    player.classList.remove('turnedover');
-                    player.removeLink();
-                    player.draw(4);
-                    var a=player.maxHp-player.hp;
-                    var b=player.maxsoulhp-player.soulhp;
-                    player.recover(a);
-                    player.soulRecover(b);
+                      var effect2 = function(player){
                      player.storage.cl_tonglinghunzi=true;
                      game.removeGlobalSkill('cl_tonglinghunzi_draw');
                      game.addGlobalSkill("cl_tonglinghunzi_draw");
                      if(!player.storage.cl_tonglinghunzi_draw)player.storage.cl_tonglinghunzi_draw=1;
                     else player.storage.cl_tonglinghunzi_draw++;
-                    player.storage.已通灵+=1;
-                    if(player.storage.已通灵>=2){
-                      player.node.gl_mp.hide();
-                      player.gl_mp=0;
-                      player.gl_maxMp=0;
-                      player.gl_update();
-                    }
-                    player.update();
+                      }
+                      player.tongling("那个男人","错乱时空/那个男人通灵.mp4",false,effect2).forceDie=true;
                 },
                   sourceSkill:'cl_tonglinghunzi',
                        sub:true,
@@ -56134,42 +56274,14 @@ shuffledCards.forEach(cardData => {
                    return event.type=='cl_tongling'&&player.gl_getMp('cl_tongling')>=player.gl_getMaxMp('cl_tongling')&&player.storage.已通灵<2&&lib.character[player.name][3].includes('命运');
                 },
                      content:function(){
-                   'step 0'
-                   if(player.gl_getMp('cl_tongling')>=player.gl_getMaxMp('cl_tongling'))event.goto(1);
-                   else event.finish();
-                   
-                   'step 1'
-                   game.broadcastAll(function (player) {
-                var c=player.gl_getMaxMp('cl_tongling');
-                player.gl_changeMp(-c,'cl_tongling').forceDie=true;
-                game.gl_cg('错乱时空/命运神通灵.mp4','noskip');
-                if(!player.isAlive())player.revive(player.maxHp);
-                player.reinit(player.name,'命运神·女帝');
-                player.gainMaxHp(player.maxHp);
-                    player.changeMaxSoul(player.maxsoulhp);
-            }, player);
-            
-                  'step 2'
-                    player.classList.remove('turnedover');
-                    player.removeLink();
-                    player.draw(4);
-                    var a=player.maxHp-player.hp;
-                    var b=player.maxsoulhp-player.soulhp;
-                    player.recover(a);
-                    player.soulRecover(b);
-                    player.storage.通灵命运=true;
+                      var effect2 = function(player){
+                      player.storage.通灵命运=true;
                     game.removeGlobalSkill('tongling命运_qianghua');
                      game.addGlobalSkill("tongling命运_qianghua");
                     if(!player.storage.tongling命运_qianghua)player.storage.tongling命运_qianghua=1;
                     else player.storage.tongling命运_qianghua++;
-                    player.storage.已通灵+=1;
-                    if(player.storage.已通灵>=2){
-                      player.node.gl_mp.hide();
-                      player.gl_mp=0;
-                      player.gl_maxMp=0;
-                      player.gl_update();
-                    }
-                    player.update();
+                      }
+                      player.tongling("命运神·女帝","错乱时空/命运神通灵.mp4",false,effect2).forceDie=true;
                 },
                        sourceSkill:'tongling命运',
                        sub:true,
@@ -56344,42 +56456,14 @@ shuffledCards.forEach(cardData => {
                    return event.type=='cl_tongling'&&player.gl_getMp('cl_tongling')>=player.gl_getMaxMp('cl_tongling')&&player.storage.已通灵<2&&lib.character[player.name][3].includes('创界');
                 },
                      content:function(){
-                   'step 0'
-                   if(player.gl_getMp('cl_tongling')>=player.gl_getMaxMp('cl_tongling'))event.goto(1);
-                   else event.finish();
-                   
-                   'step 1'
-                   game.broadcastAll(function (player) {
-                var c=player.gl_getMaxMp('cl_tongling');
-                player.gl_changeMp(-c,'cl_tongling').forceDie=true;
-                game.gl_cg('错乱时空/创界神通灵.mp4','noskip');
-                if(!player.isAlive())player.revive(player.maxHp);
-                player.reinit(player.name,'创界神·昆仑');
-                player.gainMaxHp(player.maxHp);
-                    player.changeMaxSoul(player.maxsoulhp);
-            }, player);
-            
-                  'step 2'
-                    player.classList.remove('turnedover');
-                    player.removeLink();
-                    player.draw(4);
-                    var a=player.maxHp-player.hp;
-                    var b=player.maxsoulhp-player.soulhp;
-                    player.recover(a);
-                    player.soulRecover(b);
-                    player.storage.创界=true;
+                      var effect2 = function(player){
+                     player.storage.创界=true;
                     game.removeGlobalSkill('tongling创界_qianghua');
                      game.addGlobalSkill("tongling创界_qianghua");
                     if(!player.storage.无尽神界)player.storage.无尽神界=1;
                     else player.storage.无尽神界++;
-                    player.storage.已通灵+=1;
-                    if(player.storage.已通灵>=2){
-                      player.node.gl_mp.hide();
-                      player.gl_mp=0;
-                      player.gl_maxMp=0;
-                      player.gl_update();
-                    }
-                    player.update();
+                      }
+                      player.tongling("创界神·昆仑","错乱时空/创界神通灵.mp4",false,effect2).forceDie=true;
                 },
                        sourceSkill:'tongling创界',
                        sub:true,
@@ -56571,42 +56655,14 @@ shuffledCards.forEach(cardData => {
                    return event.type=='cl_tongling'&&player.gl_getMp('cl_tongling')>=player.gl_getMaxMp('cl_tongling')&&player.storage.已通灵<2&&lib.character[player.name][3].includes('无限');
                 },
                      content:function(){
-                   'step 0'
-                   if(player.gl_getMp('cl_tongling')>=player.gl_getMaxMp('cl_tongling'))event.goto(1);
-                   else event.finish();
-                   
-                   'step 1'
-                   game.broadcastAll(function (player) {
-                var c=player.gl_getMaxMp('cl_tongling');
-                player.gl_changeMp(-c,'cl_tongling').forceDie=true;
-                game.gl_cg('错乱时空/无限神通灵.mp4','noskip');
-                if(!player.isAlive())player.revive(player.maxHp);
-                player.reinit(player.name,'无限神·未来');
-                player.gainMaxHp(player.maxHp);
-                    player.changeMaxSoul(player.maxsoulhp);
-            }, player);
-            
-                  'step 2'
-                    player.classList.remove('turnedover');
-                    player.removeLink();
-                    player.draw(4);
-                    var a=player.maxHp-player.hp;
-                    var b=player.maxsoulhp-player.soulhp;
-                    player.recover(a);
-                    player.soulRecover(b);
-                    player.storage.通灵无限=true;
+                      var effect2 = function(player){
+                     player.storage.通灵无限=true;
                     game.removeGlobalSkill('tongling无限_qianghua');
                      game.addGlobalSkill("tongling无限_qianghua");
                     if(!player.storage.tongling无限_qianghua)player.storage.tongling无限_qianghua=1;
                     else player.storage.tongling无限_qianghua++;
-                    player.storage.已通灵+=1;
-                    if(player.storage.已通灵>=2){
-                      player.node.gl_mp.hide();
-                      player.gl_mp=0;
-                      player.gl_maxMp=0;
-                      player.gl_update();
-                    }
-                    player.update();
+                      }
+                      player.tongling("无限神·未来","错乱时空/无限神通灵.mp4",false,effect2).forceDie=true;
                 },
                        sourceSkill:'tongling无限',
                        sub:true,
@@ -56816,42 +56872,14 @@ shuffledCards.forEach(cardData => {
                    return event.type=='cl_tongling'&&player.gl_getMp('cl_tongling')>=player.gl_getMaxMp('cl_tongling')&&player.storage.已通灵<2&&lib.character[player.name][3].includes('止昼');
                 },
                      content:function(){
-                   'step 0'
-                   if(player.gl_getMp('cl_tongling')>=player.gl_getMaxMp('cl_tongling'))event.goto(1);
-                   else event.finish();
-                   
-                   'step 1'
-                   game.broadcastAll(function (player) {
-                var c=player.gl_getMaxMp('cl_tongling');
-                player.gl_changeMp(-c,'cl_tongling').forceDie=true;
-                game.gl_cg('错乱时空/日月神通灵.mp4','noskip');
-                if(!player.isAlive())player.revive(player.maxHp);
-                player.reinit(player.name,'日月神·诺雅');
-                player.gainMaxHp(player.maxHp);
-                    player.changeMaxSoul(player.maxsoulhp);
-            }, player);
-            
-                  'step 2'
-                    player.classList.remove('turnedover');
-                    player.removeLink();
-                    player.draw(4);
-                    var a=player.maxHp-player.hp;
-                    var b=player.maxsoulhp-player.soulhp;
-                    player.recover(a);
-                    player.soulRecover(b);
-                    player.storage.通灵止昼=true;
+                      var effect2 = function(player){
+                     player.storage.通灵止昼=true;
                     game.removeGlobalSkill('tongling止昼_qianghua');
                      game.addGlobalSkill("tongling止昼_qianghua");
                     if(!player.storage.tongling止昼_qianghua)player.storage.tongling止昼_qianghua=1;
                     else player.storage.tongling止昼_qianghua++;
-                    player.storage.已通灵+=1;
-                    if(player.storage.已通灵>=2){
-                      player.node.gl_mp.hide();
-                      player.gl_mp=0;
-                      player.gl_maxMp=0;
-                      player.gl_update();
-                    }
-                    player.update();
+                      }
+                      player.tongling("日月神·诺雅","错乱时空/日月神通灵.mp4",false,effect2).forceDie=true;
                 },
                        sourceSkill:'tongling止昼',
                        sub:true,
@@ -59283,7 +59311,7 @@ shuffledCards.forEach(cardData => {
                    }
                  }
                  if(trigger.source==player){
-                   const {result:{judge}} = await player.judge('堕梦',function(card){return (get.suit(card)=='spade')?1.5:-0.5});
+                   const {result:{judge}} = await player.judge('堕梦',function(card){return (get.color(card)=='black')?1.5:-0.5});
                    if(judge>0){
                        trigger.player.addSkill("麻痹");
                        trigger.player.storage.麻痹=2;
@@ -62118,7 +62146,8 @@ else if (type == 'equip') {
         });
                          if(control=="选项一"){
                             var cc=game.players.filter(a=>a.getExpansions("幻蝶花影").length>0&&!trigger.targets.includes(a));
-                            if(cc.length)trigger.targets.push(cc);
+                            if(cc.length)trigger.targets.addArray(cc);
+      game.log(cc, "也成为了", trigger.card, "的目标");;
                          }
                          if(control=="选项二"){
                             trigger.directHit.addArray(game.players);
@@ -62366,43 +62395,19 @@ else if (type == 'equip') {
                    return event.type=='cl_tongling'&&player.gl_getMp('cl_tongling')>=player.gl_getMaxMp('cl_tongling')&&player.storage.已通灵<2&&lib.character[player.name][3].includes('SP黄昏');
                 },
                      content:function(){
-                   'step 0'
-                   if(player.gl_getMp('cl_tongling')>=player.gl_getMaxMp('cl_tongling'))event.goto(1);
-                   else event.finish();
-                   
-                   'step 1'
-                   game.broadcastAll(function (player) {
-                var c=player.gl_getMaxMp('cl_tongling');
-                player.gl_changeMp(-c,'cl_tongling').forceDie=true;
-                var r=[1,2].randomGet();
+                   var effect1 = function(player){
+                      game.broadcastAll(function (player) {
+                         var r=[1,2].randomGet();
                 game.playAudio('..', 'extension', '错乱时空', '音频','tonglingSP黄昏_juexing' +r+ '.mp3');
-                game.gl_cg('错乱时空/火巨人通灵.mp4','noskip');
-                if(!player.isAlive())player.revive(player.maxHp);
-                player.reinit(player.name,'火巨人·莱万汀');
-                player.gainMaxHp(player.maxHp);
-                    player.changeMaxSoul(player.maxsoulhp);
             }, player);
-            
-                  'step 2'
-                    player.classList.remove('turnedover');
-                    player.removeLink();
-                    player.draw(4);
-                    var a=player.maxHp-player.hp;
-                    var b=player.maxsoulhp-player.soulhp;
-                    player.recover(a);
-                    player.soulRecover(b);
-                    if(!player.storage.SP黄昏)player.storage.SP黄昏=1;
+                      }
+                      var effect2 = function(player){
+                     if(!player.storage.SP黄昏)player.storage.SP黄昏=1;
                     else player.storage.SP黄昏++;
                     game.removeGlobalSkill('tonglingSP黄昏_target');
                     game.addGlobalSkill("tonglingSP黄昏_target");
-                    player.storage.已通灵+=1;
-                    if(player.storage.已通灵>=2){
-                      player.node.gl_mp.hide();
-                      player.gl_mp=0;
-                      player.gl_maxMp=0;
-                      player.gl_update();
-                    }
-                    player.update();
+                      }
+                      player.tongling("火巨人·莱万汀","错乱时空/火巨人通灵.mp4",effect1,effect2).forceDie=true;
                 },
                        sourceSkill:'tonglingSP黄昏',
                        sub:true,
@@ -62806,43 +62811,23 @@ else if (type == 'equip') {
                    return event.type=='cl_tongling'&&player.gl_getMp('cl_tongling')>=player.gl_getMaxMp('cl_tongling')&&player.storage.已通灵<2&&lib.character[player.name][3].includes('万钧雷');
                 },
                      content:function(){
-                   'step 0'
-                   if(player.gl_getMp('cl_tongling')>=player.gl_getMaxMp('cl_tongling'))event.goto(1);
-                   else event.finish();
-                   
-                   'step 1'
-                   game.broadcastAll(function (player) {
-                var c=player.gl_getMaxMp('cl_tongling');
-                player.gl_changeMp(-c,'cl_tongling').forceDie=true;
+                   var effect1 = function(player){
+                      game.broadcastAll(function (player) {
                 var r=[1,2,3].randomGet();
                 game.playAudio('..', 'extension', '错乱时空', '音频','tongling万钧雷_juexing' +r+ '.mp3');
-                game.gl_cg('错乱时空/天理合真通灵.mp4','noskip');
-                if(!player.isAlive())player.revive(player.maxHp);
-                player.reinit(player.name,'天理合真·庄天师');
-                player.gainMaxHp(player.maxHp);
-                if(typeof lib.config.clsk_jswj.庄方宜_mingzuo=="number"&&lib.config.clsk_jswj.庄方宜_mingzuo>=6)player.gainMaxHp();
-                player.changeMaxSoul(player.maxsoulhp);
-                if(typeof lib.config.clsk_jswj.庄方宜_mingzuo=="number"&&lib.config.clsk_jswj.庄方宜_mingzuo>=6)player.changeMaxSoul(1);
             }, player);
-            
-                  'step 2'
-                    player.classList.remove('turnedover');
-                    player.removeLink();
-                    player.draw(4);
+                      }
+                      var effect2 = function(player){
+                if(typeof lib.config.clsk_jswj.庄方宜_mingzuo=="number"&&lib.config.clsk_jswj.庄方宜_mingzuo>=6)player.gainMaxHp();
+                if(typeof lib.config.clsk_jswj.庄方宜_mingzuo=="number"&&lib.config.clsk_jswj.庄方宜_mingzuo>=6)player.changeMaxSoul(1);
                     var a=player.maxHp-player.hp;
                     var b=player.maxsoulhp-player.soulhp;
                     player.recover(a);
                     player.soulRecover(b);
                     if(!player.storage.天理合真)player.storage.天理合真=1;
                     else player.storage.天理合真++;
-                    player.storage.已通灵+=1;
-                    if(player.storage.已通灵>=2){
-                      player.node.gl_mp.hide();
-                      player.gl_mp=0;
-                      player.gl_maxMp=0;
-                      player.gl_update();
-                    }
-                    player.update();
+                      }
+                      player.tongling("天理合真·庄天师","错乱时空/天理合真通灵.mp4",effect1,effect2).forceDie=true;
                 },
                        sourceSkill:'tongling万钧雷',
                        sub:true,
@@ -63847,10 +63832,12 @@ return list.filter(info => typeof info === "string" && info.startsWith(prefix))
                    "step 0"           
                   /*var list=[];
                   for(var j of game.players)list.add(j.name);*/
-                  player.chooseButton(ui.create.dialog('在你的下个回合开始时对一名角色造成1点伤害',[game.players,'player']),function(button){
+                  game.broadcastAll(function (player) {
+                player.chooseButton('在你的下个回合开始时对一名角色造成1点伤害',[game.players,'player'],function(button){
                  for(var i=0;i<game.players.length&&game.players[i]!=button.link;i++);
                      return ai.get.attitude(_status.event.player,game.players[i])<=0;
                  }); 
+            }, player);
                   "step 1"
                   if(result.bool){
                       player.storage.暗影潜袭.push(result.links[0]);
@@ -64335,7 +64322,7 @@ return list.filter(info => typeof info === "string" && info.startsWith(prefix))
                     return player.gl_getMp('cl_tongling')>=10;
                 },
                 async content(event,trigger,player){
-                    var list=["无上神·无敌","毁灭神·法纳斯","虚无神·伏妖","创界神·昆仑","命运神·女帝","日月神·诺雅","无限神·未来","那个男人","火巨人·莱万汀","天理合真·庄天师"];
+                    var list=["无上神·无敌","毁灭神·法纳斯","虚无神·伏妖","创界神·昆仑","命运神·女帝","日月神·诺雅","无限神·未来","那个男人","火巨人·莱万汀","天理合真·庄天师","瘟神·钟会","吞天神·兰德斯"];
                     const {result:{bool,links}} = await player.chooseButton([`${get.prompt2(event.name)}`,[list,'character']]);
                     if(bool){
                        if(player.name2){
@@ -64444,42 +64431,19 @@ return list.filter(info => typeof info === "string" && info.startsWith(prefix))
                    return event.type=='cl_tongling'&&player.gl_getMp('cl_tongling')>=player.gl_getMaxMp('cl_tongling')&&player.storage.已通灵<2&&lib.character[player.name][3].includes('御灵');
                 },
                      content:function(){
-                   'step 0'
-                   if(player.gl_getMp('cl_tongling')>=player.gl_getMaxMp('cl_tongling'))event.goto(1);
-                   else event.finish();
-                   
-                   'step 1'
-                   game.broadcastAll(function (player) {
-                var c=player.gl_getMaxMp('cl_tongling');
-                player.gl_changeMp(-c,'cl_tongling').forceDie=true;
-                game.playAudio('..', 'extension', '错乱时空', '音频','tongling御灵_juexing1.mp3');
-                game.gl_cg('错乱时空/通灵始祖通灵.mp4','noskip');
-                if(!player.isAlive())player.revive(player.maxHp);
-                player.reinit(player.name,'通灵始祖·究');
-                player.gainMaxHp(player.maxHp);
-                player.changeMaxSoul(player.maxsoulhp);               
-               }, player);
-                  'step 2'
-                    player.classList.remove('turnedover');
-                    player.removeLink();
-                    player.draw(4);
-                    var a=player.maxHp-player.hp;
-                    var b=player.maxsoulhp-player.soulhp;
-                    player.recover(a);
-                    player.soulRecover(b);
-                    player.storage.已通灵+=1;
-                    player.storage.已通灵-=1;
+                   var effect1 = function(player){
+                      game.broadcastAll(function (player) {
+                         game.playAudio('..', 'extension', '错乱时空', '音频','tongling御灵_juexing1.mp3');
+            }, player);
+                      }
+                      var effect2 = function(player){
+                     player.storage.已通灵-=1;
                     if(!player.storage.御灵){
                        player.storage.御灵=true;
                        player.gl_changeMp(10,'cl_tongling').forceDie=true;
                     }
-                    if(player.storage.已通灵>=2){
-                      player.node.gl_mp.hide();
-                      player.gl_mp=0;
-                      player.gl_maxMp=0;
-                      player.gl_update();
-                    }
-                    player.update();
+                      }
+                      player.tongling("通灵始祖·究","错乱时空/通灵始祖通灵.mp4",effect1,effect2).forceDie=true;
                 },
                        sourceSkill:'tongling御灵',
                        sub:true,
@@ -64915,7 +64879,6 @@ else if (type == 'equip') {
             audio:"ext:错乱时空/音频:1",
         mod: {
             playerEnabled(card, player, target) {
-                console.log(card.storage.计);
                 if (target.name == card.storage.计) return false;
             },
         },
@@ -64998,7 +64961,7 @@ else if (type == 'equip') {
             if(from.storage.焚翼)return distance-from.storage.焚翼;
         },
                     globalTo:function (from,to,distance){
-            if(from.storage.焚翼)return distance+to.storage.焚翼;
+            if(to.storage.焚翼)return distance+to.storage.焚翼;
         },
                 },
                  init:function (player){
@@ -65087,7 +65050,7 @@ else if (type == 'equip') {
                     return 6-get.value(card)
                 },
                 content:function (){
-                    player.storage.兔械+=event.cards.length;
+                    player.storage.兔械+=event.cards.length+1;
                     player.syncStorage("兔械");
                     game.log(player, `增加了${player.storage.兔械}点`)
                 },
@@ -65864,6 +65827,1804 @@ else if (type == 'equip') {
                  }
                },
             },
+            "不屈之心":{
+               init:function(player){
+                  player.storage.不屈之心=0;
+               },
+               trigger:{
+                  player:"loseAfter",
+               },
+               nobracket:true,
+               forced:true,
+               mark:true,
+		       marktext:"不屈",
+		       intro:{
+		           content:"当前累积失去了#张牌。",
+		       },
+		       content:function(){
+		          player.storage.不屈之心+=trigger.cards.length;
+		          if(player.storage.不屈之心>=5){
+		             player.storage.不屈之心-=5;
+		          }
+		          player.syncStorage("不屈之心");
+		       },
+		       group:["不屈之心_judge"],
+		       subSkill:{
+		          judge:{
+		             trigger:{
+                    player:"judgeBefore",
+                },
+                forced:true,
+                filter:function(event,player){
+                    return player.hujia>0;
+                },
+                content:function(){
+                    trigger.result = { bool:undefined };
+                    trigger.cancel();
+                },
+		             sub:true,
+		             sourceSkill:"不屈之心",
+		          },
+		       },
+            },
+            "胆量":{
+                trigger: {
+			     source: ['damageBefore'],
+			     player: ['useCardToBefore','useCardBefore', 'useCard'],
+		        },
+		        forced:true,
+		        async content(event, trigger, player){
+			     trigger.cancel = () => { };
+		        },
+		        group:["胆量_dis"],
+		        subSkill:{
+		           dis:{
+		               filter:function (event,player){
+        return _status.currentPhase!=player;
+                },
+                trigger:{
+                    player:"discardBegin",
+                },
+                forced:true,
+                content:function (){     
+                   trigger.cancel();       
+                },
+		               sub:true,
+		               sourceSkill:"胆量",
+		           }
+		        },
+            },
+            "葱游兵特性":{
+                trigger:{
+                    global:"gameDrawAfter",
+                    player:"enterGame",
+                },
+                derivation:["不屈之心","胆量"],
+                forced:true,
+                nobracket:true,
+                unique:true,
+                content:function (){
+'step 0'
+player.chooseControl('不屈之心','胆量').set('ai',function(event){
+switch(Math.floor(Math.random()*2)){               
+case 0:return '不屈之心';
+case 1:return '胆量'          
+}
+});
+
+'step 1'
+if(result.control=='不屈之心')player.addSkill('不屈之心');
+if(result.control=='胆量')player.addSkill('胆量');
+player.removeSkill('葱游兵特性');
+       },
+            },
+            "连斩":{
+                init:function(player){
+                  player.storage.连斩=0;
+                },
+               mark:true,
+		       marktext:"连",
+		       intro:{
+		           content:"下次对连斩目标造成的伤害+#。",
+		       },
+                trigger:{
+                    source:"damageBegin1",
+                },
+                forced:true,
+                content:function(){
+                   if(trigger.player==player.storage.连斩target){
+                     trigger.num+=player.storage.连斩;
+                     player.storage.连斩++;
+                     player.syncStorage("连斩");
+                   }else{
+                     trigger.num--;
+                     player.storage.连斩=0;
+                     player.syncStorage("连斩");
+                     player.storage.连斩target=trigger.player;
+                     player.chooseToDiscard(1,"he",true);
+                   }
+                },
+            },
+            "叶刃":{
+                init:function(player){
+                  player.storage.叶刃=0;
+                },
+               mark:true,
+		       marktext:"叶",
+		       intro:{
+		           content:"当前有#个“叶”标记。",
+		       },
+                usable:1,
+                enable: "phaseUse",
+                viewAs:{
+                    name:"sha",
+                    cl_yeren:true,
+                },
+                prompt:"视为使用一张杀",
+                group:["叶刃_damage","叶刃_phase","叶刃_use"],
+                subSkill:{
+                   damage:{
+                      trigger:{
+                         source:"damageBegin",
+                      },
+                      filter:function(event,player){
+                         return event.card?.cl_yeren==true;
+                      },
+                      forced:true,
+                      content:function(){
+                         player.storage.叶刃++;
+                         player.syncStorage("叶刃");
+                      },
+                      sub:true,
+                      sourceSkill:"叶刃",
+                   },
+                   phase:{
+                      trigger:{
+                         player:"phaseBegin",
+                      },
+                      forced:true,
+                      filter:function(event,player){
+                           return player.storage.叶刃>0&&get.info("叶刃_phase").getCards().length;
+                      },
+                      getCards() {
+            const cards = [];
+            for (var i = 0; i < ui.discardPile.childNodes.length; i++) {
+                var card = ui.discardPile.childNodes[i];
+                if (card.name=="sha") cards.add(card);
+            }
+            return cards;
+        },
+        async content(event, trigger, player) {
+            const cards = get.info("叶刃_phase").getCards();
+            if (cards.length) {
+                 player.gain(cards, "gain2").gaintag = ["叶刃"];
+            }
+        },
+        sub:true,
+        sourceSkill:"叶刃",
+                   },
+                   use:{
+                      trigger:{
+                         player:["useCard"],
+                      },
+                      forced:true,
+                      priority:1,
+                      filter:function(event,player){
+                         return event.card.hasGaintag('叶刃');
+                      },
+                      content:function(){
+                         trigger.directHit.addArray(game.players);
+                      },
+                      sub:true,
+                      sourceSkill:"叶刃",
+                   },
+                },
+            },
+            "葱游兵技能一":{
+                trigger:{
+                    global:"gameDrawAfter",
+                    player:"enterGame",
+                },
+                derivation:["连斩","叶刃"],
+                forced:true,
+                nobracket:true,
+                unique:true,
+                content:function (){
+'step 0'
+player.chooseControl('连斩','叶刃').set('ai',function(event){
+switch(Math.floor(Math.random()*2)){               
+case 0:return '连斩';
+case 1:return '叶刃'          
+}
+});
+
+'step 1'
+if(result.control=='连斩')player.addSkill('连斩');
+if(result.control=='叶刃')player.addSkill('叶刃');
+player.removeSkill('葱游兵技能一');
+       },
+            },
+            "看穿":{
+               init:function(player){
+                  player.storage.看穿=false;
+                  player.storage.看穿round=0;
+                  player.storage.看穿damage=false;
+               },
+               trigger:{
+                  global:"phaseBefore",
+               },
+               prompt:function(event,player){
+                      return get.translation(event.player)+"的回合即将开始，是否发动【看穿】"
+               },
+               direct:true,
+               filter:function(event,player){
+                   return player.storage.看穿round<=0;
+               },
+               content:function(event,player){
+                  player.storage.看穿=true;
+                  player.storage.看穿round=4;
+               },
+               group:["看穿_round","看穿_damage","看穿_phase"],
+               subSkill:{
+                  round:{
+                      trigger:{
+                          global:"roundStart",
+                      },
+                      forced:true,
+                      direct:true,
+                      filter:function(event,player){
+                        return player.storage.看穿round>0;
+                      },
+                      content:function(){
+                         player.storage.看穿round--;
+                      },
+                      sub:true,
+                      sourceSkill:"看穿",
+                  },
+                  damage:{
+                      trigger:{
+                          player:"damageBefore",
+                      },
+                      forced:true,
+                      filter:function(event,player){
+                        return player.storage.看穿;
+                      },
+                      content:function(){
+                         trigger.cancel();
+                         player.storage.看穿damage=true;
+                      },
+                      sub:true,
+                      sourceSkill:"看穿",
+                  },
+                  phase:{
+                      trigger:{
+                          player:"phaseEnd",
+                      },
+                      forced:true,
+                      filter:function(event,player){
+                        return player.storage.看穿;
+                      },
+                      content:function(){
+                         player.storage.看穿=false;
+                         player.changeHujia(1);
+                         if(player.storage.看穿damage){
+                          if(player.storage.看穿round>=2)player.storage.看穿round-=2;
+                          else player.storage.看穿round=0;
+                          if(player.hasSkill("连斩")){
+                            player.storage.连斩++;
+                            player.syncStorage("连斩");
+                          }
+                          if(player.hasSkill("叶刃")){
+                            player.storage.叶刃++;
+                            player.syncStorage("叶刃");
+                          }
+                         }
+                         player.storage.看穿damage=false;
+                      },
+                      sub:true,
+                      sourceSkill:"看穿",
+                  },
+               },
+            },
+            "狂舞挥打":{
+                enable: "phaseUse",
+                round:2,
+                nobracket:true,
+                filterCard:true,
+                selectCard:2,
+                position:"hes",
+                
+            },
+            "降祸":{
+                usable:1,
+                audio:"ext:错乱时空/音频:2",
+                enable:"phaseUse",
+                filterTarget:function (card,player,target){
+                 return player!=target;
+                },
+                async content(event,trigger,player){
+                    var target=event.target;
+                    await target.draw(3);
+                    var choices = ["选项一","选项二"];
+                    var choiceList = ["交给"+get.translation(player)+"你区域内所有的黑色牌并令其获得1通灵点","你获得与手牌中黑色牌数量等量层凋亡损伤，若你已经处于凋亡爆发状态，则受到一点伤害且使凋亡爆发等级+1"];
+                    game.delay(0.3);
+                    target.showCards(target.getCards('h'),'降祸');
+                    if(player.storage.立世){
+                       var a=target.getCards("h",{color:"black"});
+                       var b=a.length;
+                       if(a.length>0){
+                  player.gain(a,target,'giveAuto');
+                 }
+               player.gl_changeMp(1,'cl_tongling').forceDie=true; 
+               if(target.hasSkill("凋亡损伤")&&target.storage.凋亡损伤>0){
+                     target.storage.凋亡损伤+=b;
+                     target.syncStorage("凋亡损伤");
+                     if(target.storage.凋亡损伤>=target.maxHp)target.useSkill("凋亡损伤");
+                   }else{
+                      target.storage.凋亡损伤=b;
+                      target.addSkill("凋亡损伤");
+                   }
+                   if(target.hasSkill("凋亡爆发")&&target.storage.凋亡爆发时间>0){
+                      target.damage();  
+                      target.storage.凋亡爆发等级+=1;
+                      target.syncStorage("凋亡爆发");
+                   }
+                    }else{
+                    var {result:{control}}=await target
+            .chooseControl(choices)
+            .set("choiceList", choiceList)
+            .set("prompt", get.prompt("降祸"));    
+            if(control=="选项一"){ 
+                 var a=target.getCards("h",{color:"black"});
+                 if(a.length>0){
+                  player.gain(a,target,'giveAuto');
+                 }
+               player.gl_changeMp(1,'cl_tongling').forceDie=true;                
+            }
+            if(control=="选项二"){
+               var a=target.countCards("h",{color:"black"});
+               if(target.hasSkill("凋亡损伤")&&target.storage.凋亡损伤>0){
+                     target.storage.凋亡损伤+=a;
+                     target.syncStorage("凋亡损伤");
+                     if(target.storage.凋亡损伤>=target.maxHp)target.useSkill("凋亡损伤");
+                   }else{
+                      target.storage.凋亡损伤=a;
+                      target.addSkill("凋亡损伤");
+                   }
+                 if(target.hasSkill("凋亡爆发")&&target.storage.凋亡爆发时间>0){
+                      target.damage();  
+                      target.storage.凋亡爆发等级+=1;
+                      target.syncStorage("凋亡爆发");
+                   }
+             }                    
+            }
+           
+           },
+                ai:{
+                    order:10,
+                    result:{
+                        target:-1,
+                        player:2,
+                    },
+                },
+            },
+            "凛界":{
+                mod:{
+                    maxHandcard:function (player,num){
+            var a=player.gl_getMp('cl_tongling');
+            return num+a;
+        },
+                },
+                audio:"ext:错乱时空/音频:2",
+                trigger:{
+                   global:["gl_changeMpBegin"],
+                   player:"damageEnd",
+                },
+                usable:1,
+                filter:function(event,player){
+                   if(event.name=="gl_changeMp"&&event.type&&event.type=="cl_tongling"&&event.num>0&&event.player!=player)return true;
+                   if(event.name=="damage"&&event.source&&event.source!=player)return true;
+                },
+                check:function (event,player){
+                     if(event.name=="gl_changeMp"&&event.type&&event.type=="cl_tongling"&&event.num>0) return get.attitude(player,event.player)<=0;
+                     if(event.name=="damage"&&event.source&&event.source!=player)return get.attitude(player,event.source)<=0;
+                     return false;
+                },
+                async content(event,trigger,player){
+                    var target=trigger.name=="damage"?trigger.source:trigger.player;
+                    await target.draw(3);
+                    var choices = ["选项一","选项二"];
+                    var choiceList = ["交给"+get.translation(player)+"你区域内所有的黑色牌并令其获得1通灵点","你获得与手牌中黑色牌数量等量层凋亡损伤，若你已经处于凋亡爆发状态，则受到一点伤害且使凋亡爆发等级+1"];
+                    game.delay(0.3);
+                    target.showCards(target.getCards('h'),'降祸');
+                    if(player.storage.立世){
+                       var a=target.getCards("h",{color:"black"});
+                       var b=a.length;
+                       if(a.length>0){
+                  player.gain(a,target,'giveAuto');
+                 }
+               player.gl_changeMp(1,'cl_tongling').forceDie=true; 
+               if(target.hasSkill("凋亡损伤")&&target.storage.凋亡损伤>0){
+                     target.storage.凋亡损伤+=b;
+                     target.syncStorage("凋亡损伤");
+                     if(target.storage.凋亡损伤>=target.maxHp)target.useSkill("凋亡损伤");
+                   }else{
+                      target.storage.凋亡损伤=b;
+                      target.addSkill("凋亡损伤");
+                   }
+                   if(target.hasSkill("凋亡爆发")&&target.storage.凋亡爆发时间>0){
+                      target.damage();  
+                      target.storage.凋亡爆发等级+=1;
+                      target.syncStorage("凋亡爆发");
+                   }
+                    }else{
+                    var {result:{control}}=await target
+            .chooseControl(choices)
+            .set("choiceList", choiceList)
+            .set("prompt", get.prompt("降祸"));    
+            if(control=="选项一"){ 
+                 var a=target.getCards("h",{color:"black"});
+                 if(a.length>0){
+                  player.gain(a,target,'giveAuto');
+                 }
+               player.gl_changeMp(1,'cl_tongling').forceDie=true;                
+            }
+            if(control=="选项二"){
+               var a=target.countCards("h",{color:"black"});
+               if(target.hasSkill("凋亡损伤")&&target.storage.凋亡损伤>0){
+                     target.storage.凋亡损伤+=a;
+                     target.syncStorage("凋亡损伤");
+                     if(target.storage.凋亡损伤>=target.maxHp)target.useSkill("凋亡损伤");
+                   }else{
+                      target.storage.凋亡损伤=a;
+                      target.addSkill("凋亡损伤");
+                   }
+                   if(target.hasSkill("凋亡爆发")&&target.storage.凋亡爆发时间>0){
+                      target.damage();  
+                      target.storage.凋亡爆发等级+=1;
+                      target.syncStorage("凋亡爆发");
+                   }
+             }                    
+            }
+           
+           },
+            },
+            "立世":{
+               tonglingSkill:true,
+               init:function(player){
+                  if(!player.storage.已通灵)player.storage.已通灵=0;
+                  game.addGlobalSkill("tongling立世");
+                  game.addGlobalSkill("tongling立世_baofa");
+                  game.addGlobalSkill("tongling立世_juexing");
+               }
+            },
+            "tongling立世":{
+                trigger:{
+                   global:"dieAfter",
+                   player:"damageAfter",
+                },
+                forceDie:true,
+                forced:true,
+                direct:true,
+                silent: true,
+                filter:function(event,player){
+                   return player.storage.已通灵<2&&lib.character[player.name][3].includes('立世');
+                },
+                content:function(){
+                   'step 0'
+                   player.gl_changeMp(1,'cl_tongling').forceDie=true;
+                },
+                subSkill:{
+                   baofa:{
+                     trigger:{
+                       global:"凋亡爆发_trigAfter",
+                     },
+                     filter:function(event,player){
+                       return player.storage.已通灵<2&&lib.character[player.name][3].includes('立世');
+                     },
+                     forceDie:true,
+                     forced:true,
+                     direct:true,
+                     silent: true,
+                     content:function(){
+                   'step 0'
+                   player.gl_changeMp(3,'cl_tongling').forceDie=true;
+                },
+                     sourceSkill:'tongling立世',
+                     sub:true,
+                   },
+                   juexing:{
+                     audio:"ext:错乱时空/音频:2",
+                     trigger:{
+                      player:"gl_changeMpAfter",                       },
+                     forceDie:true,
+                     forced:true,
+                     direct:true,
+                     silent: true,
+                     filter:function(event,player){
+                   return event.type=='cl_tongling'&&player.gl_getMp('cl_tongling')>=player.gl_getMaxMp('cl_tongling')&&player.storage.已通灵<2&&lib.character[player.name][3].includes('立世');
+                },
+                     content:function(){
+                   var effect1 = function(player){
+                      game.broadcastAll(function (player) {
+                      game.playAudio('..', 'extension', '错乱时空', '音频','tongling立世_juexing.mp3');
+                      player.say("天时未到？可花时已到！");
+            }, player);
+                      }
+                      var effect2 = function(player){
+                     if(!player.storage.tongling立世)player.storage.tongling立世=1;
+                    else player.storage.tongling立世++;
+                    game.removeGlobalSkill('tongling立世_damage');
+                    game.addGlobalSkill("tongling立世_damage");
+                      }
+                      player.tongling("瘟神·钟会","错乱时空/瘟神通灵.mp4",effect1,effect2).forceDie=true;
+                },
+                       sourceSkill:'tongling立世',
+                       sub:true,
+                   },
+                   damage:{
+                       trigger:{
+                          source:"damageBegin",
+                      },
+                      filter:function(event,player){
+                        return player.storage.立世&&event.player.hasSkill("凋亡爆发")&&event.player.storage.凋亡爆发时间>0;
+                      },
+                      forced:true,
+                      direct:true,
+                      silent: true,
+                      content:function(){
+                          if(player.storage.tongling立世)trigger.num+=player.storage.tongling立世;
+                      },
+                       sourceSkill:'tongling立世',
+                       sub:true,
+                   }
+                }
+            },
+            "执世":{
+               trigger:{
+                   player:"phaseBegin",
+               },
+               forced:true,
+               content:function(){
+                   for(var i of game.players){
+                       if(i!=player)i.loseHp();
+                   }
+               },
+               global:"执世_ban",
+               subSkill:{
+                  ban:{
+                  priority:10,
+                     mod:{
+                    "cardEnabled2":function (card,player){
+            if(player.hasSkill("执世")&&!get.info(card).notarget&&card.name!="ying")return true;
+            var history=player.getHistory('useCard').concat(player.getHistory('respond'));
+            if(history.length>=player.hp) return false;
+        },
+                   /*playerEnabled:function (card,player,target,now){
+             if(player.hasSkill("执世")) return true;
+                  },*/
+                  cardEnabled: function(card, player) {
+				     if(player.hasSkill("执世")) return true;
+					},
+					cardSavable: function(card, player) {
+						if(player.hasSkill("执世")) return true;
+					},
+					cardRespondable: function(card, player) {
+					if(player.hasSkill("执世")) return true;
+					},
+					targetEnabled:function (card,player,target,now){
+            if(player.hasSkill("执世")&&!get.info(card).toself) return true;
+        },
+                },
+                sub:true,
+                sourceSkill:"执世",
+                  }
+               }
+            },
+            "激言":{
+               trigger:{
+                  global:"phaseUseBegin",
+               },
+               nobracket:true,
+               filter:function(event,player){
+                  return event.player!=player;
+               },
+               async content(event,trigger,player){
+                  const num = Math.ceil(trigger.player.countCards("h") / 2);
+        game.broadcastAll(
+          (num2) => {
+            lib.skill.激言_backup.selectCard = num2;
+          },
+          num
+        );
+        const next = trigger.player.chooseToUse();
+        next.set("_backupevent", "激言_backup");
+        next.set("openskilldialog", `###激言###将${get.cnNumber(num)}张手牌当作【酒】使用`);
+        next.backup("激言_backup");
+        next.set("norestore", true);
+        next.set("custom", {
+          add: {},
+          replace: { window() {
+          } }
+        });
+        next.set("forced", true);
+        await next;
+        trigger.player.addTempSkill("激言_buff","phaseAfter");
+               },
+               subSkill: {
+            backup: {
+            filterCard:function(card) {
+              return get.itemtype(card) == "card";
+            },
+            viewAs:{
+               name:"jiu",
+            },
+            position: "h",
+            log: false,
+            allowChooseAll: true,
+            ai1(card) {
+              return 6 - get.value(card);
+            },
+            sub: true,
+            sourceSkill: "激言",
+        },
+        buff:{
+           trigger:{
+              source:"damageEnd",
+           },
+           forced:true,
+           content:function(){
+              player.recover();
+              player.draw(2);
+              player.removeSkill("激言_buff");
+           },
+           sub: true,
+           sourceSkill: "激言",
+        }
+    },
+            },
+            "强化魔法buff":{
+                init:function (player){
+        player.markSkill('强化魔法buff');
+        player.syncStorage('强化魔法buff');
+    },
+                mark:true,
+                marktext:"强",
+                intro:{
+                    content:"你本局游戏造成的伤害+#",
+                },
+                nobracket:true,
+                charlotte:true,
+                trigger:{
+                    source:"damageBegin1",
+                },
+                filter:function(event,player){
+                    return player.storage.强化魔法>0;
+                },
+                forced:true,
+                content:function(){
+                   trigger.num+=player.storage.强化魔法;
+                },
+            },
+            "_神圣治疗法阵buff":{
+                trigger:{
+                    global:"phaseBegin",
+                },
+                forced:true,
+                filter:function(event,player){
+                return player.countCards('j','神圣治疗法阵')>0&&player.hp<player.maxHp;
+                },
+                async content(event,trigger,player){   
+                    const {result:{bool,judge,color}} = await player.judge(function(card){
+            if(get.color(card)=='red') return 2;
+            return -2;
+            });
+                 if(color=="red")player.recover();
+                 else player.loseMaxHp();
+                },
+            },
+            "魔法抹布buff":{
+                trigger:{
+                    global:"damageAfter",
+                },              
+                filter:function(event,player){           
+                  return player.countCards('hs','魔法抹布')>0&&event.player!=player;
+                },
+                forced:true,
+                direct:true,
+                async content(event,trigger,player){   
+                   const next = player.chooseToUse();
+        next.set("prompt", `是否对${get.translation(trigger.player)}使用【魔法抹布】`);
+        next.set("filterCard", (card, player2) => {
+          if (get.name(card) !== "魔法抹布") {
+            return false;
+          }
+          return lib.filter.cardEnabled(card, player2, "forceEnable");
+        });
+        next.set("filterTarget",(card,player,target)=>{
+            return target==trigger.player;
+        });
+                },
+                subSkill:{
+                   mianyi:{
+                      trigger:{
+                          player:"soulDamageBegin",
+                      },
+                      forced:true,
+                      content:function(){
+                          trigger.cancel();
+                      },
+                      sub:true,
+                      sourceSkill:"魔法抹布buff",
+                   }
+                }
+            },
+            "大地精灵之力buff":{
+                trigger:{
+                    player:"damageBegin",
+                },              
+                filter:function(event,player){   
+                  var  a=player.getCards('e','大地精灵之力')[0];
+                  return event.source&&player.countCards('e','大地精灵之力')>0&&event.num>=player.hp&&a.storage.大地精灵之力.isAlive();
+                },
+                forced:true,
+                direct:true,
+                async content(event,trigger,player){   
+                 var  a=player.getCards('e','大地精灵之力')[0];
+                  var p1=a.storage.大地精灵之力;
+                  p1.say("等一下……");
+                  await game.delay(2.5);
+                  p1.say("那个……我这位朋友希望你能让放他一马，他真的太想赢了");
+                  await game.delay(4.0);
+                  p1.say("你看，他都跪下了");
+                  await game.delay(3.0);
+                  player.say("求求你放过我吧😭");
+                  await game.delay(3.0);
+                  const {result:{bool}} = await trigger.source.chooseBool(get.translation(player)+'向你求饶，是否放他一马？');
+            if(bool){
+                trigger.source.say("行");
+                trigger.cancel();
+            }else{
+                trigger.source.say("爪巴！");
+            }
+            player.discard(a);
+                },
+            },
+            "余响回奏术buff":{
+                trigger:{
+                    global:"useCardAfter",
+                },              
+                forced:true,
+                charlotte:true,
+                async content(event,trigger,player){
+                   player.draw();
+                   player.chooseToUse('你可以使用一张牌');
+                   player.removeSkill("余响回奏术buff");
+                },
+            },
+            "黄色声援术buff":{
+                trigger:{
+                    player:"useCard",
+                    source:"damageBegin1",
+                },              
+                forced:true,
+                charlotte:true,
+                async content(event,trigger,player){
+                if(trigger.name=="damage")trigger.cancel();
+                if(trigger.name=="useCard"){
+                   player.draw();
+                   player.chooseToDiscard(2,'he',true);
+                }
+              },
+            },
+            "声波操纵术buff": {
+        trigger: {
+            player: "useCard",
+        },
+        forced:true,
+        charlotte:true,
+        async cost(event, trigger, player) {
+            event.result = await player
+                .chooseTarget(get.prompt2(event.skill), lib.filter.notMe)
+                .set("ai", target => {
+                    const player = get.player();
+                    const trigger = get.event().getTrigger();
+                    return get.effect(target, trigger.card, player, player) < get.effect(target, trigger.card, target, player)
+                })
+                .forResult();
+        },
+        async content(event, trigger, player) {
+            const target = event.targets[0];
+            player.logSkill(event.name, target);
+            trigger.player = target;
+            game.log(target, "成为了", trigger.card, "的使用者");
+            player.removeSkill("声波操纵术buff");
+        },
+    },
+            "防御力强化魔法buff":{
+                init:function (player){       
+                    if(!player.storage.防御力强化魔法)player.storage.防御力强化魔法=[[],[]];
+                    player.storage.防御力强化魔法round=0;
+    },
+                forced:true,
+                charlotte:true,
+                group:["防御力强化魔法buff_damage","防御力强化魔法buff_phase"],
+                subSkill:{
+                    phase:{
+                        trigger:{
+                            global:"phaseEnd",
+                        },
+                        forced:true,
+                        async  content(event,trigger,player){
+                           player.storage.防御力强化魔法round++;
+                           if(player.storage.防御力强化魔法round==9&&player.storage.防御力强化魔法source.isAlive()){
+                             player.storage.防御力强化魔法source.say("那个…我建议你快点结束战斗");
+                             await game.delay(4.0);
+                             player.say("为什么？");
+                             await game.delay(2.0);
+                             player.storage.防御力强化魔法source.say("防御力强化魔法有个副作用，那就是持续时间结束时，受到的伤害会10倍奉还。");
+                             await game.delay(6.0);
+                             player.say("那还能持续多久？");
+                             await game.delay(2.0);
+                             player.storage.防御力强化魔法source.say("大概这个回合结束时就要结束了");
+                             await game.delay(2.0);
+                             player.say("！？！？");
+                           }
+                           if(player.storage.防御力强化魔法[0].length&&player.storage.防御力强化魔法round>=10){
+                for(var i=0;i<player.storage.防御力强化魔法[0].length;i++){
+                    player.damage(player.storage.防御力强化魔法[0][i]*10,player.storage.防御力强化魔法[1][i])._triggered=null;
+                            }
+                          }
+                          if(player.storage.防御力强化魔法round>=10)player.removeSkill("防御力强化魔法buff");
+                        },
+                        sub:true,
+                    },
+                    damage:{
+                        trigger:{
+                           player:"damageBegin4",
+                        },
+                        filter:function(event,player){
+                            return event.parent.name!="防御力强化魔法buff_phase";
+                        },
+                        forced:true,
+                        unique:true,
+                        nobracket:true,
+                        content:function (){
+                            player.storage.防御力强化魔法[0].push(trigger.num);
+                            if(trigger.source)player.storage.防御力强化魔法[1].push(trigger.source);
+                            else player.storage.防御力强化魔法[1].push('nosource');
+                         trigger.num-=trigger.num;
+                         trigger.cancel();
+                        },
+                        sub:true,
+                    },
+                },
+            },
+            "_复活魔法time":{
+                trigger:{
+                    player:["dieAfter","phaseAfter"],
+                },
+                direct:true,
+                forced:true,
+                forceDie:true,
+                priority:1,
+                content:function(){
+                    if(trigger.name=="die"){
+                       if(!game.clsk_die[0].includes(player)){
+                    game.clsk_die[0].push(player);
+                    game.clsk_die[1].push(1);
+                   }else{
+                     var id=game.clsk_die[0].indexOf(player);
+                     game.clsk_die[1][id]=1;
+                   }
+                  }
+                  if(trigger.name=="phase"){
+                    if(game.clsk_die[0].length){
+                       for(var i=0;i<game.clsk_die[0].length;i++)game.clsk_die[1][i]++;
+                    }
+                  }
+                },
+            },
+            "复活魔法buff":{
+                trigger:{
+                    global:"phaseEnd",
+                },              
+                filter:function(event,player){           
+                  return player.countCards('h','复活魔法')>0;
+                },
+                forced:true,
+                direct:true,
+                async content(event,trigger,player){   
+                   var a=player.getCards('h','复活魔法');
+                   for(var m of a){
+                      if(!m.storage.吟唱时间)m.storage.吟唱时间=1;
+                      else m.storage.吟唱时间++;
+                   }
+                   if(player.getCards('h','复活魔法').find(cardx=>cardx.storage.吟唱时间>=10)/*&&game.clsk_die[0].find(current=>!current.isAlive()&&game.clsk_die[1][game.clsk_die[0].indexOf(current)]<=3)*/){
+                     player.useCard(player.getCards('h','复活魔法').filter(cardx=>cardx.storage.吟唱时间>=10)[0],player,true);
+                   }
+                },
+            },
+            "景气魔法buff":{
+                trigger:{
+                    player:"recoverEnd",
+                },              
+                forced:true,
+                charlotte:true,
+                filter:function(event,player){
+                    return player.storage.景气魔法target;
+                },
+                async content(event,trigger,player){
+                player.storage.景气魔法target.recover(trigger.num);
+              },
+            },
+            "即死诅咒buff":{
+                trigger:{
+                    player:"dieAfter",
+                },              
+                forced:true,
+                forceDie:true,
+                charlotte:true,
+                filter:function(event,player){
+                    return player.storage.即死诅咒target;
+                },
+                async content(event,trigger,player){
+                player.storage.即死诅咒target.die();
+              },
+            },
+            "高级治愈魔法buff":{
+                init:function(player){
+                     player.storage.高级治愈魔法=1;
+                },
+                trigger:{
+                    player:["useCard","respond"],
+                },              
+                forced:true,
+                charlotte:true,                
+                async content(event,trigger,player){
+                 await player.draw(player.storage.高级治愈魔法);
+                 await player.recover();
+                 player.storage.高级治愈魔法++;
+                 if(player.countCards("h")>player.hp*3){
+                  player.addTempSkill('dieyuan2',{player:'damageAfter'});
+                  var players=game.filterPlayer(function(current){
+                return get.distance(player,current)<=2&&player!=current;
+            });
+            player.damage(10,'fire','nosource');
+            for(var i=0;i<players.length;i++){
+                players[i].damage(3,'fire','nosource');
+            }
+            player.removeSkill("高级治愈魔法buff");
+                 }
+              },
+            },
+            "圣职":{
+                trigger:{
+                    global:["phaseEnd"],
+                },
+                forced:true,
+                nobracket:true,
+                content:function(){
+                    player.gl_changeMp(1,'cl_moli');
+                },
+                mod: {
+          maxHandcard:function (player,num){
+            var a=player.gl_getMp('cl_moli');
+            return num+a;
+               },
+             }
+            },
+            "隐后":{
+                audio:"ext:错乱时空/音频:1",
+                trigger:{
+                    player:["damageBefore","loseHpBefore"],
+                },
+                nobracket:true,
+                async content(event,trigger,player){
+           player.say("受到称得上是怨灵天敌的神圣佑护，双目含愁，会令人不禁产生保护欲，银发褐肤的美丽治疗师是谁呢？（首先排除伊蕾娜）");
+           const {result:{targets}} = await player.chooseTarget(get.prompt('我这么可爱我绝对不能掉血'),'将伤害转移给其他角色',function(card,player,target){
+            return target!=player;
+        }).set('ai',function(target){
+            var player=_status.event.player;
+            return get.attitude(player,target)>0;
+        });
+        if(targets?.length){
+            var target = targets[0];
+            const {result:{bool}} = await target.chooseBool('是否替'+get.translation(player)+'承受本次伤害？').set('ai',function(event,player){
+            var eplayer=_status.event.player;
+            return get.attitude(eplayer,event.player)>0;
+        });     
+           if(bool){
+              trigger.num*=2;
+              trigger.player=target;
+           }else{
+              target.chooseToDiscard(1,"he",true);
+           }
+        }
+                },
+            },
+            "勒索":{
+                usable:1,
+                enable:"phaseUse",
+                nobracket:true,
+                filterTarget:function (card,player,target){
+                 return player!=target;
+                },
+                async content(event,trigger,player){
+                var target = event.target;
+                const {result:{cards}} = await target.chooseCard("he")
+            .set("prompt", "是否交给" + get.translation(player) + "至多五张牌？")
+            .set("selectCard", [1, 5])
+            .set("ai", function(event,card,player){
+                var eplayer=_status.event.player;
+                if (get.attitude(eplayer,player)>0) return 6 - get.value(card);
+                return 0;
+            });
+            if(cards){
+                player.gain(cards,target,'giveAuto')
+              }
+             },
+             ai:{
+                    order:10,
+                    result:{
+                        target:[-1,0],
+                        player:2,
+                    },
+                },
+            },
+            "卡拉登场":{
+                trigger:{
+                    global:"gameDrawAfter",
+                    player:"enterGame",
+                },
+                charlotte:true,
+                direct:true,
+                forced:true,
+                async content(event,trigger,player){
+                if(player.name=="卡拉"){
+                   player.say('初次见面，我是暗黑精灵、治疗师卡拉，很不高兴和你组队。')
+                   game.playAudio('..', 'extension', '错乱时空', '音频','卡拉登场' + '.mp3')
+                }
+             },
+            },
+            "_卡拉用牌":{
+               trigger: {
+                 player: ["useCard","respond"],
+               },
+               charlotte:true,
+               direct:true,
+               forced:true,
+               filter:function(event,player){
+                   return player.name=="卡拉"&&get.type(event.card)=="法术";
+               },
+               content:function(){
+                  if(trigger.card.name=="防御力强化魔法"){
+                  player.say('这次我要使用的魔法是……嘟嘟嘟嘟嘟嘟嘟！防御力强化魔法！')
+                   game.playAudio('..', 'extension', '错乱时空', '音频','防御力强化魔法' + '.mp3')
+                  }
+                  if(trigger.card.name=="好吃魔法"){
+                  player.say('变的更好吃吧，可爱可爱，波！')
+                   game.playAudio('..', 'extension', '错乱时空', '音频','好吃魔法' + '.mp3')
+                  }
+                  if(trigger.card.name=="黄色声援术"){
+                  player.say('加油加油！队友！冲啊冲啊！队友！拼了拼了！队友！你就去尝试一场没有胜算的战斗，来掂清自己几斤几两吧！')
+                   game.playAudio('..', 'extension', '错乱时空', '音频','黄色声援术' + '.mp3')
+                  }
+                  if(trigger.card.name=="即死诅咒"){
+                  player.say('都怪你！害我不小心下了诅咒啊。')
+                   game.playAudio('..', 'extension', '错乱时空', '音频','即死诅咒' + '.mp3')
+                  }
+                  if(trigger.card.name=="救赎之火"){
+                  player.say('这是救赎之火，可以将不死怪物的身体和灵魂一起焚烧殆尽，是一种源自地狱的神圣魔法。')
+                   game.playAudio('..', 'extension', '错乱时空', '音频','救赎之火' + '.mp3')
+                  }
+                  if(trigger.card.name=="魔法抹布"){
+                  player.say('你一定觉得很丢脸很伤心吧，用这块抹布擦眼泪吧。')
+                   game.playAudio('..', 'extension', '错乱时空', '音频','魔法抹布' + '.mp3')
+                  }
+                  if(trigger.card.name=="强化魔法"){
+                  player.say('不用担心，不！要！紧！的！')
+                   game.playAudio('..', 'extension', '错乱时空', '音频','强化魔法' + '.mp3')
+                  }
+                  if(trigger.card.name=="神圣急救拳"){
+                  player.say('我这就帮你解脱……')
+                   game.playAudio('..', 'extension', '错乱时空', '音频','神圣急救拳' + '.mp3')
+                  }
+                  if(trigger.card.name=="神圣祈祷术"){
+                  player.say('神啊，请你治疗我队友吧，他弱小、可怜、一无是处，简直不可救药。')
+                   game.playAudio('..', 'extension', '错乱时空', '音频','神圣祈祷术' + '.mp3')
+                  }
+                  if(trigger.card.name=="神圣治疗法阵"){
+                  player.say('我给你画了神圣的治疗魔法阵')
+                   game.playAudio('..', 'extension', '错乱时空', '音频','神圣治疗法阵' + '.mp3')
+                  }
+                  if(trigger.card.name=="回响余奏术"){
+                  player.say('诶嘿')
+                   game.playAudio('..', 'extension', '错乱时空', '音频','余响回奏术' + '.mp3')
+                  }
+                  if(trigger.card.name=="咒术式针疗法"){
+                   game.playAudio('..', 'extension', '错乱时空', '音频','咒术式针疗法' + '.mp3')
+                  }
+               }
+            },
+            "月影鞭风":{                
+                trigger:{
+                    player:"useCardToPlayered",
+                },
+                usable:1,
+                nobracket:true,
+                filter:function(event,player){
+                   return get.tag(event.card, "damage")&&event.target!=player;
+                },
+                check:function (event,player){
+                    var card=game.createCard('guohe')
+                    return get.effect(event.target,card, player, player);
+                },
+                content:function(){
+                   player.useCard({name:'guohe'},trigger.target,false);
+                }
+            },
+            "如梦如幻":{
+                trigger:{
+                    player:"damageBegin3",
+                },
+                usable:1,
+                nobracket:true,
+                forced:true,
+                filter:function(event,player){
+                   return event.card&&event.source&&event.source.countCards('h')>=player.countCards('h');
+                },
+                content:function(){
+                    trigger.num-=1;
+                },
+            },
+            "凛月之光":{
+                trigger:{
+                    source:"damageEnd",
+                },
+                nobracket:true,
+                async content(event,trigger,player){
+                    const {result:{targets}} = await player.chooseTarget(get.prompt('凛月之光'),'令一名角色增加或降低1点通灵点',function(card,player,target){
+            return true;
+        }).set('ai',function(target){
+            for(var i of target.skills){
+                   if(get.info(i).tonglingSkill)return true;
+             }
+        });
+          if(targets?.length){
+             var choices = ["选项一","选项二"];
+             var choiceList = ["令其获得一个通灵点","令其减少一个通灵点"];
+            var {result:{control}}=await player
+            .chooseControl(choices)
+            .set("choiceList", choiceList)
+            .set("prompt", get.prompt("凛月之光"))
+            .set('ai',function(event,player,card){
+             var player=_status.event.player;
+             if(get.attitude(player,targets[0])>0)return "选项一";
+             else return "选项二";
+        });
+             if(control=="选项一"){
+                 targets[0].gl_changeMp(1,'cl_tongling');
+             }
+             if(control=="选项二"){
+                 targets[0].gl_changeMp(-1,'cl_tongling');
+             }                  
+                  }
+                },
+            },
+            "荒原追猎":{
+                mod:{
+                    cardUsable:function (card,player,num){
+            if(card.name=='sha') return Math.floor(player.gl_getMp('cl_qishi')*0.5)+num;
+        },
+                   globalTo:function (from,to,distance){
+            if(to.gl_getMp('cl_qishi'))return distance+Math.floor(to.gl_getMp('cl_qishi')*0.5)
+        },
+                   attackFrom:function (from,to,current){
+            if(from.gl_getMp('cl_qishi')) return current-Math.floor(from.gl_getMp('cl_qishi')*0.5);
+        },
+                },
+                trigger:{
+                   player:["drawEnd","useCard"],
+                },
+                nobracket:true,
+                forced:true,
+                async content(event,trigger,player){
+                  if(trigger.name=="draw")player.gl_changeMp(trigger.num,'cl_qishi');
+                  if(trigger.name=="useCard")trigger.directHit.addArray(game.filterPlayer(current=>current.hp>=player.gl_getMp('cl_qishi')));
+                },
+            },
+            "风贯丛林":{
+                nobracket:true,
+                usable:2,
+                enable:"phaseUse",
+                filter:function (event,player){
+        return player.gl_getMp('cl_qishi')>=2;
+    },
+                content:function (){
+        player.gl_changeMp(-2,'cl_qishi');
+        var a1;
+         for(var i=0;i<ui.cardPile.childElementCount;i++){           
+              var card=ui.cardPile.childNodes[i];              
+             if(get.name(card)=='sha'){
+               a1=card;
+                 break;
+                  }; 
+              };           
+        player.gain(a1);
+          player.$draw();
+    },
+                ai:{
+                    order:6,
+                    result:{
+                        player:[0,5],
+                    },
+                },
+            },
+            "猎人的专注":{
+                init:function(player){
+                  player.storage.猎人的专注=0;
+                  player.storage.猎人的专注target=player;
+                },
+                nobracket:true,
+                trigger:{
+                    source:"damageBegin1",
+                },
+                forced:true,
+                filter:function(event,player){
+                    return event.player!=player;
+                },
+                content:function(){
+                   if(trigger.player==player.storage.猎人的专注target){                  
+                     player.storage.猎人的专注++;
+                   }else{
+                     player.storage.猎人的专注=0;
+                     player.storage.猎人的专注target=trigger.player;
+                   }
+                   if(player.storage.猎人的专注>=2){
+                   trigger.player.addTempSkill("dieyuan2","phaseAfter");
+                   player.draw();
+                   }
+                },
+            },
+            "夜之主":{
+                mod:{
+                    attackFrom:function (from,to,current){
+           if(from.storage.夜之主) return current-5;
+        },
+                },
+                trigger:{
+                    global:"tonglingAfter",
+                },
+                forced:true,
+                nobracket:true,
+                persevereSkill: true,
+                filter:function(event,player){
+                    return !player.storage.夜之主&&player.name=="特莉波卡";
+                },
+                async content(event,trigger,player){
+                  game.broadcastAll(function (player) {
+                  player.storage.夜之主=true;
+                  game.gl_cg('错乱时空/夜之主.mp4','noskip');
+                  player.node.name.innerHTML="<span class='aezs-text'>夜之主</span>"
+                  player.addExtraEquip("夜之主", "小红", true, player => lib.card.小红);
+                  player.node.avatar.setBackgroundImage('extension/错乱时空/夜之主.jpg');
+                  
+            }, player);
+                },
+                group:["夜之主_damage"],
+                subSkill:{
+                   damage:{
+                      trigger:{
+                    player:"damageBegin4",
+                },
+                filter:function(event,player){
+                    return player.storage.夜之主&&event.source?.storage.真已通灵;
+                },
+                content:function(){
+                    trigger.num=Math.floor(trigger.num*0.5);
+                },
+                      forced:true,
+                      sub:true,
+                      sourceSkill:"夜之主",
+                   }
+                }
+            },
+            "小红":{
+                trigger:{
+                   source:"soulDamageBegin",
+                },
+                forced:true,
+                filter:function(event,player){
+                    return event.player.storage.真已通灵;
+                },
+                content:function(){
+                   trigger.num=trigger.num*2;
+                   player.changeMaxSoul(3);
+                   player.soulRecover(4);
+                },
+            },
+            "即息":{
+               audio:"ext:错乱时空/音频:3",
+               trigger:{
+                  global:"damageBefore",
+               },
+               priority:3,
+               lastDo:true,
+               filter:function(event,player){
+                   return event.source?.group=="shu"&&player.countCards('h')>0;
+               },
+               async content(event,trigger,player){
+            const {result:{bool}} = await player.chooseToDiscard(1,'是否弃置一张牌令'+get.translation(trigger.source)+'改为神圣伤害？','he').set('ai',function(card){
+                return 6-get.value(card);
+        });
+            if(bool){
+               trigger._triggered=null;
+               player.gl_changeMp(1,'yaoguang');
+            }
+                },
+            },
+            "疾光":{
+                audio:"ext:错乱时空/音频:3",
+                usable:1,
+                enable:"phaseUse",
+                filter:function (event,player){
+        return player.gl_getMp('yaoguang')>=1;
+    },
+                async content(event,trigger,player){
+                   await player.gl_changeMp(-1,'yaoguang');
+                   player.draw(2);
+                   const { bool: bool2, numbers } = await player.chooseNumbers(get.prompt(event.skill), [
+        {
+          prompt: "失去任意点体力值，获得等量的怒气值，然后你可以发动一次【游侠】",
+          min: 1,
+          max: player.getHp()
+        }
+      ]).set("processAI", () => {
+        const player2 = get.player();
+        if (player2.hp < 2 || !game.hasPlayer((current) => get.attitude(player2, current) < 0)) {
+          return false;
+        }
+        let num = Math.min(Math.floor(player2.gl_getMp('yaoguang')), player2.hp - 1);
+        return [num];
+      }).forResult();
+      if(numbers){
+         player.loseHp(numbers[0]);
+         await player.gl_changeMp(numbers[0],'yaoguang');
+      }
+      await player.useSkill("游侠");
+                },
+                ai:{
+                    order:6,
+                    result:{
+                        player:[0,5],
+                    },
+                },
+            },
+            "窃魔":{
+                intro:{
+                    content:"limited",
+                },
+                mark:true,
+                limited:true,
+                skillAnimation:true,
+                animationStr:"窃魔",
+                animationColor:"fire",
+                init:function (player){
+                   player.storage.窃魔=false;
+                },
+                trigger:{
+                    player:"dying",
+                },
+                filter:function(event,player){
+                   if(player.storage.窃魔)return false;
+                   if(!event.source)return false;
+                   var list=[];
+            var skills=event.source.getSkills(true,false);
+        for(var i=0;i<skills.length;i++){
+            if(!lib.skill[skills[i]].charlotte)list.push(skills[i]);
+        }
+        if(list.length<1)return false;
+        return true;
+                },
+                content:function(){
+                   'step 0'
+                   player.gainMaxHp();
+                   player.storage.窃魔=true;
+                   player.awakenSkill("窃魔");
+                   var list=[];
+            var skills=trigger.source.getSkills(true,false);
+        for(var i=0;i<skills.length;i++){
+            if(!lib.skill[skills[i]].charlotte)list.push(skills[i]);
+        }
+                   event.skills=list;
+        'step 1'
+        player.recover(player.maxHp-player.hp);
+        if(event.skills.length>0){
+            player.chooseControl(event.skills).set('prompt','请选择要夺取的技能').set('ai',function(){return event.skills.randomGet()});
+        }
+        else event.finish();
+        'step 2'
+        trigger.source.removeSkill(result.control);
+        player.addSkill(result.control);
+        player.storage.噬魔[0].push(result.control);
+        player.storage.噬魔[1].push(trigger.source);
+                }
+            },
+            "化魔":{
+                trigger:{
+                   player:"phaseDrawBegin",
+                },
+                forced:true,
+                priority:-1,
+                content:function(){
+                   trigger.num=Math.min(player.hp,5);
+                },
+                group:["化魔_soul"],
+                subSkill:{
+                   soul:{
+                      trigger:{
+                   player:["gainMaxHpAfter","recoverAfter"],
+                      },
+                      forced:true,
+                      filter:function(event,player){
+                      return event.num>0;
+                      },
+                      content:function(){
+                         if(trigger.name=="gainMaxHp"){
+                         player.changeMaxSoul(trigger.num);
+                         if(player.maxHp>=3&&player.maxHp<5)player.node.avatar.setBackgroundImage('extension/错乱时空/提雷克二.jpg');
+                         if(player.maxHp>=5)player.node.avatar.setBackgroundImage('extension/错乱时空/提雷克三.jpg');
+                         }
+                         if(trigger.name=="recover")player.soulRecover(trigger.num);
+                      },
+                      sub:true,
+                      sourceSkill:"化魔",
+                   }
+                },
+            },
+            "噬魔":{
+               init:function(player){
+                   player.storage.噬魔=[[],[]];
+               },
+               trigger:{
+                   global:"loseAfter",
+               },
+               filter:function(event,player){
+                   var list=[];
+            var skills=event.player.getSkills(true,false);
+        for(var i=0;i<skills.length;i++){
+            if(!lib.skill[skills[i]].charlotte)list.push(skills[i]);
+        }
+        if(list.length<1)return false;  
+              const evt = event.getl(event.player);
+                     return event.player.countCards('h')<=0&&event.player!=player&&player.inRange(event.player)&&(player.countCards('he')+player.hp)>=event.player.hp&&evt && evt.player === event.player && evt.hs && evt.hs.length > 0;
+               },
+               check:function (event,player){
+                       return get.attitude(player,event.player)<=0;
+                },
+               async content(event,trigger,player){
+                   var num=trigger.player.hp;
+                   const { bool: bool1, cards: cards2 } = await player.chooseToDiscard(get.prompt(event.skill), [1, num], "he", "allowChooseAll").set("prompt2", "弃置任意张牌").set("ai", (card) => {
+          return 15 - get.value(card);
+      }).set("chooseonly", true).forResult();
+         if(bool1&&cards2.length){
+             num-=cards2.length;
+         }
+         if(num>0){
+            const { bool: bool2, numbers } = await player.chooseNumbers(get.prompt(event.skill), [
+        {
+          prompt: "失去任意点体力值",
+          min: Math.min(0,num),
+          max: Math.min(player.hp>0?player.hp:0,num),
+        }
+      ]).set("processAI", () => {
+        const player2 = get.player();
+        if (player2.hp < 2 || !game.hasPlayer((current) => get.attitude(player2, current) < 0)) {
+          return false;
+        }
+        return [num];
+      }).forResult();
+      if(numbers){
+         player.loseHp(numbers[0]);
+         num-=numbers[0];
+      }
+         }
+         if(num<=0){
+            var list=[];
+            var skills=trigger.player.getSkills(true,false);
+        for(var i=0;i<skills.length;i++){
+            if(!lib.skill[skills[i]].charlotte)list.push(skills[i]);
+        }
+          if(list.length>0){
+            var {result:{control}} = await player.chooseControl(list)
+            .set('prompt','请选择要夺取的技能')
+            .set('ai',function(){return list.randomGet()});
+          }
+          if(control){
+             trigger.player.removeSkill(control);
+             player.addSkill(control);
+             player.storage.噬魔[0].push(control);
+             player.storage.噬魔[1].push(trigger.player);
+             player.gainMaxHp();
+             player.recover();
+          }
+         }         
+              },
+              group:["噬魔_die"],
+              subSkill:{
+                 die:{
+                    trigger:{
+                       player:"dieAfter",
+                    },
+                    forceDie:true,
+                    forced:true,
+                    filter:function(event,player){
+                       return player.storage.噬魔[0].length>0;
+                    },
+                    content:function(){
+                      for(var i=0;i<player.storage.噬魔[0].length;i++){
+                         if(player.storage.噬魔[1][i].isAlive())player.storage.噬魔[1][i].addSkill(player.storage.噬魔[0][i]);
+                         player.removeSkill(player.storage.噬魔[0][i]);
+                      }
+                    },
+                    sourceSkill:"噬魔",
+                    sub:true,
+                 }
+              }
+            },
+            "吸魔":{
+                enable:"phaseUse",
+                usable:1,
+                filterCard:function (card){
+        return get.suit(card)=='diamond';
+    },
+                position:"h",
+                viewAs:{
+                    name:"shunshou",
+                },
+                viewAsFilter:function (player){
+        if(!player.countCards('h',{suit:'diamond'})) return false;
+    },
+                prompt:"将一张♦牌当顺手牵羊使用",
+                check:function (card){return 16-get.value(card)},
+                group:["吸魔_guohe"],
+                subSkill:{
+                   guohe:{
+                       enable:"phaseUse",
+                usable:1,
+                filterCard:function (card){
+        return get.suit(card)=='spade';
+    },
+                position:"he",
+                viewAs:{
+                    name:"guohe",
+                },
+                viewAsFilter:function (player){
+        if(!player.countCards('h',{suit:'spade'})) return false;
+    },
+                prompt:"将一张♠️牌当顺手牵羊使用",
+                check:function (card){return 15-get.value(card)},
+                       sub:true,
+                       sourceSkill:"吸魔",
+                   }
+                },
+            },
+            "怒涛狂噬":{
+                nobracket:true,
+                mark:true,
+                zhuanhuanji: true,
+                marktext: "☯",
+                intro: {
+                    content: function (storage, player, skill) {
+                        if (player.storage.怒涛狂噬==true) return '你受到伤害时，伤害来源增加一点体力上限';
+                        return '你造成伤害时，减少目标一点体力上限';
+                    },
+                },
+                trigger:{
+                    player:"damageBegin",
+                    source:"damageBegin"
+                },
+                forced:true,
+                filter:function(event,player){
+                    if(event.player==player&&player.storage.怒涛狂噬)return event.source;
+                    if(event.source==player&&!player.storage.怒涛狂噬)return event.player!=player;
+                    return false;
+                },
+                content:function(){
+                   if(player.storage.怒涛狂噬){
+                      trigger.source.gainMaxHp();
+                   }
+                   if(!player.storage.怒涛狂噬){
+                      trigger.player.loseMaxHp();
+                   }
+                   player.changeZhuanhuanji('怒涛狂噬');
+                },
+            },
+            "虾兵蟹将":{
+                trigger:{
+                   player:["dieBefore","phaseEnd"],
+                },
+                nobracket:true,
+                forced:true,
+                direct:true,
+                charlotte:true,
+                filter:function(event,player){
+                    if(player.storage.溺落低语.length>0)return true;
+                },
+                content:function(){
+                   player.reinit(player.name,player.storage.溺落低语[0]);
+                   player.hp=player.storage.溺落低语[1];
+                   player.maxHp=player.storage.溺落低语[2];
+                   player.skills=player.storage.溺落低语[3];
+                   player.update();
+                }
+            },
+            "溺落低语":{
+                init:function(player){
+                   if(!player.storage.溺落低语num)player.storage.溺落低语num=0;
+                },
+                nobracket:true,
+                trigger: {
+                    player: ["useCard","respond"],
+               },
+               frequent: true,
+               filter:function(event,player){
+                  return get.color(event.card)=="black";
+               },
+               async content(event,trigger,player){
+               player.storage.溺落低语num++;
+               if(player.storage.溺落低语num>=4){
+               player.storage.溺落低语num=0;
+               const {result:{targets}} = await player.chooseTarget(get.prompt(event.skill),'将一名其他角色的武将牌替换为小龙虾',function(card,player,target){
+            return target!=player;
+        }).set('ai',function(target){
+            var player=_status.event.player;
+            return get.attitude(player,target)<=0;
+        });
+           if(targets?.length){
+               targets[0].storage.溺落低语=[];
+               targets[0].storage.溺落低语.push(targets[0].name);
+               targets[0].storage.溺落低语.push(targets[0].hp);
+               targets[0].storage.溺落低语.push(targets[0].maxHp);
+               targets[0].storage.溺落低语.push(targets[0].skills);
+               targets[0].init("小龙虾");
+           }
+               }
+              }
+            },
+            "地球降临":{
+               trigger: {
+                   global: "gameStart",
+                   player: "enterGame",
+               },
+               forced:true,
+               direct:true,
+               tonglingSkill:true,
+               nobracket:true,
+               init:function(player){
+                  if(!player.storage.已通灵)player.storage.已通灵=0;
+                  game.addGlobalSkill("tongling地球降临");
+                  game.addGlobalSkill("tongling地球降临_juexing");
+               },
+               content:function(){
+              game.addGlobalSkill("tongling地球降临_init");
+               }
+            },
+            "tongling地球降临":{
+                trigger:{
+                   global:["dieAfter","loseMaxHpAfter","gainMaxHpAfter"],
+                },
+                forceDie:true,
+                forced:true,
+                direct:true,
+                silent: true,
+                filter:function(event,player){
+                   return player.storage.已通灵<2&&lib.character[player.name][3].includes('地球降临');
+                },
+                content:function(){
+                   'step 0'
+                   player.gl_changeMp(1,'cl_tongling').forceDie=true;
+                },
+                subSkill:{
+                   init:{
+                     trigger:{
+                global:"changeCharacterBefore",
+                     },
+                     filter:function(event,player){
+                       return player.storage.已通灵<2&&lib.character[player.name][3].includes('地球降临');
+                     },
+                     forceDie:true,
+                     forced:true,
+                     direct:true,
+                     silent: true,
+                     content:function(){
+                   'step 0'
+                   player.gl_changeMp(2,'cl_tongling').forceDie=true;
+                },
+                     sourceSkill:'tongling地球降临',
+                     sub:true,
+                   },
+                   juexing:{
+                     trigger:{
+                   player:"gl_changeMpAfter",                       },
+                     forceDie:true,
+                     forced:true,
+                     direct:true,
+                     silent: true,
+                     filter:function(event,player){
+                   return event.type=='cl_tongling'&&player.gl_getMp('cl_tongling')>=player.gl_getMaxMp('cl_tongling')&&player.storage.已通灵<2&&lib.character[player.name][3].includes('地球降临');
+                },
+                     content:function(){
+                      var effect2 = function(player){
+                     if(!player.storage.tongling地球降临)player.storage.tongling地球降临=1;
+                    else player.storage.立世++;
+                    game.removeGlobalSkill('tongling地球降临_card');
+                    game.addGlobalSkill("tongling地球降临_card");
+                    player.addSkill("天罡");
+                      }
+                      player.tongling("吞天神·兰德斯","错乱时空/吞天神通灵.mp4",false,effect2).forceDie=true;
+                },
+                       sourceSkill:'tongling地球降临',
+                       sub:true,
+                   },
+                   card:{
+                       trigger:{
+                            player:"useCardToPlayered",
+                        },
+                        forced:true,
+                        filter:function (event,player,card,target){
+                return event.target!=player&&player.storage.tongling地球降临;
+                  },
+                  content:function(){
+                      player.discardPlayerCard(player.storage.tongling地球降临,trigger.target,'he',true)
+                  },
+                       sourceSkill:'tongling地球降临',
+                       sub:true,
+                   }
+                }
+            },
+            "尘世涤荡":{
+                init:function(player){
+                   player.storage.地球=[[],[]];
+                },
+                trigger:{
+                   player:["phaseBegin","phaseUseBegin","damageBegin"],
+                },
+                forced:true,
+                nobracket:true,
+                filter:function(event,player){
+                   if(event.name=="phase"||event.name=="damage")return player.storage.地球[0].length>0;
+                   return true;
+                },
+                async content(event,trigger,player){
+                 if(trigger.name=="phase"&&player.storage.地球[0].length>0){
+                  player.draw(player.storage.地球[0].length);
+                  player.storage.地球=[[],[]];
+                 }else if(trigger.name=="phaseUse"){
+                  for(var p of game.players){
+                    if(p==player)continue;
+                    var list=[];
+            var skills=p.getSkills(true,false);
+          if(skills.length>0){
+            var {result:{control}} = await player.chooseControl(skills)
+            .set('prompt','请选择要夺取的技能')
+            .set('ai',function(){return skills.randomGet()});
+          }
+          if(control){
+             p.removeSkill(control);
+             player.storage.地球[0].push(control);
+             player.storage.地球[1].push(p);
+          }
+                  }
+                 }else if(trigger.name=="damage"&&player.storage.地球[0].length>0){
+                   for(var i=0;i<player.storage.地球[0].length;i++){
+                         if(player.storage.地球[1][i].isAlive())player.storage.地球[1][i].addSkill(player.storage.地球[0][i]);
+                      }
+                      player.storage.地球=[[],[]];
+                 }
+                }
+            },
             "斩落众神头颅的那片废墟":{
    ronghe:function(player,card, log, init) {
     if (init !== false) {
@@ -65937,8 +67698,8 @@ else if (type == 'equip') {
                 }
             }
             node.fixed = true;
-            node.style.left = "calc(50% - 52px " + (Math.random() - 0.5 < 0 ? "+" : "-") + " " + Math.random() * 100 + "px)";
-            node.style.top = "calc(50% - 52px " + (Math.random() - 0.5 < 0 ? "+" : "-") + " " + Math.random() * 100 + "px)";
+            node.style.left = "calc(50% - 52px " + (Math.random() - 0.5 < 0 ? "+" : "-") + " " + Math.random() * 200 + "px)";
+            node.style.top = "calc(50% - 52px " + (Math.random() - 0.5 < 0 ? "+" : "-") + " " + Math.random() * 200 + "px)";
             node.style.transform = "scale(0)";
             node.hide();
             ui.arena.appendChild(node);
@@ -67877,7 +69638,7 @@ else if (type == 'equip') {
                         content:function(){
                            if(player.storage.J魔刀千刃)trigger.player.loseMaxHp(Math.ceil(trigger.player.hp*0.5));
                         for(var i=1;i<6;i++){
-                        if(trigger.player.countCards('e',{subtype:['equip'+i]})>0)trigger.player.isDisabled(i);
+                        if(trigger.player.countCards('e',{subtype:['equip'+i]})>0)trigger.player.disableEquip(i);
                          }
                         },
                         sourceSkill:"J魔刀千刃",
@@ -69323,6 +71084,7 @@ else if (type == 'equip') {
             "cl_黄盖":"神盖子",
             "无敌":"无敌",
             "无上神·无敌":"无上神·无敌",
+            "无上神·无敌1":"无上神·无敌",
             "伏妖":"伏妖",
             "虚无神·伏妖":"虚无神·伏妖",
             "法纳斯":"法纳斯",
@@ -69412,12 +71174,25 @@ else if (type == 'equip') {
             "碧琪":"碧琪",
             "柔柔":"柔柔",
             "云宝":"云宝",
+            "cl_神钟会":"神钟会",
+            "瘟神·钟会":"瘟神·钟会",
+            "卡拉":"卡拉",
+            "洛世琦":"洛世琦",
+            "SP提丰":"SP提丰",
+            "疾光玛恩纳_prefix": "疾光",
+            "疾光玛恩纳":"疾光玛恩纳",
+            "提雷克":"提雷克",
+            "小龙虾":"小龙虾",
+            "兰德斯":"兰德斯",
+            "吞天神·兰德斯":"吞天神·兰德斯",
             "tengyun":"腾云",
             "zhanyi":"战意值",
             "yaoguang":"怒气值",
             "cl_tongling":"通灵点",
             "cl_lianjin":"炼金点",
             "cl_lingli":"灵力",
+            "cl_qishi":"启示",
+            "cl_moli":"魔力值",
             "cl_xunjie":"迅捷值",
             "biaofengwujiang":"标风武将",
             "guangzhijuren":"光之巨人",
@@ -71198,7 +72973,7 @@ else if (type == 'equip') {
            "斩灵":"斩灵",
            "斩灵_info":"锁定技，①游戏开始时，你将一张[斩灵唐刀]置入你的装备区。②你装备区的[斩灵唐刀]不能被弃置，不能被当成其他牌使用或打出。③当你装备了[斩灵唐刀]时，你的武器栏不会被废除，你不是武器牌的合法目标。",
            "斩灵唐刀":"斩灵唐刀",
-           "斩灵唐刀_info":"①当你使用杀指定目标时，若目标的体力值与手牌数均不大于此杀的点数，此杀无法响应。②当你杀死一名角色后，你可以让[斩灵唐刀]获得其一个技能。③当一名角色死亡时，其可以将一个技能转移到你的[斩灵唐刀]上。④你对拥有通灵点的角色造成伤害时，降低其2通灵点",
+           "斩灵唐刀_info":"①当你使用杀指定目标时，若目标的体力值与手牌数均不大于此杀的点数，此杀无法响应。②当你杀死一名角色后，你可以让[斩灵唐刀]获得其一个技能。③当一名角色死亡时，其可以将一个技能转移到你的[斩灵唐刀]上。④你对拥有通灵点的角色造成伤害时，降低其3通灵点",
            "厨道":"厨道",
            "厨道_info":"出牌阶段限1次，你可以选择至多三名角色和自己两张手牌，然后你展示牌堆顶一张牌。<br>●若这三张牌的类型均不相同：你选择的目标各摸两张牌并恢复一点体力。<br>●若其中两张牌的类型相同，另一张不同：你选择目标摸一张牌。<br>●若这三张牌的类型全部相同：你选择的目标恢复两点体力并摸一张牌。",
            "狐灵":"狐灵",
@@ -71873,7 +73648,7 @@ else if (type == 'equip') {
            "_p无之天使":"无之天使",
            "_p无之天使_info":"",
            "堕梦":"堕梦",
-           "堕梦_info":"锁定技，<br>①你造成伤害时进行一次判定，若结果为♠️，目标附加2层<a class='cl_mabi' onclick=\"javascript:window.cl_mabi();\">麻痹</a>状态。<br>②你在场时，处于<a class='cl_mabi' onclick=\"javascript:window.cl_mabi();\">麻痹</a>状态的角色造成伤害时改为移去一层附<a class='cl_mabi' onclick=\"javascript:window.cl_mabi();\">麻痹</a>状态。",
+           "堕梦_info":"锁定技，<br>①你造成伤害时进行一次判定，若结果为黑色，目标附加2层<a class='cl_mabi' onclick=\"javascript:window.cl_mabi();\">麻痹</a>状态。<br>②你在场时，处于<a class='cl_mabi' onclick=\"javascript:window.cl_mabi();\">麻痹</a>状态的角色造成伤害时改为移去一层附<a class='cl_mabi' onclick=\"javascript:window.cl_mabi();\">麻痹</a>状态。",
            "妄语":"妄语",
            "妄语_info":"出牌阶段限1次，若你的手牌大于等于3且均为黑色，你可以给一名其他角色附加3层<a class='cl_mabi' onclick=\"javascript:window.cl_mabi();\">麻痹</a>状态。",
            "空剧场":"空剧场",
@@ -71994,7 +73769,7 @@ else if (type == 'equip') {
              "凋灵护盾":"凋灵护盾",
              "凋灵护盾_info":"锁定技，你体力低于一半时，①你免疫非卡牌伤害和与你距离大于1的角色造成的伤害。②你受到伤害前，若伤害来源处于凋亡爆发状态，则令其凋亡爆发的持续时间+2并获得其区域内所有黑色牌。",
              "凋亡收割":"凋亡收割",
-             "凋亡收割_info":"每轮限1次，当其他角色的体力/体力上限/灵魂体力/灵魂体力上限变为1时，你可以视为对其使用一张无距离限制的杀，此杀无视防具且附加一点<a class='cl_soul' onclick=\"javascript:window.cl_souldamage();\">灵魂伤害</a>。",             
+             "凋亡收割_info":"每轮限1次，当其他角色的体力/体力上限/<a class='cl_soul' onclick=\"javascript:window.cl_soulhp();\">灵魂体力</a>/<a class='cl_soul' onclick=\"javascript:window.cl_soulhp();\">灵魂体力</a>上限变为1时，你可以视为对其使用一张无距离限制的杀，此杀无视防具且附加一点<a class='cl_soul' onclick=\"javascript:window.cl_souldamage();\">灵魂伤害</a>。",             
             "精神逆构":"精神逆构",
             "精神逆构_info":"锁定技，其他角色进入<a class='cl_diaowang' onclick=\"javascript:window.cl_diaowangbaofa();\">凋亡爆发</a>状态时，其流失一点体力且非锁定技失效2个回合。",
             "黄金的狂喜":"黄金的狂喜",
@@ -72076,7 +73851,7 @@ else if (type == 'equip') {
             "暗影潜袭":"暗影潜袭",
             "暗影潜袭_info":"①出牌阶段限1次，你可以弃置两张黑色杀并选择一名角色（可以选择被移出游戏的角色），在你的下个回合开始时，你对其造成一点不可免疫的伤害，若目标此时是被移出游戏的状态，你令其回到游戏且此伤害+1。<br>②一名角色的回合开始时，若你已被移出游戏，你可以回到游戏并对该角色造成一点不可免疫的伤害。",
             "反转主宰":"反转主宰",
-            "反转主宰_info":"锁定技，你的判定结果始终相反，你造成的伤害均视为<a class='cl_soul' onclick=\"javascript:window.cl_souldamage();\">灵魂伤害</a>，你使用牌距离限制、可使用次数+1。",
+            "反转主宰_info":"锁定技，你的判定结果始终相反，你造成的伤害均视为<a class='cl_soul' onclick=\"javascript:window.cl_souldamage();\">灵魂伤害</a>，你使用牌没有距离限制、可使用次数+1。",
             "引力虹吸":"引力虹吸",
             "引力虹吸_info":"当你受到伤害后，你可以翻面并获得所有其他角色一张牌，然后这些角色可以选择弃置一张牌使其已损伤体力和体力互换（互换后至少为1）",
             "克制":"克制",
@@ -72124,7 +73899,7 @@ else if (type == 'equip') {
             "掠食":"掠食",
             "掠食_info":"锁定技，你对体力低于你的其他角色造成非属性伤害时，你获得其一张牌并回复一点体力。",
             "兔械":"兔械",
-            "兔械_info":"瞬发技，①出牌阶段限1次，你可以弃置任意张牌并获得等量的“兔械”标记，牌堆顶X张牌始终对你可见。②你消耗可以一个“兔械”并摸一张牌。（X为你“兔械”标记的数量）",
+            "兔械_info":"瞬发技，①出牌阶段限1次，你可以弃置任意张牌并获得等量+1的“兔械”标记，牌堆顶X张牌始终对你可见。②你消耗可以一个“兔械”并摸一张牌。（X为你“兔械”标记的数量）",
             "清扫":"清扫",
             "清扫_info":"每回合限1次，其他角色弃置牌时，你可以将其手牌中所有与这些牌同名的牌置入弃牌堆。",
             "博览":"博览",
@@ -72161,6 +73936,93 @@ else if (type == 'equip') {
             "忠诚_info":"锁定技，每回合限1次，友方角色受到伤害时，此伤害由你承受，然后你可以弃置伤害来源一张装备牌。",
             "音爆":"音爆",
             "音爆_info":"出牌阶段，若你的“迅捷值”达到6点，你可以消耗所有“迅捷值”并摸等量的牌，然后选择任意名角色，这些角色若处于“制裁”状态，则解除其“制裁”，否则其陷入持续3650回合的“制裁”",
+            "降祸":"降祸",
+            "降祸_info":"出牌阶段限1次，你可以令一名其他角色摸三张牌，然后其展示所有手牌并选择一项：<br>1.交给你其区域内所有黑色牌并令你获得1通灵点。<br>2.其获得与手牌中黑色牌数量等量层<a class='cl_diaowang' onclick=\"javascript:window.cl_diaowangsunshang();\">凋亡损伤</a>，若其已经处于<a class='cl_diaowang' onclick=\"javascript:window.cl_diaowangbaofa();\">凋亡爆发</a>状态，则你对其造成一点伤害并使其凋亡等级+1。",
+            "凛界":"凛界",
+            "凛界_info":`①每回合限1次，其他角色增加通灵点/对你造成伤害时，你可以立即对其使用一次无次数限制的${get.poptip('降祸')}。②你的手牌上限+X（X为你的通灵点数量）`,
+            "立世":"立世",
+            "立世_info":`<a class='cl_tongling' onclick=\"javascript:window.cl_tongling();\">通灵技（15）</a>，你受到伤害后+1，有角色陷入<a class='cl_diaowang' onclick=\"javascript:window.cl_diaowangbaofa();\">凋亡爆发</a>时+3。<br><li>通灵强化：你使用${get.poptip('降祸')}时改为同时执行两个选项，你对处于<a class='cl_diaowang' onclick=\"javascript:window.cl_diaowangbaofa();\">凋亡爆发</a>中的角色造成的伤害+1。`,
+            "执世":"执世",
+            "执世_info":`锁定技，①你在场时，场上所有其他角色每回合使用和打出的牌不能超过其自身体力值。<br>②你的回合开始时，所有其他角色流失一点体力。<br>③你使用牌不受到任何技能的限制。`,
+            "激言":"此处省略269个字的一技能……",
+            "激言_info":`其他角色的出牌阶段开始时，你可以令其将一半的手牌（向上取整）当一张【酒】使用，若如此做，其本回合首次造成伤害时回复一点体力并摸两张牌。`,
+            "圣职":"此处省略163个字的二技能……",
+            "圣职_info":`<a class='cl_gouzhuji' onclick=\"javascript:window.cl_gouzhuji();\">构筑技（10）</a>，你进入游戏时获得10魔力值，每回合时你获得1魔力值，你的手牌上限+X（X为你当前魔力值）。`,
+            "隐后":"我这么可爱我绝对不能掉血……",
+            "隐后_info":`当你受到伤害或流失体力时，可以询问一名其他角色是否帮你承担此次伤害/体力流失，若其同意，则其替你承受且数值变为双倍，否则其需弃置一张牌。`,
+            "勒索":"此处省略206个字的四技能……",
+            "勒索_info":`出牌阶段限一次，你可以让一名角色交给你至多五张牌。`,
+            "月影鞭风":"月影鞭风",
+            "月影鞭风_info":`每回合限1次，当你使用伤害牌指定目标时，可以视为对这些目标使用一张【过河拆桥】`,
+            "如梦如幻":"如梦如幻",
+            "如梦如幻_info":`锁定技，每回合限1次，你受到由卡牌造成的伤害时，若你的手牌数不高于伤害来源，此伤害-1。`,
+            "凛月之光":"凛月之光",
+            "凛月之光_info":`当你造成伤害时，可以令一名角色增加或降低1点通灵点。`,
+            "荒原追猎":"荒原追猎",
+            "荒原追猎_info":`锁定技，你摸牌后获得等量的“启示”（上限8），你的【杀】可使用次数、攻击范围、防御距离+X，体力值不低于你“启示”的角色无法响应你的牌。（X为你当前的“启示”的一半）`,
+            "风贯丛林":"风贯丛林",
+            "风贯丛林_info":`出牌阶段限2次，你可以消耗2点“启示”，从牌堆里获得一张【杀】`,
+            "猎人的专注":"猎人的专注",
+            "猎人的专注_info":`锁定技，当你造成伤害时，若你前两次伤害也是对该目标造成，则目标本回合所有技能失效，且你摸一张牌。`,
+            "夜之主":"夜之主",
+            "夜之主_info":`持恒技，当有角色进行通灵时，你进入“夜之主”形态。<br>●夜之主形态：受到来自已通灵的角色造成的伤害减少50%（向下取整），视为装备${get.poptip("小红")}`,
+            "小红":"小红",
+            "小红_info":`你对已通灵的角色造成灵魂伤害时，此伤害翻倍，且增加自身3点<a class='cl_soul' onclick=\"javascript:window.cl_soulhp();\">灵魂体力</a>上限并回复4点<a class='cl_soul' onclick=\"javascript:window.cl_soulhp();\">灵魂体力</a>。`,
+            "即息":"即息",
+            "即息_info":`当蜀势力角色造成伤害时，你可以弃置一张牌将那次伤害改为神圣伤害，若如此做，你获得1点“怒气值”。`,
+            "疾光":"疾光",
+            "疾光_info":`出牌阶段限1次，你可以消耗1点“怒气值”并摸两张牌，然后你可以流失任意点体力并获得等量的“怒气值”并发动一次${get.poptip('游侠')}`,
+            "窃魔":"窃魔",
+            "窃魔_info":`限定技，其他角色使你进入濒死状态时，你夺取其武将牌上一个技能，然后你增加一点体力上限并将体力回复至上限。`,
+            "化魔":"化魔",
+            "化魔_info":`锁定技，摸牌阶段你的摸牌量改为你的当前体力（不超过5），你增加体力上限/回复体力时，也会增加/回复等量的<a class='cl_soul' onclick=\"javascript:window.cl_soulhp();\">灵魂体力</a>上限/<a class='cl_soul' onclick=\"javascript:window.cl_soulhp();\">灵魂体力</a>。`,
+            "噬魔":"噬魔",
+            "噬魔_info":`你攻击范围内的角色失去最后的手牌时，你可以流失任意点体力并弃置任意张牌使总和达到X，然后你夺取那名角色一个技能，并增加一点体力上限、回复一点体力。你死亡后将因此和${get.poptip('窃魔')}夺取的技能归还原主（X为那名角色的当前体力）。`,
+            "吸魔":"吸魔",
+            "吸魔_info":`①②效果出牌阶段各限1次。<br>①：你可以将一张♠️牌当【过河拆桥】使用。<br>②：你可以将一张♦️牌当【顺手牵羊】使用`,
+            "怒涛狂噬":"怒涛狂噬",
+            "怒涛狂噬_info":`锁定技，转换技，<br>阴：你造成伤害时，目标减少一点体力上限。<br>阳：你受到伤害时，伤害来源增加一点体力上限。`,
+            "溺落低语":"溺落低语",
+            "溺落低语_info":`每当你累积使用4张黑色牌，可以选择一名其他角色，令其武将牌替换为${get.poptip({
+        id: "小龙虾",
+        name: "小龙虾",
+        type: "character",
+        dialog: "characterDialog",
+    })}`,
+            "地球降临":"地球降临",
+            "地球降临_info":`<a class='cl_tongling' onclick=\"javascript:window.cl_tongling();\">通灵技（18）</a>，，有角色体力上限变化时+1，有角色武将牌变化时+2。<br><li>通灵强化：你视为拥有技能${get.poptip('天罡')}，你使用黑色牌指定其他角色时弃置其一张牌。`,
+            "尘世涤荡":"尘世涤荡",
+            "尘世涤荡_info":`锁定技，<br>①出牌阶段开始时，你选择所有其他角色武将牌上一个技能（可以选择状态技），将这些技能储存在“地球”之中（这些技能无效，你受到伤害时归还这些技能）<br>②你的回合开始时，你销毁“地球”中所储存的技能并摸等量的牌`,
+            "卡拉登场":"",
+            "卡拉登场_info":``,
+            "_卡拉用牌":"",
+            "_卡拉用牌_info":``,
+            "强化魔法buff":"",
+            "强化魔法buff_info":``,
+            "_神圣治疗法阵buff":"",
+            "_神圣治疗法阵buff_info":``,
+            "魔法抹布buff":"",
+            "魔法抹布buff_info":``,
+            "大地精灵之力buff":"大地精灵之力",
+            "大地精灵之力buff_info":`向伤害来源下跪求饶，求对方能放你一马。`,
+            "余响回奏术buff":"余响回奏术",
+            "余响回奏术buff_info":`你使用一张牌后可以摸一张牌并立即使用一张牌。`,
+            "黄色声援术buff":"黄色声援术",
+            "黄色声援术buff_info":`你造成伤害时，取消之；你使用牌时，摸一张牌并弃两张牌。`,
+            "声波操纵术buff":"声波操纵术",
+            "声波操纵术buff_info":`你使用的下一张牌由你来指定使用者。`,
+            "防御力强化魔法buff":"防御力强化魔法",
+            "防御力强化魔法buff_info":`你免疫所有伤害。`,
+            "_复活魔法time":"",
+            "_复活魔法time_info":``,
+            "复活魔法buff":"",
+            "复活魔法buff_info":``,
+            "景气魔法buff":"景气魔法",
+            "景气魔法buff_info":`你回复体力后，目标与你回复等量的体力`,
+            "即死诅咒buff":"即死诅咒",
+            "即死诅咒buff_info":`你死亡后，目标死亡`,
+            "高级治愈魔法buff":"高级治愈魔法",
+            "高级治愈魔法buff_info":`你使用或打出牌时，回复一点体力并摸X张牌，若你的手牌因此超过当前体力值的3倍，则你受到10点火焰伤害，距离你2以内的角色受到3点火焰伤害，然后你失去此技能。（X初始为1，每次触发此技能后+1）`,
             "_日常任务_杀一下":"",
             "_日常任务_杀一下_info":"",
             "_日常任务_当浮一大白":"",
@@ -72323,7 +74185,7 @@ else if (type == 'equip') {
   };
     if(lib.device||lib.node){
         //比赛将池
-        game.bisaijiangchi=["SP哥莫拉","龙骑士黑魔术少女","界黑岩射手","拉弥亚","巴图","SP尼克","传承艾瑞珂","提丰","界华法琳","黍","左乐","玛恩纳","瑕光","仙人·漩涡鸣人","霞露零","月亮伊布","火神蛾","杨戬","Herobrine","特莉波卡","雷吉奇卡斯","阿米娅","乌尔比安","陈千语","源·天将士","蕾缪安","SP惊蛰","SP星熊","无敌","伏妖","法纳斯","望","对神兵器·肯扎特","新SP陈","耶芙娜","SP傀影","刻俄柏","SP推进之王","cl_关银屏","cl_吕玲绮","SP神荀彧","cl_神赵云","cl_孙策","璀璨圣龙","夜刀神十香","诱宵美九","镜野七罪","星宫六喰","本条二亚","魔科比","慢直升机","慢佐巴杨","凋灵","塑心","潘多拉","SP史尔特尔","山中队员","佩丽卡","庄方宜","雷德","魔赵云","嗔韩氏五虎","嗔高览","骑拉帝纳-别种形态","魔沙福林","疑麦克斯","疑奥特之王","疑百特星人","疑巴顿","小叶子","紫悦","珍奇","苹果嘉儿","碧琪","柔柔","云宝"];
+        game.bisaijiangchi=["SP哥莫拉","龙骑士黑魔术少女","界黑岩射手","拉弥亚","巴图","SP尼克","传承艾瑞珂","提丰","界华法琳","黍","左乐","玛恩纳","瑕光","仙人·漩涡鸣人","霞露零","月亮伊布","火神蛾","杨戬","Herobrine","特莉波卡","雷吉奇卡斯","乌尔比安","源·天将士","蕾缪安","SP惊蛰","SP星熊","无敌","伏妖","法纳斯","望","新SP陈","耶芙娜","SP傀影","刻俄柏","SP推进之王","cl_关银屏","cl_吕玲绮","SP神荀彧","cl_神赵云","cl_孙策","璀璨圣龙","夜刀神十香","诱宵美九","镜野七罪","本条二亚","魔科比","慢直升机","凋灵","塑心","潘多拉","SP史尔特尔","山中队员","庄方宜","雷德","魔赵云","嗔高览","骑拉帝纳-别种形态","魔沙福林","疑麦克斯","女帝","昆仑","无限未来","疑巴顿","小叶子","星熊","SP姆西斯哈","幸福蛋","cl_神钟会","卡拉","洛世琦","SP提丰","疾光玛恩纳","提雷克","兰德斯"];
         for(var name in 错乱时空.character){
             if(!错乱时空.character[name][4])错乱时空.character[name][4]=[];
             var currentSkinIndex = 0;
@@ -72346,6 +74208,712 @@ else if (type == 'equip') {
 	      }
         }
     }
+    
+// 比赛模式禁将
+window.ClGz = window.ClGz || {};
+
+window.ClGz.enable = function () {
+    if (lib.config.extension_错乱时空_cl_bisaijinjiang === false) return false;
+    return true;
+};
+
+window.ClGz.extractName = function (r) {
+    if (!r) return null;
+    if (typeof r === "string") return r;
+    if (Array.isArray(r)) return r[0];
+    if (r && typeof r === "object") {
+        if (Array.isArray(r.links) && r.links.length) return r.links[0];
+        if (Array.isArray(r.buttons) && r.buttons.length) return r.buttons[0];
+        if (r.link) return r.link;
+        if (r.name) return r.name;
+        const v = Object.values(r).find((x) => typeof x === "string");
+        return v || null;
+    }
+    return null;
+};
+
+window.ClGz.detectInfra = function () {
+    try { if (window.suiSet) return "lm"; } catch (e) {}
+    try { if (window.swTool) return "sw"; } catch (e) {}
+    return "none";
+};
+
+// 只在本扩展禁将
+window.ClGz.ownPacks = ["错乱时空", "zombie"];
+
+window.ClGz.getPool = function () {
+    let pool = Array.isArray(game.bisaijiangchi) ? game.bisaijiangchi : [];
+    pool = [...new Set(pool.filter((n) => lib.character[n]))];
+    return pool;
+};
+
+window.ClGz.limitPool = function () {
+    if (!window.ClGz.enable()) return;
+    if (window.ClGz._limited) return;
+    const pool = window.ClGz.getPool();
+    if (!pool || pool.length < 8) return;
+    window.ClGz._limited = true;
+    for (const pk of window.ClGz.ownPacks) {
+        const pack = lib.characterPack[pk];
+        if (!pack) continue;
+        for (const name in pack) {
+            if (pool.includes(name)) continue;
+            if (!lib.connectBanned.includes(name)) lib.connectBanned.push(name);
+        }
+    }
+};
+
+// 会出现在联机奖池里的武将
+window.ClGz.getBanGroups = function () {
+    const groups = [];
+    let packs = [];
+    try {
+        packs = (lib.configOL && lib.configOL.characterPack) || lib.config.characterPack || [];
+    } catch (e) { packs = []; }
+    const olBanned = (lib.configOL && lib.configOL.banned) || [];
+    for (const pk of packs) {
+        const pack = lib.characterPack[pk];
+        if (!pack) continue;
+        const list = [];
+        for (const name in pack) {
+            if (!lib.character[name]) continue;
+            if (olBanned.includes(name)) continue;
+            if (lib.connectBanned.includes(name)) continue;
+            list.push(name);
+        }
+        if (list.length) {
+            groups.push({
+                pack: pk,
+                title: lib.translate[pk] || lib.translate[pk + "_character_config"] || pk,
+                list: list,
+            });
+        }
+    }
+    return groups;
+};
+
+// 最近禁用
+window.ClGz.histKey = "cl_bisai_banhistory";
+
+window.ClGz.getHistory = function () {
+    let h = lib.config[window.ClGz.histKey];
+    if (!h || typeof h !== "object" || Array.isArray(h)) h = {};
+    return h;
+};
+
+window.ClGz.pushHistory = function (map, nickname, general) {
+    if (!map || !nickname || !general) return;
+    const old = Array.isArray(map[nickname]) ? map[nickname] : [];
+    const next = [general].concat(old.filter(function (g) { return g !== general; }));
+    map[nickname] = next.slice(0, 4);
+};
+
+window.ClGz.saveHistory = function (map) {
+    window.ClGz._history = map;
+    try { game.saveConfig(window.ClGz.histKey, map); } catch (e) {}
+    try { game.broadcast(ClGz_setHistory, map); } catch (e) {}
+};
+
+window.ClGz.mineHistory = function (map) {
+    const me = (game.me && (game.me.nickname || game.me.name)) || "";
+    const h = map && map[me];
+    if (!Array.isArray(h)) return [];
+    return h.filter(function (g) { return lib.character[g]; });
+};
+
+function ClGz_setHistory(map) {
+    if (window.ClGz) window.ClGz._history = map;
+}
+
+async function ClGz_runPreChoose() {
+    if (window.ClGz._preChooseDone) return [];
+    try { window.ClGz.removeBanner(); } catch (e) {}
+    try { window.ClGz.limitPool(); } catch (e) {}
+    const pool = window.ClGz.getPool();
+    if (!pool.length) { return []; }
+    let humans = [];
+    try {
+        humans = (game.players || []).filter(
+            (p) => (typeof p.isOnline === "function" && p.isOnline()) || p === game.me
+        );
+        if (!humans.length && game.me) humans = [game.me];
+    } catch (e) { humans = game.me ? [game.me] : []; }
+    if (!humans.length) { return []; }
+    const remaining = pool.slice();
+    const picks = [];
+    const answers = {};
+    const waits = humans.map(function (p) {
+        return new Promise(function (resolve) {
+            let settled = false;
+            let timer = null;
+            const finish = function (v) {
+                if (settled) return;
+                settled = true;
+                try {
+                    if (lib.node && lib.node.torespondtimeout && lib.node.torespondtimeout[p.playerid]) {
+                        clearTimeout(lib.node.torespondtimeout[p.playerid]);
+                        delete lib.node.torespondtimeout[p.playerid];
+                    }
+                } catch (e) {}
+                if (timer) { try { clearTimeout(timer); } catch (e2) {} }
+                try { if (lib.node && lib.node.torespond) delete lib.node.torespond[p.playerid]; } catch (e) {}
+                // 谁选禁将就给谁弹等待
+                if (v != null) {
+                    try {
+                        if (p === game.me) {
+                            if (window.ClGz && window.ClGz.showWaiting) window.ClGz.showWaiting();
+                        } else if (game.broadcast) {
+                            game.broadcast(ClGz_showWaitingTo, p.playerid);
+                        }
+                    } catch (e) {}
+                }
+                resolve(v);
+            };
+            try {
+                p.wait(function (result) { finish(result); });
+            } catch (e) { finish(null); }
+            timer = setTimeout(function () { finish(null); }, 120000);
+        }).then(function (v) { answers[p.playerid] = v; });
+    });
+    const banGroups = window.ClGz.getBanGroups();
+    const banHistory = window.ClGz.getHistory();
+    try {
+        game.broadcastAll(function (groups, hist) {
+            var who = (game.me && (game.me.nickname || game.me.name)) || "玩家";
+            var old = game._ClGz_banDialog;
+            if (old) { try { old.close(); } catch (e) {} }
+            var dialog = ui.create.dialog(
+                '<span style="color:#ffd700;font-weight:700;">【' + who + '】请禁用'+(Number(lib.config.extension_错乱时空_cl_bpcount)+1)+'个武将</span>'
+            );
+            game._ClGz_banDialog = dialog;
+            for (var gi = 0; gi < groups.length; gi++) {
+                dialog.add('<div class="text center">' + groups[gi].title + "</div>");
+                dialog.add([groups[gi].list, "character"]);
+            }
+            var dropHist = function () {
+                var hp = document.getElementById("ClGz_hist");
+                if (hp) hp.remove();
+            };
+            var closeConfirm = function () {
+                try {
+                    if (game._ClGz_confirm && ui.confirm) { ui.confirm.close(); delete ui.confirm; }
+                } catch (e) {}
+                delete game._ClGz_confirm;
+            };
+            var setOkEnabled = function () {
+    const ok = game._ClGz_pickedList.length == (Number(lib.config.extension_错乱时空_cl_bpcount)+1);
+    try {
+        if (ui.confirm && ui.confirm.classList) ui.confirm.classList[ok ? "remove" : "add"]("disabled");
+    } catch (e) {}
+};
+
+            var pickedName = null;
+            var pickedBtn = null;
+            game._ClGz_pickedList = [];
+var select = function (btn, name) {
+    if (!btn) return;
+    const realName = name || (btn.link != null ? btn.link : btn._link);
+    if (!realName) return;
+    const idx = game._ClGz_pickedList.indexOf(realName);
+    if (idx > -1) {
+        //取消选中
+        game._ClGz_pickedList.splice(idx,1);
+        try{btn.classList.remove("selected");}catch(e){}
+    }else{
+        if(game._ClGz_pickedList.length >= (Number(lib.config.extension_错乱时空_cl_bpcount)+1)) return;
+        game._ClGz_pickedList.push(realName);
+        try{btn.classList.add("selected");}catch(e){}
+    }
+    setOkEnabled();
+};
+
+            // 选后需再按确定
+            var submit = function () {
+    if (game._ClGz_banPicked) return;
+    if (game._ClGz_pickedList.length != (Number(lib.config.extension_错乱时空_cl_bpcount)+1)) return;
+    game._ClGz_banPicked = true;
+    var dlg = game._ClGz_banDialog;
+    try { if (dlg) dlg.close(); } catch (e) {}
+    dropHist();
+    closeConfirm();
+    const resultArr = game._ClGz_pickedList;
+    if (game.online) game.send("tempResult", resultArr);
+    else game.me.tempUnwait(resultArr);
+};
+
+            var tapOn = function (btn, handler) {
+                var sx = 0, sy = 0;
+                if (lib.config.touchscreen) {
+                    btn.addEventListener("touchstart", function (e) {
+                        try {
+                            var t = e.touches[0];
+                            if (t) { sx = t.clientX; sy = t.clientY; }
+                        } catch (e) {}
+                    }, { passive: true });
+                }
+                btn.addEventListener(lib.config.touchscreen ? "touchend" : "click", function (e) {
+                    if (lib.config.touchscreen && e && e.changedTouches && e.changedTouches[0]) {
+                        var et = e.changedTouches[0];
+                        var dx = et.clientX - sx, dy = et.clientY - sy;
+                        if (dx * dx + dy * dy > 100) return;
+                    }
+                    handler();
+                });
+            };
+            var buttons = dialog.buttons || [];
+            for (var i = 0; i < buttons.length; i++) {
+                (function (btn) {
+                    tapOn(btn, function () { select(btn); });
+                })(buttons[i]);
+            }
+            // 确定键
+            try {
+                ui.create.confirm("o", function () { submit(); });
+                game._ClGz_confirm = true;
+                setOkEnabled();
+            } catch (e) {}
+            var mine = hist && Array.isArray(hist[who]) ? hist[who] : [];
+            mine = mine.filter(function (g) { return lib.character[g]; });
+            dropHist();
+            if (!mine.length) return;
+            var wrap = document.createElement("div");
+            wrap.id = "ClGz_hist";
+            wrap.style.cssText =
+                "position:fixed;z-index:1100;" +
+                "display:flex;flex-direction:column;align-items:center;" +
+                "pointer-events:none;";
+            var cap = document.createElement("div");
+            cap.style.cssText =
+                "font-size:13px;font-weight:bold;color:#ffd700;opacity:1;" +
+                "position:relative;z-index:2;line-height:1.15;" +
+                "text-shadow:0 1px 3px rgba(0,0,0,0.9),0 0 6px rgba(0,0,0,0.7);" +
+                "white-space:nowrap;margin-bottom:4px;";
+            cap.textContent = "快捷禁用";
+            wrap.appendChild(cap);
+            var panel = document.createElement("div");
+            panel.style.cssText =
+                "display:flex;flex-direction:column;align-items:center;gap:6px;" +
+                "background:rgba(0,0,0,0.5);border-radius:8px;padding:6px 8px;" +
+                "pointer-events:auto;";
+            for (var mi = 0; mi < mine.length; mi++) {
+                var cell = document.createElement("div");
+                cell.style.cssText = "position:relative;cursor:pointer;";
+                var hbtn = null;
+                try { hbtn = ui.create.button(mine[mi], "character", cell, true); } catch (e) { hbtn = null; }
+                if (!hbtn) continue;
+                (function (name) {
+                    tapOn(hbtn, function () {
+                        var target = null;
+                        for (var bi = 0; bi < buttons.length; bi++) {
+                            var b = buttons[bi];
+                            if (b && (b.link === name || b._link === name)) { target = b; break; }
+                        }
+                        select(target, name);
+                    });
+                })(mine[mi]);
+                panel.appendChild(cell);
+            }
+            wrap.appendChild(panel);
+            var placeHist = function () {
+                try {
+                    var dlg = game._ClGz_banDialog;
+                    if (!dlg || !dlg.offsetWidth) return null;
+                    var x = 0, y = 0, r = dlg;
+                    while (r && r !== ui.window) { x += r.offsetLeft; y += r.offsetTop; r = r.offsetParent; }
+                    var winW = ui.window.clientWidth || 0;
+                    if (winW - (x + dlg.offsetWidth) >= 130) {
+                        return { right: "auto", left: x + dlg.offsetWidth + 50 + "px", top: Math.max(8, y) + "px" };
+                    } else {
+                        return { left: "auto", right: "8px", top: "8px" };
+                    }
+                } catch (e) { return null; }
+            };
+            var pos = placeHist();
+            if (pos) {
+                wrap.style.right = pos.right;
+                wrap.style.left = pos.left;
+                wrap.style.top = pos.top;
+            } else {
+                wrap.style.left = "auto";
+                wrap.style.right = "8px";
+                wrap.style.top = "8px";
+            }
+            ui.window.appendChild(wrap);
+        }, banGroups, banHistory);
+    } catch (e) {
+        humans.forEach(function (p) { try { p.tempUnwait(null); } catch (e2) {} });
+    }
+    await Promise.all(waits);
+    try { if (window.ClGz && window.ClGz.hideWaiting) window.ClGz.hideWaiting(); } catch (e) {}
+    try { if (game.broadcast) game.broadcast(ClGz_hideWaiting); } catch (e) {}
+    try {
+        game.broadcastAll(function () {
+            if (game._ClGz_banDialog) { try { game._ClGz_banDialog.close(); } catch (e) {} delete game._ClGz_banDialog; }
+            var hp = document.getElementById("ClGz_hist");
+            if (hp) hp.remove();
+            try {
+                if (game._ClGz_confirm && ui.confirm) { ui.confirm.close(); delete ui.confirm; }
+            } catch (e) {}
+            delete game._ClGz_confirm;
+            delete game._ClGz_banPicked;
+        });
+    } catch (e) {}
+    const generalMap = new Map();
+    const histMap = window.ClGz.getHistory();
+    let histChanged = false;
+    for (const p of humans) {
+    const gs = answers[p.playerid];
+    if (!Array.isArray(gs)) continue;
+    const who = p.nickname || p.name || "玩家";
+    const before = (histMap[who] || []).join(",");
+    for(const g of gs){
+        if (!g || !lib.character[g]) continue;
+        window.ClGz.pushHistory(histMap, who, g);
+        if (!generalMap.has(g)) generalMap.set(g, []);
+        generalMap.get(g).push(who);
+    }
+    if ((histMap[who] || []).join(",") !== before) histChanged = true;
+}
+
+    if (histChanged) window.ClGz.saveHistory(histMap);
+    generalMap.forEach(function (whos, g) {
+        picks.push({ general: g, whos: whos });
+        if (!lib.connectBanned.includes(g)) lib.connectBanned.push(g);
+    });
+    // Ai随机补禁
+    try {
+        const bannedNow = new Set(lib.connectBanned);
+    const totalPlayers = (game.players && game.players.length) ? game.players.length : (humans.length || 1);
+    const totalNeed = totalPlayers * (Number(lib.config.extension_错乱时空_cl_bpcount)+1);
+    let need = Math.max(0, totalNeed - generalMap.size);
+        if (need > 0) {
+            let source = [];
+            banGroups.forEach(function (gr) { source = source.concat(gr.list); });
+            if (!source.length) {
+                try { source = get.characters(); } catch (e2) { source = Object.keys(lib.character); }
+            }
+            source = source.filter(function (n) { return lib.character[n] && !bannedNow.has(n); });
+            for (let i = source.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                const t = source[i]; source[i] = source[j]; source[j] = t;
+            }
+            for (let i = 0; i < source.length && need > 0; i++) {
+                const g = source[i];
+                if (!lib.character[g] || bannedNow.has(g)) continue;
+                bannedNow.add(g);
+                if (!lib.connectBanned.includes(g)) lib.connectBanned.push(g);
+                picks.push({ general: g, whos: ["Ai随机禁将"], ai: true });
+                need--;
+            }
+        }
+    } catch (e) {}
+    window.ClGz._preChooseDone = true;
+    try { window.ClGz.updateBanner(picks); } catch (e) {}
+    return picks;
+}
+window.ClGz.runPreChoose = ClGz_runPreChoose;
+
+// 禁将公示栏
+function ClGz_renderBanner(picks) {
+    try { ClGz_hideWaiting(); } catch (e) {}
+    var old = document.getElementById("ClGz_banner");
+    if (old) old.remove();
+    if (!picks || !picks.length) return;
+    var banner = document.createElement("div");
+    banner.id = "ClGz_banner";
+    banner.style.cssText =
+        "position:fixed;z-index:950;left:0;right:0;top:6px;" +
+        "text-align:center;background:transparent;padding:0;" +
+        "border:0;box-shadow:none;pointer-events:none;";
+    var title = document.createElement("div");
+    title.style.cssText =
+        "font-size:14px;font-weight:bold;color:#ffd700;" +
+        "white-space:nowrap;text-shadow:0 1px 3px rgba(0,0,0,0.8);" +
+        "position:relative;top:-3px;margin-bottom:-2px;";
+    title.textContent = "左边公示武将不会出现在选将池内~";
+    banner.appendChild(title);
+    var row = document.createElement("div");
+    row.style.cssText =
+        "display:flex;flex-wrap:wrap;justify-content:flex-start;" +
+        "align-items:flex-start;gap:14px;margin:0 auto;" +
+        "background:rgba(0,0,0,0.5);border-radius:8px;padding:6px 8px;";
+    var cells = [];
+    var btns = [];
+    for (var i = 0; i < picks.length; i++) {
+        var pick = picks[i];
+        if (!pick || !pick.general) continue;
+        var cell = document.createElement("div");
+        cell.style.cssText =
+            "display:flex;flex-direction:column;align-items:center;" +
+            "flex:0 0 auto;position:relative;";
+        var who = document.createElement("div");
+        who.style.cssText =
+            "font-size:11px;color:#7fd1ff;text-shadow:0 1px 2px rgba(0,0,0,0.8);" +
+            "position:relative;top:-3px;margin-bottom:-2px;" +
+            "max-width:100%;line-height:1.15;word-break:break-all;" +
+            "text-align:center;";
+        var whos = pick.whos && pick.whos.length
+            ? pick.whos
+            : pick.who
+                ? [pick.who]
+                : ["玩家"];
+        if (pick.ai) {
+            who.textContent = "Ai随机禁将";
+        } else {
+            who.textContent = whos.join("、") + " 禁";
+        }
+        cell.appendChild(who);
+        var btn = null;
+        try { btn = ui.create.button(pick.general, "character", cell, true); } catch (e) { btn = null; }
+        if (btn) {
+            btn.style.pointerEvents = "none";
+            btns.push(btn);
+        } else {
+            var nm = document.createElement("div");
+            nm.style.cssText = "font-size:12px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,0.8);";
+            nm.textContent = pick.general;
+            cell.appendChild(nm);
+        }
+        cells.push(cell);
+        row.appendChild(cell);
+    }
+    if (!row.childNodes.length) return;
+    banner.appendChild(row);
+    ui.window.appendChild(banner);
+    var w = 0;
+    for (var j = 0; j < btns.length; j++) {
+        var bw = btns[j].offsetWidth || 0;
+        if (!bw && btns[j].getBoundingClientRect) bw = btns[j].getBoundingClientRect().width;
+        if (bw > w) w = bw;
+    }
+    var colW = w > 0 ? Math.ceil(w) + 8 : 96;
+    if (w > 0) {
+        for (var k = 0; k < cells.length; k++) cells[k].style.width = colW + "px";
+    }
+    row.style.width = (2 * colW + 14) + "px";
+    row.style.margin = "0 auto";
+    row.style.justifyContent = "flex-start";
+    try {
+        var limit = Math.round((ui.window.clientHeight || 800) * 0.6);
+        if (row.scrollHeight > limit) {
+            row.style.maxHeight = limit + "px";
+            row.style.overflowY = "auto";
+            row.style.overscrollBehavior = "contain";
+            row.style.pointerEvents = "auto";
+            row.style.touchAction = "pan-y";
+            title.style.pointerEvents = "auto";
+            // 冒泡拦截
+            var clgzBlockEvt = function (e) { try { if (e && e.stopPropagation) e.stopPropagation(); } catch (err) {} };
+            var clgzBlockEvts = ["touchstart","touchmove","touchend","touchcancel","pointerdown","pointermove","pointerup","pointercancel","mousedown","mouseup","click","dblclick","contextmenu","wheel"];
+            for (var ei = 0; ei < clgzBlockEvts.length; ei++) {
+                row.addEventListener(clgzBlockEvts[ei], clgzBlockEvt, false);
+                title.addEventListener(clgzBlockEvts[ei], clgzBlockEvt, false);
+            }
+        }
+    } catch (e) {}
+}
+function ClGz_updateBanner(picks) {
+    try { ClGz_hideWaiting(); } catch (e) {}
+    try { ClGz_renderBanner(picks); } catch (e) {}
+    try { game.broadcast(ClGz_renderBanner, picks); } catch (e) {}
+    try {
+        var tries = 0;
+        var timer = setInterval(function () {
+            tries++;
+            var el = document.getElementById("ClGz_banner");
+            if (!el) { clearInterval(timer); return; }
+            if (_status.gameStarted || tries > 40) {
+                clearInterval(timer);
+                try { ClGz_removeBanner(); } catch (e) {}
+            }
+        }, 3000);
+    } catch (e) {}
+}
+window.ClGz.updateBanner = ClGz_updateBanner;
+function ClGz_clearBanner() {
+    var old = document.getElementById("ClGz_banner");
+    if (old) old.remove();
+}
+function ClGz_removeBanner() {
+    try { ClGz_hideWaiting(); } catch (e) {}
+    try { ClGz_clearBanner(); } catch (e) {}
+    try { game.broadcast(ClGz_clearBanner); } catch (e) {}
+    try { game.broadcast(ClGz_hideWaiting); } catch (e) {}
+}
+window.ClGz.removeBanner = ClGz_removeBanner;
+
+// 选完禁将等待提示
+function ClGz_showWaiting() {
+    try {
+        var old = document.getElementById("ClGz_waiting");
+        if (old) return;
+        var el = document.createElement("div");
+        el.id = "ClGz_waiting";
+        el.style.cssText =
+            "position:fixed;z-index:960;left:50%;top:50%;transform:translate(-50%,-50%);" +
+            "font-size:20px;font-weight:bold;color:#ffd700;" +
+            "text-shadow:0 2px 6px rgba(0,0,0,0.9);background:rgba(0,0,0,0.45);" +
+            "padding:14px 26px;border-radius:10px;pointer-events:none;" +
+            "white-space:nowrap;";
+        el.textContent = "禁将完成，等待其他玩家禁将...";
+        ui.window.appendChild(el);
+    } catch (e) {}
+}
+function ClGz_hideWaiting() {
+    try {
+        var el = document.getElementById("ClGz_waiting");
+        if (el) el.remove();
+    } catch (e) {}
+}
+function ClGz_showWaitingTo(tid) {
+    try {
+        if (game.me && game.me.playerid === tid && window.ClGz && window.ClGz.showWaiting) window.ClGz.showWaiting();
+    } catch (e) {}
+}
+window.ClGz.showWaiting = ClGz_showWaiting;
+window.ClGz.hideWaiting = ClGz_hideWaiting;
+(function ClGz_installAutoClear() {
+    if (!lib.announce || typeof lib.announce.subscribe !== "function") return;
+    var handler = function () { try { ClGz_removeBanner(); } catch (e) {} };
+    ["gameStart", "Noname.Game.Event.GameStart"].forEach(function (topic) {
+        try { lib.announce.subscribe(topic, handler); } catch (e) {}
+    });
+})();
+
+function ClGz_wrapCompiled(ev) {
+    if (!ev) return false;
+    const compiled = ev.content;
+    if (typeof compiled !== "function" || compiled._ClGz) return false;
+    const wrapped = async function () {
+        if (!ev._ClGz_done) {
+            ev._ClGz_done = true;
+            if (window.ClGz && window.ClGz.enable()) {
+                try {
+                    await window.ClGz.runPreChoose();
+                } catch (e) {}
+            }
+        }
+        return compiled.apply(this, arguments);
+    };
+    wrapped._ClGz = true;
+    wrapped.compiled = true;
+    wrapped.type = compiled.type;
+    wrapped.original = compiled.original;
+    wrapped.originals = compiled.originals;
+    ev.content = wrapped;
+    return true;
+}
+function ClGz_wrapEventContent(om, self, args, isSw, mode) {
+    if (isSw) {
+        const cap = mode.charAt(0).toUpperCase() + mode.slice(1);
+        delete game["chooseCharacter" + cap + "OL"];
+    }
+    const origCreate = game.createEvent;
+    let patched = false;
+    game.createEvent = function () {
+        const ev = origCreate.apply(this, arguments);
+        // 对决双面板选将事件，害惨我了这个OvO
+        if (!patched && (arguments[0] === "chooseCharacter" || arguments[0] === "chooseCharacterOL")) {
+            patched = true;
+            try {
+                const origSet = ev.setContent.bind(ev);
+                ev.setContent = function (fn) {
+                    const ret = origSet(fn);
+                    try { ClGz_wrapCompiled(ev); } catch (e) {}
+                    return ret;
+                };
+            } catch (e) {}
+        }
+        return ev;
+    };
+    const restore = function () { game.createEvent = origCreate; };
+    let ret;
+    try {
+        if (isSw) ret = game.chooseCharacterOL.apply(self, args);
+        else ret = om.apply(self, args);
+    } catch (e) { restore(); throw e; }
+    if (ret && typeof ret.then === "function") return ret.finally(restore);
+    restore();
+    return ret;
+}
+
+window.ClGz.installLmHooks = function () {
+    const cfgRoot = window.suiSet && suiSet.modeConfig;
+    if (!cfgRoot) return false;
+    let count = 0;
+    for (const m in cfgRoot) {
+        const cfg = cfgRoot[m];
+        const om = cfg && cfg.chooseMode;
+        if (typeof om !== "function") continue;
+        if (!om._ClGz) {
+            const mode = m;
+            const wrapped = function () { return ClGz_wrapEventContent(om, this, arguments, false, mode); };
+            wrapped._ClGz = true;
+            cfg.chooseMode = wrapped;
+        }
+        count++;
+    }
+    return count > 0;
+};
+window.ClGz.installSwHooks = function () {
+    const modes = ["identity", "doudizhu", "hemengaozhan", "langrensha"];
+    let count = 0;
+    for (const m of modes) {
+        const cap = m.charAt(0).toUpperCase() + m.slice(1);
+        const key = "chooseCharacter" + cap + "OL";
+        if (typeof game[key] === "function" && game[key]._ClGz) { count++; continue; }
+        if (typeof game[key] === "function") continue;
+        const fn = function () { return ClGz_wrapEventContent(null, this, arguments, true, m); };
+        fn._ClGz = true;
+        game[key] = fn;
+        count++;
+    }
+    return count > 0;
+};
+// 直接挂无名杀自己的联机选将入口，保底OwO
+window.ClGz.installCoreHooks = function () {
+    const mode = (lib.configOL && lib.configOL.mode) || lib.config.mode;
+    const cap = mode ? mode.charAt(0).toUpperCase() + mode.slice(1) : "";
+    const keys = [];
+    if (cap) keys.push("chooseCharacter" + cap + "OL");
+    keys.push("chooseCharacterOL", "chooseCharacter");
+    for (let i = 0; i < keys.length; i++) {
+        const key = keys[i];
+        const om = game[key];
+        if (typeof om !== "function") continue;
+        if (om._ClGz) return true;
+        const wrapped = function () { return ClGz_wrapEventContent(om, this, arguments, false, "core"); };
+        wrapped._ClGz = true;
+        game[key] = wrapped;
+        return true;
+    }
+    return false;
+};
+window.ClGz.installHooks = function () {
+    const infra = window.ClGz.detectInfra();
+    if (infra === "lm") {
+        if (window.ClGz.installLmHooks()) return true;
+    }
+    if (infra === "sw") {
+        if (window.ClGz.installSwHooks()) return true;
+    }
+    return window.ClGz.installCoreHooks();
+};
+
+// 入口包裹
+var ClGz_origRandomMapOL = game.randomMapOL;
+game.randomMapOL = async function (type) {
+    try {
+        if (window.ClGz && window.ClGz.enable()) {
+            window.ClGz._preChooseDone = false;
+            for (let i = 0; i < 20; i++) {
+                if (window.ClGz.installHooks()) break;
+                await new Promise((r) => setTimeout(r, 100));
+            }
+        }
+     } catch (e) {}
+    return ClGz_origRandomMapOL.call(this, type);
+};
     return 错乱时空;
 });
 lib.config.all.characters.push("错乱时空");
@@ -74924,6 +77492,21 @@ if(!lib.config.characters.includes("错乱时空")){lib.config.characters.push("
                 },
                 image:"ext:错乱时空/棋子.jpg",
                 fullskin:true,
+            },
+            "小红":{
+                image:"ext:错乱时空/小红.jpg",
+                fullskin:true,
+                type:"equip",
+                subtype:"equip1",
+                distance:{
+                    attackFrom:-5,
+                },
+                ai:{
+                    basic:{
+                equipValue:35,
+                    },
+                },
+                skills:["小红"],
             },
             "J格拉尼":{
                 audio:"ext:错乱时空/音频/J格拉尼.mp3",
@@ -78255,6 +80838,1268 @@ if(!lib.config.cards.includes("炼金术"))lib.config.cards.push("炼金术");
 lib.translate['炼金术'+'_card_config']='炼金术';     
 lib.cardPack['炼金术']=Object.keys(炼金术.card);
 lib.gl_custom.triggerUp.push('炼金术');
+var 法术={
+         name:"法术",
+         connect:true,
+         card:{
+           "强化魔法":{
+                type:"法术",
+                ai:{
+                    value:[1,4],
+                    useful:10,
+                    order:20,
+                    result:{
+                        target:[0,2],
+                    },
+                },
+                image:"ext:错乱时空/强化魔法.jpg",
+                enable:true,
+                filterTarget:function (card,player,target){
+        return target!=player;
+                },
+                async content(event,trigger,player){
+                var target = event.target;
+            const {result:{bool}} = await target.chooseToDiscard(1,get.translation(player)+'对你使用了【强化魔法】，是否弃置一张牌来拒绝接受【强化魔法】？','he').set('ai',function(card){
+                return 6-get.value(card);
+        });
+            if(!bool){
+               var a=target.hp;
+               for(var i=0;i<a;i++){
+                 target.addTempSkill('dieyuan2',{player:'damageAfter'});
+                 target.damage("fire");
+                 target.draw();
+               }
+               target.addSkill("强化魔法buff");
+               if(!target.storage.强化魔法)target.storage.强化魔法=1;
+               else target.storage.强化魔法++;
+               const {result:{bool,judge,color}} = await target.judge(function(card){
+            if(get.color(card)=='red') return -4;
+            return 0;
+            });
+             if(color=="red")target.addSkill("燃烧");
+            }
+        },
+                fullskin:true,
+                gl_mp: {
+                   cl_moli:2,
+                },
+				gl_material_info: '【酒】*1+任意牌*2',
+				gl_material: [{
+					filter: function(card,player,cards) {
+					  var costs=[{
+					filter: function(card) {
+						return get.name(card)=="jiu";
+					},
+					num: 1
+				},			
+				{
+					filter: function(card) {
+						return true;
+					},
+					num: 2
+				}
+			  ];
+						return cl_gouzhuFilter(card,player,cards,costs,3);
+					},
+					num: 3
+				}
+			  ],
+            },
+            "神圣治疗法阵":{
+                type:"法术",
+                ai:{
+                    value:[1,4],
+                    useful:10,
+                    order:20,
+                    result:{
+                        target:[-1,2],
+                    },
+                },
+                judge(card) {
+        if (get.suit(card) === "heart") {
+          return 2;
+        }
+        return -2;
+      },
+    judge2(result) {
+        if (result.bool === false) {
+          return true;
+        }
+        return true;
+      },
+    async effect(event, trigger, player, result) {
+        if (result.bool === false) {
+          player.loseMaxHp();
+        }
+        else{ player.recover(); }
+      },
+                image:"ext:错乱时空/神圣治疗法阵.jpg",
+                enable:true,
+                filterTarget:function (card,player,target){
+        return target!=player&&target.hp<target.maxHp;
+                },
+                async content(event,trigger,player,card){
+                var target = event.target;
+            const {result:{bool}} = await target.chooseToDiscard(1,get.translation(player)+'对你使用了【神圣治疗法阵】，是否弃置一张牌来拒绝接受【神圣治疗法阵】？','he').set('ai',function(card){
+                return 6-get.value(card);
+        });
+            if(!bool){
+               target.addJudge(event.card)
+            }
+        },
+                fullskin:true,
+                gl_mp: {
+                   cl_moli:3,
+                },
+				gl_material_info: '黑色牌*2+点数大于10的牌*1',
+				gl_material: [{
+					filter: function(card,player,cards) {
+					  var costs=[{
+					filter: function(card) {
+						return get.color(card)=="black";
+					},
+					num: 2
+				},			
+				{
+					filter: function(card) {
+						return get.number(card)>10;
+					},
+					num: 1
+				}
+			  ];
+						return cl_gouzhuFilter(card,player,cards,costs,3);
+					},
+					num: 3
+				}
+			  ],
+            },
+            "好吃魔法":{
+                type:"法术",
+                ai:{
+                    value:[3,10],
+                    useful:10,
+                    order:20,
+                    result:{
+                        player:3,
+                    },
+                },
+                image:"ext:错乱时空/好吃魔法.jpg",
+                enable:true,
+                filterTarget:function (card,player,target){
+        return target==player;
+    },
+                modTarget:true,
+                toself: true,
+                selectTarget:-1,
+                async content(event,trigger,player){
+                   var a=game.filterPlayer();
+                   a.remove(player);
+                   var p=a.randomGet();
+                   p.damage();
+                   p.chooseToDiscard(p.countCards('e'),true,'e');
+                   p.discard(p.getCards('h').randomGet(1));
+                },
+                fullskin:true,
+                gl_mp: {
+                   cl_moli:4,
+                },
+				gl_material_info: '♥️牌*1+伤害牌*1',
+				gl_material: [{
+					filter: function(card,player,cards) {
+					  var costs=[{
+					filter: function(card) {
+						return get.suit(card)=="heart";
+					},
+					num: 1
+				},			
+				{
+					filter: function(card) {
+						return get.tag(card,'damage');
+					},
+					num: 1
+				}
+			  ];
+						return cl_gouzhuFilter(card,player,cards,costs,2);
+					},
+					num: 2
+				}
+			  ],
+            },
+            "魔法抹布":{
+                type:"法术",
+                ai:{
+                    value:[0,1],
+                    useful:1,
+                    order:0,
+                    result:{
+                        target:1,
+                    },
+                },
+                global:["魔法抹布buff"],
+                image:"ext:错乱时空/魔法抹布.jpg",
+                filterTarget: true,
+                async content(event,trigger,player){
+                 var target = event.target;
+            const {result:{bool}} = await target.chooseBool(get.translation(player)+'对你使用了【魔法抹布】，是否拒绝接受【魔法抹布】？');
+            if(!bool){
+               target.turnOver();
+               target.addTempSkill("魔法抹布buff_mianyi","phaseAfter");
+            }
+                },
+                fullskin:true,
+                gl_mp: {
+                   cl_moli:1,
+                },
+				gl_material_info: '任意牌*1',
+				gl_material: [{
+					filter: function(card) {
+						return true;
+					},
+					num: 1
+			   	},
+		    	],
+            },
+            "神圣急救拳":{
+                type:"法术",
+                ai:{
+                    value:[3,10],
+                    useful:10,
+                    order:10,
+                    result:{
+                        target:2,
+                    },
+                    tag:{
+                        recover:2,
+                        save:2,
+                    },
+                },
+                image:"ext:错乱时空/神圣急救拳.jpg",
+                enable:true,
+                filterTarget:function (card,player,target){
+        return target!=player;
+    },
+                modTarget:true,
+                async content(event,trigger,player){
+            var target = event.target;
+            const {result:{bool}} = await target.chooseToDiscard(1,get.translation(player)+'对你使用了【神圣急救拳】，是否弃置一张牌来拒绝接受【神圣急救拳】？','he').set('ai',function(card){
+                return 6-get.value(card);
+        });
+            if(!bool){
+             if(target.countCards('hej')>=2){
+                const {result:{links}} = await player.chooseCardButton([2,Infinity],target,target.getCards('hej'));
+                target.discard(links);
+             }else{
+                target.discard(target.getCards('hej'));
+             }
+             target.damage(2);
+             target.recover(4);
+            }
+                },
+                fullskin:true,
+                gl_mp: {
+                   cl_moli:3,
+                },
+				gl_material_info: '【桃】*1+伤害牌*1',
+				gl_material: [{
+					filter: function(card,player,cards) {
+					  var costs=[{
+					filter: function(card) {
+						return get.name(card)=="tao";
+					},
+					num: 1
+				},			
+				{
+					filter: function(card) {
+						return get.tag(card,'damage');
+					},
+					num: 1
+				}
+			  ];
+						return cl_gouzhuFilter(card,player,cards,costs,2);
+					},
+					num: 2
+				}
+			  ],
+            },
+            "低级召唤魔法":{
+                type:"法术",
+                ai:{
+                    value:[0,1],
+                    useful:10,
+                    order:10,
+                    result:{
+                        player:1,
+                    },
+                },
+                image:"ext:错乱时空/低级召唤魔法.jpg",
+                enable:true,
+                filterTarget:function (card,player,target){
+        return target==player;
+    },
+                toself: true,
+                selectTarget:-1,
+                modTarget:true,
+                async content(event,trigger,player){
+                  var a=game.filterPlayer();
+                   a.remove(player);
+                   for(var i of a){
+                      if(i.soulhp>=i.maxsoulhp){
+                         i.loseSoul();
+                         i.gl_changeMp(1,'cl_tongling');
+                      }
+                   }
+                },
+                fullskin:true,
+                gl_mp: {
+                   cl_moli:2,
+                },
+				gl_material_info: '任意牌*1',
+				gl_material: [{
+					filter: function(card) {
+						return true;
+					},
+					num: 1
+			   	},
+		    	],
+            },
+            "救赎之火":{
+                type:"法术",
+                ai:{
+                    value:[10,15],
+                    useful:10,
+                    order:20,
+                    result:{
+                        target:-100,
+                    },
+                },
+                image:"ext:错乱时空/救赎之火.jpg",
+                enable:true,
+                filterTarget:function (card,player,target){
+        return target!=player&&(target.hp<=0||target.soulhp<=0);
+    },
+                modTarget:true,
+                async content(event,trigger,player){
+                   var target=event.target;
+                   const {result:{bool}} = await target.chooseToRespond({name:'shan'});
+                   if(!bool){
+                       target.hp=0;
+                       target.soulhp=0;
+                       target.update();
+                       await target.die();
+                       if(target.isAlive())target.die()._triggered=null;
+                   }
+                },
+                fullskin:true,
+                gl_mp: {
+                   cl_moli:5,
+                },
+				gl_material_info: '♥️牌*1+火焰伤害牌*1+黑色牌*2',
+				gl_material: [{
+					filter: function(card,player,cards) {
+					  var costs=[{
+					filter: function(card) {
+						return get.suit(card)=="heart";
+					},
+					num: 1
+				},			
+				{
+					filter: function(card) {
+						return get.tag(card,'fireDamage');
+					},
+					num: 1
+				},
+				{
+					filter: function(card) {
+						return get.color(card)=="black";
+					},
+					num: 2
+				}
+			  ];
+						return cl_gouzhuFilter(card,player,cards,costs,4);
+					},
+					num: 4
+				}
+			  ],
+            },
+            "高级召唤魔法":{
+                type:"法术",
+                ai:{
+                    value:[2,4],
+                    useful:10,
+                    order:10,
+                    result:{
+                        player:1,
+                    },
+                },
+                image:"ext:错乱时空/高级召唤魔法.jpg",
+                enable:true,
+                filterTarget:function (card,player,target){
+        return target==player;
+    },
+                toself: true,
+                selectTarget:-1,
+                modTarget:true,
+                async content(event,trigger,player){
+                   var a=game.filterPlayer();
+                   var g=[1,2,3,4].randomGet();
+                   if(g!=1)return;
+                   a.remove(player);
+                   for(var i of a){
+                      if(i.soulhp>i.maxsoulhp*0.5){
+                         i.loseSoul(3);
+                         i.gl_changeMp(3,'cl_tongling');
+                      }
+                   }
+                },
+                fullskin:true,
+                gl_mp: {
+                   cl_moli:4,
+                },
+				gl_material_info: '低级召唤魔法*2+♣️牌*2',
+				gl_material: [{
+					filter: function(card,player,cards) {
+					  var costs=[{
+					filter: function(card) {
+						return get.suit(card)=="club";
+					},
+					num: 2
+				},			
+				{
+					filter: function(card) {
+						return get.name(card)=="低级召唤魔法";
+					},
+					num: 2
+				}
+			  ];
+						return cl_gouzhuFilter(card,player,cards,costs,4);
+					},
+					num: 4
+				}
+			  ],
+            },
+            "大地精灵之力":{
+                skills:["大地精灵之力buff"],
+                type:"法术",
+                subtype:"equip5",
+                ai:{
+                    value:[0,4.1],
+                    useful:20,
+                    order:10,
+                    result:{
+                        target:1,
+                    },
+                },
+                image:"ext:错乱时空/大地精灵之力.jpg",
+                enable:true,
+                filterTarget:function (card,player,target){
+        return target!=player;
+    },
+                async content(event,trigger,player){
+            var target = event.target;
+            var card = event.card;
+            const {result:{bool}} = await target.chooseBool(get.translation(player)+'对你使用了【大地精灵之力】，是否拒绝接受【大地精灵之力】？');
+            if(!bool){  
+                await target.equip(card);
+                var cards = target.getCards("e");
+                for(var i of cards){
+                   if(!i.storage.大地精灵之力)i.storage.大地精灵之力=player;
+                }
+            }
+                },
+                fullskin:true,
+                gl_mp: {
+                   cl_moli:1,
+                },
+				gl_material_info: '任意牌*1',
+				gl_material: [{
+					filter: function(card) {
+						return true;
+					},
+					num: 1
+			   	},
+		    	],
+            },
+            "余响回奏术":{
+                type:"法术",
+                ai:{
+                    value:[3,8],
+                    useful:10,
+                    order:10,
+                    result:{
+                        player:1,
+                    },
+                },
+                image:"ext:错乱时空/余响回奏术.jpg",
+                enable:true,
+                filterTarget:function (card,player,target){
+        return target==player&&!target.hasSkill("余响回奏术buff");
+    },
+                toself: true,
+                selectTarget:-1,
+                async content(event,trigger,player){
+                  player.addSkill("余响回奏术buff");
+                },
+                fullskin:true,
+                gl_mp: {
+                   cl_moli:2,
+                },
+				gl_material_info: '',
+				gl_material: [{
+					filter: function(card,player,cards) {
+						return false;
+					},
+					num: -1
+				}
+			  ],
+            },
+            "黄色声援术":{
+                type:"法术",
+                ai:{
+                    value:[0,6],
+                    useful:10,
+                    order:10,
+                    result:{
+                        target:2,
+                    },
+                },
+                image:"ext:错乱时空/黄色声援术.jpg",
+                enable:true,
+                filterTarget:function (card,player,target){
+        return target!=player&&!target.hasSkill("黄色声援术buff");
+    },
+                selectTarget:[1,4],
+                modTarget:true,
+                async content(event,trigger,player){
+                  var target = event.target;
+            const {result:{bool}} = await target.chooseToDiscard(1,get.translation(player)+'对你使用了【黄色声援术】，是否弃置一张牌来拒绝接受【黄色声援术】？','he').set('ai',function(card){
+                return 6-get.value(card);
+        });
+            if(!bool){
+               target.draw(4);
+               target.addTempSkill("黄色声援术buff",{player:"phaseAfter"});
+            }
+                },
+                fullskin:true,
+                gl_mp: {
+                   cl_moli:2,
+                },
+				gl_material_info: '任意牌*2',
+				gl_material: [{
+					filter: function(card,player,cards) {
+						return true;
+					},
+					num: 2
+				}
+			  ],
+            },
+            "声波操纵术":{
+                type:"法术",
+                ai:{
+                    value:[2,8],
+                    useful:10,
+                    order:10,
+                    result:{
+                        player:1,
+                    },
+                },
+                image:"ext:错乱时空/声波操纵术.jpg",
+                enable:true,
+                filterTarget:function (card,player,target){
+        return target==player&&!target.hasSkill("声波操纵术buff");
+    },
+                toself: true,
+                selectTarget:-1,
+                async content(event,trigger,player){
+                  player.addSkill("声波操纵术buff");
+                },
+                fullskin:true,
+                gl_mp: {
+                   cl_moli:1,
+                },
+				gl_material_info: '',
+				gl_material: [{
+					filter: function(card,player,cards) {
+						return false;
+					},
+					num: -1
+				}
+			  ],
+            },
+            "咒术式针疗法":{
+                type:"法术",
+                ai:{
+                    value:[4,16],
+                    useful:10,
+                    order:10,
+                    result:{
+                        target:4,
+                    },
+                },
+                image:"ext:错乱时空/咒术式针疗法.jpg",
+                enable:true,
+                filterTarget:function (card,player,target){
+        return target.hp<target.maxHp&&target!=player;
+    },
+                modTarget:true,
+                async content(event,trigger,player){
+                  var target = event.target;
+                  var card = event.card;
+            const {result:{bool}} = await target.chooseToDiscard(1,get.translation(player)+'对你使用了【咒术式针疗法】，是否弃置一张牌来拒绝接受【咒术式针疗法】？','he').set('ai',function(card){
+                return 6-get.value(card);
+        });
+            if(!bool){
+               var n = card.storage.gl_gouzhu.length;
+               target.recover(n);
+               target.loseSoul(n);
+            }
+                },
+                fullskin:true,
+                gl_mp: {
+                   cl_moli:2,
+                },
+				gl_material_info: '黑色牌*1~5（消耗越多效果越强）',
+				gl_material: [{
+					filter: function(card,player,cards) {
+						return get.color(card)=="black";
+					},
+					num: [1,5]
+				}
+			  ],
+            },
+            "神圣祈祷术":{
+                type:"法术",
+                ai:{
+                    value:[4,8],
+                    useful:20,
+                    order:10,
+                    result:{
+                        target:3,
+                    },
+                },
+                image:"ext:错乱时空/神圣祈祷术.jpg",
+                enable:true,
+                filterTarget:function (card,player,target){
+        return target!=player&&target.hp<target.maxHp;
+    },
+                async content(event,trigger,player){
+            var target = event.target;
+            var card = event.card;
+            const {result:{bool}} = await target.chooseToDiscard(1,get.translation(player)+'对你使用了【神圣祈祷术】，是否弃置一张牌来拒绝接受【神圣祈祷术】？','he').set('ai',function(card){
+                return 6-get.value(card);
+        });
+            if(!bool){
+                const {result:{judge,suit}} = await target.judge(function(card){
+            if(get.suit(card)=='heart'&&target.hp<target.maxHp) return 5;
+            if(get.suit(card)=='diamond') return -3;
+            if(get.suit(card)=='club') return -6;
+            if(get.suit(card)=='spade') return -9;
+            return 0;
+            });
+             if(suit=="heart"){
+                target.recover(target.maxHp);
+                target.draw();
+             }
+             if(suit=="diamond"){
+                target.damage(1,"thunder");
+                target.discard(target.getCards("he").randomGet());
+             }
+             if(suit=="club"){
+                target.damage(2,"thunder");
+                target.discard(target.getCards("he").randomGet(2));
+             }
+             if(suit=="spade"){
+                target.damage(3,"thunder");
+                target.discard(target.getCards("he").randomGet(3));
+             }
+            }
+                },
+                fullskin:true,
+                gl_mp: {
+                   cl_moli:3,
+                },
+				gl_material_info: '红色牌*2',
+				gl_material: [{
+					filter: function(card) {
+						return get.color(card)=="red";
+					},
+					num: 2
+			   	},
+		    	],
+            },
+            "返老还童术":{
+                type:"法术",
+                ai:{
+                    value:[3,10],
+                    useful:10,
+                    order:10,
+                    result:{
+                        target:-2,
+                    },
+                },
+                image:"ext:错乱时空/返老还童术.jpg",
+                enable:true,
+                filterTarget:function (card,player,target){
+        return target!=player&&target.maxHp>=6;
+    },
+                modTarget:true,
+                async content(event,trigger,player){
+            var target = event.target;
+            target.maxHp-=5;
+            const {result:{judge,suit}} = await target.judge(function(card){
+            if(get.suit(card)=='heart') return 5;
+            return -6;
+            });
+            if(suit!="heart")target.changeMaxSoul(-3);
+            target.update();
+            const {result:{links}} = await target.chooseButton(["选择其一个限定技视为未发动", [
+                        [target.awakenedSkills.filter(i => target.getSkills(false, false, false).includes(i) && get.info(i).limited)].map(i => [i, lib.translate[i] + "：" + lib.translate[i + "_info"]]), "textbutton"
+                    ]]).set("ai", button => {
+                        return button.link == _status.event.random;
+                    }).set("random", target.awakenedSkills.filter(i => target.getSkills(false, false, false).includes(i) && get.info(i).limited).randomGet())
+                    if(links)target.restoreSkill(links[0]);
+                },
+                fullskin:true,
+                gl_mp: {
+                   cl_moli:4,
+                },
+				gl_material_info: '【高级召唤魔法】*1+♥️牌*1+♦️牌*1',
+				gl_material: [{
+					filter: function(card,player,cards) {
+					  var costs=[{
+					filter: function(card) {
+						return get.name(card)=="高级召唤魔法";
+					},
+					num: 1
+				},			
+				{
+					filter: function(card) {
+						return get.suit(card)=="heart";
+					},
+					num: 1
+				},
+				{
+					filter: function(card) {
+						return get.suit(card)=="diamond";
+					},
+					num: 1
+				}
+			  ];
+						return cl_gouzhuFilter(card,player,cards,costs,3);
+					},
+					num: 3
+				}
+			  ],
+            },
+            "弱者搜寻术":{
+                type:"法术",
+                ai:{
+                    value:[0,1],
+                    useful:10,
+                    order:10,
+                    result:{
+                        player:0,
+                    },
+                },
+                image:"ext:错乱时空/弱者搜寻术.jpg",
+                enable:true,
+                filterTarget:function (card,player,target){
+        return target==player;
+    },
+                toself: true,
+                selectTarget:-1,
+                modTarget:true,
+                async content(event,trigger,player){
+                  var a=game.filterPlayer();
+                   a.remove(player);
+                   var num2=Infinity;
+                   var mb;
+                   for(var i of a){
+                      var num1=0
+                      for(var j of i.getCards('h'))num1+=get.number(j);
+                      if(num1<num2){
+                         num2=num1;
+                         mb=i;
+                      }
+                   }
+                   mb.addShownCards(mb.getCards('h'), "visible_clsk");
+                   mb.say("啊？");
+                },
+                fullskin:true,
+                gl_mp: {
+                   cl_moli:1,
+                },
+				gl_material_info: '红色牌*1+♠️牌*1',
+				gl_material: [{
+					filter: function(card,player,cards) {
+					  var costs=[{
+					filter: function(card) {
+						return get.suit(card)=="spade";
+					},
+					num: 1
+				},
+				{
+					filter: function(card) {
+						return get.color(card)=="red";
+					},
+					num: 1
+				}
+			  ];
+						return cl_gouzhuFilter(card,player,cards,costs,2);
+					},
+					num: 2
+				}
+			  ],
+            },
+            "防御力强化魔法":{
+                type:"法术",
+                ai:{
+                    value:[4,16],
+                    useful:10,
+                    order:10,
+                    result:{
+                        target:4,
+                    },
+                },
+                image:"ext:错乱时空/防御力强化魔法.jpg",
+                enable:true,
+                filterTarget:function (card,player,target){
+        return target!=player&&!target.hasSkill("防御力强化魔法buff");
+    },
+                modTarget:true,
+                async content(event,trigger,player){
+                  var target = event.target;
+            const {result:{bool}} = await target.chooseToDiscard(1,get.translation(player)+'对你使用了【防御力强化魔法】，是否弃置一张牌来拒绝接受【防御力强化魔法】？','he').set('ai',function(card){
+                return 6-get.value(card);
+        });
+            if(!bool){
+               for(var i=1;i<6;i++){
+                   target.disableEquip(i);
+               }
+               target.addSkill("防御力强化魔法buff");
+               target.storage.防御力强化魔法source=player;
+            }
+                },
+                fullskin:true,
+                gl_mp: {
+                   cl_moli:5,
+                },
+				gl_material_info: '装备牌*2+延时性锦囊牌*1',
+				gl_material: [{
+					filter: function(card,player,cards) {
+					  var costs=[{
+					filter: function(card) {
+						return get.type(card)=="equip";
+					},
+					num: 2
+				},
+				{
+					filter: function(card) {
+						return get.type(card)=="delay";
+					},
+					num: 1
+				}
+			  ];
+						return cl_gouzhuFilter(card,player,cards,costs,3);
+					},
+					num: 3
+				}
+			  ],
+            },
+            "复活魔法":{
+                global:["复活魔法buff"],
+                type:"法术",
+                ai:{
+                    value:[10,16],
+                    useful:10,
+                    order:10,
+                    result:{
+                        target:4,
+                    },
+                },
+                image:"ext:错乱时空/复活魔法.jpg",
+                filterTarget:function (card,player,target){
+        return target==player;
+    },
+                toself: true,
+                selectTarget:-1,
+                modTarget:true,
+                content:function (){
+                "step 0"
+                 var list=[];
+                 for(var i=0;i<game.dead.length;i++){
+                     if(game.clsk_die[0].includes(game.dead[i])&&game.clsk_die[1][game.clsk_die[0].indexOf(game.dead[i])]<=3)list.push(game.dead[i].name);
+                 }                 
+              player.chooseButton(['复活魔法：请选择一名角色', [list, 'character']]).set('ai',function(event,player,card,target){     
+            if(get.attitude(_status.event.player,button.link)>0)return true;
+            return false;
+        });
+                "step 1"
+                 if(result.bool){
+                     var dead;
+                     for(var i=0;i<game.dead.length;i++){
+                     if(game.dead[i].name==result.buttons[0].link)dead=game.dead[i];
+                     };
+                     game.broadcastAll(function (player,dead) {
+                dead.revive(dead.maxHp);
+            }, player,dead);
+                }
+               },
+                fullskin:true,
+                gl_mp: {
+                   cl_moli:8,
+                },
+				gl_material_info: '任意牌*6',
+				gl_material: [{
+					filter: function(card,player,cards) {
+						return true;
+					},
+					num: 6
+				}
+			  ],
+            },
+            "双重强化魔法":{
+                type:"法术",
+                ai:{
+                    value:[14,18],
+                    useful:10,
+                    order:20,
+                    result:{
+                        target:[2,4],
+                    },
+                },
+                image:"ext:错乱时空/双重强化魔法.jpg",
+                enable:true,
+                filterTarget:function (card,player,target){
+        return target!=player;
+                },
+                selectTarget:2,
+                async content(event,trigger,player){
+                var target = event.target;
+            const {result:{bool}} = await target.chooseToDiscard(2,get.translation(player)+'对你使用了【双重强化魔法】，是否弃置两张牌来拒绝接受【双重强化魔法】？','he').set('ai',function(card){
+                return 10-get.value(card);
+        });
+            if(!bool){
+               var a=target.hp;
+               for(var i=0;i<a;i++){
+                 target.addTempSkill('dieyuan2',{player:'damageAfter'});
+                 target.damage("fire");
+                 target.soulDamage(1,player);
+                 target.draw(2);
+               }
+               target.addSkill("强化魔法buff");
+               if(!target.storage.强化魔法)target.storage.强化魔法=2;
+               else target.storage.强化魔法+=2;
+               const {result:{bool,judge,color}} = await target.judge(function(card){
+            if(get.color(card)=='red') return -4;
+            return 0;
+            });
+             if(color=="red")target.addSkill("燃烧");
+            }
+        },
+                fullskin:true,
+                gl_mp: {
+                   cl_moli:5,
+                },
+				gl_material_info: '【强化魔法】*2+【低级召唤魔法】*2+火焰伤害牌*1',
+				gl_material: [{
+					filter: function(card,player,cards) {
+					  var costs=[{
+					filter: function(card) {
+						return get.name(card)=="低级召唤魔法";
+					},
+					num: 2
+				},			
+				{
+					filter: function(card) {
+						return get.name(card)=="强化魔法";
+					},
+					num: 2
+				},
+				{
+					filter: function(card) {
+						return get.tag(card,'fireDamage');
+					},
+					num: 1
+				}
+			  ];
+						return cl_gouzhuFilter(card,player,cards,costs,5);
+					},
+					num: 5
+				}
+			  ],
+            },
+            "景气魔法":{
+                type:"法术",
+                ai:{
+                    value:[4,8],
+                    useful:10,
+                    order:10,
+                    result:{
+                        player:2,
+                        target:1,
+                    },
+                },
+                image:"ext:错乱时空/景气魔法.jpg",
+                enable:true,
+                filterTarget:function (card,player,target){
+        return target!=player;
+    },
+                modTarget:true,
+                async content(event,trigger,player){
+                var target = event.target;
+            const {result:{bool}} = await target.chooseToDiscard(1,get.translation(player)+'对你使用了【景气魔法】，是否弃置一张牌来拒绝接受【景气魔法】？','he').set('ai',function(card){
+                return 4-get.value(card);
+        });
+            if(!bool){
+              player.addTempSkill("景气魔法buff","phaseBefore");
+              player.storage.景气魔法target=target;
+            }
+                },
+                fullskin:true,
+                gl_mp: {
+                   cl_moli:3,
+                },
+				gl_material_info: '',
+				gl_material: [{
+					filter: function(card,player,cards) {
+						return false;
+					},
+					num: -1
+				}
+			  ],
+            },
+            "高级治愈魔法":{
+                type:"法术",
+                ai:{
+                    value:[4,8],
+                    useful:10,
+                    order:10,
+                    result:{
+                        player:2,
+                        target:1,
+                    },
+                },
+                image:"ext:错乱时空/高级治愈魔法.jpg",
+                enable:true,
+                filterTarget:function (card,player,target){
+        return target!=player;
+    },
+                modTarget:true,
+                async content(event,trigger,player){
+                var target = event.target;
+            const {result:{bool}} = await target.chooseToDiscard(1,get.translation(player)+'对你使用了【高级治愈魔法】，是否弃置一张牌来拒绝接受【高级治愈魔法】？','he').set('ai',function(card){
+                return 4-get.value(card);
+        });
+            if(!bool){
+              target.addTempSkill("高级治愈魔法buff",{player:"phaseAfter"});
+              target.draw(4);
+            }
+                },
+                fullskin:true,
+                gl_mp: {
+                   cl_moli:4,
+                },
+				gl_material_info: '【魔法抹布】*1+【神圣祈祷术】*1',
+				gl_material: [{
+					filter: function(card,player,cards) {
+					  var costs=[{
+					filter: function(card) {
+						return get.name(card)=="魔法抹布";
+					},
+					num: 1
+				},			
+				{
+					filter: function(card) {
+						return get.name(card)=="神圣祈祷术";
+					},
+					num: 1
+				}
+			  ];
+						return cl_gouzhuFilter(card,player,cards,costs,2);
+					},
+					num: 2
+				}
+			  ],
+            },
+            "即死诅咒":{
+                type:"法术",
+                ai:{
+                    value:[4,8],
+                    useful:10,
+                    order:10,
+                    result:{
+                        player:2,
+                        target:-10,
+                    },
+                },
+                image:"ext:错乱时空/即死魔法.jpg",
+                enable:true,
+                filterTarget:function (card,player,target){
+        return target!=player;
+    },
+                modTarget:true,
+                async content(event,trigger,player){
+                var target = event.target;
+              player.addTempSkill("即死诅咒buff","phaseBefore");
+              player.storage.即死诅咒target=target;
+                },
+                fullskin:true,
+                gl_mp: {
+                   cl_moli:3,
+                },
+				gl_material_info: '【景气魔法】*1+♠️牌*2+♥️牌*1',
+				gl_material: [{
+					filter: function(card,player,cards) {
+					  var costs=[{
+					filter: function(card) {
+						return get.name(card)=="景气魔法";
+					},
+					num: 1
+				},			
+				{
+					filter: function(card) {
+						return get.suit(card)=="spade";
+					},
+					num: 2
+				},
+				{
+					filter: function(card) {
+						return get.suit(card)=="heart";
+					},
+					num: 1
+				}
+			  ];
+						return cl_gouzhuFilter(card,player,cards,costs,4);
+					},
+					num: 4
+				}
+			  ],
+            },
+            "艾洛伊姆厄塞姆":{
+                type:"法术",
+                ai:{
+                    value:[100,100],
+                    useful:100,
+                    order:100,
+                    result:{
+                        player:100,
+                    },
+                },
+                image:"ext:错乱时空/艾洛伊姆厄塞姆.jpg",
+                enable:true,
+                filterTarget:function (card,player,target){
+        return target==player
+    },
+                toself: true,
+                selectTarget:1,
+                async content(event,trigger,player){
+                  const winners = player.getFriends();
+                  game.over(player == game.me || winners.includes(game.me));
+                },
+                fullskin:true,
+                gl_mp: {
+                   cl_moli:10,
+                },
+				gl_material_info: '【即死诅咒】*1+【双重强化魔法】*1+【救赎之火】*1+【复活魔法】*1',
+				gl_material: [{
+					filter: function(card,player,cards) {
+					  var costs=[{
+					filter: function(card) {
+						return get.name(card)=="即死诅咒";
+					},
+					num: 1
+				},			
+				{
+					filter: function(card) {
+						return get.name(card)=="双重强化魔法";
+					},
+					num: 1
+				},
+				{
+					filter: function(card) {
+						return get.name(card)=="救赎之火";
+					},
+					num: 1
+				},
+				{
+					filter: function(card) {
+						return get.name(card)=="复活魔法";
+					},
+					num: 1
+				}
+			  ];
+						return cl_gouzhuFilter(card,player,cards,costs,4);
+					},
+					num: 4
+				}
+			  ],
+            },
+         },
+         translate:{
+            "强化魔法":"强化魔法",
+            "强化魔法_info":"用痛苦换取力量的魔法，可以给队友进行翻倍式的强化，欲戴王冠，必先承其重。",
+            "神圣治疗法阵":"神圣治疗法阵",
+            "神圣治疗法阵_info":"给队友画下神圣的治疗法阵，对已受伤的队友进行持续的治疗，很快就能让队友恢复到满血。",
+            "好吃魔法":"好吃魔法",
+            "好吃魔法_info":"一种让食物变得更加好吃以及看起来更好吃的魔法，那个咒语怎么念来着？",
+            "魔法抹布":"魔法抹布",
+            "魔法抹布_info":"一块用来打扫卫生的抹布，队友受到伤害偷偷哭泣时，可以送去给队友擦眼泪",
+            "神圣急救拳":"神圣急救拳",
+            "神圣急救拳_info":"用神圣的力量凝聚在左手上来治疗队友，可以让队友从病痛中解脱。",
+            "低级召唤魔法":"低级召唤魔法",
+            "低级召唤魔法_info":"召唤一只低级魔物，其独特的外形可能会吓到一些第一次见到这玩意的人。",
+            "救赎之火":"救赎之火",
+            "救赎之火_info":"救赎之火是一种源自地狱的神圣魔法，可以将不死系生物的躯体和灵魂一起烧成灰烬。",
+            "高级召唤魔法":"高级召唤魔法",
+            "高级召唤魔法_info":"召唤一只高级魔物，其外观能摧残正常人的心灵，侵蚀正常人的心智，当然，这种东西很有可能不会来帮忙，它们还是需要上班工作带孩子的。",
+            "大地精灵之力":"大地精灵之力",
+            "大地精灵之力_info":"四肢和额头都贴在地上，祈求大地精灵的力量，可以让装备者在险境之中脱身。",
+            "余响回奏术":"余响回奏术",
+            "余响回奏术_info":"可以在说完话后在内心发出一次直达心灵的声音。",
+            "黄色声援术":"黄色声援术",
+            "黄色声援术_info":"大声地鼓励队友，会弹出大量黄色的对话框并显示文字将队友包围，让队友感受到你的热情。",
+            "声波操纵术":"声波操纵术",
+            "声波操纵术_info":"可以操纵声音的大小和来源以及音色，给敌人制造一种错觉。",
+            "咒术式针疗法":"咒术式针疗法",
+            "咒术式针疗法_info":"使用稻草娃娃连接目标的命匣，直接用铁钉刺穿稻草娃娃来间接对目标实施针灸。",
+            "神圣祈祷术":"神圣祈祷术",
+            "神圣祈祷术_info":"祈求神明的力量，让神明治疗受伤的队友，一名合格的圣职者是不会怕神罚的。",
+            "返老还童术":"返老还童术",
+            "返老还童术_info":"烹饪食材的本质就是加工，所以我可以用魔法来辅佐这个加工过程，但如果我选的食材都是有美容效果的呢？",
+            "弱者搜寻术":"弱者搜寻术",
+            "弱者搜寻术_info":"身为治疗者，可以像专门找受伤羔羊的恶狼一样找出身体虚弱的人。",
+            "防御力强化魔法":"防御力强化魔法",
+            "防御力强化魔法_info":"废除装备的防御换来肉体防御的极大幅度提升，可以让目标变的几乎刀枪不入，不过好像有些别的副作用。",
+            "复活魔法":"复活魔法",
+            "复活魔法_info":"复活魔法是一种非常强大的魔法，可以让死去的生命复活，且只能复活三回合内死去的人，但是这个魔法需要吟唱十回合才能释放。",
+            "双重强化魔法":"双重强化魔法",
+            "双重强化魔法_info":"零乘以任何数都还是零，那就干脆想加在一起好了，让我来治疗你！",
+            "景气魔法":"景气魔法",
+            "景气魔法_info":"可以让队友快速回复体力，就像你回复体力的速度一样。",
+            "高级治愈魔法":"高级治愈魔法",
+            "高级治愈魔法_info":"用毁灭性的力量洗礼队友，让队友在获得快速治愈的情况下还能获得一定的强化。",
+            "即死诅咒":"即死诅咒",
+            "即死诅咒_info":"一旦目标离开你超过300米就会死。",
+            "艾洛伊姆厄塞姆":"艾洛伊姆厄塞姆",
+            "艾洛伊姆厄塞姆_info":"“艾洛伊姆厄塞姆，艾洛伊姆厄塞姆，请回应我的请求……”",
+         },
+    };
+    for(var i in 法术.card){
+       lib.card[i]=法术.card[i]
+    }
+game.import('card',function(){    
+    for (var i in 法术.card) {
+		if (法术.translate[i + '_info']) {
+		       法术.translate[i + '_info'] = '<span class=bluetext>魔力值：' + (法术.card[i].gl_mp_info || 法术.card[i].gl_mp.cl_moli) + '</span></br>' + '<span class=firetext>素材：' + (法术.card[i].gl_material_info || '无') + '</span></br>' + 法术.translate[i + '_info'];
+		}
+	}
+    return 法术;
+});
+lib.config.all.cards.push("法术");
+if(!lib.config.cards.includes("法术"))lib.config.cards.push("法术");
+lib.translate['法术'+'_card_config']='法术';     
+lib.cardPack['法术']=Object.keys(法术.card);
+lib.gl_custom.triggerUp.push('法术');
             var modeConfig={//模式设置
                 translate:'肉鸽模式',
                 config:{
@@ -80422,11 +84267,35 @@ break;
                 "init": false,
                 onclick: function(bool) {
 			   if(bool != lib.config.extension_错乱时空_cl_bisaijiangchi){
-				game.saveConfig('extension_错乱时空_cl_bisaijiangchi', bool);			
+				game.saveConfig('extension_错乱时空_cl_bisaijiangchi', bool);
+			    game.saveConfig('extension_错乱时空_cl_bisaijinjiang', bool);			
 			};
-			    if(bool==true)game.clsk_showBisai();
-			    else game.reload();
+			    if(bool==true){
+			      game.clsk_showBisai();
+			    }else{
+			       game.reload();
+			    }
 		      },
+            },
+            "cl_bisaijinjiang": {
+                "name": "比赛模式禁将",
+                "intro": "选将前所有玩家同时禁任意一名联机武将，然后Ai随机补禁。",
+                "init": false,
+                onclick: function(bool) {
+               if(!lib.config.extension_错乱时空_cl_bisaijiangchi){
+                  alert("此功能只有在比赛将池被开启时才能开启");
+                  return false;
+               }
+			   if(bool != lib.config.extension_错乱时空_cl_bisaijinjiang&&lib.config.extension_错乱时空_cl_bisaijiangchi){
+			    game.saveConfig('extension_错乱时空_cl_bisaijinjiang', bool);			
+			};
+		      },
+            },
+            "cl_bpcount":{
+                name:'比赛模式禁将个数',
+                frequent:true,
+                init:"1",
+                item:Array.from({length:3},(_, i)=>String(i+1)),
             },
             "cl_youkemoshi": {
                 "name": "游客模式",
@@ -80589,6 +84458,10 @@ break;
                       alert("游客模式下此功能无法使用");
                       return;
                     }
+                    if (_status.connectMode) {
+        alert("联机状态下此功能无法使用");
+        return;
+    }
 					var node = this;
 		        	if(confirm('是否要导出存档？')){
 							node.innerHTML = '<div class="clsk_menu">正在导出……</div>';
@@ -80627,6 +84500,10 @@ break;
                       alert("游客模式下此功能无法使用");
                       return;
                     }
+                    if (_status.connectMode) {
+        alert("联机状态下此功能无法使用");
+        return;
+    }
 					var node = this;
 			    	if (confirm('是否要载入存档？')) {
 							node.innerHTML = '<div class="clsk_menu">正在载入……</div>';
