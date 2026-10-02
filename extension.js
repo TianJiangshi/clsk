@@ -12099,7 +12099,7 @@ lib.gl_custom.cards.push(function(player,list){
             "J龙破坏之剑士":["male","qun",3000,[],["forbidai","unseen"]],
             "罪鸽子":["female","devil",3,["抗性","阎魔"],["des:生存能力：C+，攻击强度：B+，辅助能力：D，杂耍能力：C+"]],
             "休比":["female","qun",4,["来玩游戏吧","解析"],["des:生存能力：B-，攻击强度：C-，辅助能力：C+，杂耍能力：C+"]],
-            "全典开·休比":["female","qun",4,["来玩游戏吧","解析","战斗演算"],["des:生存能力：B-，攻击强度：C-，辅助能力：C+，杂耍能力：C+","unseen"]],
+            "全典开·休比":["female","qun",4,["来玩游戏吧","解析","战斗演算"],["des:生存能力：B-，攻击强度：C-，辅助能力：C+，杂耍能力：S","unseen"]],
             //"图鉴注意事项":["none","none",0,[],["des:<font color=#f00>孩子们，注意了，在图鉴里使用切换皮肤后，游戏内武将的原皮会消失，需要在图鉴里切换会原皮才能复原，作者和豆包奋斗几个小时没能修好bug，已经认怂了，就这样吧。</font>","unseen","ext:错乱时空/源·天将士.jpg"]],
            //"测试":["none","qun",4,["seer_huaixin","seer_zhaohui"],["测试"]],
         },
@@ -70572,7 +70572,7 @@ player.removeSkill('葱游兵技能一');
                     global:"useCard",
                      },
                      filter:function(event,player){
-                       return (event.name=="nanman"||event.name=="wugu"||event.name=="wanjian"||event.name=="taoyuan")&&player.storage.已通灵<2&&lib.character[player.name][3].includes('解析');
+                       return (event.card.name=="nanman"||event.card.name=="wugu"||event.card.name=="wanjian"||event.card.name=="taoyuan")&&player.storage.已通灵<2&&lib.character[player.name][3].includes('解析');
                      },
                      forceDie:true,
                      forced:true,
