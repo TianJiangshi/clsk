@@ -6,44 +6,22 @@ import upgrade from './upgrade.js';
 
 game.import("extension",function(lib,game,ui,get,ai,_status){return {name:"错乱时空",content:function (config,pack){
    lib.config.show_rarity=true;
- 
- const originalGetRarity = game.getRarity;
- game.getRarity = function(name2) {
-   var rank = lib.rank.rarity;
-   if (rank.shenhua.includes(name2)) {
-     return "shenhua";
-   }
-   return originalGetRarity.call(this, name2);
- };
- 
-const originalRarity = ui.create.rarity;
-   ui.create.rarity = function(button) {
-  originalRarity.call(this, button);
-  const rarity = game.getRarity(button.link);
-  if (rarity === "shenhua") {
-    const intro = button.node.intro;
-    intro.classList.add("showintro");
-    intro.style.fontFamily = "yuanli";
-    intro.style.fontSize = "16px";
-    intro.style.bottom = "6px";
-    intro.style.left = "6px";
-    intro.innerHTML = get.translation(rarity);
-  }
-};
 
     //A级武将
-   lib.rank.rarity.junk.addArray(["推进之王","傀影","江户川柯南","艾雅法拉","宇智波·斑","W","华法琳","夜莺","玫兰莎","初雪","银灰","炎客","旗木卡卡西","帕路奇犽","绿巨人","帝牙卢卡","大筒木辉夜","钢铁侠","金刚狼","熊大熊二","团子","美国队长","喜羊羊","白起","界天宝","圣王帝释天","艾瑞珂","塔娜","王·盖亚","半龙女仆·洗衣龙女","沙奈朵","光头强","霸王项羽","天宝","黑虎阿福","库库鲁","拓拉","乌萨斯平民","流形","邪祟影","炎火兽","宝箱怪","深寒冰魔","邪灵守卫","SP神荀彧","嗔八十三万"]);
+   lib.rank.rarity.junk.addArray(lib.characterRank.A);
    //A+级武将
-   //lib.rank.rarity.common.addArray();
+   lib.rank.rarity.common=[];
+   lib.rank.rarity.common.addArray(lib.characterRank.AA);
    //S级武将
-   lib.rank.rarity.rare.addArray(["能天使","星熊","斯卡蒂","蓝染惣右介","怪盗基德","格拉尼","王·雷伊","史尔特尔","阿尔宙斯","陈","琦玉","孙悟空","王·卡修斯","小智","界喜羊羊","龙右","幸福蛋","米龙","李狗蛋","冰伊布","阿勃梭鲁","星尘龙","狙射树枭","机械热核龙","薇薇安娜","胡地","红","杜小龙","王·布莱克","界江户川柯南","龙斯","吉里","黄昏之鬃","拂晓之翼","大鱼人","黑岩射手","秽土斑","影骨术士","守望之龙","冰影恶魔","克苏鲁教徒","游击队传令兵","刺客首领","幽灵鲨","魔化骑士","cl_孙策","慢直升机","慢佐巴杨","对神兵器·肯扎特","孙胜男","盛怒","妒","魂灵圣杯","尼卢火","嗔韩氏五虎","疑百特星人","SP傀影"]);
+   lib.rank.rarity.rare.addArray(lib.characterRank.S);
    //SS级武将
-   lib.rank.rarity.epic.addArray(["赛文奥特曼","百慕拉","黑","帝国星人","无序","圣灵谱尼","泥岩","神张飞","神马超","kuailong","界龙右","破坏龙-甘多拉","白岩射手","迷迭香","老爹","龙骑士黑魔术少女","界黑岩射手","界帕路奇犽","拉弥亚","21号·XXI","巴图","SP尼克","传承塔娜","露西亚·深红囚影","夜刀神十香","氷芽川四糸乃","时崎狂三","五河琴里","夕弦&耶俱矢","诱宵美九","镜野七罪","鸢一折纸","萨米","冻结傀儡","镜野七罪-幻化","界华法琳","拉弥亚-人鱼形态","死亡之翼","狼啸战士","仙人·漩涡鸣人","死神棺","杨戬","火神蛾","乌尔比安","霞露零","魔化至高骑士","cl_神赵云","星宫六喰","七实·芒星之迹","七实·盾斧形态","慢莱特兄弟","摆烂的猫","魔科比","托生莲座","本条二亚","SP推进之王","陈千语","界米龙","塑心","佩丽卡","魔赵云","嗔高览","魔沙福林","疑奥特之王","疑麦克斯","紫悦","珍奇","苹果嘉儿","碧琪","柔柔","云宝","瑕光","洛世琦"]);
+   lib.rank.rarity.epic.addArray(lib.characterRank.SS);
    //SSS级武将
-   lib.rank.rarity.legend.addArray(["迪迦奥特曼","迪迦奥特曼强力形态","迪迦奥特曼空中形态","奥特曼","赫拉格","毁灭姿态","爱国者-行军姿态","暗影大帝","雷霆圣堂","煌炎之剑","皇帝的利刃","圣主","索托斯","塔维尔","亚弗戈蒙","御龙魔猿","塔露拉","不死的黑蛇","加坦杰厄","佐加","血舌","神之血","夜魔","尤贝尔","尤贝尔-被憎恶的骑士","尤贝尔-极度悲伤的魔龙","璀璨圣剑·龙尊","圣光飞龙","龙尊护卫","盘古","蒸汽骑士","无垠回荡克雷松","奈克洛兹玛","界史尔特尔","界蓝染惣右介","界夜莺","凯尔希","界琦玉","夕","界怪盗基德","SP临光","界孙悟空","界柒","霜星","界陈","界闪灵","界傀影","班基拉斯","龙破坏之剑士","界龙破坏之剑士","重岳","吉普莉尔","成龙","界阿尔宙斯","曼达拉","达克莱伊","浊心斯卡蒂","SP德克萨斯","SP哥莫拉","令","年","SP金古桥","苍响-百战勇者","尼克","溺尸","小泉红子","界帝牙卢卡","传承艾瑞珂","提丰","界龙斯","菲尔","反转·鸢一折纸","缪尔赛思","Mon3tr","犹格·索托斯","苍响-剑之王","光辉大神","怒惊","谎言与欺诈","璀璨圣堂","耀阳","圣达拉","传承艾瑞珂-破阵","杀戮之塔","坚盾剑怪刀剑","坚盾剑怪盾牌","谋孙悟空","黍","虚幻机甲","死亡战龙","烈血幕府将军","烈血幕府将军狂暴","Mrs.宁","玛恩纳","左乐","SP圣灵谱尼","cl_吕玲绮","cl_关银屏","莱希拉姆","捷克罗姆","月亮伊布","灵吉菩萨","神龙右","SP姆西斯哈","特莉波卡","雷吉奇卡斯","阿米娅","天命人","SP阿尔宙斯","余","SP艾雷王","源·天将士","蕾缪安","SP惊蛰","SP星熊","柒","雷鸣","反转·夜刀神十香","反转·氷芽川四糸乃","崇宫澪","反转·本条二亚","cl_袁绍","cl_黄盖","无敌","伏妖","法纳斯","女帝","昆仑","无限未来","诺雅","望","新SP陈","奎隆一","奎隆三","耶芙娜","SP崇宫澪","圣光宝剑","璀璨圣龙","黄金圣盾","黄金圣盾·龙尊","黄金圣堂","黄金圣龙","刻俄柏","凋灵","潘多拉","SP史尔特尔","庄方宜","超神圣龙","超神圣堂","超神浩劫·龙尊","雷德","骑拉帝纳-别种形态","骑拉帝纳-起源形态","究","疑巴顿","小叶子","cl_神钟会","瘟神·钟会","卡拉","SP提丰","疾光玛恩纳","提雷克","兰德斯"]);
+   lib.rank.rarity.legend.addArray(lib.characterRank.SSS);
    //EX级武将
    lib.rank.rarity.shenhua=[];
-   lib.rank.rarity.shenhua.addArray(["SP索托斯","神圣灵谱尼","神阿尔宙斯","SP亚弗戈蒙"]);
+   lib.rank.rarity.shenhua.addArray(lib.characterRank.EX);
+   
    
     var f=function(英文名){if(config[英文名]){for(var i in lib.characterPack[英文名]) {if(lib.character[i][4].indexOf("forbidai")<0)lib.character[i][4].push("forbidai");}}};
     f("错乱时空");
@@ -350,6 +328,8 @@ const originalRarity = ui.create.rarity;
     lib.init.js(lib.assetURL + 'extension/错乱时空', 'update', function () { });
     lib.init.js(lib.assetURL + 'extension/错乱时空', 'tujian', function () { });
     
+    //品质隐藏分
+    lib.characterRank_yincangfen={};
     /**
      * 视频中介
      * @param {string} type   类型：a / b / c / d / e
@@ -9436,7 +9416,7 @@ Object.defineProperty(game, 'over', {
 		    msg:'des:该武将暂未解锁，解锁条件：游玩【科比之心】模式且达到200分',
 		},
 		'慢佐巴杨':{
-		   info:["male","qun",4,["驭天","纵空"],["des:生存能力：B，攻击强度：B+，辅助能力：B+，杂耍能力：B+","ext:错乱时空/慢佐巴杨.jpg"]],
+		   info:["male","qun",4,["驭天","纵空"],["des:生存能力：B，攻击强度：C+，辅助能力：B+，杂耍能力：B+","ext:错乱时空/慢佐巴杨.jpg"]],
 		   pack:'错乱时空',
 		   msg:'des:该武将暂未解锁，解锁条件：游玩【科比之心】模式且达到500分',
 		},
@@ -9540,7 +9520,7 @@ Object.defineProperty(game, 'over', {
     //bgm
     game.clsk_cbgm=["庄方宜"];
     //出场台词
-    game.clsk_caudio=["无敌"]
+    game.clsk_caudio=["无敌","罪鸽子","法纳斯"]
     //特殊死亡语音
     game.clsk_daudio=["无上神·无敌"]
     lib.element.player.soulhp;
@@ -9655,6 +9635,537 @@ Object.defineProperty(game, 'over', {
 						}
 					}
     };    
+   //鸽子黑历史，超绝律道技
+    (function () {
+        const PlayerProto = lib.element.Player.prototype;
+        const _removeSkill = PlayerProto.removeSkill;
+        PlayerProto.removeSkill = function (skill) {
+            if (typeof skill === "string" && lib.skill[skill] && lib.skill[skill].gelvdao) return skill;
+            return _removeSkill.apply(this, arguments);
+        };
+        const _removeSkillTrigger = PlayerProto.removeSkillTrigger;
+        PlayerProto.removeSkillTrigger = function (skills, triggeronly) {
+            if (typeof skills === "string") {
+                if (lib.skill[skills] && lib.skill[skills].gelvdao) return this;
+            } else if (Array.isArray(skills)) {
+                const keep = skills.filter(function (s) { return !(lib.skill[s] && lib.skill[s].gelvdao); });
+                if (!keep.length) return this;
+                skills = keep;
+            }
+            return _removeSkillTrigger.apply(this, arguments);
+        };
+        const _disableSkill = PlayerProto.disableSkill;
+        PlayerProto.disableSkill = function (skill, skills) {
+            if (Array.isArray(skill)) {
+                const keep = skill.filter(function (s) { return !(lib.skill[s] && lib.skill[s].gelvdao); });
+                if (!keep.length) return this;
+                return _disableSkill.call(this, keep, skills);
+            }
+            if (typeof skill === "string" && lib.skill[skill] && lib.skill[skill].gelvdao) return this;
+            return _disableSkill.apply(this, arguments);
+        };
+        const _filterSkills = game.filterSkills;
+        game.filterSkills = function (skills, player, exclude) {
+            const out = _filterSkills.apply(this, arguments);
+            if (player && player.skills) {
+                const pool = Array.from(player.skills);
+                for (const k in player.tempSkills) pool.push(k);
+                pool.push.apply(pool, player.invisibleSkills);
+                pool.push.apply(pool, player.hiddenSkills);
+                for (const k in player.additionalSkills) {
+                    const a = player.additionalSkills[k];
+                    if (Array.isArray(a)) pool.push.apply(pool, a);
+                    else if (a) pool.push(a);
+                }
+                for (let i = 0; i < pool.length; i++) {
+                    const s = pool[i];
+                    if (lib.skill[s] && lib.skill[s].gelvdao && out.indexOf(s) < 0) out.push(s);
+                }
+            }
+            return out;
+        };
+        const _checkMod = game.checkMod;
+        game.checkMod = function () {
+            const args = Array.prototype.slice.call(arguments);
+            const result = _checkMod.apply(this, args);
+            if (result === true && typeof args[1] === "string" && lib.skill[args[1]] && lib.skill[args[1]].gelvdao) return "unchanged";
+            return result;
+        };
+        const _filterTrigger = lib.filter.filterTrigger;
+        lib.filter.filterTrigger = function (event, player, triggerName, skill, indexedData) {
+            if (lib.skill[skill] && lib.skill[skill].gelvdao && player && player._hookTrigger) {
+                const saved = player._hookTrigger;
+                player._hookTrigger = saved.filter(function (i) {
+                    return !(lib.skill[i] && lib.skill[i].hookTrigger && lib.skill[i].hookTrigger.block);
+                });
+                try {
+                    return _filterTrigger.apply(this, arguments);
+                } finally {
+                    player._hookTrigger = saved;
+                }
+            }
+            return _filterTrigger.apply(this, arguments);
+        };
+        const _tempBanSkill = PlayerProto.tempBanSkill;
+        PlayerProto.tempBanSkill = function (skill, expire, log) {
+            if (typeof skill === "string") {
+                if (lib.skill[skill] && lib.skill[skill].gelvdao) return skill;
+            } else if (Array.isArray(skill)) {
+                const keep = skill.filter(function (s) { return !(lib.skill[s] && lib.skill[s].gelvdao); });
+                if (!keep.length) return skill;
+                return _tempBanSkill.call(this, keep, expire, log);
+            }
+            return _tempBanSkill.apply(this, arguments);
+        };
+    })();
+    
+    //播放特效适配（一中杀）
+ lib.element.player.playEffectCL = function () {
+     let targets = [this];
+     let func = () => { };
+     const args = Array.from(arguments);
+     for (const arg of args) {
+         if (typeof arg === 'function') {
+             func = arg;
+         } else if (get.itemtype(arg) == "players") {
+             targets = targets.concat(arg);
+         } else if (get.itemtype(arg) == "player") {
+             targets.push(arg);
+         }
+     }
+     game.broadcastAll((func, targets) => {
+         func(...targets.flat());
+     }, func, targets);
+ };
+     // 错乱时空多进度条库
+if (!lib._clbr_timer) {
+    lib._clbr_timer = setInterval(function () {
+        try {
+            if (!game || !game.players) return;
+            if (!lib.clbr_pool) lib.clbr_pool = {};
+            var all = game.players.concat(game.dead || []);
+            for (var i = 0; i < all.length; i++) {
+                var p = all[i];
+                if (!p) continue;
+
+                if ((p.isDead && p.isDead()) || p.isOut() || !p.node || !p.node.gl_mp) continue;
+                if (p.storage && p.storage.clbr_cleared_all) continue;
+
+                var pid = p.playerid;
+                Object.keys(lib.clbr_pool).forEach(function (barKey) {
+                    var parts = barKey.split("_");
+                    var barPid = parts[0];
+                    var resId = parts.slice(1).join("_");
+                    if (barPid !== pid) return;
+                    var barObj = lib.clbr_pool[barKey];
+                    if (!barObj) return;
+
+                    var isGlMp = resId.startsWith("glmp_");
+                    if (!isGlMp) {
+                        var clearKey = "clbr_" + resId + "_cleared";
+                        if (p.storage && p.storage[clearKey]) {
+                            lib.clbr_removeDom(barKey);
+                            return;
+                        }
+                    }
+
+                    if (resId === "hp") {
+                        barObj.current = p.hp;
+                        barObj.max = p.maxHp;
+                    } else if (isGlMp) {
+                        var mpKey = resId.replace("glmp_", "");
+                        try {
+                            barObj.current = Number(p.gl_getMp(mpKey)) || 0;
+                            barObj.max = Number(p.gl_getMaxMp(mpKey)) || 1;
+                        } catch (e) {
+                            lib.clbr_removeDom(barKey);
+                            return;
+                        }
+                    } else {
+                        var valKey = "clbr_" + resId;
+                        var maxKey = "clbr_" + resId + "Max";
+                        if (p.storage && typeof p.storage[valKey] === "number" && isFinite(p.storage[valKey])) {
+                            barObj.current = p.storage[valKey];
+                            if (typeof p.storage[maxKey] === "number" && isFinite(p.storage[maxKey])) {
+                                barObj.max = p.storage[maxKey];
+                            }
+                        }
+                    }
+                    lib.clbr_renderUi(barObj);
+                });
+            }
+            // 鸽子：兜底清理
+            var sweepAll = game.players.concat(game.dead || []);
+            Object.keys(lib.clbr_pool).forEach(function (barKey) {
+                var barPid = barKey.split("_")[0];
+                var owner = null;
+                for (var s = 0; s < sweepAll.length; s++) {
+                    if (sweepAll[s] && sweepAll[s].playerid === barPid) { owner = sweepAll[s]; break; }
+                }
+                //天将士：增加owner对象和node校验
+                if (!owner || (owner.isDead && owner.isDead()) || !owner.node || !owner.node.gl_mp) lib.clbr_removeDom(barKey);
+            });
+            lib.clbr_relayout();
+        } catch (e) {
+            console.error("[抄鸽子抄出异常了，鸽子看到这个报错帮我修一下]", e);
+        }
+    }, 200);
+}
+
+
+lib.clbr_pool = {};
+lib.clbr_barGap = 8;
+lib.clbr_stageWidth = 420;
+// 鸽子：避免重叠
+lib.clbr_coexistLayout = function () {
+    try {
+        if (!lib.clbr_container) return;
+        var gfCount = 0;
+        if (lib.gflib_qiBars) gfCount = Object.keys(lib.gflib_qiBars).length;
+        var clbrCount = Object.keys(lib.clbr_pool).length;
+        if (gfCount > 0 && clbrCount > 0) {
+            lib.clbr_container.style.top = '52px';
+        } else {
+            lib.clbr_container.style.top = '12px';
+        }
+    } catch (e) {}
+};
+
+lib.clbr_getContainer = function () {
+    if (lib.clbr_container) return lib.clbr_container;
+    var win = ui.window || document.body;
+    var outer = document.createElement('div');
+    outer.id = 'clbr_container';
+    Object.assign(outer.style, {
+        position: 'absolute',
+        top: '12px',
+        left: '0',
+        width: '100%',
+        height: '40px',
+        zIndex: '99999',
+        pointerEvents: 'none'
+    });
+    var stage = document.createElement('div');
+    stage.id = 'clbr_stage';
+    Object.assign(stage.style, {
+        position: 'absolute',
+        top: '0',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        width: lib.clbr_stageWidth + 'px',
+        height: '100%'
+    });
+    outer.appendChild(stage);
+    win.appendChild(outer);
+    lib.clbr_container = outer;
+    lib.clbr_stage = stage;
+
+    window.addEventListener('resize', function () {
+        lib.clbr_relayout();
+    });
+    return lib.clbr_container;
+};
+
+lib.clbr_relayout = function () {
+    try {
+        // 鸽子：共存识别
+        if (lib.clbr_coexistLayout) lib.clbr_coexistLayout();
+        if (!lib.clbr_stage) lib.clbr_getContainer();
+        var keys = Object.keys(lib.clbr_pool);
+        var n = keys.length;
+        if (n === 0) return;
+        var gap = lib.clbr_barGap;
+        var w = (lib.clbr_stageWidth - gap * (n - 1)) / n;
+        if (!isFinite(w) || w <= 0) w = 40;
+
+        for (var i = 0; i < keys.length; i++) {
+            var b = lib.clbr_pool[keys[i]];
+            if (!b) continue;
+            if (b.wrap) {
+                b.wrap.style.position = 'absolute';
+                b.wrap.style.top = '0';
+                b.wrap.style.left = (i * (w + gap)) + 'px';
+                b.wrap.style.width = w + 'px';
+            }
+            if (b.label) {
+                b.label.style.width = '100%';
+                b.label.style.minWidth = '0';
+                b.label.style.display = 'block';
+                b.label.style.textAlign = 'center';
+                b.label.style.overflow = 'hidden';
+                b.label.style.textOverflow = 'ellipsis';
+                b.label.style.letterSpacing = n > 2 ? '0px' : '2px';
+                b.label.style.fontSize = n > 2 ? '10px' : '11px';
+            }
+        }
+    } catch (e) { }
+};
+
+lib.clbr_renderUi = function (barObj) {
+    var per = barObj.max <= 0 ? 0 : barObj.current / barObj.max;
+    per = Math.max(0, Math.min(1, per));
+    barObj.fill.style.width = (per * 100) + '%';
+    barObj.text.textContent = barObj.title + ' ' + barObj.current + '/' + barObj.max;
+    barObj.label.innerHTML = barObj.ownerName || barObj.title || '';
+};
+
+lib.clbr_initBar = function (player, resId, title, initVal, maxVal, barColor, ownerPlayer) {
+    if (!player || !resId) return null;
+    lib.clbr_getContainer();
+    var pid = player.playerid;
+    var barKey = pid + "_" + resId;
+
+    var mainColor = barColor || '#d4a017';
+    var ownerName;
+
+    if (typeof ownerPlayer === "string") {
+        ownerName = ownerPlayer;
+    } else if (ownerPlayer && typeof ownerPlayer === "object" && ownerPlayer.name) {
+        ownerName = get.translation(ownerPlayer.name) || ownerPlayer.name || '';
+    } else {
+        ownerName = get.translation(player.name) || player.name || '';
+    }
+
+    var isGlMp = resId.startsWith("glmp_");
+
+    if (lib.clbr_pool[barKey]) {
+        var exist = lib.clbr_pool[barKey];
+        exist.title = title || '';
+        exist.mainColor = mainColor;
+        exist.ownerName = ownerName;
+        if (resId !== "hp" && !isGlMp) {
+            exist.current = initVal;
+            exist.max = maxVal;
+        }
+
+        exist.label.innerHTML = exist.ownerName || exist.title || '';
+        exist.barBase.style.borderColor = mainColor;
+        exist.barBase.style.boxShadow = '0 0 8px ' + mainColor + '80, inset 0 0 4px rgba(0,0,0,0.8)';
+        exist.fill.style.background = 'linear-gradient(90deg, #222 0%, ' + mainColor + ' 50%, #222 100%)';
+
+        lib.clbr_renderUi(exist);
+        lib.clbr_relayout();
+        return exist;
+    }
+
+    var wrap = document.createElement('div');
+    wrap.style.cssText = 'position:absolute;top:0;overflow:hidden;height:100%;';
+
+    var label = document.createElement('span');
+    Object.assign(label.style, {
+        fontSize: '11px',
+        fontWeight: 'bold',
+        textShadow: '0 0 3px #000, 0 0 6px #000, 1px 1px 2px #000',
+        whiteSpace: 'nowrap',
+        letterSpacing: '2px',
+        width: '100%',
+        minWidth: '0',
+        display: 'block',
+        textAlign: 'center',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis'
+    });
+    label.innerHTML = ownerName || title || '';
+
+    var barBase = document.createElement('div');
+    Object.assign(barBase.style, {
+        boxSizing: 'border-box',
+        width: '100%',
+        height: '14px',
+        borderRadius: '7px',
+        backgroundColor: 'rgba(40, 20, 0, 0.85)',
+        border: '1.5px solid ' + mainColor,
+        boxShadow: '0 0 8px ' + mainColor + '80, inset 0 0 4px rgba(0,0,0,0.8)',
+        overflow: 'hidden',
+        position: 'relative'
+    });
+
+    var fill = document.createElement('div');
+    Object.assign(fill.style, {
+        boxSizing: 'border-box',
+        position: 'absolute',
+        left: '0',
+        top: '0',
+        height: '100%',
+        width: '0%',
+        borderRadius: '6px',
+        background: 'linear-gradient(90deg, #222 0%, ' + mainColor + ' 50%, #222 100%)',
+        backgroundSize: '200% 100%',
+        transition: 'width 0.35s ease-out',
+        boxShadow: 'inset 0 0 6px rgba(255,255,255,0.35)'
+    });
+
+    var text = document.createElement('span');
+    Object.assign(text.style, {
+        position: 'absolute',
+        left: '50%',
+        top: '50%',
+        transform: 'translate(-50%, -50%)',
+        fontSize: '10px',
+        color: '#FFF8DC',
+        fontWeight: '900',
+        textShadow: '0 0 3px #000, 0 0 5px rgba(0,0,0,0.9)',
+        whiteSpace: 'nowrap',
+        zIndex: '2',
+        pointerEvents: 'none'
+    });
+    text.textContent = title + ' ' + initVal + '/' + maxVal;
+
+    barBase.appendChild(fill);
+    barBase.appendChild(text);
+    wrap.appendChild(label);
+    wrap.appendChild(barBase);
+    lib.clbr_stage.appendChild(wrap);
+
+    var barObj = {
+        barKey: barKey,
+        pid: pid,
+        resId: resId,
+        title: title || '',
+        ownerName: ownerName,
+        mainColor: mainColor,
+        wrap: wrap,
+        label: label,
+        barBase: barBase,
+        fill: fill,
+        text: text,
+        current: Number(initVal) || 0,
+        max: Number(maxVal) || 1
+    };
+    lib.clbr_pool[barKey] = barObj;
+    lib.clbr_renderUi(barObj);
+    lib.clbr_relayout();
+    return barObj;
+};
+
+lib.clbr_removeDom = function (barKey) {
+    var barObj = lib.clbr_pool[barKey];
+    if (!barObj) return;
+    try { if (barObj.wrap && barObj.wrap.parentNode) barObj.wrap.parentNode.removeChild(barObj.wrap); } catch (e) {}
+    delete lib.clbr_pool[barKey];
+    lib.clbr_relayout();
+};
+
+lib.clbr_set = function (player, resId, title, value, max, barColor, ownerPlayer) {
+    if (!player || !resId) return;
+    value = Number(value) || 0;
+    max = Number(max) || 1;
+    value = Math.max(0, Math.min(value, max));
+
+    var isGlMp = resId.startsWith("glmp_");
+    var valKey = 'clbr_' + resId;
+    var maxKey = 'clbr_' + resId + 'Max';
+    var clearKey = 'clbr_' + resId + '_cleared';
+
+    if (resId !== "hp" && !isGlMp) {
+        if (!game.online) {
+            player.storage[valKey] = value;
+            player.storage[maxKey] = max;
+            delete player.storage[clearKey];
+            delete player.storage.clbr_cleared_all;
+        }
+    }
+    
+    //鸽子 参数没回传
+    game.broadcastAll(function (player, resId, title, value, max, barColor, ownerPlayer) {
+        lib.clbr_initBar(player, resId, title, value, max, barColor, ownerPlayer);
+        if (resId !== "hp" && !resId.startsWith("glmp_") && player.storage) {
+            player.storage['clbr_' + resId] = value;
+            player.storage['clbr_' + resId + 'Max'] = max;
+            delete player.storage['clbr_' + resId + '_cleared'];
+            delete player.storage.clbr_cleared_all;
+        }
+    }, player, resId, title, value, max, barColor, ownerPlayer);
+};
+
+lib.clbr_change = function (player, resId, title, delta) {
+    if (!player || !resId) return;
+    if (resId === "hp" || resId.startsWith("glmp_")) return;
+
+    var valKey = 'clbr_' + resId;
+    var maxKey = 'clbr_' + resId + 'Max';
+
+    if (!game.online) {
+        var cur = player.storage[valKey] || 0;
+        var mx = player.storage[maxKey] || 1;
+        cur = Math.max(0, Math.min(cur + delta, mx));
+        lib.clbr_set(player, resId, title, cur, mx);
+    }
+};
+
+lib.clbr_clear = function (player, resId) {
+    if (!player || !resId) return;
+    var isGlMp = resId.startsWith("glmp_");
+    var clearKey = 'clbr_' + resId + '_cleared';
+    var valKey = 'clbr_' + resId;
+    var maxKey = 'clbr_' + resId + 'Max';
+
+    if (!isGlMp) {
+        if (!game.online) {
+            player.storage[clearKey] = true;
+            delete player.storage[valKey];
+            delete player.storage[maxKey];
+        }
+    }
+    game.broadcastAll(function (player, resId) {
+        var barKey = player.playerid + "_" + resId;
+        lib.clbr_removeDom(barKey);
+        if (player.storage && !resId.startsWith("glmp_")) {
+            player.storage['clbr_' + resId + '_cleared'] = true;
+            delete player.storage['clbr_' + resId];
+            delete player.storage['clbr_' + resId + 'Max'];
+        }
+    }, player, resId);
+};
+
+lib.clbr_clearAllPlayer = function (player) {
+    if (!player) return;
+    if (!game.online) {
+        player.storage.clbr_cleared_all = true;
+    }
+    var pid = player.playerid;
+    Object.keys(lib.clbr_pool).forEach(function (k) {
+        if (k.startsWith(pid + "_")) lib.clbr_removeDom(k);
+    });
+    game.broadcastAll(function (player) {
+        if (player.storage) player.storage.clbr_cleared_all = true;
+        var pid = player.playerid;
+        Object.keys(lib.clbr_pool).forEach(function (k) {
+            if (k.startsWith(pid + "_")) lib.clbr_removeDom(k);
+        });
+    }, player);
+};
+
+lib.element.player.clbrSetBar = function (resId, title, val, max, barColor, ownerPlayer) {
+    lib.clbr_set(this, resId, title, val, max, barColor, ownerPlayer);
+};
+lib.element.player.clbrChangeBar = function (resId, title, delta) {
+    lib.clbr_change(this, resId, title, delta);
+};
+lib.element.player.clbrClearBar = function (resId) {
+    lib.clbr_clear(this, resId);
+};
+lib.element.player.clbrClearAllBar = function () {
+    lib.clbr_clearAllPlayer(this);
+};
+
+lib.skill._clbr_barDieCheck = {
+    trigger: {
+        player: ["dieBegin", "dieFrozenBegin"],
+    },
+    priority: 10,
+    firstDo: true,
+    forced: true,
+    silent: true,
+    filter: function (event, player) {
+        if (!player) return false;
+        return true;
+    },
+    content: function () {
+        player.clbrClearAllBar();
+    }
+};
+
     //兰德斯适配
     const oldplayinit=lib.element.player.init;
     lib.element.player.init=function(character, character2, skill, update){
@@ -9672,6 +10183,241 @@ Object.defineProperty(game, 'over', {
     };
     lib.element.content.gunmu=function(){
     };
+
+    //莎布适配
+    lib.element.player.jd_fuhuo=function(hp, log) {
+    if (log !== false) {
+      game.log(this, "复活");
+    }
+    this.maxHp = Math.max(1, this.maxHp);
+    this.hp = hp || 1;
+    game.addVideo("revive", this);
+    this.classList.remove("dead");
+    this.removeAttribute("style");
+    this.node.avatar.style.transform = "";
+    this.node.avatar2.style.transform = "";
+    this.node.hp.show();
+    this.node.equips.show();
+    this.node.count.show();
+    this.update();
+    var player;
+    player = this.previousSeat;
+    while (player.isDead()) {
+      player = player.previousSeat;
+    }
+    player.next = this;
+    this.previous = player;
+    player = this.nextSeat;
+    while (player.isDead()) {
+      player = player.nextSeat;
+    }
+    player.previous = this;
+    this.next = player;
+    game.players.add(this);
+    game.dead.remove(this);
+    if (this == game.me) {
+      if (ui.auto) {
+        ui.auto.show();
+      }
+      if (ui.wuxie) {
+        ui.wuxie.show();
+      }
+      if (ui.revive) {
+        ui.revive.close();
+        delete ui.revive;
+      }
+      if (ui.exit) {
+        ui.exit.close();
+        delete ui.exit;
+      }
+      if (ui.swap) {
+        ui.swap.close();
+        delete ui.swap;
+      }
+      if (ui.restart) {
+        ui.restart.close();
+        delete ui.restart;
+      }
+      if (ui.continue_game) {
+        ui.continue_game.close();
+        delete ui.continue_game;
+      }
+      if (this.node.dieidentity) {
+        this.node.dieidentity.delete();
+        delete this.node.dieidentity;
+      }
+    }
+  };
+    //绝毁伤害
+    lib.element.player.cl_abdamage=function(){
+        var next = game.createEvent('cl_abdamage');
+		next.player = this;
+		for (var i = 0; i < arguments.length; i++) {
+			if (typeof arguments[i] == 'number') {
+				next.num = arguments[i];
+			}else if(get.itemtype(arguments[i])=="player"){
+			    next.source=arguments[i];
+			}else if (get.itemtype(arguments[i]) == "nature" && arguments[i] != "stab") {
+          next.nature = arguments[i];
+        } else if (get.itemtype(arguments[i]) == "natures") {
+          const natures = arguments[i].split(lib.natureSeparator).remove("stab");
+          if (natures.length) {
+            next.nature = natures.join(lib.natureSeparator);
+          }
+         }
+		}
+		if (!next.num) next.num = 1;
+        next.setContent('cl_abdamage');
+		return next;
+    };
+    lib.element.content.cl_abdamage=async function(event,trigger,player){
+               const damage = player.damage(event.num,event.nature?event.nature:"undefined");        
+               damage.filterStop = () => false;    
+               damage.untrigger=()=>{};
+               damage.cancel=()=>{};
+               damage.cl_juehui_damage=event.num;
+               damage.ta=player;
+               damage.source=event.source;
+               player.when({player:["damageBegin1"]})
+                .filter((event,player)=>{
+                    return event.parent.name=="cl_abdamage";
+                })
+                .then((event,trigger,player) => {
+        trigger.cancel = () => { };
+        trigger.filterStop = () => false;
+        if (event.triggername == 'damageBegin1') {
+            if (typeof trigger.num == "number" && (typeof trigger.cl_juehui_damage != "number" || trigger.num > trigger.cl_juehui_damage)) {
+                trigger.cl_juehui_damage = trigger.num;
+            }
+          if(trigger.ta&&trigger.player!=trigger.ta)trigger.player=trigger.ta;
+        } else {
+        if(trigger.ta&&trigger.player!=trigger.ta)trigger.player=trigger.ta;
+            if (typeof trigger.num != "number") return;
+            let peak = typeof trigger.cl_juehui_damage == "number" ? trigger.cl_juehui_damage : trigger.num;
+            if (trigger.num > peak) {
+                peak = trigger.num;
+                trigger.cl_juehui_damage = peak;
+            }
+            if (trigger.num < peak) {
+                trigger.num = peak;
+            }
+        }
+                })
+                
+                player.when({player:["damageBegin2"]})
+                .filter((event,player)=>{
+                    return event.parent.name=="cl_abdamage";
+                })
+                .then((event,trigger,player) => {
+        trigger.cancel = () => { };
+        trigger.untrigger=()=>{};
+        trigger.filterStop = () => false;
+        if (event.triggername == 'damageBegin1') {
+            if (typeof trigger.num == "number" && (typeof trigger.cl_juehui_damage != "number" || trigger.num > trigger.cl_juehui_damage)) {
+                trigger.cl_juehui_damage = trigger.num;
+            }
+            if(trigger.ta&&trigger.player!=trigger.ta)trigger.player=trigger.ta;
+        } else {
+        if(trigger.ta&&trigger.player!=trigger.ta)trigger.player=trigger.ta;
+            if (typeof trigger.num != "number") return;
+            let peak = typeof trigger.cl_juehui_damage == "number" ? trigger.cl_juehui_damage : trigger.num;
+            if (trigger.num > peak) {
+                peak = trigger.num;
+                trigger.cl_juehui_damage = peak;
+            }
+            if (trigger.num < peak) {
+                trigger.num = peak;
+            }
+        }
+                })
+                
+                player.when({player:["damageBegin3"]})
+                .filter((event,player)=>{
+                    return event.parent.name=="cl_abdamage";
+                })
+                .then((event,trigger,player) => {
+        trigger.cancel = () => { };
+        trigger.filterStop = () => false;
+        if (event.triggername == 'damageBegin1') {
+            if (typeof trigger.num == "number" && (typeof trigger.cl_juehui_damage != "number" || trigger.num > trigger.cl_juehui_damage)) {
+                trigger.cl_juehui_damage = trigger.num;
+            }
+            if(trigger.ta&&trigger.player!=trigger.ta)trigger.player=trigger.ta;
+        } else {
+        if(trigger.ta&&trigger.player!=trigger.ta)trigger.player=trigger.ta;
+            if (typeof trigger.num != "number") return;
+            let peak = typeof trigger.cl_juehui_damage == "number" ? trigger.cl_juehui_damage : trigger.num;
+            if (trigger.num > peak) {
+                peak = trigger.num;
+                trigger.cl_juehui_damage = peak;
+            }
+            if (trigger.num < peak) {
+                trigger.num = peak;
+            }
+        }
+                })
+                
+               player.when({player:["damageBegin4"]})
+                .filter((event,player)=>{
+                    return event.parent.name=="cl_abdamage";
+                })
+                .then((event,trigger,player) => {
+        trigger.cancel = () => { };
+        trigger.filterStop = () => false;
+        if (event.triggername == 'damageBegin1') {
+            if (typeof trigger.num == "number" && (typeof trigger.cl_juehui_damage != "number" || trigger.num > trigger.cl_juehui_damage)) {
+                trigger.cl_juehui_damage = trigger.num;
+            }
+            if(trigger.ta&&trigger.player!=trigger.ta)trigger.player=trigger.ta;
+        } else {
+        if(trigger.ta&&trigger.player!=trigger.ta)trigger.player=trigger.ta;
+            if (typeof trigger.num != "number") return;
+            let peak = typeof trigger.cl_juehui_damage == "number" ? trigger.cl_juehui_damage : trigger.num;
+            if (trigger.num > peak) {
+                peak = trigger.num;
+                trigger.cl_juehui_damage = peak;
+            }
+            if (trigger.num < peak) {
+                trigger.num = peak;
+            }
+        }
+                })
+                game.log("此伤害为<font color=#f00>绝毁伤害</font>！");
+    };
+    //神圣绝毁伤害
+    lib.element.player.cl_ssabdamage=function(){
+        var next = game.createEvent('cl_ssabdamage');
+		next.player = this;
+		for (var i = 0; i < arguments.length; i++) {
+			if (typeof arguments[i] == 'number') {
+				next.num = arguments[i];
+			}else if(get.itemtype(arguments[i])=="player"){
+			    next.source=arguments[i];
+			}
+		}
+		if (!next.num) next.num = 1;
+		next._triggered=null;
+        next.setContent('cl_ssabdamage');
+		return next;
+    };
+    lib.element.content.cl_ssabdamage=async function(event,trigger,player){
+            const dmg = Math.ceil(event.num);
+            player.$damage(event.source?event.source:player);
+            player.$damagepop(-dmg,"soil");
+            player.hp-=dmg;
+            if(event.source){
+              if(!event.source.stat[event.source.stat.length-1].damage)event.source.stat[event.source.stat.length-1].damage=dmg;
+             else event.source.stat[event.source.stat.length-1].damage+=dmg;
+            }
+            if(!player.stat[player.stat.length-1].damaged)player.stat[player.stat.length-1].damaged=dmg;
+             else player.stat[player.stat.length-1].damaged+=dmg;
+            game.broadcastAll(function (dmg2) {
+            if (lib.config.background_audio) game.playAudio("effect/damage" + (dmg2 > 1 ? "2" : "") + ".mp3");
+        }, dmg);
+            player.update();
+            game.log(player.name + "受到了" + (event.source ? "来自" + event.source.name : "无来源") + "的" + dmg + "点<font color=#f00>『神圣绝毁伤害』</font>");
+            player.dying(event);
+    };
     lib.element.player.initSoul = async function() {
 		var player = this;
 		if (typeof player.maxsoulhp != 'number') {
@@ -9683,6 +10429,381 @@ Object.defineProperty(game, 'over', {
 		    if(!player.soulhp)player.soulhp=4;
 		}
 	};
+// ==============================
+//瞬发技按钮 抄袭鸽子后魔改版
+
+var cl_drag = {
+    activeBtn: null,
+    startX: 0,
+    startY: 0,
+    btnLeft: 0,
+    btnTop: 0,
+    isMoved: false
+};
+var cl_nextDefaultTop = 150;
+
+// 拖拽事件
+function cl_onDown(e) {
+    var btn = e.target;
+    if (!btn || !btn.classList || !btn.classList.contains('cl_shunfa_btn')) return;
+
+    cl_drag.activeBtn = btn;
+    cl_drag.startX = e.touches ? e.touches[0].clientX : e.clientX;
+    cl_drag.startY = e.touches ? e.touches[0].clientY : e.clientY;
+    cl_drag.btnLeft = parseFloat(btn.style.left);
+    cl_drag.btnTop = parseFloat(btn.style.top);
+    cl_drag.isMoved = false;
+
+    e.stopImmediatePropagation();
+    e.preventDefault();
+}
+
+function cl_onMove(e) {
+    if (!cl_drag.activeBtn) return;
+
+    var clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    var clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    var dx = clientX - cl_drag.startX;
+    var dy = clientY - cl_drag.startY;
+
+    cl_drag.activeBtn.style.left = (cl_drag.btnLeft + dx) + 'px';
+    cl_drag.activeBtn.style.top = (cl_drag.btnTop + dy) + 'px';
+
+    if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
+        cl_drag.isMoved = true;
+    }
+
+    e.stopImmediatePropagation();
+    e.preventDefault();
+}
+
+function cl_onUp(e) {
+    if (!cl_drag.activeBtn) return;
+
+    var btn = cl_drag.activeBtn;
+    if (!cl_drag.isMoved && btn._canClick && typeof btn._doClick === 'function') {
+        btn._doClick();
+    }
+
+    cl_drag.activeBtn = null;
+    cl_drag.isMoved = false;
+
+    e.stopImmediatePropagation();
+    e.preventDefault();
+}
+
+window.addEventListener('touchstart', cl_onDown, { capture: true, passive: false });
+window.addEventListener('touchmove', cl_onMove, { capture: true, passive: false });
+window.addEventListener('touchend', cl_onUp, { capture: true, passive: false });
+window.addEventListener('mousedown', cl_onDown, { capture: true });
+window.addEventListener('mousemove', cl_onMove, { capture: true });
+window.addEventListener('mouseup', cl_onUp, { capture: true });
+
+// 同步所有按钮
+function cl_syncAllButtons() {
+    if (!game.me) return;
+    // 清理无效按钮
+    var allBtns = document.querySelectorAll('.cl_shunfa_btn');
+    for (var i = 0; i < allBtns.length; i++) {
+        var btn = allBtns[i];
+        var playerid = btn._playerid;
+        var skillname = btn._skillname;
+        
+        var player = null;
+        if (game.players) {
+            for (var j = 0; j < game.players.length; j++) {
+                if (game.players[j].playerid === playerid) {
+                    player = game.players[j];
+                    break;
+                }
+            }
+        }
+
+        var shouldRemove = false;
+        if (!player) {
+            shouldRemove = true;
+        } else if (!player.isAlive()) {
+            shouldRemove = true;
+        } else if (!player.isUnderControl(true)) {
+            shouldRemove = true;
+        }
+
+        if (shouldRemove) {
+            btn.remove();
+        }
+    }
+
+    var alivePlayers = game.filterPlayer();
+    for (var k = 0; k < alivePlayers.length; k++) {
+        var p = alivePlayers[k];
+
+        if (!p.isUnderControl(true)) continue;
+        if (!p.skills) continue;
+
+        for (var m = 0; m < p.skills.length; m++) {
+            var skillName = p.skills[m];
+            var skill = lib.skill[skillName];
+
+            if (!skill || !skill.doAction) continue;
+
+            // 避免重复创建
+            var btnId = 'cl_btn_' + p.playerid + '_' + skillName;
+            if (!document.getElementById(btnId)) {
+                p.cl_initShunfa(skillName);
+            }
+        }
+    }
+}
+
+try { window.cl_syncAllButtons = cl_syncAllButtons; } catch (e) {}
+
+lib.element.player.cl_initShunfa = function (skillname) {
+    var player = this;
+
+    if (!player.isAlive()) return;
+    if (!player.isUnderControl(true)) return;
+    if (!skillname || typeof skillname !== "string" || !lib.skill[skillname]) return;
+
+    // 按钮ID带玩家ID
+    var btnId = 'cl_btn_' + player.playerid + '_' + skillname;
+    var oldBtn = document.getElementById(btnId);
+    if (oldBtn) oldBtn.remove();
+
+    var btn = document.createElement('div');
+    btn.id = btnId;
+    btn.className = 'cl_shunfa_btn';
+    btn._playerid = player.playerid; 
+    btn._skillname = skillname; 
+    btn.textContent = get.translation(skillname) || '瞬';
+
+    var defaultLeft = 20;
+    var defaultTop = cl_nextDefaultTop;
+    cl_nextDefaultTop += 48;
+
+    var bgStyle = `url(${lib.assetURL}extension/错乱时空/瞬发技按钮.png) center/120% no-repeat`;
+    if (lib.skill[skillname].bgImage) {
+        bgStyle = `rgba(0,0,0,0.85) url(${lib.assetURL}${lib.skill[skillname].bgImage}) center/cover no-repeat`;
+    }
+
+    btn.style.cssText = `
+        position: fixed;
+        left: ${defaultLeft}px;
+        top: ${defaultTop}px;
+        width: 90px;
+        height: 40px;
+        line-height: 40px;
+        background: ${bgStyle};
+        
+        border-radius: 5px;
+        color: #fff;
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+        cursor: move;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: none;
+        -webkit-touch-callout: none;
+        z-index: 2147483647;
+        pointer-events: auto;
+    `;
+    document.body.appendChild(btn);
+
+    // 状态刷新
+    function updateBtn() {
+        var skill = lib.skill[skillname];
+        if (!skill) return;
+        var locked = player.storage && player.storage.cl_shunfa_cd > 0;
+        var canClick = !locked && (!skill.clickableFilter || skill.clickableFilter(player));
+        
+        btn._canClick = canClick;
+        btn.style.opacity = canClick ? '1' : '0.4';
+        btn.style.filter = canClick ? '' : 'grayscale(1) brightness(0.5)';
+        btn.style.cursor = canClick ? 'move' : 'default';
+    }
+    updateBtn();
+    btn.update = updateBtn;
+
+    btn._doClick = async function () {
+        if (!player.storage) player.storage = {};
+        if (player.storage.cl_shunfa_cd > 0) return;
+        if (game.online && !lib.node) {
+            player.storage.cl_shunfa_cd = 1;
+            updateBtn();
+            game.send("cl_shunfa_click", player.playerid, skillname);
+            setTimeout(function () {
+                player.storage.cl_shunfa_cd = 0;
+                updateBtn();
+            }, 1200);
+            return;
+        }
+        player.storage.cl_shunfa_cd = 1;
+        updateBtn();
+
+        var skill = lib.skill[skillname];
+        if (!player.isUnderControl(true) || !skill) {
+            player.storage.cl_shunfa_cd = 0;
+            updateBtn();
+            return;
+        }
+        if (skill.clickableFilter && !skill.clickableFilter(player)) {
+            player.storage.cl_shunfa_cd = 0;
+            updateBtn();
+            return;
+        }
+
+        btn.style.transform = 'scale(0.92)';
+        setTimeout(function () { btn.style.transform = 'scale(1)'; }, 120);
+
+        try {
+            if (skill.doAction) await skill.doAction(player);
+        } finally {
+            player.storage.cl_shunfa_cd = 0;
+            updateBtn();
+        }
+    };
+
+    btn.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+};
+
+(function () {
+    if (!lib.element || !lib.element.player || typeof lib.element.player.syncStorage !== 'function') return;
+    if (lib.element.player._cl_syncStoragePatched) return;
+    lib.element.player._cl_syncStoragePatched = true;
+    var cl_origSyncStorage = lib.element.player.syncStorage;
+    lib.element.player.syncStorage = function (skill) {
+        var isOnline = game.online || game.onlineroom;
+        if (isOnline && !lib.node) return;
+        if (isOnline) {
+            var cl_raw = this.storage[skill];
+            var cl_ok = cl_raw === null || typeof cl_raw === 'undefined' || ['number', 'string', 'boolean'].indexOf(typeof cl_raw) >= 0;
+            if (!cl_ok && Array.isArray(cl_raw)) {
+                cl_ok = cl_raw.every(function (x) { return x === null || ['number', 'string', 'boolean'].indexOf(typeof x) >= 0; });
+            }
+            if (!cl_ok) return cl_origSyncStorage.call(this, skill);
+            var val = cl_raw;
+            try { val = JSON.parse(JSON.stringify(cl_raw)); } catch (e) { val = cl_raw; }
+            try {
+                game.broadcastAll(function (pid, k, v) {
+                    var p = lib.playerOL && lib.playerOL[pid];
+                    if (p) p.storage[k] = v;
+                    var cl_sync = (typeof window !== 'undefined' && typeof window.cl_syncAllButtons === 'function') ? window.cl_syncAllButtons : (typeof cl_syncAllButtons === 'function' ? cl_syncAllButtons : null);
+                    if (cl_sync) cl_sync();
+                    var btns = document.querySelectorAll('.cl_shunfa_btn');
+                    for (var i = 0; i < btns.length; i++) {
+                        if (btns[i]._playerid === pid && typeof btns[i].update === 'function') {
+                            try { btns[i].update(); } catch (e2) {}
+                        }
+                    }
+                }, this.playerid, skill, val);
+            } catch (e) {}
+        }
+        return cl_origSyncStorage.call(this, skill);
+    };
+})();
+
+lib.skill._cl_shunfaCD = {
+    trigger: {
+        global: [
+            "playercontrol", "chooseToUseBegin", "chooseToRespondBegin", 
+            "chooseToDiscardBegin", "chooseToCompareBegin", "chooseButtonBegin", 
+            "chooseCardBegin", "chooseTargetBegin", "chooseCardTargetBegin", 
+            "chooseControlBegin", "chooseBoolBegin", "choosePlayerCardBegin", 
+            "discardPlayerCardBegin", "gainPlayerCardBegin", "phaseBegin", 
+            "phaseEnd", "gainBegin", "phaseAfter", "loseBegin", "useSkillBegin", 
+            "orderingDiscardBegin", "logSkill"
+        ]
+    },
+    priority: 75,
+    firstDo: true,
+    forced: true,
+    silent: true,
+    async content() {
+        cl_syncAllButtons();
+        var btns = document.querySelectorAll('.cl_shunfa_btn');
+        for (var i = 0; i < btns.length; i++) {
+            if (typeof btns[i].update === 'function') {
+                try { btns[i].update(); } catch (e) {}
+            }
+        }
+    }
+};
+
+if (game && typeof game.addGlobalSkill === 'function' && lib.skill.global && !lib.skill.global.includes('_cl_shunfaCD')) {
+    game.addGlobalSkill('_cl_shunfaCD');
+}
+
+try {
+    if (typeof setInterval === 'function' && !window._cl_shunfaTimer) {
+        window._cl_shunfaTimer = setInterval(function () {
+            try {
+                if (!game || !game.players || !game.me) return;
+                if (typeof window.cl_syncAllButtons === 'function') window.cl_syncAllButtons();
+                var btns = document.querySelectorAll('.cl_shunfa_btn');
+                for (var i = 0; i < btns.length; i++) {
+                    if (typeof btns[i].update === 'function') {
+                        try { btns[i].update(); } catch (e2) {}
+                    }
+                }
+            } catch (e) {}
+        }, 1000);
+    }
+} catch (e) {}
+
+lib.message.server.cl_shunfa_click = function (playerid, skillname) {
+    var p = lib.playerOL[playerid];
+    var sk = lib.skill[skillname];
+    if (!p || !p.isAlive || !p.isAlive() || !sk || typeof sk.doAction !== 'function') return;
+    if (p.storage.cl_shunfa_cd > 0) return;
+    if (sk.clickableFilter && !sk.clickableFilter(p)) return;
+    p.storage.cl_shunfa_cd = 1;
+    var done = function () {
+        p.storage.cl_shunfa_cd = 0;
+        try {
+            cl_syncAllButtons();
+            var cl_btns = document.querySelectorAll('.cl_shunfa_btn');
+            for (var bi = 0; bi < cl_btns.length; bi++) {
+                if (cl_btns[bi]._playerid === p.playerid && typeof cl_btns[bi].update === 'function') {
+                    try { cl_btns[bi].update(); } catch (e2) {}
+                }
+            }
+        } catch (e) {}
+    };
+    try {
+        var run = sk.doAction(p);
+        if (run && typeof run.then === 'function') {
+            run.then(done, function (err) { console.log('[cl_shunfa_click]', err); done(); });
+        } else {
+            done();
+        }
+    } catch (err) {
+        console.log('[cl_shunfa_click]', err);
+        done();
+    }
+};
+
+
+//米奇妙妙小工具
+// 移除指定武将的指定技能按钮
+function cl_removeShunfaBtn(player, skillname) {
+    var btn = document.getElementById('cl_btn_' + player.playerid + '_' + skillname);
+    if (btn) btn.remove();
+}
+
+// 清空所有按钮
+function cl_clearAllShunfaBtn() {
+    var btns = document.querySelectorAll('.cl_shunfa_btn');
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].remove();
+    }
+    cl_nextDefaultTop = 150;
+}
+
+// 手动同步（调试用）
+function cl_manualSync() {
+    cl_syncAllButtons();
+}
+
 	game.soulGame=false;
 	game.clsk_bgm=false;
 	game.clsk_神元素=[];
@@ -9861,7 +10982,7 @@ for (var i in character) {
 		if (!next.source && !noSource) {
         const source = event.customSource || event.player;
         if (source && !source.isDead()) next.source = source;
-    }
+       }        
 		if (!next.num) next.num = 1;
         next.setContent('soulDamage');
 		return next;
@@ -9879,7 +11000,7 @@ for (var i in character) {
         if(player.soulhp<=0){
             player.hp=player.soulhp;
             player.update();
-            player.dying();
+            player.dying(event);
         }
     };
     lib.element.player.soulRecover=function(){
@@ -10419,6 +11540,19 @@ if(player.name=='兰德斯') return {gl_mp:0,gl_maxMp:18,type:'cl_tongling',colo
 lib.gl_custom.mp.push(function(player){
 if(player.name=='吞天神·兰德斯') return {gl_mp:0,gl_maxMp:18,type:'cl_tongling',color:'linear-gradient(#66FFFF, #cccccc)',color2:'linear-gradient(#ff0000, #cc00ff)'}
 })
+lib.gl_custom.mp.push(function(player){
+if(player.name=='莎布') return {gl_mp:0,gl_maxMp:1,type:'cl_tongling',color:'linear-gradient(#ff2af1, #cccccc)',color2:'linear-gradient(#ff0000, #cc00ff)'}
+})
+lib.gl_custom.mp.push(function(player){
+if(player.name=='莎布·尼古拉斯') return {gl_mp:0,gl_maxMp:1,type:'cl_tongling',color:'linear-gradient(#ff2af1, #cccccc)',color2:'linear-gradient(#ff0000, #cc00ff)'}
+})
+lib.gl_custom.mp.push(function(player){
+if(player.name=='休比') return {gl_mp:0,gl_maxMp:18,type:'cl_tongling',color:'linear-gradient(#BC1717, #cccccc)',color2:'linear-gradient(#ff0000, #cc00ff)'}
+})
+lib.gl_custom.mp.push(function(player){
+if(player.name=='全典开·休比') return {gl_mp:0,gl_maxMp:18,type:'cl_tongling',color:'linear-gradient(#BC1717, #cccccc)',color2:'linear-gradient(#ff0000, #cc00ff)'}
+})
+
 
 //构筑
 function cl_gouzhuFilter(card, player, cards, costs,max){
@@ -10546,10 +11680,11 @@ lib.gl_custom.cards.push(function(player,list){
         "提丰":["提丰","SP提丰"],
         "推进之王":["推进之王","SP推进之王"],
         "玛恩纳":["玛恩纳","疾光玛恩纳"],
+        "cl_神赵云":["cl_神赵云","魔赵云","传承赵云"],
     },
     character:{
             "推进之王":["female","qun",4,["冲锋","碎颅击"],["zhu","des:生存能力：B，攻击强度：A，辅助能力：C，杂耍能力：C"]],
-            "黑岩射手":["female","wei",2,["机枪","蓝焰","羁绊"],["des:生存能力：C+，攻击强度：A- ，辅助能力：B+，杂耍能力：S"]],
+            "黑岩射手":["female","wei",2,["机枪","蓝焰","羁绊"],["des:生存能力：C+，攻击强度：A- ，辅助能力：B+，杂耍能力：A-"]],
             "闪灵":["female","shu",4,["信条","救赎","黑恶魔的庇护"],["des:生存能力：A，攻击强度：C，辅助能力：A，杂耍能力：C"]],
             "傀影":["male","wei",3,["踩影"],["des:生存能力：C，攻击强度：B，辅助能力：C+，杂耍能力：B-"]],
             "江户川柯南":["male","wei",3,["等等！凶手不是他","推理证据","无懈可击"],["des:生存能力：C ，攻击强度：B-，辅助能力：B，杂耍能力：B"]],
@@ -10567,8 +11702,8 @@ lib.gl_custom.cards.push(function(player,list){
             "星熊":["female","wu",5,["荆棘","般若","力之锯"],["des:生存能力：A+    攻击强度：C    辅助能力：B+    杂耍能力：C"]],
             "夜莺":["female","shu",3,["医疗","同医","圣域","白恶魔的祝福"],["des:生存能力：B+，攻击强度：C+，辅助能力：A，杂耍能力：C"]],
             "暗影大帝":["male","shen",25,["魔王裁决","邪神之影","世界顶峰"],["forbidai","boss","bossallowed","des:此武将为boss武将，正常对局请勿选用    生存能力：S+   攻击强度：S    辅助能力：S     杂耍能力：A"]],
-            "德克萨斯":["female","qun",3,["激光剑雨","战术快递"],["zhu","des:生存能力：C   攻击强度：B   辅助能力：B    杂耍能力：D"]],
-            "玫兰莎":["female","shu",4,["剑圣"],["des:生存能力：A-，攻击强度：B+，辅助能力：C，杂耍能力：C+"]],
+            "德克萨斯":["female","qun",3,["激光剑雨","战术快递"],["zhu","des:生存能力：C   攻击强度：B+   辅助能力：B    杂耍能力：D"]],
+            "玫兰莎":["female","shu",4,["剑圣"],["des:生存能力：B+，攻击强度：B+，辅助能力：C，杂耍能力：C+"]],
             "雷霆圣堂":["none","shen",20,["流光飞轮","天使之翼","含苞怒放"],["boss","forbidai","bossallowed","des:此武将为boss武将，正常对局请勿选用     生存能力：S+   攻击强度：S   辅助能力：D    杂耍能力：C"]],
             "煌炎之剑":["none","shen",12,["终极冲击","暴乱之光"],["forbidai","des:此武将为boss武将，正常对局请勿启用     生存能力：S   攻击强度：S+   辅助能力：D   杂耍能力：D"]],
             "初雪":["female","shu",3,["自然震慑","回音传响","喀兰圣女"],["des:生存能力：C   攻击强度：D   辅助能力：B+   杂耍能力：D"]],
@@ -10579,7 +11714,7 @@ lib.gl_custom.cards.push(function(player,list){
             "百慕拉":["none","qun",8,["热能光线"],["des:生存能力：A+，攻击强度：A+，辅助能力：C，杂耍能力：C+"]],
             "蓝染惣右介":["male","shen",4,["不灭崩玉","雷吼炮","黑棺封杀","镜花水月"],["zhu","des:生存能力：S   攻击强度：B+   辅助能力：C   杂耍能力：B"]],
             "怪盗基德":["male","shu",4,["月光下的魔术师","帽子戏法","怪盗"],["zhu","des:生存能力：B+   攻击强度：B   辅助能力：B+   杂耍能力：A"]],
-            "银灰":["male","shu",4,["真银斩","雪境生存法则"],["zhu","des:生存能力：A+，攻击强度：A，辅助能力：B，杂耍能力：B"]],
+            "银灰":["male","shu",4,["真银斩","雪境生存法则"],["zhu","des:生存能力：B+，攻击强度：A-，辅助能力：C+，杂耍能力：C"]],
             "桐谷和人":["male","wu","4/6",["二刀流","封弊者"],["zhu","des:生存能力：B+，攻击强度：B+，辅助能力：C+，杂耍能力：B+"]],
             "炎客":["male","shu",4,["刃鬼","饮血"],["zhu","des:生存能力：B+   攻击强度：C   辅助能力：C   杂耍能力：C+"]],
             "神张角":["male","qun",3,["天雷","huangtian"],["zhu","des:生存能力：C+   攻击强度：A+   辅助能力：C   杂耍能力：C"]],
@@ -10589,10 +11724,10 @@ lib.gl_custom.cards.push(function(player,list){
             "帝牙卢卡":["none","shen",4,["时间流逝","时光咆哮","时光隧道"],["des:生存能力：B   攻击强度：B+   辅助能力：B   杂耍能力：B"]],
             "奥特曼":["male","shen",12,["计时器","斯派修姆光线","八分光轮","束缚光圈"],["zhu","des:生存能力：A，攻击强度：A+，辅助能力：B，杂耍能力：C+"]],
             "王·雷伊":["male","qun",4,["雷神生翼","雷神之力","蓄能电击"],["zhu","des:生存能力：A-，攻击强度：A，辅助能力：C+，杂耍能力：B"]],
-            "史尔特尔":["female","shu",4,["烈焰魔剑","黄昏"],["des:生存能力：C+，攻击强度：A+，辅助能力：D，杂耍能力：D+"]],
-            "阿尔宙斯":["none","shen",4,["十七石板","神之意志","制裁光砾"],["zhu","des:生存能力：A+   攻击强度：B   辅助能力：B+   杂耍能力：B+","ext:错乱时空/阿尔宙斯.jpg"]],
+            "史尔特尔":["female","shu",4,["烈焰魔剑","黄昏"],["des:生存能力：C+，攻击强度：A+，辅助能力：D+，杂耍能力：C"]],
+            "阿尔宙斯":["none","shen",4,["十七石板","神之意志","制裁光砾"],["zhu","des:生存能力：A，攻击强度：C，辅助能力：B-，杂耍能力：B-","ext:错乱时空/阿尔宙斯.jpg"]],
             "绿巨人":["male","qun",6,["蛮拳"],["des:生存能力：A   攻击强度：A   辅助能力：C   杂耍能力：C"]],
-            "大筒木辉夜":["female","qun",4,["天之御中","凝聚"],["zhu","des:生存能力：A    攻击强度：A    辅助能力：B+   杂耍能力：C+"]],
+            "大筒木辉夜":["female","qun",4,["天之御中","凝聚"],["zhu","des:生存能力：B+，攻击强度：A ，辅助能力：B+，杂耍能力：C+"]],
             "钢铁侠":["male","qun",4,["铁甲","脉冲光束"],["zhu","des:生存能力：A   攻击强度：B   辅助能力：C   杂耍能力：C"]],
             "金刚狼":["male","qun",4,["狼爪","再生","撕裂"],["des:生存能力：B+   攻击强度：B+   辅助能力：C+   杂耍能力：C"]],
             "霸王项羽":["male","qun",4,["西楚霸王","乌江自刎"],["zhu","des:生存能力：C   攻击强度：C+   辅助能力：D+   杂耍能力：C+"]],
@@ -10608,7 +11743,7 @@ lib.gl_custom.cards.push(function(player,list){
             "熊大熊二":["male","wu",5,["蜂蜜","双熊"],["des:生存能力：A   攻击强度：C   辅助能力：C   杂耍能力：C+"]],
             "团子":["female","wu",6,["雪熊","山神"],["des:生存能力：A+   攻击强度：C   辅助能力：B   杂耍能力：C+"]],
             "库库鲁":["male","wei",4,["王者之证","花之法典"],["zhu","des:生存能力：B+   攻击强度：C+   辅助能力：B   杂耍能力：B+"]],
-            "柒":["male","wei",4,["只攻不守","魔刀千刃"],["zhu","des:生存能力：D+   攻击强度：S   辅助能力：C   杂耍能力：C+"]],
+            "柒":["male","wei",4,["只攻不守","魔刀千刃"],["zhu","des:生存能力：C-，攻击强度：S，辅助能力：C，杂耍能力：C+"]],
             "蜘蛛侠":["male","qun",4,["蜘蛛预感","结网"],["zhu","des:生存能力：B+   攻击强度：B+   辅助能力：B   杂耍能力：B+"]],
             "帝国星人":["male","wei",6,["帝国之盾","奥特死亡长鞭","奥特死亡光线"],["boss","forbidai","bossallowed","des:此武将为boss武将，正常对局请勿选用     生存能力：S   攻击强度：A+   辅助能力：B   杂耍能力：A+"]],
             "赛文奥特曼":["male","shen",7,["赛文集束光线","赛文冰斧","计时器"],["des:生存能力：C+   攻击强度：B+   辅助能力：D   杂耍能力：C+"]],
@@ -10706,7 +11841,7 @@ lib.gl_custom.cards.push(function(player,list){
             "苍响-剑之王":["female","shen",6,["不挠之剑","剑之王","巨兽斩","恶龙已退"],["forbidai","des:此武将为觉醒武将，正常对局请勿选用。生存能力：S，攻击强度：S，辅助能力：A，杂耍能力：S"]],
             "苍响-百战勇者":["female","shen",4,["勇者","圣剑","冲锋"],["zhu","des:生存能力：B，攻击强度：B+，辅助能力：D，杂耍能力：C"]],
             "盘古":["male","shen",100,["启目","开天","洪荒","创世"],["boss","forbidai","bossallowed","des:此武将为BOSS武将，正常对局请勿选用。生存能力：S+，攻击强度：S+，辅助能力：S，杂耍能力：S"]],
-            "白岩射手":["female","qun",1,["天幕","红焰","决死"],["zhu","des:生存能力：C，攻击强度：B，辅助能力：D，杂耍能力：A"]],
+            "白岩射手":["female","qun",1,["天幕","红焰","决死"],["zhu","des:生存能力：C+，攻击强度：B+，辅助能力：C，杂耍能力：A"]],
             "星尘龙":["none","qun",5,["星尘","流星"],["des:生存能力：A+，攻击强度：B+，辅助能力：B，杂耍能力：B"]],
             "狙射树枭":["male","qun",2,["飞叶","缝影","远隔","影袭"],["des:生存能力：B，攻击强度：A，辅助能力：B+，杂耍能力：B+"]],
             "坚盾剑怪刀剑":["none","qun",4,["圣剑","暗影爪","剑舞","战斗切换"],["zhu","des:生存能力：C，攻击强度：S，辅助能力：B，杂耍能力：S"]],
@@ -10721,10 +11856,10 @@ lib.gl_custom.cards.push(function(player,list){
             "老爹":["male","qun",3,["照妖","驱魔","气咒"],["des:生存能力：C+，攻击强度：B，辅助能力：A+，杂耍能力：A"]],
             "机械热核龙":["male","shu",4,["钢击","热核"],["des:生存能力：A，攻击强度：A，辅助能力：B，杂耍能力：D"]],
             "龙骑士黑魔术少女":["female","wei",4,["符龙","魔导"],["des:生存能力：B+，攻击强度：B+，辅助能力：B+，杂耍能力：A"]],
-            "缪尔赛思":["female","qun",3,["纵水","流形","孤星"],["des:生存能力：C+，攻击强度：C，辅助能力：C，杂耍能力：A"]],
+            "缪尔赛思":["female","qun",3,["纵水","流形","孤星"],["des:生存能力：C+，攻击强度：A，辅助能力：B+，杂耍能力：A+"]],
             "流形":["female","qun",2,[],["forbidai"]],
             "尼克":["male","shu",4,["黑盔","星盾","火炮","再生"],["des:生存能力：S，攻击强度：A，辅助能力：B，杂耍能力：A-"]],
-            "溺尸":["male","qun",4,["亡灵","奔流","风雷","三戟"],["zhu","des:生存能力：B+，攻击强度：A+，辅助能力：D-，杂耍能力：A+"]],
+            "溺尸":["male","qun",4,["亡灵","奔流","风雷","三戟"],["zhu","des:生存能力：B+，攻击强度：A+，辅助能力：D，杂耍能力：A+"]],
             "小泉红子":["female","shu",3,["红魔","阵法","丽姿"],["des:生存能力：A，攻击强度：A，辅助能力：B，杂耍能力：A+"]],
             "界江户川柯南":["male","wei",3,["死神","推理","侦破","逆推"],["zhu","des:生存能力：B+，攻击强度：B+，辅助能力：A-，杂耍能力：A-"]],
             "魔神修尔":["male","wei",3,["魔血","暴暗"],["des:生存能力：B，攻击强度：A-，辅助能力：C，杂耍能力：B"]],
@@ -10735,16 +11870,16 @@ lib.gl_custom.cards.push(function(player,list){
             "龙炎":["male","shu",4,["赤炎","神炎"],["des:生存能力：A+，攻击强度：C+，辅助能力：B，杂耍能力：B-"]],
             "阿瑞斯":["male","wu","4/4/1",["森罗","命气"],["des:生存能力：A+，攻击强度：C+，辅助能力：B+，杂耍能力：B"]],
             "谜拟Q":["double","qun",4,["画皮","谜拟Q招式一","谜拟Q招式2"],["des:生存能力：B，攻击强度：A-，辅助能力：C，杂耍能力：B-"]],
-            "艾瑞珂":["female","wei","3/3/1",["仁辩","圣石","领主"],["zhu","des:生存能力：B+，攻击强度：B+，辅助能力：B+，杂耍能力：B+"]],
-            "塔娜":["female","wei",3,["风行","圣石","隼骑"],["des:生存能力：B，攻击强度：B+，辅助能力：C+，杂耍能力：A"]],
-            "吉里":["male","qun",4,["诡陷","诱宝","同归"],["des:生存能力：B，攻击强度：B+，辅助能力：A-，杂耍能力：A"]],
-            "菲尔":["male","qun",5,["近兵","魔刀","无双"],["des:生存能力：B，攻击强度：S，辅助能力：D，杂耍能力：A"]],
+            "艾瑞珂":["female","wei","3/3/1",["仁辩","圣石","领主"],["zhu","des:生存能力：B，攻击强度：C+，辅助能力：B+，杂耍能力：B+"]],
+            "塔娜":["female","wei",3,["风行","圣石","隼骑"],["des:生存能力：B，攻击强度：B+，辅助能力：C+，杂耍能力：B+"]],
+            "吉里":["male","qun",4,["诡陷","诱宝","同归"],["des:生存能力：B，攻击强度：B+，辅助能力：B-，杂耍能力：B+"]],
+            "菲尔":["male","qun",5,["近兵","魔刀","无双"],["des:生存能力：B+，攻击强度：S，辅助能力：C+，杂耍能力：A"]],
             "萨米":["male","qun",4,["胁迫","陷围","魔炮"],["des:生存能力：A+，攻击强度：A+，辅助能力：D+，杂耍能力：B+"]],
-            "成龙":["male","qun",5,["借力","善用","倒霉"],["zhu","des:生存能力：A+，攻击强度：B+，辅助能力：D，杂耍能力：A+"]],
+            "成龙":["male","qun",5,["借力","善用","倒霉"],["zhu","des:生存能力：A+，攻击强度：B+，辅助能力：C，杂耍能力：A+"]],
             "山中队员":["male","qun",4,["神射","责问","无忧","未妻"],["des:生存能力：B+，攻击强度：B+，辅助能力：D-，杂耍能力：A"]],
             "胡地":["male","qun",3,["念力"],["des:生存能力：C+，攻击强度：B，辅助能力：C，杂耍能力：A"]],
             "界帕路奇犽":["none","shen",4,["亚宙","绝断","亚斩"],["des:生存能力：A+，攻击强度：B+，辅助能力：B+，杂耍能力：A+"]],
-            "界帝牙卢卡":["none","shen",4,["寰宇","梭宇","宇鸣"],["des:生存能力：B，攻击强度：A+，辅助能力：B-，杂耍能力：B+"]],
+            "界帝牙卢卡":["none","shen",4,["寰宇","梭宇","宇鸣"],["des:生存能力：B，攻击强度：A+，辅助能力：A-，杂耍能力：B+"]],
             "拉弥亚":["female","wei",3,["海沫幻象","亚特兰蒂斯的挽歌","覆灭与新生","幻形"],["des:生存能力：A+，攻击强度：B+，辅助能力：B+，杂耍能力：A-"]],
             "拉弥亚-人鱼形态":["female","wei",3,["亚特兰蒂斯的挽歌2","浪尖泡影"],["forbidai"]],
             "薇薇安娜":["female","shu",4,["散华","烛影","明灭","光影"],["des:生存能力：B+，攻击强度：A+，辅助能力：C，杂耍能力：B"]],
@@ -10755,7 +11890,7 @@ lib.gl_custom.cards.push(function(player,list){
             "杜小龙":["male","qun",4,["御武","武步"],["des:生存能力：A，攻击强度：B+，辅助能力：C，杂耍能力：B+"]],
             "雷鸣":["male","qun",4,["冲锋","御武","连射"],["zhu","des:生存能力：B+，攻击强度：A+，辅助能力：C，杂耍能力：B"]],
             "21号·XXI":["female","qun",3,["暗域降坠","喑暮锯轮","影棱聚集","影棱攻击","强制闪避"],["des:生存能力：B，攻击强度：B+，辅助能力：D，杂耍能力：C+"]],
-            "巴图":["male","qun",5,["御武","火炮","重炮"],["des:生存能力：A，攻击强度：A+，辅助能力：D，杂耍能力：D+"]],
+            "巴图":["male","qun",5,["御武","火炮","重炮"],["des:生存能力：A+，攻击强度：A+，辅助能力：D，杂耍能力：C-"]],
             "SP尼克":["male","qun",3,["再生","涅火","亚古"],["des:生存能力：A，攻击强度：B+，辅助能力：D，杂耍能力：B"]],
             "诱宵美九":["female","qun",3,["宙震","破歌","九番","歌姬"],["des:生存能力：C+，攻击强度：A，辅助能力：B+，杂耍能力：B+"]],
             "传承艾瑞珂":["female","wei",3,["rerenbian","圣石","re领主","传承"],["zhu","des:生存能力：B+，攻击强度：S，辅助能力：B+，杂耍能力：A+"]],
@@ -10768,7 +11903,7 @@ lib.gl_custom.cards.push(function(player,list){
             "半龙女仆·洗衣龙女":["female","qun",3,["莽撞"],["des:生存能力：C，攻击强度：D，辅助能力：D，杂耍能力：D"]],
             "界华法琳":["female","shu",3,["血浆","回收","急救"],["des:生存能力：B，攻击强度：B，辅助能力：S，杂耍能力：B"]],
             "黍":["female","shen",4,["盈仓","长青","天时","枯荣"],["des:生存能力：A+，攻击强度：B，辅助能力：S，杂耍能力：A+"]],
-            "秽土斑":["male","wei",10,["秽土之躯","木界降临","轮回转生"],["des:生存能力：S+，攻击强度：D，辅助能力：D，杂耍能力：D"]],
+            "秽土斑":["male","wei",10,["秽土之躯","木界降临","轮回转生"],["des:生存能力：S+，攻击强度：D，辅助能力：D，杂耍能力：D-"]],
             "界宇智波·斑":["male","wei",5,["查克拉","须佐能乎一阶段","须佐能乎二阶段","地爆天星","豪火灭却"],["forbidai","des:生存能力：A+，攻击强度：B+，辅助能力：C，杂耍能力：B+"]],
             "谋孙悟空":["male","qun",3,["谋七十二变","谋火眼金睛","谋筋斗云","谋如意金箍棒"],["des:生存能力：A，攻击强度：A+，辅助能力：A，杂耍能力：S"]],
             "影龙":["none","shen",1,["影龙"],["forbidai","des:生存能力：D，攻击强度：B+，辅助能力：D，杂耍能力：B+"]],
@@ -10801,7 +11936,7 @@ lib.gl_custom.cards.push(function(player,list){
             "SP送葬人":["male","shu",4,["清算","圣约","神圣"],["des:生存能力：A，攻击强度：S+，辅助能力：C，杂耍能力：B"]],
             "cl_吕玲绮":["female","qun",3,["追魂","战意","鬼临"],["des:生存能力：A，攻击强度：S，辅助能力：A-，杂耍能力：A+"]],
             "cl_神吕布":["male","shen",10000,[],["forbidai","unseen"]],
-            "cl_关银屏":["female","shu",4,["青龙","虎啸"],["des:生存能力：B+，攻击强度：S，辅助能力：B+，杂耍能力：B+"]],
+            "cl_关银屏":["female","shu",4,["青龙","虎啸"],["des:生存能力：B-，攻击强度：S，辅助能力：B+，杂耍能力：B"]],
             "cl_关羽":["male","shu",3000,[],["forbidai","unseen"]],
             "捷克罗姆":["none","shen",4,["兆级电压","黑之英雄","交错闪电"],["des:生存能力：B+，攻击强度：A+，辅助能力：B，杂耍能力：A"]],
             "莱希拉姆":["none","shen",4,["涡轮火焰","白之英雄","交错火焰"],["des:生存能力：B+，攻击强度：A+，辅助能力：B，杂耍能力：A"]],
@@ -10811,10 +11946,10 @@ lib.gl_custom.cards.push(function(player,list){
             "杨戬":["male","shen",4,["天眼","哮天"],["des:生存能力：B+，攻击强度：C+，辅助能力：A+，杂耍能力：A"]],
             "灵吉菩萨":["male","shen","2/3",["渡化","定风","飞龙","佛力"],["des:生存能力：A+，攻击强度：A，辅助能力：S，杂耍能力：A+"]],
             "神龙右":["male","shen",6,["神祸源","魔铠","四兽","天罡"],["des:生存能力：S，攻击强度：B+，辅助能力：S，杂耍能力：B"]],
-            "刺客首领":["male","jin",5,["恐惧之刃","暗影帷幕"],["des:生存能力：A-，攻击强度：B+，辅助能力：C-，杂耍能力：A-"]],
+            "刺客首领":["male","jin",5,["恐惧之刃","暗影帷幕"],["des:生存能力：A-，攻击强度：C+，辅助能力：C-，杂耍能力：A-"]],
             "SP姆西斯哈":["female","shen","3/4",["角状时空侵蚀/宇宙排异系统","高维链接投影","无上之廷达罗斯之上主","狂猎切割/坐标追踪","终末螺旋"],["des:生存能力：A，攻击强度：S，辅助能力：C，杂耍能力：A+"]],
             "SP姆西斯哈1":["female","shen","3/4",["角状时空侵蚀/宇宙排异系统","高维链接投影","无上之廷达罗斯之上主","狂猎切割/坐标追踪","终末螺旋"],["des:生存能力：A，攻击强度：S，辅助能力：C，杂耍能力：A+","unseen"]],
-            "SP神荀彧":["male","shen",4,["呼吸","必胜"],["des:生存能力：B，攻击强度：C，辅助能力：C，杂耍能力：D"]],
+            "SP神荀彧":["male","shen",4,["呼吸","必胜"],["des:生存能力：B，攻击强度：B，辅助能力：B+，杂耍能力：B"]],
             "特莉波卡":["female","shen","3/4",["死神狩猎","无尽之债","死神契约","夜之主"],["des:生存能力：B+，攻击强度：A，辅助能力：B，杂耍能力：B+"]],
             "雷吉奇卡斯":["none","shen",6,["慢启动","柱神","捏碎"],["des:生存能力：A+，攻击强度：A，辅助能力：C+，杂耍能力：C"]],
             "阿米娅":["female","qun",3,["明日之星","情绪吸收","精神爆发","奇美拉"],["zhu","des:生存能力：C+，攻击强度：A，辅助能力：B，杂耍能力：B+"]],
@@ -10822,7 +11957,7 @@ lib.gl_custom.cards.push(function(player,list){
             "阿米娅2":["female","qun",3,["明日之星","情绪吸收","精神爆发","奇美拉"],["des:生存能力：C+，攻击强度：A，辅助能力：B，杂耍能力：B+","unseen"]],
             "阿米娅3":["female","qun",3,["明日之星","情绪吸收","精神爆发","奇美拉"],["des:生存能力：C+，攻击强度：A，辅助能力：B，杂耍能力：B+","unseen"]],
             "阿米娅4":["female","qun",3,["明日之星","情绪吸收","精神爆发","奇美拉"],["des:生存能力：C+，攻击强度：A，辅助能力：B，杂耍能力：B+","unseen"]],
-            "天命人":["male","qun",4,["天命"],["zhu","des:生存能力：?，攻击强度：？，辅助能力：？，杂耍能力：？"]],
+            "天命人":["male","qun",4,["天命"],["zhu","des:生存能力：?，攻击强度：？，辅助能力：？，杂耍能力：S+"]],
             "SP阿尔宙斯":["none","shen",4,["神话辉光","究极神力","sp制裁光砾"],["zhu","des:生存能力：A-，攻击强度：A+，辅助能力：B-，杂耍能力：A+"]],
             "乌尔比安":["male","wei",10,["无守","必须维系的界限","必须开辟的道路","血脉哺养"],["zhu","des:生存能力：A+，攻击强度：A+，辅助能力：C，杂耍能力：D+"]],
             "余":["male","shen",4,["闲云","做东","乾坤"],["des:生存能力：A，攻击强度：B，辅助能力：S，杂耍能力：B+"]],
@@ -10849,7 +11984,7 @@ lib.gl_custom.cards.push(function(player,list){
             "星宫六喰3":["female","qun",3,["宙震","封解","六番","星宫"],["des:生存能力：B+，攻击强度：C+，辅助能力：A，杂耍能力：A+","unseen"]],
             //"L":["male","qun",4,["思索"],["des:生存能力：，攻击强度：，辅助能力：，杂耍能力："]],
             "反转·夜刀神十香":["female","shen",10,["暴虐","负王","终焉","十转"],["forbidai","des:生存能力：S+，攻击强度：S+，辅助能力：C，杂耍能力：C"]],
-            "七实·芒星之迹":["female","qun",4,["环星干涉","星冕武装"],["des:生存能力：B，攻击强度：C+，辅助能力：B+，杂耍能力：B"]],
+            "七实·芒星之迹":["female","qun",4,["环星干涉","星冕武装"],["des:生存能力：B，攻击强度：C+，辅助能力：C+，杂耍能力：B-"]],
             "七实·盾斧形态":["female","qun",4,["炽化分离","天宇贯星击","焚焰","乱流"],["forbidai","des:生存能力：A+，攻击强度：A+，辅助能力：B，杂耍能力：B+"]],
             "反转·氷芽川四糸乃":["female","shen",4,["永冻","暴徒","囚座","四转"],["forbidai","des:生存能力：S，攻击强度：A，辅助能力：B，杂耍能力：S"]],
             "本条二亚":["female","qun",3,["宙震","嗫告","二番","修女"],["des:生存能力：B，攻击强度：B，辅助能力：A+，杂耍能力：S"]],
@@ -10858,7 +11993,7 @@ lib.gl_custom.cards.push(function(player,list){
             "反转·本条二亚":["female","shen",2,["制页"],["forbidai","des:生存能力：A，攻击强度：A，辅助能力：S，杂耍能力：S"]],
             "魔科比":["male","devil",4,["牢大","自敌"],["des:生存能力：B，攻击强度：A，辅助能力：B+，杂耍能力：A<br>“将军，科比邀你到直升机上一叙，仪表未必为真，请务必保持螺旋桨转动。”"]],
             "慢直升机":["none","qun",5,["如日","不坠"],["des:生存能力：B，攻击强度：B+，辅助能力：B+，杂耍能力：B+"]],
-            "慢佐巴杨":["male","qun",4,["驭天","纵空"],["des:生存能力：B，攻击强度：B+，辅助能力：B+，杂耍能力：B+"]],
+            "慢佐巴杨":["male","qun",4,["驭天","纵空"],["des:生存能力：B，攻击强度：C+，辅助能力：B+，杂耍能力：B+"]],
             "慢莱特兄弟":["male","qun",3,["贼奸","罪极"],["des:生存能力：C+，攻击强度：A，辅助能力：B+，杂耍能力：B+"]],
             "cl_袁绍":["male","qun",4,["cl_luanji","cl_xueyi","全反"],["des:生存能力：B，攻击强度：A+，辅助能力：D-，杂耍能力：B"]],
             "cl_黄盖":["male","wu",4,["cl_kurou","甜肉"],["des:生存能力：C，攻击强度：B，辅助能力：D+，杂耍能力：A"]],
@@ -10916,7 +12051,7 @@ lib.gl_custom.cards.push(function(player,list){
             "SP史尔特尔":["female","shu",4,["沸腾","焚灭","复燃","SP黄昏"],["des:生存能力：A，攻击强度：B+，辅助能力：C，杂耍能力：C"]],
             "火巨人·莱万汀":["female","shen",4,["沸腾","焚灭","复燃","SP黄昏","SP诸神黄昏"],["des:生存能力：S，攻击强度：S，辅助能力：A，杂耍能力：A","unseen"]],
             "佩丽卡":["female","qun",3,["协议·雷击","协议·闪链","协议·7041k"],["des:生存能力：C+，攻击强度：B，辅助能力：B+，杂耍能力：B"]],
-            "庄方宜":["female","shu",4,["疾电法","惊霆诀","承天佑","万钧雷"],["des:生存能力：B+，攻击强度：A，辅助能力：B+，杂耍能力：A-。<br>该武将可提升命座。<br><li>一命效果：该武将解锁。<br><li>二命效果：技能【疾电法】效果提升。<br><li>三命效果：技能【惊霆诀】效果提升。<br><li>四命效果：技能【承天佑】效果提升。<br><li>五命效果：技能【承天佑】效果再次提升。<br><li>六命效果：技能【万钧雷】效果提升。<br><li>当前命座："+`${lib.config.clsk_jswj.庄方宜_mingzuo||0}`,"ext:错乱时空/庄方宜.jpg"]],
+            "庄方宜":["female","shu",4,["疾电法","惊霆诀","承天佑","万钧雷"],["des:生存能力：B，攻击强度：C，辅助能力：B+，杂耍能力：B-。<br>该武将可提升命座。<br><li>一命效果：该武将解锁。<br><li>二命效果：技能【疾电法】效果提升。<br><li>三命效果：技能【惊霆诀】效果提升。<br><li>四命效果：技能【承天佑】效果提升。<br><li>五命效果：技能【承天佑】效果再次提升。<br><li>六命效果：技能【万钧雷】效果提升。<br><li>当前命座："+`${lib.config.clsk_jswj.庄方宜_mingzuo||0}`,"ext:错乱时空/庄方宜.jpg"]],
             "天理合真·庄天师":["female","shen",4,["疾电法","惊霆诀","承天佑","万钧雷","一息万变"],["des:生存能力：A+，攻击强度：S，辅助能力：S，杂耍能力：S。<br>该武将可提升命座。<br><li>一命效果：该武将解锁。<br><li>二命效果：技能【疾电法】效果提升。<br><li>三命效果：技能【惊霆诀】效果提升。<br><li>四命效果：技能【承天佑】效果提升。<br><li>五命效果：技能【承天佑】效果再次提升。<br><li>六命效果：技能【万钧雷】效果提升。<br><li>当前命座："+`${lib.config.clsk_jswj.庄方宜_mingzuo||0}`,"ext:错乱时空/天理合真·庄天师.jpg","unseen"]],
             "超神圣龙":["none","shen",4,["天殇","星灭"],["des:生存能力：B，攻击强度：A+，辅助能力：S，杂耍能力：B+。<br>该武将可提升命座。<br><li>一命效果：该武将解锁。<br><li>二命效果：技能【天殇】效果提升。<br><li>三命效果：技能【天殇】效果再次提升。<br><li>四命效果：该武将初始体力+1。<br><li>五命效果：技能【星灭】效果再次提升。<br><li>六命效果：技能【星灭】效果再次提升。<br><li>当前命座："+`${lib.config.clsk_jswj.超神圣龙_mingzuo||0}`,"ext:错乱时空/超神圣龙.jpg"]],
             "超神浩劫·龙尊":["none","shen",15,["天陨","龙息"],["forbidai","des:此武将为BOSS武将，正常对局请勿选用。生存能力：S+，攻击强度：S+，辅助能力：S，杂耍能力：A+"]],       
@@ -10925,7 +12060,7 @@ lib.gl_custom.cards.push(function(player,list){
             "魔赵云":["male","devil",1,["死境","魔龙","大怒"],["des:生存能力：B，攻击强度：S，辅助能力：B+，杂耍能力：A"]],
             "嗔韩氏五虎":["male","wei",10,["掘坟","找死"],["des:生存能力：C+，攻击强度：A+，辅助能力：C，杂耍能力：D+"]],
             "嗔高览":["male","qun",10,["魔头","碎梦"],["des:生存能力：A，攻击强度：A，辅助能力：C，杂耍能力：C+"]],
-            "嗔八十三万":["male","wei",10,["孽畜","草芥"],["des:生存能力：B，攻击强度：B-，辅助能力：A，杂耍能力：C"]],
+            "嗔八十三万":["male","wei",10,["孽畜","草芥"],["des:生存能力：C+，攻击强度：C+，辅助能力：B+，杂耍能力：D"]],
             "骑拉帝纳-别种形态":["none","shen",5,["破空呐喊","遁入冥界","暗影潜袭","clsk_dualside1"],["des:生存能力：S，攻击强度：A，辅助能力：C-，杂耍能力：A","clsk_dualside:骑拉帝纳-起源形态"]],
             "骑拉帝纳-起源形态":["none","shen",3,["反转主宰","引力虹吸","暗影潜袭","clsk_dualside1"],["des:生存能力：S，攻击强度：A，辅助能力：C-，杂耍能力：A","unseen","clsk_dualside:骑拉帝纳-别种形态"]],
             "究":["male","shen",2,["源非我尽","转圣无量","御灵"],["des:生存能力：A，攻击强度：A+，辅助能力：A+，杂耍能力：S"]],
@@ -10944,16 +12079,27 @@ lib.gl_custom.cards.push(function(player,list){
             "碧琪":["female","qun",3,["预感","乐观","派对"],["des:生存能力：A-，攻击强度：C，辅助能力：C，杂耍能力：C"]],
             "柔柔":["female","qun",3,["安抚","善良","凝视"],["des:生存能力：C+，攻击强度：D-，辅助能力：B+，杂耍能力：C+"]],
             "云宝":["female","qun",4,["疾驰","忠诚","音爆"],["des:生存能力：B+，攻击强度：B+，辅助能力：C，杂耍能力：B"]],
-            "cl_神钟会":["male","shen",4,["降祸","凛界","立世"],["des:生存能力：B+，攻击强度：C+，辅助能力：B，杂耍能力：A-"]],
+            "cl_神钟会":["male","shen",4,["降祸","凛界","立世"],["des:生存能力：B+，攻击强度：C+，辅助能力：B+，杂耍能力：A-"]],
             "瘟神·钟会":["male","shen",4,["降祸","凛界","立世","执世"],["des:生存能力：A，攻击强度：A+，辅助能力：B，杂耍能力：A+","unseen"]],
             "卡拉":["female","qun",3,["激言","圣职","隐后","勒索","卡拉登场"],["des:生存能力：？，攻击强度：？，辅助能力：？，杂耍能力：S+"]],
-            "洛世琦":["female","qun",3,["月影鞭风","如梦如幻","凛月之光"],["des:生存能力：B+，攻击强度：B+，辅助能力：B+，杂耍能力：B+"]],
+            "洛世琦":["female","qun",3,["月影鞭风","如梦如幻","凛月之光"],["des:生存能力：B-，攻击强度：B+，辅助能力：B+，杂耍能力：B+"]],
             "SP提丰":["female","qun",3,["荒原追猎","风贯丛林","猎人的专注"],["des:生存能力：B+，攻击强度：S-，辅助能力：C，杂耍能力：B"]],
             "疾光玛恩纳":["male","shu",4,["即息","疾光"],["des:生存能力：C+，攻击强度：S，辅助能力：D+，杂耍能力：B"]],
             "提雷克":["male","devil",1,["窃魔","化魔","噬魔","吸魔"],["des:生存能力：C+，攻击强度：C，辅助能力：C，杂耍能力：S+"]],
             "小龙虾":["none","qun",1,["虾兵蟹将"],["des:生存能力：D-，攻击强度：D+，辅助能力：D-，杂耍能力：D-","unseen"]],
             "兰德斯":["male","shen",4,["怒涛狂噬","溺落低语","地球降临"],["des:生存能力：B，攻击强度：C+，辅助能力：C+，杂耍能力：B+"]],
             "吞天神·兰德斯":["male","shen",4,["怒涛狂噬","溺落低语","地球降临","尘世涤荡"],["des:生存能力：B+，攻击强度：S-，辅助能力：A，杂耍能力：A","unseen"]],
+            "莎布":["female","shen",4,["温润之雨","破梦之晓","森罗万象","月之透镜","力量解放"],["des:生存能力：S+，攻击强度：S+，辅助能力：S+，杂耍能力：S+"]],
+            "莎布·尼古拉斯":["female","shen",4,["温润之雨","破梦之晓","森罗万象","月之透镜","力量解放","母神压迫"],["des:生存能力：S+，攻击强度：S+，辅助能力：S+，杂耍能力：S+","unseen"]],
+            "被抹除者":["none","none",0,["因果切断"],["unseen"]],
+            "unknown":["none","none",0,[],["unseen"]],
+            "传承赵云":["male","shen",1,["新龙魂","新绝境","冲阵"],["des:生存能力：A，攻击强度：A+，辅助能力：A+，杂耍能力：S"]],
+            "觉醒骑士":["male","shu",4,["胜利之剑"],["des:生存能力：B，攻击强度：A，辅助能力：C，杂耍能力：B+"]],
+            "勿忘我":["female","qun",3000,[],["forbidai","unseen"]],
+            "J龙破坏之剑士":["male","qun",3000,[],["forbidai","unseen"]],
+            "罪鸽子":["female","devil",3,["抗性","阎魔"],["des:生存能力：C+，攻击强度：B+，辅助能力：D，杂耍能力：C+"]],
+            "休比":["female","qun",4,["来玩游戏吧","解析"],["des:生存能力：B-，攻击强度：C-，辅助能力：C+，杂耍能力：C+"]],
+            "全典开·休比":["female","qun",4,["来玩游戏吧","解析","战斗演算"],["des:生存能力：B-，攻击强度：C-，辅助能力：C+，杂耍能力：C+","unseen"]],
             //"图鉴注意事项":["none","none",0,[],["des:<font color=#f00>孩子们，注意了，在图鉴里使用切换皮肤后，游戏内武将的原皮会消失，需要在图鉴里切换会原皮才能复原，作者和豆包奋斗几个小时没能修好bug，已经认怂了，就这样吧。</font>","unseen","ext:错乱时空/源·天将士.jpg"]],
            //"测试":["none","qun",4,["seer_huaixin","seer_zhaohui"],["测试"]],
         },
@@ -11042,20 +12188,23 @@ lib.gl_custom.cards.push(function(player,list){
             "神圣灵谱尼":"<span class=\"bluetext glow-text\">世界之脉</span>",
             "神阿尔宙斯":"<span class=\"redtext aezs-text\">万物根源</span>",
             "洛世琦":"<span class=\"bluetext\" style=\"color:#0000CC\">“夜羽执事”</span>",
+            "莎布":"<span class=\"bluetext\" style=\"color:#00FF66\">大母神</span>",
+            "莎布·尼古拉斯":"<span class=\"bluetext\" style=\"color:#00FF66\">大母神</span>",
     },
     characterSort:{
 			"错乱时空":{
-				"biaofengwujiang":["推进之王","黑岩射手","闪灵","傀影","江户川柯南","艾雅法拉","红","宇智波·斑","W","华法琳","夜莺","德克萨斯","玫兰莎","初雪","桐谷和人","银灰","炎客","旗木卡卡西","帕路奇犽","绿巨人","帝牙卢卡","大筒木辉夜","钢铁侠","金刚狼","熊大熊二","团子","美国队长","蜘蛛侠","喜羊羊","王·布莱克","死亡主宰","白起","界天宝","圣王帝释天","艾瑞珂","塔娜","胡地","王·盖亚","杜小龙","半龙女仆·洗衣龙女","刺客首领","幽灵鲨"],
+				"biaofengwujiang":["推进之王","黑岩射手","闪灵","傀影","江户川柯南","艾雅法拉","红","宇智波·斑","W","华法琳","夜莺","德克萨斯","玫兰莎","初雪","桐谷和人","银灰","炎客","旗木卡卡西","帕路奇犽","绿巨人","帝牙卢卡","大筒木辉夜","钢铁侠","金刚狼","熊大熊二","团子","美国队长","蜘蛛侠","喜羊羊","王·布莱克","死亡主宰","白起","界天宝","圣王帝释天","艾瑞珂","塔娜","胡地","王·盖亚","杜小龙","半龙女仆·洗衣龙女","刺客首领","幽灵鲨","休比"],
 				"guangzhijuren":["迪迦奥特曼","迪迦奥特曼强力形态","迪迦奥特曼空中形态","奥特曼","赛文奥特曼"],
 				"baizhanbaisheng":["赫拉格","黑","能天使","星熊","斯卡蒂","百慕拉","蓝染惣右介","怪盗基德","神张角","格拉尼","王·雷伊","史尔特尔","阿尔宙斯","陈","琦玉","柒","王·卡修斯","小智","界喜羊羊","龙右","幸福蛋","米龙","李狗蛋","冰伊布","阿勃梭鲁","星尘龙","狙射树枭","机械热核龙","桑杰","魔神修尔","龙炎","阿瑞斯","谜拟Q","薇薇安娜","秽土斑","SP送葬人","神马超","孙胜男"],
 				"bosszhan":["毁灭姿态","爱国者-行军姿态","暗影大帝","雷霆圣堂","煌炎之剑","无序","帝国星人","皇帝的利刃","圣主","索托斯","大鱼人","塔维尔","亚弗戈蒙","御龙魔猿","塔露拉","不死的黑蛇","加坦杰厄","佐加","血舌","神之血","夜魔","尤贝尔","尤贝尔-被憎恶的骑士","尤贝尔-极度悲伤的魔龙","璀璨圣剑·龙尊","圣光飞龙","龙尊护卫","盘古","蒸汽骑士","无垠回荡克雷松","邪祟影","影龙","炎火兽","宝箱怪","反伤宝箱怪","守望之龙","影骨术士","克苏鲁教徒","死亡之翼","冰影恶魔","虚幻机甲","游击队传令兵","死亡战龙","深寒冰魔","邪灵守卫","烈血幕府将军","狼啸战士","血引源","魔化骑士","魔化至高骑士","奎隆一","盛怒","妒","魂灵圣杯","尼卢火","托生莲座","黄金圣盾·龙尊"],
 				"bushengchuansuo":["沙奈朵","光头强","霸王项羽","天宝","黑虎阿福","库库鲁","圣灵谱尼","拓拉","奈克洛兹玛","山中队员"],
-				"banweimaifang":["界史尔特尔","界蓝染惣右介","界夜莺","凯尔希","界琦玉","夕","界怪盗基德","SP临光","界孙悟空","界柒","霜星","界陈","界闪灵","界傀影","班基拉斯","龙破坏之剑士","界龙破坏之剑士","重岳","吉普莉尔","成龙","界帝牙卢卡","界阿尔宙斯","SP金古桥","谋孙悟空","令","达克莱伊","kuailong","溺尸","迷迭香","尼克","死神棺","曼达拉","白岩射手","坚盾剑怪刀剑","界帕路奇犽","浊心斯卡蒂","小泉红子","神张飞","神龙右","露西亚·深红囚影","灵吉菩萨","泥岩","天命人","老爹","SP艾雷王","SP阿尔宙斯"],
+				"banweimaifang":["界史尔特尔","界蓝染惣右介","界夜莺","凯尔希","界琦玉","夕","界怪盗基德","SP临光","界孙悟空","界柒","霜星","界陈","界闪灵","界傀影","班基拉斯","龙破坏之剑士","界龙破坏之剑士","重岳","吉普莉尔","成龙","界帝牙卢卡","界阿尔宙斯","SP金古桥","谋孙悟空","令","达克莱伊","kuailong","溺尸","迷迭香","尼克","死神棺","曼达拉","白岩射手","坚盾剑怪刀剑","界帕路奇犽","浊心斯卡蒂","小泉红子","神张飞","神龙右","露西亚·深红囚影","灵吉菩萨","泥岩","天命人","老爹","SP艾雷王","SP阿尔宙斯","莎布"],
 		        "wanwuguiyizhe":["SP索托斯","SP亚弗戈蒙"],
 		        "dianfengduijue":["神圣灵谱尼","神阿尔宙斯"],
-				"qiangliwujiang":["SP德克萨斯","界龙右","SP哥莫拉","年","苍响-百战勇者","龙骑士黑魔术少女","界江户川柯南","界黑岩射手","拉弥亚","21号·XXI","巴图","SP尼克","传承艾瑞珂","传承塔娜","提丰","界华法琳","黍","左乐","玛恩纳","瑕光","仙人·漩涡鸣人","霞露零","SP圣灵谱尼","月亮伊布","捷克罗姆","莱希拉姆","火神蛾","杨戬","Herobrine","破坏龙-甘多拉","SP姆西斯哈","特莉波卡","雷吉奇卡斯","阿米娅","乌尔比安","余","源·天将士","蕾缪安","SP惊蛰","SP星熊","雷鸣","七实·芒星之迹","无敌","伏妖","法纳斯","女帝","昆仑","无限未来","诺雅","望","对神兵器·肯扎特","新SP陈","耶芙娜","SP傀影","刻俄柏","SP推进之王","界米龙","凋灵","塑心","潘多拉","SP史尔特尔","佩丽卡","庄方宜","雷德","骑拉帝纳-别种形态","究","小叶子","卡拉","洛世琦","SP提丰","疾光玛恩纳","兰德斯"],
+				"qiangliwujiang":["SP德克萨斯","界龙右","SP哥莫拉","年","苍响-百战勇者","龙骑士黑魔术少女","界江户川柯南","界黑岩射手","拉弥亚","21号·XXI","巴图","SP尼克","传承艾瑞珂","传承塔娜","提丰","界华法琳","黍","左乐","玛恩纳","瑕光","仙人·漩涡鸣人","霞露零","SP圣灵谱尼","月亮伊布","捷克罗姆","莱希拉姆","火神蛾","杨戬","Herobrine","破坏龙-甘多拉","SP姆西斯哈","特莉波卡","雷吉奇卡斯","阿米娅","乌尔比安","余","源·天将士","蕾缪安","SP惊蛰","SP星熊","雷鸣","七实·芒星之迹","无敌","伏妖","法纳斯","女帝","昆仑","无限未来","诺雅","望","对神兵器·肯扎特","新SP陈","耶芙娜","SP傀影","刻俄柏","SP推进之王","界米龙","凋灵","塑心","潘多拉","SP史尔特尔","佩丽卡","庄方宜","雷德","骑拉帝纳-别种形态","究","小叶子","卡拉","洛世琦","SP提丰","疾光玛恩纳","兰德斯","传承赵云","觉醒骑士"],
 				"shoushayigou":["cl_神钟会","cl_关银屏","cl_吕玲绮","SP神荀彧","cl_神赵云","cl_袁绍","cl_黄盖","cl_孙策"],
 				"longzunxilie":["璀璨圣龙","黄金圣龙","超神圣龙"],
+				"qizongzui":["罪鸽子"],
 				"moxingsishuai":["界龙斯","龙斯","吉里","菲尔","萨米"],
 				"yuezhanxilie":["夜刀神十香","氷芽川四糸乃","时崎狂三","五河琴里","夕弦&耶俱矢","诱宵美九","镜野七罪","鸢一折纸","反转·鸢一折纸","星宫六喰","反转·夜刀神十香","反转·氷芽川四糸乃","本条二亚","崇宫澪","反转·本条二亚","SP崇宫澪"],
 				"小马宝莉":["紫悦","珍奇","苹果嘉儿","碧琪","柔柔","云宝","提雷克"],
@@ -42128,7 +43277,7 @@ return event.player.countCards('h')>=4||event.player.hp>=4;
                 content:function(){
                     'step 0'
                     event.info=get.info(event.cards[0]);
-                    player.choosePlayerCard(player,'请选择一张如意金箍棒',true,'e',{name:'如意金箍棒'});
+                    player.choosePlayerCard(player,'请选择一张如意金箍棒',true,'e').set('filterButton', function(button){ return button.link.name=='如意金箍棒'; }).set('ai', function(button){ return button.link.name=='如意金箍棒' ? -1 : 0; }).forResult();
                     'step 1'
                     if(event.info.skills){
                         var list = game.filterPlayer();
@@ -43396,7 +44545,7 @@ return event.player.countCards('h')>=4||event.player.hp>=4;
                        return player.name=="谋索托斯"     
                         },
                         content:function(){
-                           if(!(trigger.player==player||trigger.event.triggername=='gameDrawAfter'))trigger.cancel();
+                           if(!(trigger.player==player||event.triggername=='gameDrawAfter'))trigger.cancel();
                            player.skills=lib.character["谋索托斯"][3];
                            for(var j in game.players){
                var bmd=[];//白名单
@@ -44606,7 +45755,7 @@ return event.player.countCards('h')>=4||event.player.hp>=4;
                    'step 2'
                    event.sk=[];
                    event.sk.push(result.control);
-                    player.choosePlayerCard(player,'请选择一张斩灵唐刀',true,'e',{name:'斩灵唐刀'});
+                    player.choosePlayerCard(player,'请选择一张斩灵唐刀',true,'e').set('filterButton', function(button){ return button.link.name=='斩灵唐刀'; }).set('ai', function(button){ return button.link.name=='斩灵唐刀' ? -1 : 0; }).forResult();
                     'step 3'
                     if(event.sk.length){
                         var list = game.filterPlayer();
@@ -44698,7 +45847,7 @@ return event.player.countCards('h')>=4||event.player.hp>=4;
                     'step 2'
                    event.sk=[];
                    event.sk.push(result.control);
-                    event.tr.choosePlayerCard(event.tr,'请选择一张斩灵唐刀',true,'e',{name:'斩灵唐刀'});
+                    event.tr.choosePlayerCard(event.tr,'请选择一张斩灵唐刀',true,'e').set('filterButton', function(button){ return button.link.name=='斩灵唐刀'; }).set('ai', function(button){ return button.link.name=='斩灵唐刀' ? -1 : 0; }).forResult();
                     'step 3'
                     if(event.sk.length){
                         var list = game.filterPlayer();
@@ -47553,6 +48702,38 @@ else if (type == 'equip') {
                      trigger.num*=2;
                  },
                 },
+                "_绝毁全局":{
+                  trigger:{
+                     global:["damageBegin1","damageBegin2","damageBegin3","damageBegin4"],
+                  },
+                  forced:true,
+                  direct:true,
+                  superCharlotte:true,
+                  filter:function(event,player){
+                    return event.cl_juehui_damage;
+                },
+                async content(event,trigger,player){
+        trigger.cancel = () => { };
+        trigger.filterStop = () => false;
+        if (event.triggername == 'damageBegin1') {
+            if (typeof trigger.num == "number" && (typeof trigger.cl_juehui_damage != "number" || trigger.num > trigger.cl_juehui_damage)) {
+                trigger.cl_juehui_damage = trigger.num;
+            }
+            if(trigger.ta&&trigger.player!=trigger.ta)trigger.player=trigger.ta;
+        } else {
+        if(trigger.ta&&trigger.player!=trigger.ta)trigger.player=trigger.ta;
+            if (typeof trigger.num != "number") return;
+            let peak = typeof trigger.cl_juehui_damage == "number" ? trigger.cl_juehui_damage : trigger.num;
+            if (trigger.num > peak) {
+                peak = trigger.num;
+                trigger.cl_juehui_damage = peak;
+            }
+            if (trigger.num < peak) {
+                trigger.num = peak;
+            }
+        }
+                },
+                },
             "_灵魂游戏":{
                 trigger:{global:['enterGame','gameDrawAfter'],},
                 forced:true,
@@ -47618,6 +48799,21 @@ else if (type == 'equip') {
                     game.broadcastAll(function (player) {
                     game.playAudio('..', 'extension', '错乱时空', '音频','无敌登场.mp3')
                     player.say("孽障累累苦痛无间，羁灵束恶报偿罪业，六道之地狱道——无敌，在此宣判！");
+            }, player);
+                 }
+                 if(player.name=="罪鸽子"){
+                    player.clbrSetBar("hp", "当前罪孽值：", player.hp, player.maxHp,"#ff3333","<span class='blood_pulse_flow'>七宗罪鸽子精●傲慢</span>");
+                    game.broadcastAll(function (player) {
+            ui.backgroundMusic.src = lib.assetURL + 'extension/错乱时空/音频/仪礼.mp3';
+            ui.backgroundMusic.loop = true;
+            ui.backgroundMusic.play().catch(() => {});
+            }, player);
+                    player.playEffectCL(lib.skill.抗性.Effect);
+                 }
+                 if(player.name=="法纳斯"){
+                    game.broadcastAll(function (player) {
+                    game.playAudio('..', 'extension', '错乱时空', '音频','法纳斯登场.mp3')
+                    player.say("当毁灭与新生开始接轨，生与死的鸿沟便不复存在，六道之修罗道——法纳斯，恭送诸位往生极乐。");
             }, player);
                  }
              },
@@ -48123,6 +49319,85 @@ shuffledCards.forEach(cardData => {
 }
              },
             },
+            "_多属性检测":{
+    trigger:{global:['gameStart']},
+    forced:true,
+    direct:true,
+    priority:-1,
+    content:function(){
+        (function () {
+            if (game.cl_dualNature_patched) return;
+
+            game.clHasNature = function (evt, nat) {
+                if (!evt || !evt.nature) return false;
+                if (evt.nature === nat) return true;
+                if (typeof evt.nature !== "string") return false;
+                if (evt.nature.indexOf(lib.natureSeparator) < 0) return false;
+                return evt.nature.split(lib.natureSeparator).remove("stab").indexOf(nat) >= 0;
+            };
+
+            function patchFunction(fn) {
+    if (typeof fn !== "function" || fn.__clNaturePatched) return fn;
+    var fnStr = fn.toString();
+
+    var patched = fnStr
+        .replace(/(\w+)\.nature\s*===?\s*["']([a-zA-Z0-9_]+?)["']/g, 'game.clHasNature($1,"$2")')
+        .replace(/(\w+)\.nature\s*!==?\s*["']([a-zA-Z0-9_]+?)["']/g, '!game.clHasNature($1,"$2")');
+
+    if (patched === fnStr) return fn;
+    try {
+
+        var newFn = new Function("return (" + patched + ")")();
+
+        newFn.__clNaturePatched = true;
+        return newFn;
+    } catch (e) {
+
+        console.warn("[cl] 函数补丁失败:", e);
+        return fn;
+    }
+}
+
+
+
+            function patchObject(obj, visited) {
+                if (!obj || typeof obj !== "object") return;
+                visited = visited || new Set();
+                if (visited.has(obj)) return;
+                visited.add(obj);
+                for (var key in obj) {
+                    if (!Object.prototype.hasOwnProperty.call(obj, key)) continue;
+                    if (key === "__clNaturePatched") continue;
+                    var val = obj[key];
+                    if (typeof val === "function") {
+                        obj[key] = patchFunction(val);
+                    } else if (typeof val === "object" && val !== null) {
+                        patchObject(val, visited);
+                    }
+                }
+            }
+
+            function patchSkill(skillName) {
+                var skill = lib.skill[skillName];
+                if (!skill || skill.__clNaturePatched) return;
+                patchObject(skill);
+                skill.__clNaturePatched = true;
+            }
+
+            function patchAllSkills() {
+                for (var name in lib.skill) {
+                    if (!Object.prototype.hasOwnProperty.call(lib.skill, name)) continue;
+                    patchSkill(name);
+                }
+            }
+
+            patchAllSkills();
+            game.cl_repatchSkills = patchAllSkills;
+            game.cl_dualNature_patched = true;
+        })();
+    },
+},
+
             "_武将装备":{
                 trigger:{global:['gameDrawAfter'],player:['enterGame','showCharacterAfter']},
                 forced:true,
@@ -50973,7 +52248,7 @@ shuffledCards.forEach(cardData => {
                     },
                     recover:{
                         trigger:{
-                            player:["recoverBegin"],
+                            player:["recoverBegin","loseMaxHpAfter"],
                         },
                         filter:function(event,player){
                             return player.storage.业火&&event.parent.name!='业火_damage';
@@ -54827,8 +56102,11 @@ shuffledCards.forEach(cardData => {
                     return !player.hujia>0;
               },
               content:function(){
-                   game.broadcastAll(function (player) {
-                   player.changeHujia();
+              "step 0"
+              player.changeHujia();
+              
+              "step 1"
+                   game.broadcastAll(function (player) {                  
                     var skinpath = game.clsk_getPlayerSkinPath(player);
                     if(skinpath.includes("无上神·无敌1.jpg")){
                     game.playAudio('..', 'extension', '错乱时空', '音频','无上神威语音2.mp3');
@@ -54910,7 +56188,6 @@ shuffledCards.forEach(cardData => {
                       player.gainMaxHp();
                     }
                     game.broadcastAll(function (player) {
-                   player.changeHujia();
                    var skinpath = game.clsk_getPlayerSkinPath(player);
                     if(skinpath.includes("无上神·无敌1.jpg")){
                     game.playAudio('..', 'extension', '错乱时空', '音频','战神破魂斩语音2.mp3');
@@ -55103,7 +56380,7 @@ shuffledCards.forEach(cardData => {
                 direct:true,
                 silent: true,
                 filter:function(event,player){
-                    return player.countCards('j','lebu')<1;
+                    return player.countCards('j','lebu')<1||!game.hasPlayer(current=>current.hasSkill("虚无吞噬"));
                 },
                 content:function(){
                    player.removeSkill('虚无吞噬_undist');
@@ -55290,6 +56567,7 @@ shuffledCards.forEach(cardData => {
                 }
             },
             "寂灭粉碎":{
+               audio:"ext:错乱时空/音频:1",
                trigger:{
                     source:"damageEnd",
                 },
@@ -55326,6 +56604,7 @@ shuffledCards.forEach(cardData => {
                 }
             },
             "湮灭双影":{
+               audio:"ext:错乱时空/音频:2",
                init:function(player){
                  player.storage.湮灭双影=true;
                },
@@ -55469,7 +56748,8 @@ shuffledCards.forEach(cardData => {
                group:["生灭轮回_sha"],
                subSkill:{
                   sha:{
-                        enable:["chooseToUse","chooseToRespond"],
+                         audio:"ext:错乱时空/音频:3",
+                       enable:["chooseToUse","chooseToRespond"],
                         filterCard:{
                             name:"shan",
                         },
@@ -56525,7 +57805,7 @@ shuffledCards.forEach(cardData => {
          'step 2'  
          var name=player.name;
                var skill=lib.character[name][3]; 
-               var bmd=['已通灵','tongling无限_qianghua','通灵无限'];
+               var bmd=['已通灵','tongling无限_qianghua','通灵无限','真已通灵'];
                for(var i in player.storage){
               if(!skill.includes(lib.skill[i])&&!bmd.includes(i))player.removeMark(i,player.countMark(i));    
        }
@@ -58097,6 +59377,7 @@ shuffledCards.forEach(cardData => {
                         return event.player.storage.呼吸法 == true;
                     },
                     content: function() {
+                        trigger.noDieAfter = true;
                         trigger.player.delete();
                         trigger.player.remove();
                         game.players.remove(trigger.player);
@@ -59195,7 +60476,7 @@ shuffledCards.forEach(cardData => {
                          
                          "step 1"
                          game.broadcastAll(function (player) {
-                         ui.land.destroy();
+                         if(ui.land)ui.land.destroy();
                          ui.background.setBackgroundImage('image/background/' + lib.config.image_background + '.jpg');
                    }, player);
                       },
@@ -62208,7 +63489,7 @@ else if (type == 'equip') {
                         var {result:{control}}=await player
             .chooseControl(choices)
             .set("choiceList", choiceList)
-            .set("prompt", get.prompt("幻蝶花影"))
+            .set("prompt", get.prompt("机械分解"))
             .set('ai',function(event,player,card){
              var player=_status.event.player;
              if(get.attitude(player,trigger.player)>0)return "选项一";
@@ -64944,7 +66225,7 @@ else if (type == 'equip') {
                 },
                 content:function(){
                    "step 0"
-                  player.chooseToDiscard('毒喙：弃置一张黑色牌给'+get.translation(trigger.player)+'添加两层流血','hes').set('ai',function(card){         
+                  player.chooseToDiscard('毒喙：弃置一张黑色牌给'+get.translation(trigger.player)+'添加两层流血','hes',{color:"black"}).set('ai',function(card){         
                 return 14-get.value(card);            
         });
         "step 1"
@@ -65032,6 +66313,7 @@ else if (type == 'equip') {
             },
             "兔械":{
                 init:function(player){
+                    player.cl_initShunfa("兔械");
                     player.storage.兔械=0;
                     player.syncStorage("兔械");
                 },
@@ -65076,6 +66358,12 @@ else if (type == 'equip') {
                     },
                 },
                 doDrawCard(player) {
+                    if(!player || !player.isAlive()) return;
+                    player.storage.兔械--;
+                    player.syncStorage("兔械");
+                    player.draw();
+                },
+                async doAction(player){
                     if(!player || !player.isAlive()) return;
                     player.storage.兔械--;
                     player.syncStorage("兔械");
@@ -66149,7 +67437,7 @@ player.removeSkill('葱游兵技能一');
                     var choiceList = ["交给"+get.translation(player)+"你区域内所有的黑色牌并令其获得1通灵点","你获得与手牌中黑色牌数量等量层凋亡损伤，若你已经处于凋亡爆发状态，则受到一点伤害且使凋亡爆发等级+1"];
                     game.delay(0.3);
                     target.showCards(target.getCards('h'),'降祸');
-                    if(player.storage.立世){
+                    if(player.storage.tongling立世){
                        var a=target.getCards("h",{color:"black"});
                        var b=a.length;
                        if(a.length>0){
@@ -66237,7 +67525,7 @@ player.removeSkill('葱游兵技能一');
                     var choiceList = ["交给"+get.translation(player)+"你区域内所有的黑色牌并令其获得1通灵点","你获得与手牌中黑色牌数量等量层凋亡损伤，若你已经处于凋亡爆发状态，则受到一点伤害且使凋亡爆发等级+1"];
                     game.delay(0.3);
                     target.showCards(target.getCards('h'),'降祸');
-                    if(player.storage.立世){
+                    if(player.storage.tongling立世){
                        var a=target.getCards("h",{color:"black"});
                        var b=a.length;
                        if(a.length>0){
@@ -66367,7 +67655,7 @@ player.removeSkill('葱游兵技能一');
                           source:"damageBegin",
                       },
                       filter:function(event,player){
-                        return player.storage.立世&&event.player.hasSkill("凋亡爆发")&&event.player.storage.凋亡爆发时间>0;
+                        return player.storage.tongling立世&&event.player.hasSkill("凋亡爆发")&&event.player.storage.凋亡爆发时间>0;
                       },
                       forced:true,
                       direct:true,
@@ -66405,6 +67693,8 @@ player.removeSkill('葱游兵技能一');
                   },*/
                   cardEnabled: function(card, player) {
 				     if(player.hasSkill("执世")) return true;
+				     var history=player.getHistory('useCard').concat(player.getHistory('respond'));
+            if(history.length>=player.hp) return false;
 					},
 					cardSavable: function(card, player) {
 						if(player.hasSkill("执世")) return true;
@@ -66499,11 +67789,11 @@ player.removeSkill('葱游兵技能一');
                     source:"damageBegin1",
                 },
                 filter:function(event,player){
-                    return player.storage.强化魔法>0;
+                    return player.storage.强化魔法buff>0;
                 },
                 forced:true,
                 content:function(){
-                   trigger.num+=player.storage.强化魔法;
+                   trigger.num+=player.storage.强化魔法buff;
                 },
             },
             "_神圣治疗法阵buff":{
@@ -66623,21 +67913,20 @@ player.removeSkill('葱游兵技能一');
         },
         forced:true,
         charlotte:true,
-        async cost(event, trigger, player) {
-            event.result = await player
-                .chooseTarget(get.prompt2(event.skill), lib.filter.notMe)
+        async content(event, trigger, player) {
+            const {result:{targets}} = await player
+                .chooseTarget("选择一名角色，令其成为"+get.translation(event.card)+"的使用者",lib.filter.notMe)
                 .set("ai", target => {
                     const player = get.player();
                     const trigger = get.event().getTrigger();
                     return get.effect(target, trigger.card, player, player) < get.effect(target, trigger.card, target, player)
-                })
-                .forResult();
-        },
-        async content(event, trigger, player) {
-            const target = event.targets[0];
-            player.logSkill(event.name, target);
+                });
+            if(targets?.length){
+              const target = targets[0];
+            player.logSkill("声波操纵术", target);
             trigger.player = target;
             game.log(target, "成为了", trigger.card, "的使用者");
+            }
             player.removeSkill("声波操纵术buff");
         },
     },
@@ -67219,6 +68508,7 @@ player.removeSkill('葱游兵技能一');
                 filter:function(event,player){
                    if(player.storage.窃魔)return false;
                    if(!event.source)return false;
+                   if(event.source==player)return false;
                    var list=[];
             var skills=event.source.getSkills(true,false);
         for(var i=0;i<skills.length;i++){
@@ -67298,7 +68588,7 @@ player.removeSkill('葱游兵技能一');
         }
         if(list.length<1)return false;  
               const evt = event.getl(event.player);
-                     return event.player.countCards('h')<=0&&event.player!=player&&player.inRange(event.player)&&(player.countCards('he')+player.hp)>=event.player.hp&&evt && evt.player === event.player && evt.hs && evt.hs.length > 0;
+                     return event.player.isAlive()&&event.player.countCards('h')<=0&&event.player!=player&&player.inRange(event.player)&&(player.countCards('he')+player.hp)>=event.player.hp;
                },
                check:function (event,player){
                        return get.attitude(player,event.player)<=0;
@@ -67307,7 +68597,7 @@ player.removeSkill('葱游兵技能一');
                    var num=trigger.player.hp;
                    const { bool: bool1, cards: cards2 } = await player.chooseToDiscard(get.prompt(event.skill), [1, num], "he", "allowChooseAll").set("prompt2", "弃置任意张牌").set("ai", (card) => {
           return 15 - get.value(card);
-      }).set("chooseonly", true).forResult();
+      }).forResult();
          if(bool1&&cards2.length){
              num-=cards2.length;
          }
@@ -67558,7 +68848,7 @@ player.removeSkill('葱游兵技能一');
                      content:function(){
                       var effect2 = function(player){
                      if(!player.storage.tongling地球降临)player.storage.tongling地球降临=1;
-                    else player.storage.立世++;
+                    else player.storage.tongling地球降临++;
                     game.removeGlobalSkill('tongling地球降临_card');
                     game.addGlobalSkill("tongling地球降临_card");
                     player.addSkill("天罡");
@@ -67606,10 +68896,13 @@ player.removeSkill('葱游兵技能一');
                     if(p==player)continue;
                     var list=[];
             var skills=p.getSkills(true,false);
-          if(skills.length>0){
-            var {result:{control}} = await player.chooseControl(skills)
+            for(var i=0;i<skills.length;i++){
+            if(skills[i]!="虾兵蟹将")list.push(skills[i]);
+        }
+          if(list.length>0){
+            var {result:{control}} = await player.chooseControl(list)
             .set('prompt','请选择要夺取的技能')
-            .set('ai',function(){return skills.randomGet()});
+            .set('ai',function(){return list.randomGet()});
           }
           if(control){
              p.removeSkill(control);
@@ -67624,6 +68917,1749 @@ player.removeSkill('葱游兵技能一');
                       player.storage.地球=[[],[]];
                  }
                 }
+            },
+            "神圣祝福":{
+                mod:{
+                globalFrom:function (from,to,distance){
+            if(from.storage.神圣祝福>0&&from.storage.温润之雨target)return distance-from.storage.神圣祝福;
+        },
+             globalTo:function (from,to,distance){
+            if(to.storage.神圣祝福>0&&to.storage.温润之雨target)return distance+to.storage.神圣祝福;
+        },
+        maxHandcard:function (player,num){
+            if(player.storage.神圣祝福>0&&player.storage.温润之雨target)return num+player.storage.神圣祝福;
+        },
+                },
+                init:function (player){
+        player.markSkill('神圣祝福');
+        player.syncStorage('神圣祝福');
+    },
+    onremove:function(player) {
+        if(player.storage.神圣祝福)player.maxHp-=player.storage.神圣祝福;
+        player.update();
+        delete player.storage.神圣祝福;
+    },
+                mark:true,
+                marktext:"神",
+                nobracket:true,
+                intro:{
+                    content:"当前有#层神圣祝福",
+                },
+                trigger:{
+                    player:"drawBegin",
+                    source:["recoverBegin,damageBegin"],
+                },
+                filter:function(event,player){
+                    return player.storage.神圣祝福>0&&player.storage.温润之雨target==true;
+                },
+                charlotte:true,
+                forced:true,
+                fixed:true,
+                direct:true,
+                priority:100,
+                content:function(){
+                   if(player.storage.温润之雨target&&player.storage.神圣祝福>0)trigger.num+=player.storage.神圣祝福;
+                }
+            },
+            "无源恩赐":{
+                init:function (player){
+        player.markSkill('无源恩赐');
+        player.syncStorage('无源恩赐');
+    },
+    onremove:function(player) {
+        delete player.storage.无源恩赐;
+    },
+                mark:true,
+                marktext:"恩",
+                nobracket:true,
+                intro:{
+                    content:"当前有#层无源恩赐",
+                },
+                trigger:{
+                    player:["damageBegin"],
+                    global:"phaseBefore",
+                },
+                filter:function(event,player){
+                    return player.storage.无源恩赐>0&&player.storage.温润之雨target==true;
+                },
+                charlotte:true,
+                forced:true,
+                fixed:true,
+                direct:true,
+                priority:100,
+                content:function(){
+                   if(player.storage.温润之雨target&&player.storage.无源恩赐>0){
+                   if(trigger.name=="phase")player.recover(3)._triggered={};
+                   if(trigger.name=="damage")trigger.num=Math.floor(trigger.num-(0.1*trigger.num*player.storage.无源恩赐));
+                   }
+                }
+            },
+            "永恒之母与我同在":{
+                init:function (player){
+        player.markSkill('永恒之母与我同在');
+        player.syncStorage('永恒之母与我同在');
+        if(player.storage.温润之雨target)player.goMad=function(all){};
+        if(player.storage.温润之雨target)player.removeSkill("mad");
+    },
+    onremove:function(player) {
+        delete player.storage.永恒之母与我同在;
+        player.goMad=function(end) {
+    if (end) {
+      this.addTempSkill("mad", end);
+    } else {
+      this.addSkill("mad");
+    }
+    game.log(this, "进入混乱状态");
+  };
+    },
+                mark:true,
+                marktext:"永",
+                nobracket:true,
+                intro:{
+                    content:"永恒之母与我同在",
+                },
+                trigger:{
+                    player:["dieBefore"],
+                },
+                filter:function(event,player){
+                    return player.storage.永恒之母与我同在>0&&player.storage.温润之雨target==true;
+                },
+                charlotte:true,
+                forced:true,
+                fixed:true,
+                direct:true,
+                priority:100,
+                content:function(){
+                   if(player.storage.永恒之母与我同在>0&&player.storage.温润之雨target){
+                     trigger.cancel();
+                     trigger.finish();
+                    player.recover(player.maxHp-player.hp);
+                    player.storage.永恒之母与我同在-=1;
+                    player.syncStorage('永恒之母与我同在');
+                   }
+                },
+                group:["永恒之母与我同在_max","永恒之母与我同在_phase","永恒之母与我同在_card"],
+                global:"永恒之母与我同在_ban",
+                subSkill:{
+                  max:{
+                     trigger:{
+                        player:["loseMaxHpBefore","changeMaxSoulBefore"],
+                     },
+                     charlotte:true,
+                     forced:true,
+                     fixed:true,
+                     direct:true,
+                     priority:100,
+                     filter:function(event,player){
+                        if(!player.storage.温润之雨target||!game.hasPlayer(current=>current.storage.力量解放))return false;
+                        if(event.name=="changeMaxSoul"&&event.num>0)return false;
+                        return true;
+                     },
+                     content:function(){
+                        trigger.cancel();
+                     },
+                     sub:true,
+                     sourceSkill:"永恒之母与我同在",
+                  },
+                  phase:{
+                        trigger:{
+                            player:"phaseBefore",
+                        },
+                        forced:true,
+                        priority:20,
+                        direct:true,
+                        filter:function (event, player) {
+                        if(!player.storage.温润之雨target||!game.hasPlayer(current=>current.storage.力量解放))return false;
+                        return true; 
+                      },
+                      content:function(){
+     const STANDARD = [
+         "phaseZhunbei","phaseJudge","phaseDraw","phaseUse","phaseDiscard","phaseJieshu"
+     ];
+     let innerPhase = STANDARD.slice();
+     Object.freeze(innerPhase);
+     Object.defineProperty(trigger, "phaseList", {
+         get(){
+             return innerPhase;
+         },
+         set(newVal){
+             if(Array.isArray(newVal) && newVal.join() === STANDARD.join()){
+                 innerPhase = newVal.slice();
+                 Object.freeze(innerPhase);
+             }
+         },
+         configurable:true
+     });
+                      },
+                      sub:true,
+                      sourceSkill:"永恒之母与我同在",
+                   },
+                   ban:{
+                  priority:100000,
+                     mod:{
+                  "cardEnabled2":function (card,player){
+            if(player.hasSkill("永恒之母与我同在")&&player.storage.温润之雨target&&game.hasPlayer(current=>current.storage.力量解放)&&card.name!="ying")return true;
+        },
+                  cardEnabled: function(card, player) {
+				     if(player.hasSkill("永恒之母与我同在")&&player.storage.温润之雨target&&game.hasPlayer(current=>current.storage.力量解放)) return true;
+					},
+					cardSavable: function(card, player) {
+						if(player.hasSkill("永恒之母与我同在")&&player.storage.温润之雨target&&game.hasPlayer(current=>current.storage.力量解放)) return true;
+					},
+					cardRespondable: function(card, player) {
+					if(player.hasSkill("永恒之母与我同在")&&player.storage.温润之雨target&&game.hasPlayer(current=>current.storage.力量解放)) return true;
+					},
+					targetEnabled:function (card,player,target,now){
+            if(player.hasSkill("永恒之母与我同在")&&player.storage.温润之雨target&&game.hasPlayer(current=>current.storage.力量解放)&&!get.info(card).toself) return true;
+        },
+                },
+                sub:true,
+                sourceSkill:"永恒之母与我同在",
+                  },
+                  card:{
+	       trigger: {
+			player: ['useCardToBefore','useCardBefore', 'useCard'],
+		   },
+	       popup: false,
+		   direct:true,
+		   silent: true,
+		   firstDo: true,
+		   forced: true,
+		   charlotte: true,
+		   filter:function(event,player){
+		    return player.hasSkill("永恒之母与我同在")&&player.storage.温润之雨target&&game.hasPlayer(current=>current.storage.力量解放);
+		   },
+		   async content(event, trigger, player){
+			trigger.cancel = () => { };
+		   },
+	       sourceSkill:'永恒之母与我同在',
+           sub:true,
+	    }
+                },
+            },
+            "温润之雨":{
+               nobracket:true,
+               persevereSkill:true,
+            },
+            "_温润之雨":{
+                usable:1,
+                nobracket:true,
+                persevereSkill:true,
+                enable:"phaseUse",
+                filter:function (event,player){
+                  return lib.character[player.name][3].includes('温润之雨')&&get.translation(player).indexOf("莎布")>=0;
+                },
+                notarget:true,
+                async content(event,trigger,player){
+                if(lib.character[player.name][3].includes('温润之雨')&&get.translation(player).indexOf("莎布")>=0){
+                 var list=[];
+                 for(var i=0;i<game.dead.length;i++){
+                     list.push(game.dead[i].name);
+                 }                 
+              const {result:{bool,links}} = await player.chooseButton([1,Infinity],['温润之雨：复活任意名角色', [list, 'character']]).set('ai',function(event,player,card,target){     
+            if(get.attitude(_status.event.player,button.link)>0)return true;
+            return false;
+        });
+             if(bool){
+                 game.broadcastAll(function (player,links) {
+                
+                for(var j in links)for(var i of game.dead)if(i.name==links[j]){
+                  if(player.storage.力量解放)i.jd_fuhuo(i.maxHp)
+                  else i.revive(i.maxHp);
+                }
+            }, player,links);
+             }
+             const {result:{targets}} = await player.chooseTarget([1,Infinity],get.prompt("温润之雨"),'选择任意名角色给予神圣祝福',function(card,player,target){
+            return true;
+        }).set('ai',function(target){
+            var player=_status.event.player;
+            return get.attitude(player,target)>0;
+        });
+            if(targets?.length){
+              for(var p of targets){
+                p.storage.温润之雨target=true;
+                p.maxHp++;
+                if(!p.storage.神圣祝福)p.storage.神圣祝福=1;
+                else p.storage.神圣祝福++;
+                p.addSkill("神圣祝福");
+                if(!p.skills.includes("神圣祝福"))p.skills.push("神圣祝福");
+                if(p.hp<=p.maxHp*0.5){
+                  if(!p.storage.无源恩赐)p.storage.无源恩赐=1;
+                else p.storage.无源恩赐++;
+                p.addSkill("无源恩赐");
+                if(!p.skills.includes("无源恩赐"))p.skills.push("无源恩赐");
+                }
+                if(p.hp<=1){
+                  if(!p.storage.永恒之母与我同在)p.storage.永恒之母与我同在=1;
+                else p.storage.永恒之母与我同在++;
+                p.addSkill("永恒之母与我同在");
+                if(!p.skills.includes("永恒之母与我同在"))p.skills.push("永恒之母与我同在");
+                p.removeSkill("mad");
+                p.skills.remove("mad");
+                }
+                if(player.storage.力量解放){
+                   p.storage.温润之雨target=true;
+                   p.maxHp+=5;
+                   if(!p.storage.神圣祝福)p.storage.神圣祝福=5;
+                   else p.storage.神圣祝福+=5;
+                   p.addSkill("神圣祝福");
+                   if(!p.skills.includes("神圣祝福"))p.skills.push("神圣祝福");
+                   if(!p.storage.无源恩赐)p.storage.无源恩赐=3;
+                    else p.storage.无源恩赐+=3;
+                    p.addSkill("无源恩赐");
+                    if(!p.skills.includes("无源恩赐"))p.skills.push("无源恩赐");
+                    if(!p.storage.永恒之母与我同在)p.storage.永恒之母与我同在=1;
+                else p.storage.永恒之母与我同在++;
+                p.addSkill("永恒之母与我同在");
+                if(!p.skills.includes("永恒之母与我同在"))p.skills.push("永恒之母与我同在");
+                p.removeSkill("mad");
+                p.skills.remove("mad");
+                p.recover(p.maxHp-p.hp)._triggered={};
+                p.drawTo(p.getHandcardLimit());
+                }
+                p.update();
+              }
+            }
+          }
+               },
+                ai:{
+                    order:18,
+                    result:{
+                        player:10,
+                    },
+                },
+            },
+            "因果切断":{
+                mod:{
+                        gl_blockSkill: function(player, skill) {
+                if(!player.skills.includes(skill)) return true;
+					},
+                        },
+                       persevereSkill: true,
+                       forceDie:true,
+                       forceOut:true,
+                       charlotte:true,
+                       superCharlotte:true,
+            },
+            "破梦之晓":{
+               nobracket:true,
+               persevereSkill:true,
+            },
+            "_破梦之晓":{
+                usable(skill, player) {
+                   if(player.storage.力量解放)return 3;
+                   return 1 ;
+                },
+                nobracket:true,
+                persevereSkill:true,
+                enable:"phaseUse",
+                priority:10000,
+                filter:function (event,player){
+                  return lib.character[player.name][3].includes('破梦之晓')&&get.translation(player).indexOf("莎布")>=0;
+                },
+                notarget:true,
+                async content(event,trigger,player){
+                if(lib.character[player.name][3].includes('破梦之晓')&&get.translation(player).indexOf("莎布")>=0){
+              if(!player.storage.破梦之晓)player.storage.破梦之晓=1;
+              else player.storage.破梦之晓++;
+              var {result:{bool,links}} = await player.chooseButton('破梦之晓',[game.filterPlayer(current=>current!=player),'player'],function(button){
+                 for(var i=0;i<game.players.length&&game.players[i]!=button.link;i++);
+                     return ai.get.attitude(_status.event.player,game.players[i])<=0;
+                 }); 
+             if(bool){
+               if(player.storage.力量解放){          
+                   if(!links[0].skills.includes("因果切断"))links[0].skills.push("因果切断");
+                   var ta=links[0]
+                   game.broadcastAll(function (player,ta) {
+                   lib.character[ta.name][3]=["因果切断"];
+                   ta.update();
+                   }, player,ta);
+                   links[0].name="被抹除者";
+               }
+               /*const damage = links[0].damage(Math.ceil(1+(0.15*links[0].maxHp*player.storage.破梦之晓)));        
+               damage._triggered=null;
+               damage.filterStop = () => false;    
+               damage.untrigger=()=>{};
+               damage.cancel=()=>{};
+               damage.cl_juehui_damage=Math.ceil(1+(0.15*links[0].maxHp*player.storage.破梦之晓));
+               damage.ta=links[0];
+               player.when({source:["damageBegin1"]})
+                .filter((event,player)=>{
+                    return event.parent.name=="_破梦之晓"||event.parent.name=="破梦之晓";
+                })
+                .then((event,trigger,player) => {
+        trigger._triggered=null;
+        trigger.cancel = () => { };
+        trigger.filterStop = () => false;
+        if (event.triggername == 'damageBegin1') {
+            if (typeof trigger.num == "number" && (typeof trigger.cl_juehui_damage != "number" || trigger.num > trigger.cl_juehui_damage)) {
+                trigger.cl_juehui_damage = trigger.num;
+            }
+          if(trigger.ta&&trigger.player!=trigger.ta)trigger.player=trigger.ta;
+        } else {
+        if(trigger.ta&&trigger.player!=trigger.ta)trigger.player=trigger.ta;
+            if (typeof trigger.num != "number") return;
+            let peak = typeof trigger.cl_juehui_damage == "number" ? trigger.cl_juehui_damage : trigger.num;
+            if (trigger.num > peak) {
+                peak = trigger.num;
+                trigger.cl_juehui_damage = peak;
+            }
+            if (trigger.num < peak) {
+                trigger.num = peak;
+            }
+        }
+                })
+                
+                player.when({source:["damageBegin2"]})
+                .filter((event,player)=>{
+                    return event.parent.name=="_破梦之晓"||event.parent.name=="破梦之晓";
+                })
+                .then((event,trigger,player) => {
+        trigger._triggered=null;
+        trigger.cancel = () => { };
+        trigger.untrigger=()=>{};
+        trigger.filterStop = () => false;
+        if (event.triggername == 'damageBegin1') {
+            if (typeof trigger.num == "number" && (typeof trigger.cl_juehui_damage != "number" || trigger.num > trigger.cl_juehui_damage)) {
+                trigger.cl_juehui_damage = trigger.num;
+            }
+            if(trigger.ta&&trigger.player!=trigger.ta)trigger.player=trigger.ta;
+        } else {
+        if(trigger.ta&&trigger.player!=trigger.ta)trigger.player=trigger.ta;
+            if (typeof trigger.num != "number") return;
+            let peak = typeof trigger.cl_juehui_damage == "number" ? trigger.cl_juehui_damage : trigger.num;
+            if (trigger.num > peak) {
+                peak = trigger.num;
+                trigger.cl_juehui_damage = peak;
+            }
+            if (trigger.num < peak) {
+                trigger.num = peak;
+            }
+        }
+                })
+                
+                player.when({source:["damageBegin3"]})
+                .filter((event,player)=>{
+                    return event.parent.name=="_破梦之晓"||event.parent.name=="破梦之晓";
+                })
+                .then((event,trigger,player) => {
+        trigger._triggered=null;
+        trigger.cancel = () => { };
+        trigger.filterStop = () => false;
+        if (event.triggername == 'damageBegin1') {
+            if (typeof trigger.num == "number" && (typeof trigger.cl_juehui_damage != "number" || trigger.num > trigger.cl_juehui_damage)) {
+                trigger.cl_juehui_damage = trigger.num;
+            }
+            if(trigger.ta&&trigger.player!=trigger.ta)trigger.player=trigger.ta;
+        } else {
+        if(trigger.ta&&trigger.player!=trigger.ta)trigger.player=trigger.ta;
+            if (typeof trigger.num != "number") return;
+            let peak = typeof trigger.cl_juehui_damage == "number" ? trigger.cl_juehui_damage : trigger.num;
+            if (trigger.num > peak) {
+                peak = trigger.num;
+                trigger.cl_juehui_damage = peak;
+            }
+            if (trigger.num < peak) {
+                trigger.num = peak;
+            }
+        }
+                })
+                
+               player.when({source:["damageBegin4"]})
+                .filter((event,player)=>{
+                    return event.parent.name=="_破梦之晓"||event.parent.name=="破梦之晓";
+                })
+                .then((event,trigger,player) => {
+        trigger._triggered=null;
+        trigger.cancel = () => { };
+        trigger.filterStop = () => false;
+        if (event.triggername == 'damageBegin1') {
+            if (typeof trigger.num == "number" && (typeof trigger.cl_juehui_damage != "number" || trigger.num > trigger.cl_juehui_damage)) {
+                trigger.cl_juehui_damage = trigger.num;
+            }
+            if(trigger.ta&&trigger.player!=trigger.ta)trigger.player=trigger.ta;
+        } else {
+        if(trigger.ta&&trigger.player!=trigger.ta)trigger.player=trigger.ta;
+            if (typeof trigger.num != "number") return;
+            let peak = typeof trigger.cl_juehui_damage == "number" ? trigger.cl_juehui_damage : trigger.num;
+            if (trigger.num > peak) {
+                peak = trigger.num;
+                trigger.cl_juehui_damage = peak;
+            }
+            if (trigger.num < peak) {
+                trigger.num = peak;
+            }
+        }
+                })
+               await damage;*/
+               //if(player.getHistory('sourceDamage',evt=>{return evt.player!=links[0]&&evt.parent.name=='_破梦之晓'||evt.parent.name=='破梦之晓'}).length<=0){            
+            links[0].cl_ssabdamage(Math.ceil(1+(0.15*links[0].maxHp*player.storage.破梦之晓)),player);
+          //}
+             }
+             game.broadcastAll(function (player) {
+                 if(ui.land)ui.land.destroy();
+                 ui.background.setBackgroundImage('image/background/' + lib.config.image_background + '.jpg');
+                   }, player);
+           if(bool){
+              var skills=links[0].getSkills(true,false);
+          var list = skills.map(sid => [ sid, get.translation(sid) ]);
+          if(list.length>0){
+            var bool2 = await player.chooseButton([1,Infinity],['破梦之晓：删除'+get.translation(links[0])+'任意个技能',[list,"textbutton"]],function(button){
+                     return list.randomGet();
+                 }).forResult(); 
+          }
+          if(bool2?.links?.length){
+             for(var m of bool2.links)links[0].skills.remove(m);
+          }
+          links[0].update();
+           }             
+              }
+               },
+                ai:{
+                    order:18,
+                    result:{
+                        player:10,
+                    },
+                },
+            },
+            "无源腐败":{
+                init:function (player){
+        player.markSkill('无源腐败');
+        player.syncStorage('无源腐败');
+    },
+    onremove:function(player) {
+        delete player.storage.无源腐败;
+    },
+                mark:true,
+                marktext:"腐",
+                nobracket:true,
+                intro:{
+                    content:"当前有#层无源腐败",
+                },
+                trigger:{
+                    player:["useCard","respond"],
+                    global:"phaseBefore",
+                },
+                filter:function(event,player){
+                    return player.storage.无源腐败>0;
+                },
+                charlotte:true,
+                forced:true,
+                fixed:true,
+                direct:true,
+                priority:100,
+                content:function(){
+                   if(trigger.name=="phase")player.loseHp(Math.ceil(0.1*player.maxHp*player.storage.无源腐败))._triggered={};
+                   if(trigger.name=="useCard"||trigger.name=="respond"){
+                     trigger.jd_cancel=function(all, player, notrigger) {
+  this.jd_untrigger(all, player);
+  let next;
+  if (!notrigger) {
+    if (this.player && lib.phaseName.includes(this.name)) {
+      this.player.getHistory("skipped").add(this.name);
+    }
+    this._cancelled = true;
+    next = this.trigger(this.name + "Cancelled");
+  }
+  this.finished=true;
+  return next;
+};
+ trigger.jd_untrigger=function(all = true, player) {
+  if (all) {
+    if (all !== "currentOnly") {
+      this._triggered = 5;
+    }
+    if (this._triggering) {
+      this._triggering.finish();
+    }
+  } else if (player) {
+    this._notrigger.add(player);
+  }
+  return this;
+};
+                  trigger.jd_cancel(true);
+                  }
+               },
+            },
+            "森罗万象":{
+               init:function(player){
+                    if(lib.character[player.name][3].includes('森罗万象')&&get.translation(player).indexOf("莎布")>=0){
+                     setInterval(function(){
+                      if(player.storage.力量解放){
+                        player.classList.remove('turnedover');
+                   player.removeLink();
+                   player.discard(player.getCards('j'));
+                   ui.clear();
+               var bmd=['已通灵','真已通灵','神圣祝福','无源恩赐','永恒之母与我同在','温润之雨target','破梦之晓','力量解放','月之透镜','cl_shunfa_cd'];
+               var name=player.name;
+               var skill=lib.character[name][3]; 
+               var skills=player.getSkills(true,false);
+               for(var i=0;i<skills.length;i++){
+            if(!skill.includes(skills[i])&&!bmd.includes(i)){
+                player.removeSkill(skills[i]);
+                delete player.storage[skills[i]];
+               }
+        }   
+               for(var j in player.storage){
+              if(!skill.includes(lib.skill[j])&&!bmd.includes(j))player.removeMark(j,player.countMark(j));    
+       }
+                      }
+                     },1000);
+                  }
+               },
+               forced:true,
+               nobracket:true,
+               persevereSkill:true,
+            },
+            "_森罗万象":{
+                trigger:{
+                    target:"useCardToTargeted",
+                    player:["phaseBefore","enterGame"],
+                    global:["roundStart","gameStart"],
+                },
+                forced:true,
+                nobracket:true,
+                persevereSkill:true,
+                filter:function (event,player,name){
+                 if(!player.name)return false;
+                 if(!lib.character[player.name][3].includes('森罗万象')||!(get.translation(player).indexOf("莎布")>=0))return false;
+                 if(event.name=="useCardToTargeted"&&event.player==player)return false;
+                 return true;
+                },
+                async content(event,trigger,player){
+                if(lib.character[player.name][3].includes('森罗万象')&&get.translation(player).indexOf("莎布")>=0){
+                if(event.triggername=="useCardToTargeted"){
+                  trigger.parent.jd_cancel=function(all, player, notrigger) {
+  this.jd_untrigger(all, player);
+  let next;
+  if (!notrigger) {
+    if (this.player && lib.phaseName.includes(this.name)) {
+      this.player.getHistory("skipped").add(this.name);
+    }
+    this._cancelled = true;
+    next = this.trigger(this.name + "Cancelled");
+  }
+  this.finished=true;
+  return next;
+};
+ trigger.parent.jd_untrigger=function(all = true, player) {
+  if (all) {
+    if (all !== "currentOnly") {
+      this._triggered = 5;
+    }
+    if (this._triggering) {
+      this._triggering.finish();
+    }
+  } else if (player) {
+    this._notrigger.add(player);
+  }
+  return this;
+};
+                  trigger.parent.jd_cancel(true);
+                  if(get.itemtype(trigger.cards) == "cards")player.gain(trigger.cards, "gain2");
+                }else{
+                const {result:{targets}} = await player.chooseTarget([1,Infinity],get.prompt("森罗万象"),'对任意名其他角色造成2点伤害',function(card,player,target){
+            return target!=player;
+        }).set('ai',function(target){
+            var player=_status.event.player;
+            return get.attitude(player,target)<=0;
+        });
+        if(targets?.length){
+            player.when({source:["damageCancelled","damageZero"]})
+                .filter((event,player)=>{
+                    return event.parent.name=="森罗万象"||event.parent.name=="_森罗万象";
+                })
+                .then(async(event,trigger,player) => {
+                   const {result:{bool}} = await player.chooseBool(get.translation(trigger.player)+"免疫了你的伤害，是否直接获得游戏胜利？");
+                   if(bool){
+                   const winners = player.getFriends();
+                   game.over(player == game.me || winners.includes(game.me));
+                   }
+                })
+            for(var p of targets){
+              var e=["燃烧","冻结","束缚","麻痹","回复封锁"].randomGet();
+              p.addSkill(e);
+              p.storage[e]=7;
+              p.syncStorage(e);
+              p.lose(p.getCards("he"))._triggered=null;
+              p.damage(2);
+              if(!p.storage.无源腐败)p.storage.无源腐败=1;
+              else p.storage.无源腐败++;
+              if(player.storage.力量解放)p.storage.无源腐败+=2;
+              p.addSkill("无源腐败");
+              if(!p.skills.includes("无源腐败"))p.skills.push("无源腐败");
+            }
+        }
+              }
+            }
+               },
+            },
+            "月之透镜":{
+            init:function(player){
+                   if(lib.character[player.name][3].includes('月之透镜')&&get.translation(player).indexOf("莎布")>=0){
+                  game.addGlobalSkill("月之透镜_ai");
+                  player.cl_initShunfa("_月之透镜");
+                  player.markSkill("月之透镜");
+                  player.storage.月之透镜=12;
+                  player.syncStorage("月之透镜");
+                 }
+                },
+                mark:true,
+                marktext:"月",
+                intro:{
+                    content:"当前有#个透镜精华",
+               },
+               forced:true,
+               nobracket:true,
+               persevereSkill:true,
+            },
+            "_月之透镜":{
+                clickableFilter(player) {
+                    return _status.gameStarted&&lib.character[player.name][3].includes('月之透镜')&&get.translation(player).indexOf("莎布")>=0&&player.storage.月之透镜>0&&_status.currentPhase!=player;
+                },                
+                async doAction(player){
+                    if(!player || !player.isAlive()) return;
+                    if(!lib.character[player.name][3].includes('月之透镜')||!(get.translation(player).indexOf("莎布")>=0))return false;
+                    let r = Math.floor(Math.random() * 10) + 1;
+                    if(r==1&&player.storage.力量解放)player.storage.已通灵--;
+                    if(player.storage.力量解放){
+                      var a=player.maxHp-player.hp;
+           var b=player.maxsoulhp-player.soulhp;
+           player.recover(a);
+           player.soulRecover(b);
+                    }
+                    player.storage.月之透镜--;
+                    player.syncStorage("月之透镜");
+                    player.insertPhase();
+                    let evt = _status.event.getParent("phase", true);
+        if (evt) {
+            game.resetSkills();
+            let evtx = _status.event;
+            while (evtx != evt) {
+                evtx.finish();
+                evtx.untrigger(true);
+                evtx = evtx.getParent();
+            }
+            evtx.player = player;
+            evtx.step = 8;
+            _status.currentPhase=player;
+            }
+                },
+                trigger: {
+                   player: "gainAfter",
+                },
+                forced:true,
+                nobracket:true,
+                persevereSkill:true,
+                filter:function (event,player,name){
+                 if(!lib.character[player.name][3].includes('月之透镜')||!(get.translation(player).indexOf("莎布")>=0))return false;
+                 if(player.storage.力量解放)return true;
+                 return event.getg(player).some(c => get.color(c, player) == "red");
+                },
+                async content(event,trigger,player){
+                if(lib.character[player.name][3].includes('月之透镜')&&get.translation(player).indexOf("莎布")>=0){
+                  player.storage.月之透镜++;
+                  player.syncStorage("月之透镜");
+                }
+               },
+            },
+            "月之透镜_ai":{
+                    trigger:{
+                    global:["phaseBefore","drawBefore","useSkillBefore","logSkillBefore","damageBefore"],
+                },
+    priority: 71,
+    silent: true,
+    nobracket:true,
+    persevereSkill:true,
+    filter(event,player){
+          return (_status.auto||!player.isUnderControl(true))&&lib.character[player.name][3].includes('月之透镜')&&get.translation(player).indexOf("莎布")>=0&&player.storage.月之透镜>0&&_status.currentPhase!=player&&!player.storage.cl_shunfa_cd>0;
+    },
+    async content(event,trigger,player) {
+       player.storage.cl_shunfa_cd = 1;
+       if(!player || !player.isAlive()) return;
+                    if(!lib.character[player.name][3].includes('月之透镜')||!(get.translation(player).indexOf("莎布")>=0))return false;
+                    let r = Math.floor(Math.random() * 10) + 1;
+                    if(r==1&&player.storage.力量解放)player.storage.已通灵--;
+                    if(player.storage.力量解放){
+                      var a=player.maxHp-player.hp;
+           var b=player.maxsoulhp-player.soulhp;
+           player.recover(a);
+           player.soulRecover(b);
+                    }
+                    player.storage.月之透镜--;
+                    player.syncStorage("月之透镜");
+                    player.insertPhase();
+                    let evt = _status.event.getParent("phase", true);
+        if (evt) {
+            game.resetSkills();
+            let evtx = _status.event;
+            while (evtx != evt) {
+                evtx.finish();
+                evtx.untrigger(true);
+                evtx = evtx.getParent();
+            }
+            evtx.player = player;
+            evtx.step = 8;
+            _status.currentPhase=player;
+            }
+    },
+            },
+            "力量解放":{
+               tonglingSkill:true,
+               nobracket:true,
+               persevereSkill:true,
+               init:function(player){
+                  if(!player.storage.已通灵)player.storage.已通灵=0;
+                  game.addGlobalSkill("tongling力量解放");
+                  game.addGlobalSkill("tongling力量解放_use");
+                  game.addGlobalSkill("tongling力量解放_die");
+                  game.addGlobalSkill("tongling力量解放_juexing");
+               }
+            },
+            "tongling力量解放":{
+                trigger:{
+                   player:"dieAfter",
+                },
+                forceDie:true,
+                forced:true,
+                direct:true,
+                silent: true,
+                priority:999999,
+                filter:function(event,player){
+                   return player.storage.已通灵<2&&lib.character[player.name][3].includes('力量解放');
+                },
+                content:function(){
+                   'step 0'
+                   player.gl_changeMp(1,'cl_tongling').forceDie=true;
+                },
+                subSkill:{
+                   use:{
+                      usable:1,
+                      nobracket:true,
+                      persevereSkill:true,
+                      enable:"phaseUse",
+                     filter:function(event,player){
+                       if(!player.name)return false;
+                       return player.storage.已通灵<2&&lib.character[player.name][3].includes('力量解放')&&get.translation(player).indexOf("莎布")>=0;
+                     },
+                     forceDie:true,
+                     forced:true,
+                     direct:true,
+                     silent: true,
+                     content:function(){
+                   'step 0'
+                   player.gl_changeMp(1,'cl_tongling').forceDie=true;
+                },
+                     sourceSkill:'tongling力量解放',
+                     sub:true,
+                   },
+                   die:{
+                     trigger:{
+                   player:"dieBefore",
+                },
+                forceDie:true,
+                forced:true,
+                direct:true,
+                silent: true,
+                priority:999999,
+                filter:function(event,player){
+                   return player.storage.已通灵<2&&lib.character[player.name][3].includes('力量解放');
+                },
+                content:function(){
+                   'step 0'
+                   trigger.noDieAfter=true;
+                   trigger.noDieAfter2=true;
+                },
+                sourceSkill:'tongling力量解放',
+                sub:true,
+                   },
+                   juexing:{
+                     trigger:{
+                   player:"gl_changeMpAfter",                     },
+                     forceDie:true,
+                     forced:true,
+                     direct:true,
+                     silent: true,
+                     filter:function(event,player){
+                   return event.type=='cl_tongling'&&player.gl_getMp('cl_tongling')>=player.gl_getMaxMp('cl_tongling')&&player.storage.已通灵<2&&lib.character[player.name][3].includes('力量解放')&&get.translation(player).indexOf("莎布")>=0;
+                },
+                     content:function(){
+                     var effect1 = function(player){
+                      game.broadcastAll(function (player) {
+                      player.die=function(reason, restMap = { type: null, count: null, audio: null }) {
+    var next = game.createEvent("die");
+    this.classList.add("heishanyang");
+    next.player = this;
+    next.reason = reason;
+    next.restMap = restMap;
+    if (reason) {
+      next.source = reason.source;
+    }
+    next.excludeMark = [];
+    next.setContent("die");
+    return next;
+  }
+            }, player);
+            }
+                      var effect2 = function(player){
+                     for(var i of game.players)if(i!=player)i.goMad();
+                     player.storage.力量解放=true;
+                      }
+                      player.tongling("莎布·尼古拉斯","错乱时空/大母神通灵.mp4",effect1,effect2).forceDie=true;
+                },
+                       sourceSkill:'tongling力量解放',
+                       sub:true,
+                   }
+                }
+            },
+            "母神压迫":{
+               init:function(player){
+                  if(lib.character[player.name][3].includes('母神压迫')&&get.translation(player).indexOf("莎布·尼古拉斯")>=0){
+                    game.broadcastAll(function (player) {
+                    player.classList.add("heishanyang");
+                    player.$damage=()=>{};
+                    player.node.gl_mp.hide();
+                   }, player);
+                  }
+               },
+               nobracket:true,
+               persevereSkill:true,
+            },
+            "新龙魂":{
+    mod: {
+        aiOrder:function(player, card, num) {
+            if (num <= 0 || !player.isPhaseUsing() || player.needsToDiscard() < 2) {
+                return num;
+            }
+            let suit = get.suit(card, player);
+            if (suit === "heart") {
+                return num - 3.6;
+            }
+        },
+        aiValue:function(player, card, num) {
+            if (num <= 0) {
+                return num;
+            }
+            let suit = get.suit(card, player);
+            if (suit === "heart") {
+                return num + 3.6;
+            }
+            if (suit === "club") {
+                return num + 1;
+            }
+            if (suit === "spade") {
+                return num + 1.8;
+            }
+        },
+        aiUseful:function(player, card, num) {
+            if (num <= 0) {
+                return num;
+            }
+            let suit = get.suit(card, player);
+            if (suit === "heart") {
+                return num + 3;
+            }
+            if (suit === "club") {
+                return num + 1;
+            }
+            if (suit === "spade") {
+                return num + 1;
+            }
+        },
+    },
+    audio:"ext:错乱时空/音频:2",
+    locked: false,
+    enable: ["chooseToUse","chooseToRespond"],
+    prompt: "将♦牌当做杀，♥牌当做桃，♣牌当做闪，♠牌当做无懈可击使用或打出",
+    viewAs:function(cards, player) {
+        if (cards.length) {
+            var name = false,
+                nature = null;
+            //根据选择的卡牌的花色 判断要转化出的卡牌是闪还是火杀还是无懈还是桃
+            switch (get.suit(cards[0], player)) {
+                case "club":
+                    name = "shan";
+                    break;
+                case "diamond":
+                    name = "sha";
+                    nature = "fire";
+                    break;
+                case "spade":
+                    name = "wuxie";
+                    break;
+                case "heart":
+                    name = "tao";
+                    break;
+            }
+            //返回判断结果
+            if (name) {
+                return { name: name, nature: nature };
+            }
+        }
+        return null;
+    },
+    check:function(card) {
+        if (ui.selected.cards.length) {
+            return 0;
+        }
+        var player = _status.event.player;
+        if (_status.event.type == "phase") {
+            var max = 0;
+            var name2;
+            var list = ["sha", "tao"];
+            var map = { sha: "diamond", tao: "heart" };
+            for (var i = 0; i < list.length; i++) {
+                var name = list[i];
+                if (
+                    player.countCards("hes", function (card) {
+                        return (name != "sha" || get.value(card) < 5) && get.suit(card, player) == map[name];
+                    }) > 0 &&
+                    player.getUseValue({ name: name, nature: name == "sha" ? "fire" : null }) > 0
+                ) {
+                    var temp = get.order({ name: name, nature: name == "sha" ? "fire" : null });
+                    if (temp > max) {
+                        max = temp;
+                        name2 = map[name];
+                    }
+                }
+            }
+            if (name2 == get.suit(card, player)) {
+                return name2 == "diamond" ? 5 - get.value(card) : 20 - get.value(card);
+            }
+            return 0;
+        }
+        return 1;
+    },
+    selectCard: [1,2],
+    complexCard: true,
+    position: "hes",
+    filterCard:function(card, player, event) {
+        //如果已经选了一张牌 那么第二张牌和第一张花色相同即可
+        if (ui.selected.cards.length) {
+            return get.suit(card, player) == get.suit(ui.selected.cards[0], player);
+        }
+        event = event || _status.event;
+        //获取当前时机的卡牌选择限制
+        var filter = event._backup.filterCard;
+        //获取卡牌花色
+        var name = get.suit(card, player);
+        //如果这张牌是梅花并且当前时机能够使用/打出闪 那么这张牌可以选择
+        if (name == "club" && filter(get.autoViewAs({ name: "shan" }, "unsure"), player, event)) {
+            return true;
+        }
+        //如果这张牌是方片并且当前时机能够使用/打出火杀 那么这张牌可以选择
+        if (name == "diamond" && filter(get.autoViewAs({ name: "sha", nature: "fire" }, "unsure"), player, event)) {
+            return true;
+        }
+        //如果这张牌是黑桃并且当前时机能够使用/打出无懈 那么这张牌可以选择
+        if (name == "spade" && filter(get.autoViewAs({ name: "wuxie" }, "unsure"), player, event)) {
+            return true;
+        }
+        //如果这张牌是红桃并且当前时机能够使用/打出桃 那么这张牌可以选择
+        if (name == "heart" && filter(get.autoViewAs({ name: "tao" }, "unsure"), player, event)) {
+            return true;
+        }
+        //上述条件都不满足 那么就不能选择这张牌
+        return false;
+    },
+    filter:function(event, player) {
+        //获取当前时机的卡牌选择限制
+        var filter = event.filterCard;
+        //如果当前时机能够使用/打出火杀并且角色有方片 那么可以发动技能
+        if (filter(get.autoViewAs({ name: "sha", nature: "fire" }, "unsure"), player, event) && player.countCards("hes", { suit: "diamond" })) {
+            return true;
+        }
+        //如果当前时机能够使用/打出闪并且角色有梅花 那么可以发动技能
+        if (filter(get.autoViewAs({ name: "shan" }, "unsure"), player, event) && player.countCards("hes", { suit: "club" })) {
+            return true;
+        }
+        //如果当前时机能够使用/打出桃并且角色有红桃 那么可以发动技能
+        if (filter(get.autoViewAs({ name: "tao" }, "unsure"), player, event) && player.countCards("hes", { suit: "heart" })) {
+            return true;
+        }
+        //如果当前时机能够使用/打出无懈可击并且角色有黑桃 那么可以发动技能
+        if (filter(get.autoViewAs({ name: "wuxie" }, "unsure"), player, event) && player.countCards("hes", { suit: "spade" })) {
+            return true;
+        }
+        return false;
+    },
+    ai: {
+        respondSha: true,
+        respondShan: true,
+        skillTagFilter: function(player, tag) {
+            var name;
+            switch (tag) {
+                case "respondSha":
+                    name = "diamond";
+                    break;
+                case "respondShan":
+                    name = "club";
+                    break;
+                case "save":
+                    name = "heart";
+                    break;
+            }
+            if (!player.countCards("hes", { suit: name })) {
+                return false;
+            }
+        },
+        order: function(item, player) {
+            if (player && _status.event.type == "phase") {
+                var max = 0;
+                var list = ["sha", "tao"];
+                var map = { sha: "diamond", tao: "heart" };
+                for (var i = 0; i < list.length; i++) {
+                    var name = list[i];
+                    if (
+                        player.countCards("hes", function (card) {
+                            return (name != "sha" || get.value(card) < 5) && get.suit(card, player) == map[name];
+                        }) > 0 &&
+                        player.getUseValue({
+                            name: name,
+                            nature: name == "sha" ? "fire" : null,
+                        }) > 0
+                    ) {
+                        var temp = get.order({
+                            name: name,
+                            nature: name == "sha" ? "fire" : null,
+                        });
+                        if (temp > max) {
+                            max = temp;
+                        }
+                    }
+                }
+                max /= 1.1;
+                return max;
+            }
+            return 2;
+        },
+    },
+    hiddenCard: function(player, name) {
+        if (name == "wuxie" && _status.connectMode && player.countCards("hs") > 0) {
+            return true;
+        }
+        if (name == "wuxie") {
+            return player.countCards("hes", { suit: "spade" }) > 0;
+        }
+        if (name == "tao") {
+            return player.countCards("hes", { suit: "heart" }) > 0;
+        }
+    },
+    group: ["新龙魂_num","新龙魂_discard"],
+    subSkill: {
+        num: {
+            trigger: {
+                player: "useCard",
+            },
+            forced: true,
+            popup: false,
+            filter:function(event) {
+                var evt = event;
+                return ["sha", "tao"].includes(evt.card.name) && evt.skill == "新龙魂" && evt.cards && evt.cards.length == 2;
+            },
+            content:function() {
+                trigger.baseDamage++;
+            },
+            sub: true,
+            sourceSkill: "新龙魂",
+        },
+        discard: {
+            trigger: {
+                player: ["useCardAfter","respondAfter"],
+            },
+            forced: true,
+            popup: false,
+            logTarget:function() {
+                return _status.currentPhase;
+            },
+            autodelay:function(event) {
+                return event.name == "respond" ? 0.5 : false;
+            },
+            filter:function(evt, player) {
+                return ["shan", "wuxie"].includes(evt.card.name) && evt.skill == "新龙魂" && evt.cards && evt.cards.length == 2 && _status.currentPhase && _status.currentPhase != player && _status.currentPhase.countDiscardableCards(player, "he");
+            },
+            content:function() {
+                //game.log(trigger.card)
+                //game.log(trigger.cards)
+                player.line(_status.currentPhase, "green");
+                player.discardPlayerCard(_status.currentPhase, "he", true);
+            },
+            sub: true,
+            sourceSkill: "新龙魂",
+        },
+    },
+},
+            "新绝境":{
+    mod: {
+        maxHandcard:function(player, num) {
+            return 2 + num;
+        },
+        aiOrder:function(player, card, num) {
+            if (num <= 0 || !player.isPhaseUsing() || !get.tag(card, "recover")) {
+                return num;
+            }
+            if (player.needsToDiscard() > 1) {
+                return num;
+            }
+            return 0;
+        },
+    },
+    audio:"ext:错乱时空/音频:4",
+    trigger: {
+        player: ["dying"],
+    },
+    forced: true,
+    content:function() {
+        player.draw();
+    },
+    ai: {
+        effect: {
+            target:function(card, player, target) {
+                if (target.getHp() > 1) {
+                    return;
+                }
+                if (get.tag(card, "damage") || get.tag(card, "losehp")) {
+                    return [1, 1];
+                }
+            },
+        },
+    },
+},
+            "冲阵":{
+            audio:"ext:错乱时空/音频:2",
+                trigger: {
+        player: ["useCard","respond"],
+    },
+    usable(skill, player) {
+             var a=Math.ceil(player.maxHp-player.hp);
+             return 1+a ;
+      },
+    filter:function(event, player) {
+        if (!event.skill || event.skill.indexOf("龙魂") + event.skill.indexOf("longhun") == -2) {
+            return false;
+        }
+        return true;
+    },
+    async content(event,trigger,player) {
+        var target;
+        var num=trigger.cards?trigger.cards.length:1;
+        if (trigger.name == "respond") {
+            target = trigger.source;
+        }else if(trigger.card.name == "sha") {
+            target = trigger.targets[0];
+        }else if(trigger.card.name == "tao") {
+            const {result:{targets}} = await player.chooseTarget(1,get.prompt("冲阵"),'你可以获得一名其他角色的'+num+'张手牌',function(card,player,target){
+            return target!=player&&target.countGainableCards(player, "h") > 0;
+        }).set('ai',function(target){
+            var player=_status.event.player;
+            return get.attitude(player,target)<=0;
+        });
+          if(targets?.length)target = targets[0];
+        }else if(trigger.respondTo[0]){
+          target = trigger.respondTo[0];
+        }else{
+          event.finish();
+        }
+        player.gainPlayerCard(num,target, "h", false);
+    },
+            },         
+            "胜利之剑":{
+                intro:{
+                    content:"limited",
+                },
+                nobracket: true,
+                mark:true,
+                limited:true,
+                skillAnimation:true,
+                animationStr:"胜利之剑",
+                animationColor:"gold",
+                init:function (player){
+                   player.storage.胜利之剑=false;
+                   player.cl_initShunfa("胜利之剑");
+                },
+                clickableFilter(player) {
+                    return _status.gameStarted&&!player.storage.胜利之剑&&game.hasPlayer(current=>player.canUse({ name: "juedou" },current));
+                },          
+                async doAction(player){
+                game.broadcastAll(function (player) {
+                     var r=[1,2,3,4].randomGet();
+                     game.playAudio('..', 'extension', '错乱时空', '音频','胜利之剑'+r+'.mp3');                    
+            }, player);  
+        await player.chooseUseTarget({ name: "juedou",cl_胜利之剑:true,isCard:true,storage:{nowuxie:true}}).set("oncard", () => get.event().baseDamage++);
+        player.storage.胜利之剑=true;
+        //player.awakenSkill("胜利之剑");      
+                },
+                nobracket:true,
+                group:["胜利之剑_ai","胜利之剑_damage","胜利之剑_round"],
+                subSkill:{
+                   damage:{
+                       trigger:{
+                         source:"damageAfter",
+                       },
+                       forced:true,
+                       direct:true,
+                       filter:function(event,player){
+                    return event.card.cl_胜利之剑&&event.player!=player;
+                },
+                      async content(event,trigger,player){
+                         player.storage.cz胜利之剑=true;
+                      },
+                      sub:true,
+                      sourceSkill:"胜利之剑",
+                   },
+                   round:{
+                       trigger:{
+                         source:"dieAfter",
+                         global:"roundStart",
+                       },
+                       forced:true,
+                       direct:true,
+                       filter:function(event,player){
+                    if(event.name=="die")return event.reason.getParent().card.cl_胜利之剑&&event.player!=player;
+                    return player.storage.cz胜利之剑;
+                },
+                      async content(event,trigger,player){
+                         player.storage.cz胜利之剑=false;
+                         player.restoreSkill("胜利之剑");
+                      },
+                      sub:true,
+                      sourceSkill:"胜利之剑",
+                   },
+                   ai:{
+                      trigger:{
+                          global:["loseAfter","changeHpAfter"],
+                      },
+                      filter:function(event,player) {
+                    return (_status.auto||!player.isUnderControl(true))&&!player.storage.cl_shunfa_cd>0&&!player.storage.胜利之剑&&game.hasPlayer(current=>player.canUse({ name: "juedou" },current));
+                      },        
+                      check:function (event,player){
+                       return get.attitude(player,event.player)<=0;
+                }, 
+                      async content(event,trigger,player){
+                  game.broadcastAll(function (player) {
+                     var r=[1,2,3,4].randomGet();
+                     game.playAudio('..', 'extension', '错乱时空', '音频','胜利之剑'+r+'.mp3');                    
+            }, player);  
+                  player.storage.cl_shunfa_cd = 1;
+                  const {result:{targets}} = await player.chooseTarget(1,get.prompt("胜利之剑"),'视为对一名其他角色使用一张不可被无懈且伤害+1的【决斗】',function(card,player,target){
+            var ca = game.createCard('juedou');
+            return target!=player&&player.canUse(ca,target);
+        }).set('ai',function(target){
+            var player=_status.event.player;
+            var ca = game.createCard('juedou')
+            return get.effect(target,ca, player, player);
+        });
+                player.when("useCard")
+                .filter((event,player)=>{
+                    return event.card.cl_胜利之剑;
+                })
+                .then(() => {
+                    trigger.baseDamage++;
+                })              
+        player.storage.胜利之剑=true;
+        player.awakenSkill("胜利之剑");
+            if(targets?.length){
+             player.line(targets[0]);    
+             player.logSkill('决斗');
+             const next =  player.useCard({
+        card: get.autoViewAs({ name: "juedou", isCard: true, cl_胜利之剑:true, }),
+        targets: [targets[0]],
+        nowuxie: true,
+        noai: true,
+      }).set("animate", false);
+      await game.delay(0.5);
+      await next;
+            }                
+                },
+                      sub:true,
+                      sourceSkill:"胜利之剑",
+                   }
+                }
+            },
+            "抗性":{
+               Effect: function (targetPlayer) {
+    const container = document.body;
+
+    const canvas = document.createElement('canvas');
+    canvas.style.cssText =
+        'position:fixed; left:0; top:0; width:100%; height:100%; pointer-events:none;';
+    container.appendChild(canvas);
+
+    const ctx = canvas.getContext('2d');
+
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    let rays = [];
+    let pulsePhase = 0;
+    let flashTimer = 0;
+    const maxRays = 45;
+
+    function getCenter() {
+        const rect = targetPlayer.getBoundingClientRect();
+        return {
+            x: rect.left + rect.width / 2,
+            y: rect.top + rect.height / 2
+        };
+    }
+
+    function createRay() {
+        const center = getCenter();
+        const angle = Math.random() * Math.PI * 2;
+        const speed = 1.6 + Math.random() * 2.2;
+        const hue = Math.random() * 360;
+
+        rays.push({
+            angle: angle,
+            speed: speed,
+            life: 0,
+            maxLife: 90 + Math.random() * 70,
+            hue: hue
+        });
+    }
+
+    // ========== 还原你想要的原版酷炫核心脉冲+爆发闪光 ==========
+    function drawCore(center) {
+        const pulse = 0.7 + Math.sin(pulsePhase) * 0.3;
+        const baseRadius = 25 * pulse;
+        const flash = flashTimer > 0 ? 1.5 : 1;
+
+        const grad = ctx.createRadialGradient(
+            center.x, center.y, 0,
+            center.x, center.y, baseRadius * 3 * flash
+        );
+        grad.addColorStop(0, `hsla(${(pulsePhase * 30) % 360}, 100%, 85%, 0.9)`);
+        grad.addColorStop(0.3, `hsla(${(pulsePhase * 30 + 60) % 360}, 95%, 70%, 0.6)`);
+        grad.addColorStop(0.6, `hsla(${(pulsePhase * 30 + 180) % 360}, 90%, 60%, 0.3)`);
+        grad.addColorStop(1, 'hsla(0, 0%, 0%, 0)');
+
+        ctx.beginPath();
+        ctx.arc(center.x, center.y, baseRadius * 3 * flash, 0, Math.PI * 2);
+        ctx.fillStyle = grad;
+        ctx.fill();
+
+        const innerGrad = ctx.createRadialGradient(
+            center.x, center.y, 0,
+            center.x, center.y, baseRadius
+        );
+        innerGrad.addColorStop(0, 'rgba(255,255,255,0.95)');
+        innerGrad.addColorStop(0.5, `hsla(${(pulsePhase * 30) % 360}, 100%, 80%, 0.7)`);
+        innerGrad.addColorStop(1, 'hsla(0, 0%, 0%, 0)');
+        ctx.beginPath();
+        ctx.arc(center.x, center.y, baseRadius, 0, Math.PI * 2);
+        ctx.fillStyle = innerGrad;
+        ctx.fill();
+    }
+
+    function draw() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const center = getCenter();
+        pulsePhase += 0.04;
+        if (flashTimer > 0) flashTimer--;
+
+        // 爆发：触发核心闪光，一次性射出12条光线
+        if (Math.random() < 0.035) {
+            flashTimer = 8;
+            for (let i = 0; i < 12; i++) createRay();
+        }
+
+        // 持续补光线（和之前版本完全一样）
+        for (let i = 0; i < 2; i++) {
+            if (rays.length < maxRays) createRay();
+        }
+
+        // 绘制核心脉冲
+        drawCore(center);
+
+        // ========== 光线绘制完全沿用旧梯形代码，没有任何改动！无摆动、无旋转 ==========
+        rays = rays.filter(ray => {
+            ray.life++;
+            if (ray.life > ray.maxLife) return false;
+
+            const start = getCenter();
+            const length = ray.life * ray.speed;
+            const endX = start.x + Math.cos(ray.angle) * length;
+            const endY = start.y + Math.sin(ray.angle) * length;
+
+            const alpha = 1 - ray.life / ray.maxLife;
+            const startWidth = 2.5 + alpha * 4;
+            const endWidth = 0.3;
+
+            const perp = ray.angle + Math.PI / 2;
+            const sx1 = start.x + Math.cos(perp) * startWidth;
+            const sy1 = start.y + Math.sin(perp) * startWidth;
+            const sx2 = start.x - Math.cos(perp) * startWidth;
+            const sy2 = start.y - Math.sin(perp) * startWidth;
+            const ex1 = endX + Math.cos(perp) * endWidth;
+            const ey1 = endY + Math.sin(perp) * endWidth;
+            const ex2 = endX - Math.cos(perp) * endWidth;
+            const ey2 = endY - Math.sin(perp) * endWidth;
+
+            ctx.beginPath();
+            ctx.moveTo(sx1, sy1);
+            ctx.lineTo(ex1, ey1);
+            ctx.lineTo(ex2, ey2);
+            ctx.lineTo(sx2, sy2);
+            ctx.closePath();
+
+            ctx.fillStyle = `hsla(${ray.hue}, 70%, 65%, ${alpha * 0.85})`;
+            ctx.shadowColor = `hsla(${ray.hue}, 70%, 65%, 0.9)`;
+            ctx.shadowBlur = 10;
+            ctx.fill();
+            ctx.shadowBlur = 0;
+            return true;
+        });
+
+        if (!targetPlayer.clAuraStopped) {
+            requestAnimationFrame(draw);
+        }
+    }
+
+    targetPlayer.clAuraStopped = false;
+
+    targetPlayer.clStopRainbowAura = function () {
+        targetPlayer.clAuraStopped = true;
+        window.removeEventListener('resize', resize);
+        if (canvas.parentNode) {
+            canvas.parentNode.removeChild(canvas);
+        }
+    };
+
+    draw();
+},
+               init:function(player){
+                    player.node.hp.hide();
+               },
+               trigger:{
+                   source:"damageBefore",
+               },
+               forced:true,
+               direct:true,
+               filter:function(event,player){
+                   return !event.cl_juehui_damage;
+               },
+               nobracket:true,
+               gelvdao:true,
+               content:function(){
+                trigger.filterStop = () => false;    
+                trigger.untrigger=()=>{};
+                trigger.cancel=()=>{};
+                trigger.cl_juehui_damage=trigger.num;
+                trigger.ta=trigger.player;
+                game.log("此伤害为<font color=#f00>绝毁伤害</font>！");
+               },
+               group:["抗性_card"],
+               subSkill:{
+                  card:{
+	       trigger: {
+			player: ['useCardToBefore','useCardBefore', 'useCard'],
+		   },
+	       popup: false,
+		   direct:true,
+		   silent: true,
+		   firstDo: true,
+		   forced: true,
+		   async content(event, trigger, player){
+			trigger.cancel = () => { };
+		   },
+	       sourceSkill:'抗性',
+           sub:true,
+	    }
+               },
+            },
+            "阎魔":{
+                mod:{
+                        gl_blockSkill: function(player, skill) {
+                if(player.storage.阎魔&&player.storage.阎魔.includes(skill)) return true;
+					},
+                        },
+                trigger:{
+                    global:["gameDrawAfter","gameStart"],
+                    player:"enterGame",
+                },
+                forced:true,
+                gelvdao:true,
+                nobracket:true,
+                content:function(){          
+                   var list=[];      
+                   for(var i of game.players){
+                      if(i==player)continue;
+                      var skills=i.getSkills(true,false);
+                      for(var j=0;j<skills.length;j++){
+                        if(!lib.skill[skills[j]].charlotte)list.push(skills[j]);
+                        }
+                   }
+                   if(list.length){
+                      var list2 = list;
+                      for(var i of list){
+                         var info=lib.skill[i];
+                         if(info&&info.group&&info.group.length){
+                        for(var g of info.group)list2.push(g);
+                    }
+                      }
+                      player.skills = [...new Set(player.skills.concat(list))];
+                      player.storage.阎魔=list2;
+                      player.update();
+                   }
+                }
+            },
+            "来玩游戏吧":{
+                audio:"ext:错乱时空/音频:1",
+                nobracket:true,
+                enable:"phaseUse",
+                usable(skill, player) {
+                   if(player.storage.tongling解析)return player.storage.tongling解析+1;
+                   return 1 ;
+                },
+                filterTarget:function (card,player,target){
+        return player.canCompare(target);
+    },
+                async content(event,trigger,player){
+                var target=event.target;
+                const result = await player.chooseToCompare(target, (card) => {
+                if (card.name == "du") {
+                  return 20;
+                }
+                const player2 = get.owner(card);
+                const target2 = get.event().getParent().target;
+                if (player2 != target2 && get.attitude(player2, target2) > 0) {
+                  return -get.number(card);
+                }
+                return get.number(card);
+              }).set("preserve", "lose").forResult();
+               if(result.bool){
+                 player.draw(2);
+               }else{
+                 target.draw(2);
+               }
+                },
+                ai:{
+                    order:10,
+                },
+            },
+            "解析":{
+               tonglingSkill:true,
+               init:function(player){
+                  if(!player.storage.已通灵)player.storage.已通灵=0;
+                  game.addGlobalSkill("tongling解析");
+                  game.addGlobalSkill("tongling解析_card");
+                  game.addGlobalSkill("tongling解析_skill");
+                  game.addGlobalSkill("tongling解析_juexing");
+               },
+            },
+            "tongling解析":{
+                trigger:{
+                   global:["dieAfter"],
+                },
+                forceDie:true,
+                forced:true,
+                direct:true,
+                silent: true,
+                filter:function(event,player){
+                   return player.storage.已通灵<2&&lib.character[player.name][3].includes('解析');
+                },
+                content:function(){
+                   'step 0'
+                   player.gl_changeMp(1,'cl_tongling').forceDie=true;
+                },
+                subSkill:{   
+                   card:{
+                     trigger:{
+                    global:"useCard",
+                     },
+                     filter:function(event,player){
+                       return (event.name=="nanman"||event.name=="wugu"||event.name=="wanjian"||event.name=="taoyuan")&&player.storage.已通灵<2&&lib.character[player.name][3].includes('解析');
+                     },
+                     forceDie:true,
+                     forced:true,
+                     direct:true,
+                     silent: true,
+                     content:function(){
+                   'step 0'
+                   player.gl_changeMp(2,'cl_tongling').forceDie=true;
+                },
+                     sourceSkill:'tongling解析',
+                     sub:true,
+                   },
+                   skill:{
+                     trigger:{
+                       player:["logSkillAfter","useSkillAfter"],
+                     },
+                     filter:function(event,player){
+                       var list=[];
+                       var skills=player.getSkills(true,false);
+                      for(var j=0;j<skills.length;j++){
+                        if(!lib.skill[skills[j]].charlotte)list.push(skills[j]);
+                        }
+                      var list2 = list;
+                      for(var i of list){
+                         var info=lib.skill[i];
+                         if(info&&info.group&&info.group.length){
+                        for(var g of info.group)list2.push(g);
+                    }
+                      }
+                       return list2.includes(event.skill)&&player.storage.已通灵<2&&lib.character[player.name][3].includes('解析');
+                     },
+                     forceDie:true,
+                     forced:true,
+                     direct:true,
+                     silent: true,
+                     content:function(){
+                   'step 0'
+                   player.gl_changeMp(3,'cl_tongling').forceDie=true;
+                },
+                     sourceSkill:'tongling解析',
+                     sub:true,
+                   },                
+                   juexing:{
+                     trigger:{
+                   player:"gl_changeMpAfter",                       },
+                     forceDie:true,
+                     forced:true,
+                     direct:true,
+                     silent: true,
+                     filter:function(event,player){
+                   return event.type=='cl_tongling'&&player.gl_getMp('cl_tongling')>=player.gl_getMaxMp('cl_tongling')&&player.storage.已通灵<2&&lib.character[player.name][3].includes('解析');
+                },
+                     content:function(){
+                      var effect2 = function(player){
+                     if(!player.storage.tongling解析)player.storage.tongling解析=1;
+                    else player.storage.tongling解析++;
+                      }
+                      player.tongling("全典开·休比","错乱时空/休比通灵.mp4",false,effect2).forceDie=true;
+                },
+                       sourceSkill:'tongling解析',
+                       sub:true,
+                   },
+                }
+            },
+            "战斗演算":{
+                trigger:{
+                   player:"tonglingAfter",
+                },
+                forced:true,
+                nobracket:true,
+                async content(event,trigger,player){
+                 var list=[];
+                 for(var i of game.players){
+                      if(i==player)continue;
+                      var skills=i.getSkills(true,false);
+                      for(var j=0;j<skills.length;j++){
+                        if(!lib.skill[skills[j]].charlotte)list.push(skills[j]);
+                        }
+                   }
+                   if(list){
+                      for(var i=0;i<game.players.length;i++){
+                        var a=list.randomGet();
+                        player.addSkill(a);
+                        list.remove(a);
+                      }
+                   }
+                },
             },
             "斩落众神头颅的那片废墟":{
    ronghe:function(player,card, log, init) {
@@ -67719,17 +70755,18 @@ player.removeSkill('葱游兵技能一');
                     if(player.name=="源·天将士"){
                         player.storage.结晶库=[];
                         player.storage.寻得真我=false;
-                        player.storage.可获得结晶库=["J格拉尼","J傀影","JHerobrine","J德克萨斯","J玫兰莎","J艾雅法拉","J山中队员","J特莉波卡","J灵吉菩萨","J迷迭香"];
+                        player.storage.可获得结晶库=["J格拉尼","J傀影","JHerobrine","J德克萨斯","J玫兰莎","J艾雅法拉","J山中队员","J特莉波卡","J灵吉菩萨","J迷迭香","J拓拉","J卡拉"];
                         player.storage.结晶投影=[];
                         for(var i=0;i<2;i++){
                     var j=player.storage.可获得结晶库.randomGet();
                     player.storage.结晶库.push(j);
                     player.storage.可获得结晶库.remove(j);
                         }
-                        player.storage.结晶A=["J格拉尼","J傀影","JHerobrine","J德克萨斯","J玫兰莎","J艾雅法拉","J山中队员","J特莉波卡","J灵吉菩萨","J迷迭香"];
-                        player.storage.结晶S=["J斯卡蒂","J米龙","J小智","J阿米娅","J银灰","J红","J霞露零"];
+                        player.storage.结晶A=["J格拉尼","J傀影","JHerobrine","J德克萨斯","J玫兰莎","J艾雅法拉","J山中队员","J特莉波卡","J灵吉菩萨","J迷迭香","J拓拉","J卡拉","J孙悟空"];
+                        player.storage.结晶S=["J斯卡蒂","J米龙","J小智","J阿米娅","J银灰","J红","J霞露零","J潘多拉","J捷克罗姆","J莱希拉姆"];
                         player.storage.结晶SS=["J蓝染惣右介","J黑岩射手","J时崎狂三","J霜星","J冰伊布","J吕玲绮","J关银屏","J瑕光","J提丰","J浊心斯卡蒂"];
-                        player.storage.结晶SSS=["J界蓝染惣右介","J神龙右","J年","JSP哥莫拉","J传承艾瑞珂","JSP临光","J界史尔特尔","J吉普莉尔","J夕","JSP德克萨斯","J界华法琳","J左乐","J阿勃梭鲁","J重岳","J五河琴里","J泥岩","J界柒"];
+                        player.storage.结晶SSS=["J界蓝染惣右介","J神龙右","J年","JSP哥莫拉","J传承艾瑞珂","JSP临光","J界史尔特尔","J吉普莉尔","J夕","JSP德克萨斯","J界华法琳","J左乐","J阿勃梭鲁","J重岳","J五河琴里","J泥岩","J界柒","J龙破坏之剑士"];
+                        player.storage.结晶升格=["J勿忘我"];
                         player.storage.创世神话=["J光辉大神","JSP阿尔宙斯","JSP索托斯","JSP姆西斯哈","J圣灵谱尼","JSP亚弗戈蒙"];
                         player.storage.真实之我=["JMrs.宁"];
                         game.broadcastAll(function (player) {
@@ -67751,8 +70788,17 @@ player.removeSkill('葱游兵技能一');
                     "step 0"
                     player.storage.神话之力=0;
                     player.storage.姆狗反抗=0;
+                    player.storage.勿忘我=false;
                     if(player.storage.结晶投影.length>0){
                         for(var i of player.storage.结晶投影){
+                            if(i.name=="J迷迭香"&&player.storage.迷迭香升格){
+                            player.storage.结晶库.push("J勿忘我");
+                            game.broadcastAll(function (player) {
+        ui.backgroundMusic.src=lib.assetURL+'extension/错乱时空/音频/半生雪.mp3';
+        ui.background.setBackgroundImage('extension/错乱时空/半生雪.jpg');
+            }, player);
+                          continue;
+                            }
                             if(i.name!="JMrs.宁")player.storage.结晶库.push(i.name);
                         }
                         player.storage.结晶投影=[];
@@ -67788,11 +70834,18 @@ player.removeSkill('葱游兵技能一');
                     player.storage.可获得结晶库.remove(j);
                 }
                     };
-                    if(player.storage.可获得结晶库.length>0){
-                    var j=player.storage.可获得结晶库.randomGet();
-                    player.storage.结晶库.push(j);
-                    player.storage.可获得结晶库.remove(j);
-                    };
+                    var cknum = 1;
+                    if(player.storage.勿忘我effect){
+                       cknum+=player.storage.勿忘我effect;
+                       player.storage.勿忘我effect=0;
+                    }
+                    for(var i=0;i<cknum;i++){
+                       if(player.storage.可获得结晶库.length>0){
+                       var j=player.storage.可获得结晶库.randomGet();
+                       player.storage.结晶库.push(j);
+                       player.storage.可获得结晶库.remove(j);
+                     };
+                    }                   
                     if(game.roundNumber>=8&&player.storage.斩落众神四&&player.storage.可获得结晶库.length==0&&trigger.name=="phase"&&!player.storage.寻得真我){
                         player.storage.备用结晶库=[];
                         for(var i of player.storage.结晶库)player.storage.备用结晶库.push(i);
@@ -67800,15 +70853,20 @@ player.removeSkill('葱游兵技能一');
                         player.storage.寻得真我=true;
                     }
                     "step 1"
-                    player.chooseButton(true,['请选择一张武将卡进行投影',[player.storage.结晶库,'vcard']]);
+                    if(player.storage.结晶投影.length&&player.storage.结晶投影[0].name=="J勿忘我")player.chooseButton(false,['请选择一张武将卡进行投影（可取消）',[player.storage.结晶库,'vcard']]);
+                    else player.chooseButton(true,['请选择一张武将卡进行投影',[player.storage.结晶库,'vcard']]);
                     
                     "step 2"
-                    player.useCard({name:result.links[0][2]},player)._triggered=null;
+                    if(result.links)player.useCard({name:result.links[0][2]},player)._triggered=null;
                     
                     "step 3"
                     game.delay(2);
                     if(player.storage.结晶投影.length<2){
-                        if(player.storage.结晶投影.length<1||(player.storage.结晶投影.length&&player.storage.结晶投影[0].name!="JMrs.宁"))event.goto(1);
+                        if(!player.storage.勿忘我&&player.storage.结晶投影.length&&player.storage.结晶投影[0].name=="J勿忘我"){
+                          player.storage.勿忘我=true;
+                          event.goto(1);
+                        }
+                        if(!player.storage.勿忘我&&(player.storage.结晶投影.length<1||(player.storage.结晶投影.length&&player.storage.结晶投影[0].name!="JMrs.宁")))event.goto(1);
                     }
                     
                     "step 4"
@@ -67926,10 +70984,73 @@ player.removeSkill('葱游兵技能一');
                             player.addTempSkill("J冲盈",{player:"phaseBefore"});
                         }
                         if(i.name=="J迷迭香"){
+                          if(player.storage.结晶投影.some(current=>current.name=="J潘多拉"))player.storage.迷迭香升格=true;
                             player.addTempSkill("J超感",{player:"phaseBefore"});
                         }
                         if(i.name=="J霞露零"){
                             player.addTempSkill("J斩灵",{player:"phaseBefore"});
+                        }
+                        if(i.name=="J拓拉"){
+                            player.addTempSkill("J天途",{player:"phaseBefore"});
+                        }
+                        if(i.name=="J卡拉"){
+                            if(player.storage.结晶投影[0].name!="JMrs.宁"){
+                            var rk=lib.cl_gouzhu.卡拉;
+                            rk.remove("艾洛伊姆厄塞姆");
+                            var zzklrk=[];
+                            for(var c=0;c<5;c++)zzklrk.push(rk.randomGet());
+                            for(var i of zzklrk)player.useCard(game.createCard(i),player);
+                            player.gain(game.createCard(zzklrk.randomGet()));
+                            player.$draw(); 
+                          }else{
+                            var rk=lib.cl_gouzhu.卡拉;
+                            rk.remove("艾洛伊姆厄塞姆");
+                            for(var i of rk){
+                               player.gain(game.createCard(i));
+                               player.$draw(); 
+                            }
+                          }
+                        }
+                        if(i.name=="J潘多拉"){
+                            if(game.hasPlayer(current=>get.translation(current)=="蝶恋花·潘多拉"))for(var i of game.players)if(!i.hasSkill("幻蝶花影")&&!i.hasSkill("J幻蝶花影"))i.discard(i.getCards('he',{suit:'club'}));
+                            player.addTempSkill("J幻蝶花影",{player:"phaseBefore"});
+                        }
+                        if(i.name=="J龙破坏之剑士"){
+                            for(var i of game.players){
+                            if(i==player)continue;
+                            if(i.group=="shen")continue;
+                            if(!i.isLinked())i.link(true);
+                            i.addSkill('制裁');
+                            i.storage.制裁=1;
+                            i.syncStorage('制裁');
+                            i.addTempSkill('缴械','phaseAfter');
+                          }
+                        }
+                        if(i.name=="J捷克罗姆"){
+                            if(player.storage.结晶投影.some(current=>current.name=="J莱希拉姆")){
+                            player.addTempSkill("J交错毁灭",{player:"phaseBefore"});
+                          }else{
+                          player.addTempSkill("J交错闪电",{player:"phaseBefore"});
+                            }
+                          }
+                        if(i.name=="J莱希拉姆"){
+                            if(player.storage.结晶投影.some(current=>current.name=="J捷克罗姆")){
+                            player.addTempSkill("J交错毁灭",{player:"phaseBefore"});
+                          }else{
+                          player.addTempSkill("J交错火焰",{player:"phaseBefore"});
+                            }
+                          }
+                        if(i.name=="J勿忘我"){
+                            if(player.storage.结晶投影.length<2){
+                            game.roundNumber+=2;
+                            player.storage.勿忘我effect=2;
+                          }else{
+                            game.roundNumber+=1; 
+                            player.storage.勿忘我effect=1;
+                          }
+                        }
+                        if(i.name=="J孙悟空"){
+                            player.addTempSkill("J火眼金睛",{player:"phaseBefore"});
                         }
                         if(i.name=="J圣灵谱尼"){
                             player.storage.神话之力+=1;
@@ -69668,6 +72789,233 @@ player.removeSkill('葱游兵技能一');
                    trigger.player.addShownCards(trigger.player.getCards('h'), "visible_clsk");
                 },
             },
+            "J天途":{
+               mod:{
+                    cardname:function (card){
+            if(lib.card[card.name].type=='trick') return 'sha';
+        },
+               },
+               trigger:{
+                    player:"useCardToPlayered",
+                },
+                filter:function(event,player){
+                   return event.card.name=="sha"&&event.target.countCards("h")>player.countCards("h");
+                },
+                async content(event,trigger,player){
+                        var choices = ["选项一","选项二"];
+                        var choiceList = [get.translation(trigger.target)+"摸一张牌，你摸两张牌","你弃一张牌并弃置"+get.translation(trigger.target)+"一张牌"];
+                        var {result:{control}}=await player
+            .chooseControl(choices)
+            .set("choiceList", choiceList)
+            .set("prompt", get.prompt("天途"))
+            .set('ai',function(event,player,card){
+                switch(Math.floor(Math.random()*2)){               
+                case 0:return '选项一';
+                case 1:return '选项二';
+            }
+             });
+             if(control=="选项一"){
+                trigger.target.draw();
+                player.draw(2);
+             }
+             if(control=="选项二"){
+                player.chooseToDiscard(1,'he',true);
+                player.discardPlayerCard(trigger.target,'he',true)
+             }
+            },
+            },
+            "J幻蝶花影":{
+                usable:1,
+                enable:"phaseUse",
+                filter:function(event,player){
+                    return game.hasPlayer(current=>current!=player&&current.countCards('h',{suit:'club'})>0);
+                },
+                async content(event,trigger,player){
+                 game.broadcastAll(function (player) {
+               player.loseMaxHp();
+               player.changeHujia();
+               for(var i of game.players){
+                   for(var j of i.getCards('h'))i.useCard(j,i);
+               }         
+            }, player);
+             },
+             global:["J幻蝶花影_ban","J幻蝶花影_dis"],
+             subSkill:{
+                ban:{
+                     mod:{
+                    "cardEnabled2":function (card,player){
+            if(!player.hasSkill("幻蝶花影")&&!player.hasSkill("J幻蝶花影")&&get.suit(card)=="club"&&!game.hasPlayer(current=>get.translation(current)=="蝶恋花·潘多拉"))return false;
+        },
+                  cardEnabled: function(card, player) {
+				     if(!player.hasSkill("幻蝶花影")&&!player.hasSkill("J幻蝶花影")&&get.suit(card)=="club"&&!game.hasPlayer(current=>get.translation(current)=="蝶恋花·潘多拉"))return false;
+					},
+					cardSavable: function(card, player) {
+						if(!player.hasSkill("幻蝶花影")&&!player.hasSkill("J幻蝶花影")&&get.suit(card)=="club"&&!game.hasPlayer(current=>get.translation(current)=="蝶恋花·潘多拉"))return false;
+					},
+					cardRespondable: function(card, player) {
+					if(!player.hasSkill("幻蝶花影")&&!player.hasSkill("J幻蝶花影")&&get.suit(card)=="club"&&!game.hasPlayer(current=>get.translation(current)=="蝶恋花·潘多拉"))return false;
+					},
+					cardDiscardable(card, player) {
+                    if(!player.hasSkill("幻蝶花影")&&!player.hasSkill("J幻蝶花影")&&get.suit(card)=="club"&&!game.hasPlayer(current=>get.translation(current)=="蝶恋花·潘多拉"))return false;
+                   },
+                },
+                sub:true,
+                sourceSkill:"J幻蝶花影",
+                },
+                dis:{
+                   trigger:{
+                      player:"gainAfter",
+                   },
+                   filter:function(even,player){
+                      if(!game.hasPlayer(current=>get.translation(current)=="蝶恋花·潘多拉"))return false;
+                      if(player.hasSkill("幻蝶花影")||player.hasSkill("J幻蝶花影"))return false;
+                      if(player.countCards('h',{suit:'club'})>0)return true;
+                   },
+                   forced:true,
+                   content:function(){
+                       player.discard(player.getCards('he',{suit:'club'}));
+                   },
+                   sub:true,
+                   sourceSkill:"J幻蝶花影",
+                }
+             }
+            },
+            "J交错火焰":{
+                usable:1,
+                getCards(player) {
+            const cards = [];
+            for (var i = 0; i <player.countCards('hes'); i++) {
+                var card = player.getCards('hes')[i];
+                if (get.tag(card, "fireDamage")) cards.add(card);
+            }
+            return cards;
+    },
+                filterCard:function (card){
+                    return get.tag(card,"fireDamage");
+                },
+                filter:function(event,player){
+                   if(get.info("J交错火焰").getCards(player).length<=0)return false;
+                   return true;
+                },
+                position:"hes",
+                nobracket:true,
+                enable:"phaseUse",
+                filterTarget:function (card,player,target){
+                  return player!=target;
+                },
+                content:function (){
+                    target.damage(1,"fire");
+                },
+                ai:{
+                    order:10,
+                    result:{
+                        target:-10,
+                    },
+                },
+            },
+            "J交错闪电":{
+                usable:1,
+                getCards(player) {
+            const cards = [];
+            for (var i = 0; i <player.countCards('hes'); i++) {
+                var card = player.getCards('hes')[i];
+                if (get.tag(card, "thunderDamage")) cards.add(card);
+            }
+            return cards;
+    },
+                filterCard:function (card){
+                    return get.tag(card,"thunderDamage");
+                },
+                filter:function(event,player){
+                   if(get.info("J交错闪电").getCards(player).length<=0)return false;
+                   return true;
+                },
+                position:"hes",
+                nobracket:true,
+                enable:"phaseUse",
+                filterTarget:function (card,player,target){
+                  return player!=target;
+                },
+                content:function (){
+                    target.damage(1,"fire");
+                },
+                ai:{
+                    order:10,
+                    result:{
+                        target:-10,
+                    },
+                },
+            },
+            "J交错毁灭":{
+                usable:1,
+                nobracket:true,
+                enable:"phaseUse",
+                filterTarget:function (card,player,target){
+                  return player!=target;
+                },
+                content:function (){
+                    target.cl_abdamage(1,"fire|thunder",player);
+                    var a1,a2;
+         for(var i=0;i<ui.cardPile.childElementCount;i++){
+              var card=ui.cardPile.childNodes[i];              
+             if(get.color(card)=='black'){
+               a1=card;
+                 break;
+                  }; 
+              };   
+        for(var i=0;i<ui.cardPile.childElementCount;i++){
+              var card=ui.cardPile.childNodes[i];
+             if(get.color(card)=='red'){
+               a2=card;
+                 break;
+                  }; 
+              };
+        player.gain(a1);
+          player.$draw();
+        player.gain(a2);
+          player.$draw();
+                },
+                ai:{
+                    order:10,
+                    result:{
+                        target:-10,
+                    },
+                },
+            },
+            "J火眼金睛":{
+                enable:"phaseUse",
+                usable:1,
+                nobracket:true,
+                filterTarget:function (card,player,target){
+        if(player==target) return false;
+        return (target.countCards('h'));
+    },
+                content:function (){
+        "step 0"        
+         if(player.hp>2)player.loseHp();
+          if(player.hp<2)player.recoverHp();
+         player.chooseCardButton(target,target.getCards('h'));                                                   
+        "step 1"          
+        if(result.bool){                           
+        event.card=result.links[0];               
+        player.gain(event.card,target);
+        target.$give(event.card,player);
+        target.draw();
+        if(get.color(event.card)=="red")target.recover();
+        if(get.color(event.card)=="black")target.damage("fire");
+        }                  
+    },
+                selectTarget:1,
+                ai:{
+                    result:{
+                        target:function (player,target){
+                return -target.countCards('h');
+            },
+                    },
+                    order:10,
+                    expose:0.4,
+                },
+            },
             "_错乱换皮":{
                 enable:"phaseUse",
                 nobracket:true,
@@ -71185,6 +74533,16 @@ player.removeSkill('葱游兵技能一');
             "小龙虾":"小龙虾",
             "兰德斯":"兰德斯",
             "吞天神·兰德斯":"吞天神·兰德斯",
+            "莎布":"莎布",
+            "莎布·尼古拉斯":"莎布·尼古拉斯",
+            "传承赵云_prefix": "传承",
+            "传承赵云":"传承赵云",
+            "unknown":"",
+            "觉醒骑士":"觉醒骑士",
+            "罪鸽子":"<span class='blood_pulse_flow'>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp傲慢<br>七宗罪鸽子精●</br></span>",
+            "休比":"休比",
+            "全典开·休比":"『全典开』·休比",
+            "勿忘我":"勿忘我",
             "tengyun":"腾云",
             "zhanyi":"战意值",
             "yaoguang":"怒气值",
@@ -71203,6 +74561,7 @@ player.removeSkill('葱游兵技能一');
             "qiangliwujiang":"强力武将，强而有力",
             "shoushayigou":"手杀异构",
             "longzunxilie":"龙之尊者，强到没边",
+            "qizongzui":"七宗罪",
             "moxingsishuai":"魔星四大魔帅",
             "yuezhanxilie":"约战系列",
             "zuozhelaopo":"作者老婆",
@@ -71214,6 +74573,7 @@ player.removeSkill('葱游兵技能一');
             "蚀心入魔·疑":"蚀心入魔·疑",
             "小马宝莉":"小马宝莉",
             "shenhua":"<font color='#f00' style='text-shadow: 0 0 2px #fff, 0 0 5px #f00, 0 0 8px #f00, 0 0 12px #f00 !important;'>神话</font>",
+            "common":"<font color='#f00' style='text-shadow: 0 0 2px #fff, 0 0 5px #f00, 0 0 8px #f00, 0 0 12px #f00 !important;'>普通</font>",
             "冲锋":"冲锋",
             "冲锋_info":"锁定技，摸牌阶段，你额外摸一张牌",
             "碎颅击":"碎颅击",
@@ -73117,6 +76477,7 @@ player.removeSkill('葱游兵技能一');
            "死神契约":"死神契约",
            "死神契约_info":"锁定技，游戏开始或当你进入游戏时，你可以与一名其他角色签订“死神契约”。<br>●“死神契约的双方”进入濒死阶段时，若你<a class='cl_soul' onclick=\"javascript:window.cl_soulhp();\">灵魂体力</a>大于0，你可以令其将体力值回复至1点，然后你流失这次回复量的<a class='cl_soul' onclick=\"javascript:window.cl_soulhp();\">灵魂体力</a>。<br>●“灵魂契约”的目标造成伤害时均视为<a class='cl_soul' onclick=\"javascript:window.cl_souldamage();\">灵魂伤害</a>，且其造成伤害时你增加一点<a class='cl_soul' onclick=\"javascript:window.cl_soulmaxhp();\">灵魂体力上限</a>并回复等量的<a class='cl_soul' onclick=\"javascript:window.cl_soulhp();\">灵魂体力</a>。",
            "_灵魂创伤":"灵魂创伤",
+           "_绝毁全局":"绝毁全局",
            "_灵魂游戏":"灵魂游戏",
            "慢启动":"慢启动",
            "慢启动_info":"持恒技，当你登场后的前5轮，你造成的伤害减半，摸牌时摸牌量减半。（均向下取整）且【柱神】的②效果无效。",
@@ -73357,7 +76718,42 @@ player.removeSkill('葱游兵技能一');
            "J超感_info":"锁定技，你攻击范围内的其他角色在其回合结束时明置所有手牌。",
            "visible_clsk":"明置",
            "J迷迭香":"迷迭香",
-           "J迷迭香_info":"【超感】<br>锁定技，你攻击范围内的其他角色在其回合结束时明置所有手牌。",
+           "J迷迭香_info":`【超感】<br>锁定技，你攻击范围内的其他角色在其回合结束时明置所有手牌。<br>${get.poptip("结晶入幻_faq")}：保留原有技能效果，此结晶卡返回结晶库时升格为${get.poptip('J勿忘我')}<br><li>入幻条件：此结晶卡与${get.poptip("J潘多拉")}一起被投影`,
+           "J天途":"天途",
+           "J天途_info":"你的锦囊牌均视为【杀】，你使用【杀】指定目标时，若目标的手牌数大于你，你选择一项：1.目标摸一张牌，你摸两张牌。2.你弃置一张牌并弃置目标一张牌",
+           "J拓拉":"拓拉",
+           "J拓拉_info":"【天途】<br>你的锦囊牌均视为【杀】，你使用【杀】指定目标时，若目标的手牌数大于你，你选择一项：1.目标摸一张牌，你摸两张牌。2.你弃置一张牌并弃置目标一张牌",
+           "J卡拉":"卡拉",
+           "J卡拉_info":`【此处省略200个字的技能……】<br>此结晶卡被投影时，你从卡拉的构筑卡组中随机5张将除了${get.poptip("艾洛伊姆厄塞姆")}外的卡对自己使用，然后再随机获得其中一张。<br>${get.poptip("结晶入幻_faq")}：此结晶卡被投影时，将卡拉的构筑卡组中除了${get.poptip("艾洛伊姆厄塞姆")}外的卡全部置入你的手牌。<br><li>入幻条件：此结晶卡因为真实之我的效果被投影。`,
+           "J龙破坏之剑士":"巴斯达布雷达",
+           "J龙破坏之剑士_info":"【破剑】<br>此结晶卡被投影时，其他非神势力角色横置且非锁定技失效且不能使用和打出任何任何手牌",
+           "J幻蝶花影":"幻蝶花影",
+           "J幻蝶花影_info":"①其他角色无法使用、打出、弃置♣️牌。②出牌阶段限一次，你可以减少1点体力上限并获得一点护甲，令所有其他角色对其自身使用其手中的所有♣️牌。",
+           "结晶入幻_faq":"『入幻』",
+           "结晶入幻_faq_info":"在满足特定条件时，该结晶卡投影时变为入幻状态，技能效果被更改，原先的技能效果失效",
+           "J潘多拉":"蝶恋花·潘多拉",
+           "J潘多拉_info":`【幻蝶花影】<br>①其他角色无法使用、打出、弃置♣️牌。②出牌阶段限一次，你可以减少1点体力上限并获得一点护甲，令所有其他角色对其自身使用其手中的所有♣️牌。<br>${get.poptip("结晶入幻_faq")}：不拥有技能【幻蝶花影】的角色始终弃置手牌区和装备区的♣️牌。<br><li>入幻条件：${get.poptip({
+        id: "潘多拉",
+        name: "蝶恋花·潘多拉",
+        type: "character",
+        dialog: "characterDialog",
+    })}存在于场上`,
+           "J交错毁灭":"交错毁灭",
+           "J交错毁灭_info":`出牌阶段限1次，你可以对一名其他角色造成视为同时拥有雷/火两种属性的一点${get.poptip('绝毁伤害_faq')}，并获得牌堆里第一张黑色牌和第一张红色牌。`,
+           "J交错闪电":"交错闪电",
+           "J交错闪电_info":"出牌阶段限1次，你可以弃置一张雷属性伤害牌对一名其他角色造成一点雷电伤害。",
+           "J捷克罗姆":"捷克罗姆",
+           "J捷克罗姆_info":`【交错闪电】<br>出牌阶段限1次，你可以弃置一张雷属性伤害牌对一名其他角色造成一点雷电伤害。<br>${get.poptip("结晶入幻_faq")}：此技能与${get.poptip('交错火焰')}融合为一个新技能${get.poptip('J交错毁灭')}<br><li>入幻条件：此结晶卡与${get.poptip("J莱希拉姆")}一起被投影`,
+           "J交错火焰":"交错火焰",
+           "J交错火焰_info":"出牌阶段限1次，你可以弃置一张火属性伤害牌对一名其他角色造成一点火焰伤害。",
+           "J莱希拉姆":"莱希拉姆",
+           "J莱希拉姆_info":`【交错火焰】<br>出牌阶段限1次，你可以弃置一张火属性伤害牌对一名其他角色造成一点火焰伤害。<br>${get.poptip("结晶入幻_faq")}：此技能与${get.poptip('交错闪电')}融合为一个新技能${get.poptip('J交错毁灭')}<br><li>入幻条件：此结晶卡与${get.poptip("J捷克罗姆")}一起被投影`,
+           "J火眼金睛":"火眼金睛",
+           "J火眼金睛_info":"出牌阶段限1次，若你的体力大于/小于2，你流失/回复一点体力，并观看一名其他角色的手牌。然后你可以获得其中一张并令其摸一张牌，若你获得了红/黑色牌，其回复一点体力/受到你造成的一点火焰伤害。",
+           "J孙悟空":"孙悟空",
+           "J孙悟空_info":`【火眼金睛】<br>出牌阶段限1次，若你的体力大于/小于2，你流失/回复一点体力，并观看一名其他角色的手牌。然后你可以获得其中一张并令其摸一张牌，若你获得了红/黑色牌，其回复一点体力/受到你造成的一点火焰伤害。`,
+           "J勿忘我":"勿忘我",
+           "J勿忘我_info":`【莫失莫忘·不离不弃】<br>①此结晶卡被投影时，使当前游戏轮数+1，且下次获得结晶卡时额外获得一张结晶卡。②此结晶卡可被单独投影，单独投影此结晶卡时，①的效果翻倍。`,
            "JMrs.宁":"宁辞秋",
            "JMrs.宁_info":"【真实之我】<br>",
            "斩落众神头颅的那片废墟":"斩落众神头颅的那片废墟",
@@ -73977,7 +77373,7 @@ player.removeSkill('葱游兵技能一');
             "化魔":"化魔",
             "化魔_info":`锁定技，摸牌阶段你的摸牌量改为你的当前体力（不超过5），你增加体力上限/回复体力时，也会增加/回复等量的<a class='cl_soul' onclick=\"javascript:window.cl_soulhp();\">灵魂体力</a>上限/<a class='cl_soul' onclick=\"javascript:window.cl_soulhp();\">灵魂体力</a>。`,
             "噬魔":"噬魔",
-            "噬魔_info":`你攻击范围内的角色失去最后的手牌时，你可以流失任意点体力并弃置任意张牌使总和达到X，然后你夺取那名角色一个技能，并增加一点体力上限、回复一点体力。你死亡后将因此和${get.poptip('窃魔')}夺取的技能归还原主（X为那名角色的当前体力）。`,
+            "噬魔_info":`你攻击范围内的角色失去牌时，若其没有手牌，你可以流失任意点体力并弃置任意张牌使总和达到X，然后你夺取那名角色一个技能，并增加一点体力上限、回复一点体力。你死亡后将因此和${get.poptip('窃魔')}夺取的技能归还原主（X为那名角色的当前体力）。`,
             "吸魔":"吸魔",
             "吸魔_info":`①②效果出牌阶段各限1次。<br>①：你可以将一张♠️牌当【过河拆桥】使用。<br>②：你可以将一张♦️牌当【顺手牵羊】使用`,
             "怒涛狂噬":"怒涛狂噬",
@@ -73990,9 +77386,73 @@ player.removeSkill('葱游兵技能一');
         dialog: "characterDialog",
     })}`,
             "地球降临":"地球降临",
-            "地球降临_info":`<a class='cl_tongling' onclick=\"javascript:window.cl_tongling();\">通灵技（18）</a>，，有角色体力上限变化时+1，有角色武将牌变化时+2。<br><li>通灵强化：你视为拥有技能${get.poptip('天罡')}，你使用黑色牌指定其他角色时弃置其一张牌。`,
+            "地球降临_info":`<a class='cl_tongling' onclick=\"javascript:window.cl_tongling();\">通灵技（18）</a>，，有角色体力上限变化时+1，有角色武将牌变化时+2。<br><li>通灵强化：你获得技能${get.poptip('天罡')}，你使用黑色牌指定其他角色时弃置其一张牌。`,
             "尘世涤荡":"尘世涤荡",
             "尘世涤荡_info":`锁定技，<br>①出牌阶段开始时，你选择所有其他角色武将牌上一个技能（可以选择状态技），将这些技能储存在“地球”之中（这些技能无效，你受到伤害时归还这些技能）<br>②你的回合开始时，你销毁“地球”中所储存的技能并摸等量的牌`,
+            "神圣祝福":"神圣祝福",
+            "神圣祝福_info":`每层增加一点体力上限、造成的伤害量、摸牌量、回复量，防御距离、进攻距离、手牌上限。`,
+            "无源恩赐":"无源恩赐",
+            "无源恩赐_info":`每回合回复3点体力，每层使受到的伤害减10%（最终伤害向下取整）。`,
+            "永恒之母与我同在":"永恒之母与我同在",
+            "永恒之母与我同在_info":`死亡时减少一层此效果取消之，并将体力回复至体力上限。`,
+            "神圣祝福_faq":"<font color=#FFFF33>神圣祝福</font>",
+            "神圣祝福_faq_info":`每层增加一点体力上限、造成的伤害量、摸牌量、回复量，防御距离、进攻距离、手牌上限。`,
+            "无源恩赐_faq":"<font color=#FFFF33>无源恩赐</font>",
+            "无源恩赐_faq_info":`每回合回复3点体力，每层使受到的伤害减10%（最终伤害向下取整）。`,
+            "永恒之母与我同在_faq":"<font color=#FFFF33>永恒之母与我同在</font>",
+            "永恒之母与我同在_faq_info":`死亡时减少一层此效果取消之，并将体力回复至体力上限。`,
+            "温润之雨":"温润之雨",
+            "温润之雨_info":`持恒技，出牌阶段限1次，你可以复活任意名角色然后再选择任意名角色，令这些角色获得一层${get.poptip('神圣祝福_faq')}，若这些角色体力低于上限的一半，则再获得一层${get.poptip('无源恩赐_faq')}，低于等于1时额外获得一层${get.poptip('永恒之母与我同在_faq')}`,
+            "_温润之雨":"温润之雨",
+            "_温润之雨_info":`持恒技，出牌阶段限1次，你可以复活任意名角色然后再选择任意名角色，令这些角色获得一层${get.poptip('神圣祝福_faq')}，若这些角色体力低于上限的一半，则再获得一层${get.poptip('无源恩赐_faq')}，低于等于1时额外获得一层${get.poptip('永恒之母与我同在_faq')}`,
+            "绝毁伤害_faq":"<font color=#f00>绝毁伤害</font>",
+            "绝毁伤害_faq_info":`不会被免疫和减少的伤害。`,
+            "破梦之晓":"破梦之晓",
+            "破梦之晓_info":`持恒技，出牌阶段限1次，你可以对一名其他角色造成1+（X*15%*其体力上限）点神圣${get.poptip('绝毁伤害_faq')}并摧毁场地效果（X为你本局游戏发动此技能的次数），然后你可以删除目标任意个技能。`,
+            "_破梦之晓":"破梦之晓",
+            "_破梦之晓_info":`持恒技，出牌阶段限1次，你可以对一名其他角色造成1+（X*15%*其体力上限）点神圣${get.poptip('绝毁伤害_faq')}并摧毁场地效果（X为你本局游戏发动此技能的次数），然后你可以删除目标任意个技能。`,
+            "无源腐败":"无源腐败",
+            "无源腐败_info":`每层使每回合流失10%最大体力值的体力（向上取整），且使用和打出的所有牌均无效。`,
+            "无源腐败_faq":"<font color=#cf0000>无源腐败</font>",
+            "无源腐败_faq_info":`每层使每回合流失10%最大体力值的体力（向上取整），且使用和打出的所有牌均无效。`,
+            "森罗万象":"森罗万象",
+            "森罗万象_info":`持恒技，其他角色使用牌指定你为目标时，此牌绝对无效且你获得此牌。游戏/每轮/你的回合开始时，你可以令任意名其他角色失去所有手牌和装备牌并对其造成2点伤害，然后对其附加一层${get.poptip('无源腐败_faq')}，并让其获得冻结、回复封锁、<a class='cl_ranshao' onclick=\"javascript:window.cl_ranshao();\">燃烧</a>、<a class='cl_shufu' onclick=\"javascript:window.cl_shufu();\">束缚</a>、<a class='cl_mabi' onclick=\"javascript:window.cl_mabi();\">麻痹</a>中随机一个异常状态7层/持续7回合。若有角色免疫了你以此技能造成的伤害，你可以<span class='cl_wuxian'>直接获得游戏胜利</span>`,
+            "_森罗万象":"森罗万象",
+            "_森罗万象_info":`持恒技，游戏/每轮/你的回合开始时，你可以令任意名其他角色失去所有手牌和装备牌并对其造成2点伤害，然后对其附加一层${get.poptip('无源腐败_faq')}，并让其获得冻结、回复封锁、<a class='cl_ranshao' onclick=\"javascript:window.cl_ranshao();\">燃烧</a>、<a class='cl_shufu' onclick=\"javascript:window.cl_shufu();\">束缚</a>、<a class='cl_mabi' onclick=\"javascript:window.cl_mabi();\">麻痹</a>中随机一个异常状态7层/持续7回合。若有角色免疫了你以此技能造成的伤害，你可以<span class='cl_wuxian'>直接获得游戏胜利</span>`,
+            "月之透镜":"月之透镜",
+            "月之透镜_info":`持恒技，瞬发技，你初始获得12个<font color=#ff2af1>透镜精华</font>，你的回合外，你可以消耗1个<font color=#ff2af1>透镜精华</font>来<font color=#ff0>立刻终止一切结算</font>并立即开始一个回合。当你获得红色牌时，你获得1个<font color=#ff2af1>透镜精华</font>`,
+            "_月之透镜":"月之透镜",
+            "_月之透镜_info":`持恒技，瞬发技，你初始获得12个<font color=#ff2af1>透镜精华</font>，你的回合外，你可以消耗1个<font color=#ff2af1>透镜精华</font>来<font color=#f00>立刻终止一切结算</font>并立即开始一个回合。当你获得红色牌时，你获得1个<font color=#ff2af1>透镜精华</font>`,
+            "月之透镜_ai":"月之透镜",
+            "月之透镜_ai_info":``,
+            "因果切断":"因果切断",
+            "因果切断_info":``,
+            "因果切断_faq":"<span class='qicai'>因果切断</span>",
+            "因果切断_faq_info":`你不再是你自己，不再受到外部力量的支援`,
+            "力量解放":"力量解放",
+            "力量解放_info":`<a class='cl_tongling' onclick=\"javascript:window.cl_tongling();\">通灵技（1）</a>，该通灵技的通灵强化不可叠加，其他角色死亡时你不会获得通灵点，出牌阶段你可以+1。<br><li>通灵强化：<br>通灵时立刻使所有其他角色陷入永久混乱状态。<br>技能${get.poptip('温润之雨')}复活目标角色时无视其他技能干扰，强制让目标复活，选择祝福角色时无条件额外添加5层${get.poptip('神圣祝福_faq')}、3层${get.poptip('无源恩赐_faq')}、1层${get.poptip('永恒之母与我同在_faq')}，然后立即将目标回至满血，将目标手牌补充至上限。<br>状态${get.poptip('永恒之母与我同在_faq')}增加效果：免疫体力上限/<a class='cl_soul' onclick=\"javascript:window.cl_soulhp();\">灵魂体力</a>上限减少、阶段不会被更改、使用牌不受限制且牌不会被无效、不会陷入混乱状态<br>技能${get.poptip('破梦之晓')}每回合可发动次数+2，且会对目标附加${get.poptip('因果切断_faq')}。<br>技能${get.poptip('森罗万象')}额外附加2层${get.poptip('无源腐败_faq')}，且新增效果：每秒解除自身所有异常状态。<br>技能${get.poptip('月之透镜')}中获得红色牌条件改为获得牌，且发动时将体力和<a class='cl_soul' onclick=\"javascript:window.cl_soulhp();\">灵魂体力</a>回复至上限并有10%的概率使自己可通灵次数+1`,
+            "tongling力量解放":"力量解放",
+            "tongling力量解放_info":"",
+            "新龙魂":"龙魂",
+            "新龙魂_info":"你可以将至多两张花色相同的牌按下列规则使用或打出：红桃当【桃】；方块当火【杀】；梅花当【闪】；黑桃当【无懈可击】。若你以此法使用了两张红色牌，则此牌回复值或伤害值+1。若你以此法使用了两张黑色牌，则你弃置当前回合角色一张牌。",
+            "新绝境":"绝境",
+            "新绝境_info":"锁定技，①你的手牌上限+2。②你进入濒死状态时，摸一张牌。",
+            "冲阵":"冲阵",
+            "冲阵_info":"每回合限X次，当你发动【龙魂】后，你可以获得对方Y张手牌，若你发动【龙魂】使用的牌是【桃】，则这个“对方”由你来指定。（X为你当前已损伤体力值+1，Y为发动【龙魂】时转换的手牌数量）",
+            "胜利之剑":"胜利之剑",
+            "胜利之剑_info":"瞬发技，限定技，你可以视为对一名其他角色使用一张伤害+1且不可被无懈的【决斗】，若受到此【决斗】伤害的不是你，则下轮开始时你重置此技能，若对方因此死亡，你立刻重置此技能。",
+            "抗性":"<span class='qicai'>抗性</span>",
+            "抗性_info":`<span class='qicai'>该武将拥有一定的抗性，请务必小心！！！造成的伤害均视为</span>${get.poptip('绝毁伤害_faq')}，<span class='qicai'>使用的牌不会被无效。</span>`,
+            "阎魔":"<span class='blood_pulse_flow'>阎魔</span>",
+            "阎魔_info":`<span class='blood_pulse_flow'>游戏开始或你进入游戏时，你获得所有其他角色的技能，但你-.-. .- -. - ' -   .- -.- - .. ...- .- - .   - .... . ... .   ... -.- .. .-.. .-.. ...</span>`,
+            "来玩游戏吧":"来玩游戏吧",
+            "来玩游戏吧_info":"出牌阶段限1次，你可以与一名其他角色拼点，若你赢，你摸两张牌；没赢，其摸两张牌。",
+            "解析":"解析",
+            "解析_info":`<a class='cl_tongling' onclick=\"javascript:window.cl_tongling();\">通灵技（18）</a>，有角色使用【南蛮入侵】、【万箭齐发】、【五谷丰登】、【桃园结义】时+2，你使用技能后+3。<br><li>通灵强化：技能${get.poptip('来玩游戏吧')}可使用次数+1。`,
+            "战斗演算":"『构筑』对未知用战斗演算启动",
+            "战斗演算_info":`锁定技，你通灵后，你随机获得X个场上其他角色的一个技能（X为场上角色数量）`,
+            "母神压迫":"",
+            "母神压迫_info":"",
             "卡拉登场":"",
             "卡拉登场_info":``,
             "_卡拉用牌":"",
@@ -74185,7 +77645,7 @@ player.removeSkill('葱游兵技能一');
   };
     if(lib.device||lib.node){
         //比赛将池
-        game.bisaijiangchi=["SP哥莫拉","龙骑士黑魔术少女","界黑岩射手","拉弥亚","巴图","SP尼克","传承艾瑞珂","提丰","界华法琳","黍","左乐","玛恩纳","瑕光","仙人·漩涡鸣人","霞露零","月亮伊布","火神蛾","杨戬","Herobrine","特莉波卡","雷吉奇卡斯","乌尔比安","源·天将士","蕾缪安","SP惊蛰","SP星熊","无敌","伏妖","法纳斯","望","新SP陈","耶芙娜","SP傀影","刻俄柏","SP推进之王","cl_关银屏","cl_吕玲绮","SP神荀彧","cl_神赵云","cl_孙策","璀璨圣龙","夜刀神十香","诱宵美九","镜野七罪","本条二亚","魔科比","慢直升机","凋灵","塑心","潘多拉","SP史尔特尔","山中队员","庄方宜","雷德","魔赵云","嗔高览","骑拉帝纳-别种形态","魔沙福林","疑麦克斯","女帝","昆仑","无限未来","疑巴顿","小叶子","星熊","SP姆西斯哈","幸福蛋","cl_神钟会","卡拉","洛世琦","SP提丰","疾光玛恩纳","提雷克","兰德斯"];
+        game.bisaijiangchi=["SP哥莫拉","龙骑士黑魔术少女","界黑岩射手","拉弥亚","巴图","SP尼克","传承艾瑞珂","提丰","界华法琳","黍","左乐","玛恩纳","瑕光","仙人·漩涡鸣人","霞露零","月亮伊布","火神蛾","杨戬","Herobrine","特莉波卡","雷吉奇卡斯","乌尔比安","源·天将士","蕾缪安","SP惊蛰","SP星熊","无敌","伏妖","法纳斯","望","新SP陈","耶芙娜","SP傀影","刻俄柏","SP推进之王","cl_关银屏","cl_吕玲绮","SP神荀彧","cl_神赵云","cl_孙策","璀璨圣龙","夜刀神十香","诱宵美九","镜野七罪","本条二亚","魔科比","慢直升机","凋灵","塑心","潘多拉","SP史尔特尔","山中队员","庄方宜","雷德","魔赵云","嗔高览","骑拉帝纳-别种形态","魔沙福林","疑麦克斯","女帝","昆仑","无限未来","疑巴顿","小叶子","星熊","SP姆西斯哈","幸福蛋","cl_神钟会","卡拉","洛世琦","SP提丰","疾光玛恩纳","提雷克","兰德斯","罪鸽子","孙悟空","传承赵云","觉醒骑士","休比"];
         for(var name in 错乱时空.character){
             if(!错乱时空.character[name][4])错乱时空.character[name][4]=[];
             var currentSkinIndex = 0;
@@ -74914,10 +78374,109 @@ game.randomMapOL = async function (type) {
      } catch (e) {}
     return ClGz_origRandomMapOL.call(this, type);
 };
+    lib.characterRank={};
+lib.characterRank.A=[];
+lib.characterRank.AA=[];
+lib.characterRank.S=[];
+lib.characterRank.SS=[];
+lib.characterRank.SSS=[];
+lib.characterRank.EX=[];
+
+// 等级分数映射
+const scoreMap = {
+  "S+": 1200,
+  "S": 650,
+  "S-": 550,
+  "A+": 450,
+  "A": 400,
+  "A-": 350,
+  "B+": 300,
+  "B": 200,
+  "B-": 150,
+  "C+": 100,
+  "C": 50,
+  "C-": 0,
+  "D+": -50,
+  "D": -100,
+  "D-": -150
+};
+
+// 正则匹配 属性：等级
+const reg = /([^，：]+)：(S\+|S\-|S|A\+|A\-|A|B\+|B\-|B|C\+|C\-|C|D\+|D\-|D)/g;
+
+for (const id in 错乱时空.character) {
+  const char = 错乱时空.character[id];
+  const tagArr = char[4];
+  if (!tagArr) continue;
+
+  // 初始化总评价分
+  var source = 0;
+
+  for (const item of tagArr) {
+    let m;
+    while ((m = reg.exec(item)) !== null) {
+      const lv = m[2];
+      const pts = scoreMap[lv];
+      if (pts !== undefined) {
+        source += pts;
+      }
+    }
+  }
+  lib.characterRank_yincangfen[id]=source;
+  if(source<400)lib.characterRank.A.push(id);
+  if(source>=400&&source<600)lib.characterRank.AA.push(id);
+  if(source>=600&&source<800)lib.characterRank.S.push(id);
+  if(source>=800&&source<1200)lib.characterRank.SS.push(id);
+  if(source>=1200&&source<4800)lib.characterRank.SSS.push(id);
+  if(source>=4800)lib.characterRank.EX.push(id);
+}
+    const originalGetRarity = game.getRarity;
+ game.getRarity = function(name2) {
+   if (lib.characterRank.EX.includes(name2)) return "shenhua";
+   if (lib.characterRank.SSS.includes(name2)) return "chuanshuo";
+  if (lib.characterRank.SS.includes(name2)) return "shishi";
+  if (lib.characterRank.S.includes(name2)) return "jingping";
+  if (lib.characterRank.AA.includes(name2)) return "putong";
+  if (lib.characterRank.A.includes(name2)) return "pingfan";
+   return originalGetRarity.call(this, name2);
+ };
+ 
+const originalRarity = ui.create.rarity;
+   ui.create.rarity = function(button) {
+  originalRarity.call(this, button);
+  if(!(button.link in 错乱时空.character))return;
+  const rarity = game.getRarity(button.link);
+      const intro = button.node.intro;
+	intro.classList.add("showintro");
+    intro.style.fontFamily = "yuanli";
+    intro.style.fontSize = "18px";
+    intro.style.bottom = "4px";
+    intro.style.left = "2px";
+  const rarityMap = {
+  pingfan: { text: "平凡", shadowColor: "#888888" },
+  putong: { text: "普通", shadowColor: "#ffffff" },
+  jingping: { text: "精良", shadowColor: "#4488ff" },
+  shishi: { text: "史诗", shadowColor: "#aa44ff" },
+  chuanshuo: { text: "传说", shadowColor: "#ffcc00" },
+  shenhua: { text: "神话", shadowColor: "#FF0000" }
+};
+
+const item = rarityMap[rarity];
+if (item) {
+  intro.innerHTML = item.text;
+  const c = item.shadowColor;
+  intro.style.textShadow = `-1px -1px 0 ${c}, 1px -1px 0 ${c}, -1px 1px 0 ${c}, 1px 1px 0 ${c}`;
+}
+
+};
+   
     return 错乱时空;
 });
 lib.config.all.characters.push("错乱时空");
 if(!lib.config.characters.includes("错乱时空")){lib.config.characters.push("错乱时空");}lib.translate['错乱时空'+'_character_config'] = '错乱时空';
+
+//导入角色完成
+
   game.import('card',function(){
     var 错乱时空={
       name:"错乱时空",
@@ -78613,6 +82172,192 @@ if(!lib.config.characters.includes("错乱时空")){lib.config.characters.push("
                 },
                 fullimage:true,
             },
+            "J拓拉":{
+                image:"ext:错乱时空/拓拉.jpg",
+                type:"结晶",
+                toself:true,
+                filterTarget:function (card,player,target){
+        return target==player;
+    },
+                enable:function(event,player){
+                if(player.name=="源·天将士")return true;
+    },
+                selectTarget:-1,
+                content:function (){
+                    if(player.name=="源·天将士"){
+                        player.storage.结晶投影.push(card);
+                        player.storage.结晶库.remove(card.name);
+                        player.flashAvatar("拓拉", "拓拉");
+                        game.broadcastAll(function (player) {
+                 player.say("即使呜咽的号角声埋没于风雪的呼啸，我们也依然可以听到可汗的呐喊声，从那千疮百孔的天幕中……直冲云霄！");
+                 game.playAudio('..', 'extension', '错乱时空', '音频','J拓拉' + '.mp3')
+                     }, player)
+                    }
+                },
+                fullimage:true,
+            },
+            "J卡拉":{
+                image:"ext:错乱时空/卡拉.jpg",
+                type:"结晶",
+                toself:true,
+                filterTarget:function (card,player,target){
+        return target==player;
+    },
+                enable:function(event,player){
+                if(player.name=="源·天将士")return true;
+    },
+                selectTarget:-1,
+                content:function (){
+                    if(player.name=="源·天将士"){
+                        player.storage.结晶投影.push(card);
+                        player.storage.结晶库.remove(card.name);
+                        player.flashAvatar("卡拉", "卡拉");
+                        game.broadcastAll(function (player) {
+                 player.say("你叫我来，我就来了，我是卡拉");
+                 game.playAudio('..', 'extension', '错乱时空', '音频','J卡拉' + '.mp3')
+                     }, player)
+                    }
+                },
+                fullimage:true,
+            },
+            "J龙破坏之剑士":{
+                image:"ext:错乱时空/J龙破坏之剑士.jpg",
+                type:"结晶",
+                toself:true,
+                filterTarget:function (card,player,target){
+        return target==player;
+    },
+                enable:function(event,player){
+                if(player.name=="源·天将士")return true;
+    },
+                selectTarget:-1,
+                content:function (){
+                    if(player.name=="源·天将士"){
+                        player.storage.结晶投影.push(card);
+                        player.storage.结晶库.remove(card.name);
+                        player.flashAvatar("J龙破坏之剑士", "J龙破坏之剑士");
+                        game.broadcastAll(function (player) {
+                 game.playAudio('..', 'extension', '错乱时空', '音频','J龙破坏之剑士' + '.mp3')
+                     }, player)
+                    }
+                },
+                fullimage:true,
+            },
+            "J潘多拉":{
+                image:"ext:错乱时空/潘多拉.jpg",
+                type:"结晶",
+                toself:true,
+                filterTarget:function (card,player,target){
+        return target==player;
+    },
+                enable:function(event,player){
+                if(player.name=="源·天将士")return true;
+    },
+                selectTarget:-1,
+                content:function (){
+                    if(player.name=="源·天将士"){
+                        player.storage.结晶投影.push(card);
+                        player.storage.结晶库.remove(card.name);
+                        player.flashAvatar("潘多拉", "潘多拉");
+                        game.broadcastAll(function (player) {
+                 game.playAudio('..', 'extension', '错乱时空', '音频','J潘多拉' + '.mp3')
+                     }, player)
+                    }
+                },
+                fullimage:true,
+            },
+            "J捷克罗姆":{
+                image:"ext:错乱时空/捷克罗姆.jpg",
+                type:"结晶",
+                toself:true,
+                filterTarget:function (card,player,target){
+        return target==player;
+    },
+                enable:function(event,player){
+                if(player.name=="源·天将士")return true;
+    },
+                selectTarget:-1,
+                content:function (){
+                    if(player.name=="源·天将士"){
+                        player.storage.结晶投影.push(card);
+                        player.storage.结晶库.remove(card.name);
+                        player.flashAvatar("捷克罗姆", "捷克罗姆");
+                        game.broadcastAll(function (player) {
+                 game.playAudio('..', 'extension', '错乱时空', '音频','J捷克罗姆' + '.mp3')
+                     }, player)
+                    }
+                },
+                fullimage:true,
+            },
+            "J莱希拉姆":{
+                image:"ext:错乱时空/莱希拉姆.jpg",
+                type:"结晶",
+                toself:true,
+                filterTarget:function (card,player,target){
+        return target==player;
+    },
+                enable:function(event,player){
+                if(player.name=="源·天将士")return true;
+    },
+                selectTarget:-1,
+                content:function (){
+                    if(player.name=="源·天将士"){
+                        player.storage.结晶投影.push(card);
+                        player.storage.结晶库.remove(card.name);
+                        player.flashAvatar("莱希拉姆", "莱希拉姆");
+                        game.broadcastAll(function (player) {
+                 game.playAudio('..', 'extension', '错乱时空', '音频','J莱希拉姆' + '.mp3')
+                     }, player)
+                    }
+                },
+                fullimage:true,
+            },
+            "J勿忘我":{
+                image:"ext:错乱时空/勿忘我.jpg",
+                type:"结晶",
+                toself:true,
+                filterTarget:function (card,player,target){
+        return target==player;
+    },
+                enable:function(event,player){
+                if(player.name=="源·天将士")return true;
+    },
+                selectTarget:-1,
+                content:function (){
+                    if(player.name=="源·天将士"){
+                        player.storage.结晶投影.push(card);
+                        player.storage.结晶库.remove(card.name);
+                        player.flashAvatar("勿忘我", "勿忘我");
+                        game.broadcastAll(function (player) {
+                 game.playAudio('..', 'extension', '错乱时空', '音频','J勿忘我' + '.mp3')
+                     }, player)
+                    }
+                },
+                fullimage:true,
+            },
+            "J孙悟空":{
+                image:"ext:错乱时空/孙悟空.jpg",
+                type:"结晶",
+                toself:true,
+                filterTarget:function (card,player,target){
+        return target==player;
+    },
+                enable:function(event,player){
+                if(player.name=="源·天将士")return true;
+    },
+                selectTarget:-1,
+                content:function (){
+                    if(player.name=="源·天将士"){
+                        player.storage.结晶投影.push(card);
+                        player.storage.结晶库.remove(card.name);
+                        player.flashAvatar("孙悟空", "孙悟空");
+                        game.broadcastAll(function (player) {
+                 game.playAudio('..', 'extension', '错乱时空', '音频','J孙悟空' + '.mp3')
+                     }, player)
+                    }
+                },
+                fullimage:true,
+            },
             "JSP姆西斯哈":{
                 image:"ext:错乱时空/SP姆西斯哈.jpg",
                 type:"结晶",
@@ -80870,8 +84615,8 @@ var 法术={
                  target.draw();
                }
                target.addSkill("强化魔法buff");
-               if(!target.storage.强化魔法)target.storage.强化魔法=1;
-               else target.storage.强化魔法++;
+               if(!target.storage.强化魔法buff)target.storage.强化魔法buff=1;
+               else target.storage.强化魔法buff++;
                const {result:{bool,judge,color}} = await target.judge(function(card){
             if(get.color(card)=='red') return -4;
             return 0;
@@ -81787,8 +85532,8 @@ var 法术={
                  target.draw(2);
                }
                target.addSkill("强化魔法buff");
-               if(!target.storage.强化魔法)target.storage.强化魔法=2;
-               else target.storage.强化魔法+=2;
+               if(!target.storage.强化魔法buff)target.storage.强化魔法buff=2;
+               else target.storage.强化魔法buff+=2;
                const {result:{bool,judge,color}} = await target.judge(function(card){
             if(get.color(card)=='red') return -4;
             return 0;
