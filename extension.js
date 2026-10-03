@@ -9518,11 +9518,18 @@ Object.defineProperty(game, 'over', {
      return match[1];
  }
     //bgm
-    game.clsk_cbgm=["庄方宜"];
+    game.clsk_cbgm=["庄方宜","猪猪侠"];
     //出场台词
     game.clsk_caudio=["无敌","罪鸽子","法纳斯"]
     //特殊死亡语音
     game.clsk_daudio=["无上神·无敌"]
+    game.wulingjuexing={
+       jin:false,
+       mu:false,
+       shui:false,
+       huo:false,
+       tu:false,
+    }
     lib.element.player.soulhp;
     lib.element.player.maxsoulhp;
     lib.element.player.cl_sgys=0;
@@ -10183,6 +10190,43 @@ lib.skill._clbr_barDieCheck = {
     };
     lib.element.content.gunmu=function(){
     };
+     
+     // 猪猪侠适配
+    const oldGetType = get.type;
+get.type = function (obj, method, player) {
+    const realType = oldGetType.call(this, obj, method, player);
+    if (typeof obj == "string") {
+      obj = { name: obj };
+    }
+    if (typeof obj != "object") {
+      return;
+    }
+    let card = obj;
+    if (!card) return realType;
+
+    const owner = player || get.owner(card);
+let finalOwner = owner;
+     if (!finalOwner && _status?.event) {
+         let evt = _status.event;
+         while(evt){
+             if(evt.player){
+                 finalOwner = evt.player;
+                 break;
+             }
+             evt = evt.parent;
+         }
+     }
+    const skillSource = finalOwner || [];
+
+    const modRet = game.checkMod(card, owner, realType, "cardtype", skillSource);
+    if (modRet !== void 0) {
+        return modRet;
+    }
+    return realType;
+};
+
+
+
 
     //莎布适配
     lib.element.player.jd_fuhuo=function(hp, log) {
@@ -11552,6 +11596,12 @@ if(player.name=='休比') return {gl_mp:0,gl_maxMp:18,type:'cl_tongling',color:'
 lib.gl_custom.mp.push(function(player){
 if(player.name=='全典开·休比') return {gl_mp:0,gl_maxMp:18,type:'cl_tongling',color:'linear-gradient(#BC1717, #cccccc)',color2:'linear-gradient(#ff0000, #cc00ff)'}
 })
+lib.gl_custom.mp.push(function(player){
+if(player.name=='猪猪侠') return {gl_mp:0,gl_maxMp:10,type:'cl_tongling',color:'linear-gradient(#ffcc22, #e93eff)',color2:'linear-gradient(#ff0000, #cc00ff)'}
+})
+lib.gl_custom.mp.push(function(player){
+if(player.name=='五灵王') return {gl_mp:0,gl_maxMp:10,type:'cl_tongling',color:'linear-gradient(#ffcc22, #e93eff)',color2:'linear-gradient(#ff0000, #cc00ff)'}
+})
 
 
 //构筑
@@ -11930,7 +11980,7 @@ lib.gl_custom.cards.push(function(player,list){
             "左乐":["male","shu",4,["秉烛","佑炎"],["des:生存能力：A+，攻击强度：A，辅助能力：C，杂耍能力：A+"]],
             "玛恩纳":["male","shu",5,["游侠","无动"],["des:生存能力：A-，攻击强度：S，辅助能力：B+，杂耍能力：B"]],
             "瑕光":["female","shu",4,["仁慈","慑敌","先贤"],["des:生存能力：B+，攻击强度：C+，辅助能力：A，杂耍能力：B"]],
-            "仙人·漩涡鸣人":["male","shu",4,["影分身之术","蛙组手","风遁·螺旋手里剑"],["des:生存能力：B+，攻击强度：A-，辅助能力：B，杂耍能力：A-"]],
+            "仙人·漩涡鸣人":["male","shu",4,["影分身之术","蛙组手","风遁·螺旋手里剑"],["des:生存能力：B+，攻击强度：A-，辅助能力：C+，杂耍能力：A-"]],
             "霞露零":["female","wu",4,["斩灵","厨道","狐灵"],["des:生存能力：A+，攻击强度：B+，辅助能力：A+，杂耍能力：A"]],
             "SP圣灵谱尼":["none","shen",7,["SP封印"],["des:生存能力：S，攻击强度：A+，辅助能力：A，杂耍能力：A+"]],
             "SP送葬人":["male","shu",4,["清算","圣约","神圣"],["des:生存能力：A，攻击强度：S+，辅助能力：C，杂耍能力：B"]],
@@ -12016,7 +12066,7 @@ lib.gl_custom.cards.push(function(player,list){
             "日月神·诺雅":["female","shen",3,["星月幻影","昼夜湮神","止昼","众神归所"],["des:生存能力：B，攻击强度：A+，辅助能力：S+，杂耍能力：S","unseen"]],
             "望":["male","shen",3,["铸子","连星","天下劫"],["des:生存能力：C+，攻击强度：B+，辅助能力：B，杂耍能力：S-"]],
             "对神兵器·肯扎特":["none","qun",6,["破虚","破元","破能","破生","破轮","破圣"],["des:生存能力：A，攻击强度：C，辅助能力：C，杂耍能力：C"]],
-            "新SP陈":["female","wu",4,["形意洞照","寒暑觉知","赤霄·绝影·驰","赤霄·天喟"],["des:生存能力：B+，攻击强度：A+，辅助能力：C，杂耍能力：S"]],
+            "新SP陈":["female","wu",4,["形意洞照","寒暑觉知","赤霄·绝影·驰","赤霄·天喟"],["des:生存能力：B+，攻击强度：A+，辅助能力：C，杂耍能力：B+"]],
             "孙胜男":["female","qun",3,["御武","援火"],["des:生存能力：B，攻击强度：B+，辅助能力：B+，杂耍能力：B"]],
             "盛怒":["none","qun",8,["盛怒"],["forbidai","bossallowed","des:生存能力：A，攻击强度：A，辅助能力：C，杂耍能力：C"]],
             "妒":["none","qun",4,["嫉妒"],["forbidai","bossallowed","des:生存能力：B，攻击强度：A+，辅助能力：C，杂耍能力：C+"]],
@@ -12044,10 +12094,10 @@ lib.gl_custom.cards.push(function(player,list){
             "凋灵":["female","shen",3,["亡灵","凋零赐福","凋灵护盾","凋亡收割"],["des:生存能力：B，攻击强度：S，辅助能力：A，杂耍能力：A+。<br>该武将可提升命座。<br><li>一命效果：该武将解锁。<br><li>二命效果：解锁技能【凋亡收割】。<br><li>三命效果：技能【凋灵护盾】效果提升，技能【凋零赐福】效果提升。<br><li>四命效果：技能【凋灵护盾】效果再次提升。<br><li>五命效果：该武将初始体力+1。<br><li>六命效果：技能【凋亡收割】效果提升。<br><li>当前命座："+`${lib.config.clsk_jswj.凋灵_mingzuo||0}`,"ext:错乱时空/凋灵.jpg"]],
             "凋灵1":["female","shen",3,["亡灵","凋零赐福","凋灵护盾","凋亡收割"],["des:生存能力：B，攻击强度：S，辅助能力：A，杂耍能力：A+。<br>该武将可提升命座。<br><li>一命效果：该武将解锁。<br><li>二命效果：解锁技能【凋亡收割】。<br><li>三命效果：技能【凋灵护盾】效果提升，技能【凋零赐福】效果提升。<br><li>四命效果：技能【凋灵护盾】效果再次提升。<br><li>五命效果：该武将初始体力+1。<br><li>六命效果：技能【凋亡收割】效果提升。<br><li>当前命座："+`${lib.config.clsk_jswj.凋灵_mingzuo||0}`,"unseen"]],
             "塑心":["female","qun",3,["精神逆构","黄金的狂喜","安魂的弥撒","自由的探戈"],["des:生存能力：C+，攻击强度：B，辅助能力：B，杂耍能力：B"]],
-            "潘多拉":["female","qun","2/2/1",["机械之心","幻蝶花影","万花蝶舞","机械分解"],["des:生存能力：A+，攻击强度：S，辅助能力：A，杂耍能力：A"]],
-            "潘多拉1":["female","qun","2/2/1",["机械之心","幻蝶花影","万花蝶舞","机械分解"],["des:生存能力：A+，攻击强度：S，辅助能力：A，杂耍能力：A","unseen"]],
-            "潘多拉2":["female","qun","2/2/1",["机械之心","幻蝶花影","万花蝶舞","机械分解"],["des:生存能力：A+，攻击强度：S，辅助能力：A，杂耍能力：A","unseen"]],
-            "潘多拉3":["female","qun","2/2/1",["机械之心","幻蝶花影","万花蝶舞","机械分解"],["des:生存能力：A+，攻击强度：S，辅助能力：A，杂耍能力：A","unseen"]],
+            "潘多拉":["female","qun","2/2/1",["机械之心","幻蝶花影","万花蝶舞","机械分解"],["des:生存能力：A+，攻击强度：S，辅助能力：A，杂耍能力：B+"]],
+            "潘多拉1":["female","qun","2/2/1",["机械之心","幻蝶花影","万花蝶舞","机械分解"],["des:生存能力：A+，攻击强度：S，辅助能力：A，杂耍能力：B+","unseen"]],
+            "潘多拉2":["female","qun","2/2/1",["机械之心","幻蝶花影","万花蝶舞","机械分解"],["des:生存能力：A+，攻击强度：S，辅助能力：A，杂耍能力：B+","unseen"]],
+            "潘多拉3":["female","qun","2/2/1",["机械之心","幻蝶花影","万花蝶舞","机械分解"],["des:生存能力：A+，攻击强度：S，辅助能力：A，杂耍能力：B+","unseen"]],
             "SP史尔特尔":["female","shu",4,["沸腾","焚灭","复燃","SP黄昏"],["des:生存能力：A，攻击强度：B+，辅助能力：C，杂耍能力：C"]],
             "火巨人·莱万汀":["female","shen",4,["沸腾","焚灭","复燃","SP黄昏","SP诸神黄昏"],["des:生存能力：S，攻击强度：S，辅助能力：A，杂耍能力：A","unseen"]],
             "佩丽卡":["female","qun",3,["协议·雷击","协议·闪链","协议·7041k"],["des:生存能力：C+，攻击强度：B，辅助能力：B+，杂耍能力：B"]],
@@ -12087,8 +12137,8 @@ lib.gl_custom.cards.push(function(player,list){
             "疾光玛恩纳":["male","shu",4,["即息","疾光"],["des:生存能力：C+，攻击强度：S，辅助能力：D+，杂耍能力：B"]],
             "提雷克":["male","devil",1,["窃魔","化魔","噬魔","吸魔"],["des:生存能力：C+，攻击强度：C，辅助能力：C，杂耍能力：S+"]],
             "小龙虾":["none","qun",1,["虾兵蟹将"],["des:生存能力：D-，攻击强度：D+，辅助能力：D-，杂耍能力：D-","unseen"]],
-            "兰德斯":["male","shen",4,["怒涛狂噬","溺落低语","地球降临"],["des:生存能力：B，攻击强度：C+，辅助能力：C+，杂耍能力：B+"]],
-            "吞天神·兰德斯":["male","shen",4,["怒涛狂噬","溺落低语","地球降临","尘世涤荡"],["des:生存能力：B+，攻击强度：S-，辅助能力：A，杂耍能力：A","unseen"]],
+            "兰德斯":["male","shen",4,["怒涛狂噬","溺落低语","地球降临","滚出地球"],["des:生存能力：B，攻击强度：C+，辅助能力：C+，杂耍能力：B+"]],
+            "吞天神·兰德斯":["male","shen",4,["怒涛狂噬","溺落低语","地球降临","尘世涤荡","滚出地球"],["des:生存能力：B+，攻击强度：S-，辅助能力：A，杂耍能力：A","unseen"]],
             "莎布":["female","shen",4,["温润之雨","破梦之晓","森罗万象","月之透镜","力量解放"],["des:生存能力：S+，攻击强度：S+，辅助能力：S+，杂耍能力：S+"]],
             "莎布·尼古拉斯":["female","shen",4,["温润之雨","破梦之晓","森罗万象","月之透镜","力量解放","母神压迫"],["des:生存能力：S+，攻击强度：S+，辅助能力：S+，杂耍能力：S+","unseen"]],
             "被抹除者":["none","none",0,["因果切断"],["unseen"]],
@@ -12098,8 +12148,15 @@ lib.gl_custom.cards.push(function(player,list){
             "勿忘我":["female","qun",3000,[],["forbidai","unseen"]],
             "J龙破坏之剑士":["male","qun",3000,[],["forbidai","unseen"]],
             "罪鸽子":["female","devil",3,["抗性","阎魔"],["des:生存能力：C+，攻击强度：B+，辅助能力：D，杂耍能力：C+"]],
-            "休比":["female","qun",4,["来玩游戏吧","解析"],["des:生存能力：B-，攻击强度：C-，辅助能力：C+，杂耍能力：C+"]],
-            "全典开·休比":["female","qun",4,["来玩游戏吧","解析","战斗演算"],["des:生存能力：B-，攻击强度：C-，辅助能力：C+，杂耍能力：S","unseen"]],
+            "休比":["female","qun",3,["来玩游戏吧","解析"],["des:生存能力：C+，攻击强度：C-，辅助能力：C+，杂耍能力：C+"]],
+            "全典开·休比":["female","qun",3,["来玩游戏吧","解析","战斗演算"],["des:生存能力：C+，攻击强度：C-，辅助能力：C+，杂耍能力：S","unseen"]],
+            "铁拳虎":["male","qun",4,["五灵锁","铁虎重破拳","金灵之力","五灵觉醒"],["des:生存能力：B，攻击强度：A，辅助能力：C，杂耍能力：C+","unseen"]],
+            "火焰鹤":["male","qun",3,["五灵锁","火鹤天坠","火灵之力","五灵觉醒"],["des:生存能力：D+，攻击强度：A+，辅助能力：D+，杂耍能力：B-","unseen"]],
+            "冰封鹿":["male","qun",4,["五灵锁","寒鹿冰刺","水灵之力","五灵觉醒"],["des:生存能力：B-，攻击强度：B，辅助能力：B+，杂耍能力：B-","unseen"]],
+            "石甲熊":["male","qun",5,["五灵锁","蛮熊震怒","土灵之力","五灵觉醒"],["des:生存能力：A+，攻击强度：A-，辅助能力：D+，杂耍能力：D+","unseen"]],
+            "神木猿":["male","qun",3,["五灵锁","木藤缠绕","木灵之力","五灵觉醒"],["des:生存能力：C+，攻击强度：B，辅助能力：B+，杂耍能力：B","unseen"]],
+            "猪猪侠":["male","qun",4,["五灵锁","五灵觉醒"],["des:生存能力：？，攻击强度：？，辅助能力：？，杂耍能力：S+"]],
+            "五灵王":["male","shen",4,["五灵之力","上古神威","五灵觉醒"],["des:生存能力：S+，攻击强度：S+，辅助能力：B，杂耍能力：S-","unseen"]],
             //"图鉴注意事项":["none","none",0,[],["des:<font color=#f00>孩子们，注意了，在图鉴里使用切换皮肤后，游戏内武将的原皮会消失，需要在图鉴里切换会原皮才能复原，作者和豆包奋斗几个小时没能修好bug，已经认怂了，就这样吧。</font>","unseen","ext:错乱时空/源·天将士.jpg"]],
            //"测试":["none","qun",4,["seer_huaixin","seer_zhaohui"],["测试"]],
         },
@@ -12201,7 +12258,7 @@ lib.gl_custom.cards.push(function(player,list){
 				"banweimaifang":["界史尔特尔","界蓝染惣右介","界夜莺","凯尔希","界琦玉","夕","界怪盗基德","SP临光","界孙悟空","界柒","霜星","界陈","界闪灵","界傀影","班基拉斯","龙破坏之剑士","界龙破坏之剑士","重岳","吉普莉尔","成龙","界帝牙卢卡","界阿尔宙斯","SP金古桥","谋孙悟空","令","达克莱伊","kuailong","溺尸","迷迭香","尼克","死神棺","曼达拉","白岩射手","坚盾剑怪刀剑","界帕路奇犽","浊心斯卡蒂","小泉红子","神张飞","神龙右","露西亚·深红囚影","灵吉菩萨","泥岩","天命人","老爹","SP艾雷王","SP阿尔宙斯","莎布"],
 		        "wanwuguiyizhe":["SP索托斯","SP亚弗戈蒙"],
 		        "dianfengduijue":["神圣灵谱尼","神阿尔宙斯"],
-				"qiangliwujiang":["SP德克萨斯","界龙右","SP哥莫拉","年","苍响-百战勇者","龙骑士黑魔术少女","界江户川柯南","界黑岩射手","拉弥亚","21号·XXI","巴图","SP尼克","传承艾瑞珂","传承塔娜","提丰","界华法琳","黍","左乐","玛恩纳","瑕光","仙人·漩涡鸣人","霞露零","SP圣灵谱尼","月亮伊布","捷克罗姆","莱希拉姆","火神蛾","杨戬","Herobrine","破坏龙-甘多拉","SP姆西斯哈","特莉波卡","雷吉奇卡斯","阿米娅","乌尔比安","余","源·天将士","蕾缪安","SP惊蛰","SP星熊","雷鸣","七实·芒星之迹","无敌","伏妖","法纳斯","女帝","昆仑","无限未来","诺雅","望","对神兵器·肯扎特","新SP陈","耶芙娜","SP傀影","刻俄柏","SP推进之王","界米龙","凋灵","塑心","潘多拉","SP史尔特尔","佩丽卡","庄方宜","雷德","骑拉帝纳-别种形态","究","小叶子","卡拉","洛世琦","SP提丰","疾光玛恩纳","兰德斯","传承赵云","觉醒骑士"],
+				"qiangliwujiang":["SP德克萨斯","界龙右","SP哥莫拉","年","苍响-百战勇者","龙骑士黑魔术少女","界江户川柯南","界黑岩射手","拉弥亚","21号·XXI","巴图","SP尼克","传承艾瑞珂","传承塔娜","提丰","界华法琳","黍","左乐","玛恩纳","瑕光","仙人·漩涡鸣人","霞露零","SP圣灵谱尼","月亮伊布","捷克罗姆","莱希拉姆","火神蛾","杨戬","Herobrine","破坏龙-甘多拉","SP姆西斯哈","特莉波卡","雷吉奇卡斯","阿米娅","乌尔比安","余","源·天将士","蕾缪安","SP惊蛰","SP星熊","雷鸣","七实·芒星之迹","无敌","伏妖","法纳斯","女帝","昆仑","无限未来","诺雅","望","对神兵器·肯扎特","新SP陈","耶芙娜","SP傀影","刻俄柏","SP推进之王","界米龙","凋灵","塑心","潘多拉","SP史尔特尔","佩丽卡","庄方宜","雷德","骑拉帝纳-别种形态","究","小叶子","卡拉","洛世琦","SP提丰","疾光玛恩纳","兰德斯","传承赵云","觉醒骑士","猪猪侠"],
 				"shoushayigou":["cl_神钟会","cl_关银屏","cl_吕玲绮","SP神荀彧","cl_神赵云","cl_袁绍","cl_黄盖","cl_孙策"],
 				"longzunxilie":["璀璨圣龙","黄金圣龙","超神圣龙"],
 				"qizongzui":["罪鸽子"],
@@ -16304,6 +16361,7 @@ return event.player.hujia>0;
             if(evt.target.hasSkillTag('notrick')) return 0;
             return 11-get.value(card);
         });
+        next.set("filterCard", (card, player2) => get.name(card) === "shan" && lib.filter.cardRespondable(card, player2));
         next.autochoose=lib.filter.autoRespondShan;
         "step 1"
         if(result.bool==false){
@@ -21041,6 +21099,7 @@ return -Infinity;
             if(evt.target.hasSkillTag('notrick')) return 0;
             return 11-get.value(card);
         });
+        next.set("filterCard", (card, player2) => get.name(card) === "shan" && lib.filter.cardRespondable(card, player2));
         next.autochoose=lib.filter.autoRespondShan;
         "step 1"
         if(result.bool==false){
@@ -27252,6 +27311,7 @@ player.removeSkill('快龙招式2');
             if(evt.target.hasSkillTag('notrick')) return 0;
             return 11-get.value(card);
         });
+        next.set("filterCard", (card, player2) => get.name(card) === "shan" && lib.filter.cardRespondable(card, player2));
         next.autochoose=lib.filter.autoRespondShan;
         "step 1"
         if(result.bool==false){
@@ -27740,7 +27800,7 @@ player.removeSkill('快龙特性');
     if(player.storage.原始之力==player)player.storage.原始之力=player.getNext();        
         
         "step 2"
-        player.storage.原始之力.chooseToRespond({name:'shan'});       
+        player.storage.原始之力.chooseToRespond({name:'shan'}).set("filterCard", (card, player2) => get.name(card) === "shan" && lib.filter.cardRespondable(card, player2));;       
         
       
         "step 3"
@@ -28797,7 +28857,7 @@ player.removeSkill('班基拉斯特性');
         "step 0"
     if(player.storage.剑雨滂沱==player)player.storage.剑雨滂沱=player.getNext();               
         "step 1"
-        player.storage.剑雨滂沱.chooseToRespond({name:'shan'});                   
+        player.storage.剑雨滂沱.chooseToRespond({name:'shan'}).set("filterCard", (card, player2) => get.name(card) === "shan" && lib.filter.cardRespondable(card, player2));;                   
         "step 2"
         if(result.bool==false){
             var next=player.storage.剑雨滂沱;
@@ -30715,7 +30775,7 @@ function setImage(element,url){
         "step 1"
     if(player.storage.宙震==player)player.storage.宙震=player.getNext();               
         "step 2"
-        player.storage.宙震.chooseToRespond({name:'shan'});                   
+        player.storage.宙震.chooseToRespond({name:'shan'}).set("filterCard", (card, player2) => get.name(card) === "shan" && lib.filter.cardRespondable(card, player2));;                   
         "step 3"
         if(result.bool==false){
             var next=player.storage.宙震;
@@ -43102,6 +43162,7 @@ return event.player.countCards('h')>=4||event.player.hp>=4;
         "step 2"
         if(event.num){
             var next=trigger.target.chooseToRespond({name:'shan'},'请打出一张闪响应火眼金睛');
+            next.set("filterCard", (card, player2) => get.name(card) === "shan" && lib.filter.cardRespondable(card, player2));
             next.ai=get.unuseful2;
             if(event.num>1) next.set('prompt2','共需额外打出'+event.num+'张闪');
         }
@@ -48778,6 +48839,13 @@ else if (type == 'equip') {
                  if(player.name=="庄方宜"){
                     game.broadcastAll(function (player) {
                 ui.backgroundMusic.src=lib.assetURL+'extension/错乱时空/音频/观陵水.mp3';
+                ui.backgroundMusic.loop = true;
+                game.clsk_bgm=true;
+            }, player);
+                 }
+                 if(player.name=="猪猪侠"){
+                    game.broadcastAll(function (player) {
+                ui.backgroundMusic.src=lib.assetURL+'extension/错乱时空/音频/小英雄.mp3';
                 ui.backgroundMusic.loop = true;
                 game.clsk_bgm=true;
             }, player);
@@ -54517,7 +54585,7 @@ shuffledCards.forEach(cardData => {
     if(player.storage.万象圣堂==player)player.storage.万象圣堂=player.getNext();               
         "step 3"
         player.line(player.storage.万象圣堂,'thunder');
-        player.storage.万象圣堂.chooseToRespond({name:'shan'});                   
+        player.storage.万象圣堂.chooseToRespond({name:'shan'}).set("filterCard", (card, player2) => get.name(card) === "shan" && lib.filter.cardRespondable(card, player2));;                   
         "step 4"
         if(result.bool==false){
             var next=player.storage.万象圣堂;
@@ -54565,7 +54633,7 @@ shuffledCards.forEach(cardData => {
                         content:function(){
                          "step 0"
                          player.line(trigger.player,'thunder');
-                         trigger.player.chooseToRespond({name:'shan'});    
+                         trigger.player.chooseToRespond({name:'shan'}).set("filterCard", (card, player2) => get.name(card) === "shan" && lib.filter.cardRespondable(card, player2));;    
                          
                          "step 1"
                          if(result.bool==false){
@@ -65603,7 +65671,7 @@ return list.filter(info => typeof info === "string" && info.startsWith(prefix))
                     return player.gl_getMp('cl_tongling')>=10;
                 },
                 async content(event,trigger,player){
-                    var list=["无上神·无敌","毁灭神·法纳斯","虚无神·伏妖","创界神·昆仑","命运神·女帝","日月神·诺雅","无限神·未来","那个男人","火巨人·莱万汀","天理合真·庄天师","瘟神·钟会","吞天神·兰德斯"];
+                    var list=["无上神·无敌","毁灭神·法纳斯","虚无神·伏妖","创界神·昆仑","命运神·女帝","日月神·诺雅","无限神·未来","那个男人","火巨人·莱万汀","天理合真·庄天师","瘟神·钟会","吞天神·兰德斯","全典开·休比","五灵王"];
                     const {result:{bool,links}} = await player.chooseButton([`${get.prompt2(event.name)}`,[list,'character']]);
                     if(bool){
                        if(player.name2){
@@ -68693,7 +68761,7 @@ player.removeSkill('葱游兵技能一');
                 viewAsFilter:function (player){
         if(!player.countCards('h',{suit:'spade'})) return false;
     },
-                prompt:"将一张♠️牌当顺手牵羊使用",
+                prompt:"将一张♠️牌当过河拆桥使用",
                 check:function (card){return 15-get.value(card)},
                        sub:true,
                        sourceSkill:"吸魔",
@@ -68917,6 +68985,59 @@ player.removeSkill('葱游兵技能一');
                       player.storage.地球=[[],[]];
                  }
                 }
+            },
+            "滚出地球":{
+                forced:true,
+                nobracket:true,
+                gelvdao:true,
+                init:function (player){
+                   if(_status.connectMode)player.cl_initShunfa("滚出地球");
+                },
+                clickableFilter(player) {
+                    var tiaojian=["daogui","jiyanchongming","nuobao","cangyimoshilu","诺岩"];
+                    return _status.connectMode&&_status.gameStarted&&game.hasPlayer(function(current){
+                    for(var i of tiaojian){
+                       if(lib.characterPack[i]?.hasOwnProperty(current.name))return true;
+                    }
+                  });
+                },          
+                async doAction(player){
+                 const {result:{targets}} = await player.chooseTarget(get.prompt("滚出地球"),'将一名符合某种特定条件的玩家踢出游戏',function(card,player,target){
+            var tiaojian=["daogui","jiyanchongming","nuobao","cangyimoshilu","诺岩"];
+            for(var i=0;i<tiaojian.length;i++){
+              var a=tiaojian[i];
+              if(lib.characterPack[a]?.hasOwnProperty(target.name))return true;
+            }
+        });
+             if(targets?.length){
+                targets[0].die()._triggered=null;
+                targets[0].delete();
+                if (targets[0].playerid) {
+        if (targets[0].ws) {
+          if (confirm("是否踢出" + targets[0].nickname + "？")) {
+            var onlineKey = targets[0].ws.onlineKey;
+            if (onlineKey) {
+              if (confirm("是否永久踢出(加入黑名单)？")) {
+                var banBlacklist = lib.config.banBlacklist === void 0 ? [] : lib.config.banBlacklist;
+                banBlacklist.push(onlineKey);
+                game.saveConfig("banBlacklist", banBlacklist);
+              }
+            }
+            var id = get.id();
+            targets[0].ws.send(function(id2) {
+              if (game.ws) {
+                game.ws.close();
+                game.saveConfig("reconnect_info");
+                game.saveConfig("banned_info", id2);
+              }
+            }, id);
+            lib.node.banned.push(id);
+          }
+        }
+      }
+             }
+
+                },
             },
             "神圣祝福":{
                 mod:{
@@ -70181,16 +70302,16 @@ player.removeSkill('葱游兵技能一');
                     return _status.gameStarted&&!player.storage.胜利之剑&&game.hasPlayer(current=>player.canUse({ name: "juedou" },current));
                 },          
                 async doAction(player){
+                player.storage.胜利之剑=true;
                 game.broadcastAll(function (player) {
                      var r=[1,2,3,4].randomGet();
                      game.playAudio('..', 'extension', '错乱时空', '音频','胜利之剑'+r+'.mp3');                    
             }, player);  
         await player.chooseUseTarget({ name: "juedou",cl_胜利之剑:true,isCard:true,storage:{nowuxie:true}}).set("oncard", () => get.event().baseDamage++);
-        player.storage.胜利之剑=true;
         //player.awakenSkill("胜利之剑");      
                 },
                 nobracket:true,
-                group:["胜利之剑_ai","胜利之剑_damage","胜利之剑_round"],
+                group:["胜利之剑_damage","胜利之剑_round"],
                 subSkill:{
                    damage:{
                        trigger:{
@@ -70199,6 +70320,7 @@ player.removeSkill('葱游兵技能一');
                        forced:true,
                        direct:true,
                        filter:function(event,player){
+                    
                     return event.card.cl_胜利之剑&&event.player!=player;
                 },
                       async content(event,trigger,player){
@@ -70215,11 +70337,11 @@ player.removeSkill('葱游兵技能一');
                        forced:true,
                        direct:true,
                        filter:function(event,player){
-                    if(event.name=="die")return event.reason.getParent().card.cl_胜利之剑&&event.player!=player;
+                    if(event.name=="die")return event.reason.card.cl_胜利之剑&&event.player!=player;
                     return player.storage.cz胜利之剑;
                 },
                       async content(event,trigger,player){
-                         player.storage.cz胜利之剑=false;
+                         player.storage.cz胜利之剑=false;                        
                          player.restoreSkill("胜利之剑");
                       },
                       sub:true,
@@ -70653,12 +70775,593 @@ player.removeSkill('葱游兵技能一');
                         }
                    }
                    if(list){
-                      for(var i=0;i<game.players.length;i++){
+                      for(var i=0;i<game.players.length-1;i++){
                         var a=list.randomGet();
                         player.addSkill(a);
                         list.remove(a);
                       }
                    }
+                },
+            },
+            "铁虎重破拳":{    
+                audio:"ext:错乱时空/音频:1",
+                enable: "phaseUse",
+                position: "hej",
+                filterCard:function (card){
+                  return get.type(card)=='equip';
+                },
+                filter:function(event,player){
+                    return player.countCards('hej',{type:"equip"})>=3;
+                },
+                viewAs: {
+                 name: "sha",
+                 cl_tiehu:true,
+                },
+                usable:1,
+                nobracket:true,
+                selectCard:3,
+                check:function(card){
+                  return 12-get.value(card);
+                },
+                ai:{
+                   order:8,
+                   result:{
+                      target:-4,
+                    },
+                },
+                group:["铁虎重破拳_shan"],
+                subSkill:{
+                   shan:{
+                       trigger:{
+                          player:"shaBegin",
+                       },
+                       forced:true,
+                       direct:true,
+                       filter:function(event,player){
+                          return event.card.cl_tiehu==true;
+                       },
+                       content:function(){
+        "step 0"
+        event.num=1;
+        "step 1"
+        if(event.num){
+            var next=trigger.target.chooseToRespond('请打出一张闪响应杀');
+            next.set("filterCard", (card, player2) => get.name(card) === "shan" && lib.filter.cardRespondable(card, player2));
+            next.ai=get.unuseful2;
+            if(event.num>=1) next.set('prompt2','共需额外打出'+event.num+'张闪');
+        }
+        else{
+            event.finish();
+        }
+        "step 2"
+        if(result.bool){
+            event.num--;
+            event.goto(1);
+        }
+        else{
+            trigger.untrigger();
+            trigger.directHit=true;
+            trigger.baseDamage+=event.num;
+        }
+    },
+                       sourceSkill:"铁虎重破拳",
+                       sub:true,
+                   }
+                }
+            },
+            "金灵之力":{
+                mod:{
+                    cardtype:function(card){
+                if(lib.card[card.name].type=='basic') return 'equip';
+          },
+                },
+                nobracket:true,
+                forced:true,
+                trigger:{
+                   player:["useCard","respond"],
+                },
+                usable:3,
+                filter:function(event,player){
+                    return get.type(event.card)=="equip";
+                },
+                content:function(){
+                    player.draw();
+                },
+            },
+            "火灵之力":{
+               mod:{
+                globalFrom:function (from,to,distance){
+            if(from.storage.火灵之力)return distance-from.storage.火灵之力;
+        },
+                    globalTo:function (from,to,distance){
+            if(to.storage.火灵之力)return distance+to.storage.火灵之力;
+        },
+                    cardnature:function(card,player){
+                     return 'fire';
+                 },
+                },
+                 init:function (player){
+                   player.storage.火灵之力=0;
+                   player.markSkill('火灵之力');
+                   player.syncStorage('火灵之力');
+                },
+                mark:true,
+                marktext:"火",
+                intro:{
+                    content:"mark",
+                },
+                 trigger:{
+                     player:["useCard","respond"],
+                 },
+                 forced:true,
+                 nobracket:true,
+                 filter:function(event,player){
+                     return get.color(event.card)=="red";
+                 },
+                 async content(event,trigger,player){
+                    player.storage.火灵之力++;
+                    player.syncStorage('火灵之力');
+                 },
+                 group:["火灵之力_effect"],
+                 subSkill:{
+                    effect:{
+                        trigger:{
+                           player:["phaseEnd"],
+                        },
+                        forced:true,
+                        filter:function(event,player){
+                          return player.storage.火灵之力>0;
+                        },
+                        async content(event,trigger,player){
+                         player.loseHp();
+                         player.draw(3);
+                         player.storage.火灵之力=0;
+                         player.syncStorage('火灵之力');
+                        },
+                        sub:true,
+                        sourceSkill:"火灵之力",
+                    },
+                 }
+            },
+            "火鹤天坠":{           
+                audio:"ext:错乱时空/音频:1",
+                enable: "phaseUse",
+                usable:1,
+                filter:function(event,player){
+                    return player.storage.火灵之力>0;
+                },
+                filterTarget:function (card,player,target){
+                 return player!=target;
+                },
+                nobracket:true,
+                async content(event,trigger,player){
+                 player.loseHp();
+                 player.draw(player.storage.火灵之力);
+                 player.storage.火灵之力=0;
+                 player.syncStorage('火灵之力');
+                 var target = event.target;
+                 target.useCard({name:'juedou',nature:"fire",cl_huohe:true},player,false);
+                },
+                ai:{
+                   order:8,
+                   result:{
+                      target:-4,
+                      player:-2,
+                    },
+                },
+                group:["火鹤天坠_damage"],
+                subSkill:{
+                   damage:{
+                       trigger: {
+                global: "damageBegin",
+            },
+            forced:true,
+            direct:true,
+            filter(event, player) {
+              const evt = event.getParent();
+              return evt?.name == "juedou" &&evt?.card.cl_huohe;
+            },
+            async content(event, trigger, player) {
+              let evt = trigger.getParent();
+              const allCards = [
+             ...(evt.playerCards || []),
+             ...(evt.targetCards || [])
+         ];
+         const cards2 = allCards.slice(0).filterInD("od");
+              trigger.nature="fire";
+              trigger.num+=cards2.length;
+              if(trigger.num<2)trigger.num=2;
+            },
+                       sourceSkill:"火鹤天坠",
+                       sub:true,
+                   }
+                }
+            },
+            "寒鹿冰刺":{
+                audio:"ext:错乱时空/音频:1",
+                enable:"phaseUse",
+                usable:1,
+                position:"hes",
+                filterCard:true,
+                filter:function (event,player){
+                  return player.countCards('hes')>0;
+                },
+                nobracket:true,
+                selectCard:[1,Infinity],
+                prompt:"弃置任意张牌",
+                check:function (card){
+                 return 8-get.value(card)
+                },
+                content:function (){
+        "step 0"
+        event.num=cards.length;
+        player.chooseTarget([1,event.num],get.prompt('寒鹿冰刺'),'令至多'+event.num+'名其他角色陷入持续'+(event.num>=3?3:2)+'回合的寒冷状态',function(card,player,target){
+            return target!=player;
+        }).set('ai',function(target){
+            var att=get.attitude(_status.event.player,target);;
+            return -att;
+        });
+        "step 1"
+        if(result.bool){
+            var a=event.num>=3?3:2;
+            for(var i=0;i<result.targets.length;i++){
+               player.logSkill('寒鹿冰刺',result.targets[i]);
+               if(result.targets[i].storage.寒冷>0){
+        result.targets[i].storage.寒冷=a;
+        result.targets[i].syncStorage('寒冷');
+        result.targets[i].removeSkill('寒冷');
+        result.targets[i].addSkill('冻结');
+        result.targets[i].storage.冻结=a;
+        result.targets[i].syncStorage('冻结');
+}else{
+    result.targets[i].addSkill('寒冷');
+    result.targets[i].storage.寒冷=a;
+    result.targets[i].syncStorage('寒冷');
+}
+            }
+        }
+    },
+                ai:{
+                    order:10,
+                    result:{
+                        player:-2,
+                        target:-5,
+                    },
+                    threaten:1.5,
+                },
+            },
+            "水灵之力":{
+                mod:{
+                    cardnature:function(card,player){
+                     if(card.name=="sha"&&get.color(card)=="black")return 'ice';
+                 },
+                },
+                trigger:{
+                    source:"damageBegin1",
+                },
+                filter:function (event,player){
+        return event.player!=player&&event.hasNature("ice");
+    },
+                forced:true,
+                content:function (){
+        if(trigger.player.storage.寒冷>0){
+            trigger.player.storage.寒冷=0;
+            trigger.player.syncStorage('寒冷');  
+           trigger.player.removeSkill('寒冷');
+            trigger.player.addSkill('冻结');
+            trigger.player.storage.冻结=2;
+            trigger.player.syncStorage('冻结');
+        }else{
+          trigger.player.addSkill('寒冷');
+            trigger.player.storage.寒冷=2;
+            trigger.player.syncStorage('寒冷');  
+        }        
+    },
+                nobracket:true,
+            },
+            "蛮熊震怒":{
+                audio:"ext:错乱时空/音频:1",
+                enable: "phaseUse",
+                position: "hej",
+                filterCard:function (card){
+                  return get.suit(card)=='spade';
+                },
+                filter:function(event,player){
+                    return player.countCards('hej',{suit:"spade"})>=2;
+                },
+                viewAs: {
+                 name: "nanman",
+                 cl_manxiong:true,
+                },
+                usable:1,
+                nobracket:true,
+                selectCard:2,
+                check:function(card){
+                  return 12-get.value(card);
+                },
+                ai:{
+                   order:12,
+                   result:{
+                      target:function (player,target){
+                return player.maxHp-player.hp;
+            },
+                    },
+                },
+                group:["蛮熊震怒_damage"],
+                subSkill:{
+                   damage:{
+                       trigger:{
+                         player:"nanmanBegin",
+                       },
+                       forced:true,
+                       direct:true,
+                       filter:function(event,player){
+                          return event.card.cl_manxiong==true;
+                       },
+                       content:function(){
+                           var a=Math.ceil(player.maxHp-player.hp);
+                           trigger.baseDamage=a;
+                       },
+                       sourceSkill:"蛮熊震怒",
+                       sub:true,
+                   }
+                }
+            },
+            "土灵之力":{
+                mod:{
+                    cardnature:function(card,player){
+                     return 'undefined';
+                 },
+                },
+                trigger:{
+                    source:"damageBegin1",
+                    player:"damageBegin1",
+                },
+                forced:true,
+                content:function (){
+                   if(trigger.source&&trigger.source==player)trigger.nature="undefined";
+                   if(trigger.player==player&&trigger.nature=="undefined")player.changeHujia();
+                },
+                nobracket:true,
+            },
+            "木灵之力":{
+                mark:true,
+                zhuanhuanji: true,
+                marktext: "☯",
+                intro: {
+                    content: function (storage, player, skill) {
+                        if (player.storage.木灵之力) return '你的♣️牌均视为【铁索连环】';
+                        return '你的♠️牌均视为【顺手牵羊】';
+                    },
+                },
+                mod:{
+                    cardname:function(card,player){
+                     if(player.storage.木灵之力&&get.suit(card)=="club")return 'tiesuo';
+                     if(!player.storage.木灵之力&&get.suit(card)=="spade")return 'shunshou';
+                 },
+                },
+                trigger:{
+                    player:"useCard",
+                },
+                forced:true,
+                filter:function(event,player){
+                     if(player.storage.木灵之力&&event.card.name=="tiesuo")return true;
+                     if(!player.storage.木灵之力&&event.card.name=="shunshou")return true;
+                     return false;
+                },
+                content:function (){
+                   player.changeZhuanhuanji('木灵之力');
+                },
+                nobracket:true,
+            },
+            "木藤缠绕":{
+                audio:"ext:错乱时空/音频:1",
+                enable:"phaseUse",
+                usable:1,
+                filter:function (event,player){
+                  return game.hasPlayer(current=>current.isLinked());
+                },
+                nobracket:true,
+                selectTarget:-1,
+                multitarget:false,
+                filterTarget:function (card,player,target){
+ return player!=target&&target.isLinked();
+                },
+                content:function (){
+                     player.changeZhuanhuanji('木灵之力');
+                     target.addSkill("束缚");
+                     target.storage.束缚=3;                       target.syncStorage('束缚');                   
+                },
+                ai:{
+                    order:10,
+                    result:{
+                        player:[0,1],
+                        target:-5,
+                    },
+                },
+            },
+            "五灵锁":{
+                audio:"ext:错乱时空/音频:1",
+                enable:"phaseUse",
+                nobracket:true,
+                usable:1,
+                content:function () {
+             "step 0" 
+            var list= ["铁拳虎","神木猿","冰封鹿","火焰鹤","石甲熊"]
+            var result = player.chooseButton([
+                '请选择要变身的怪兽',
+                [list, 'character'],
+            ]).set('ai', function () {
+                return Math.random();
+            });
+        'step 1'
+        if (result.bool) {
+            var rl=result.links[0];
+            game.broadcastAll(function (player,rl) {
+                var bfb=player.hp/player.maxHp;
+                player.reinit(player.name,rl);
+                player.hp=Math.ceil(player.maxHp*bfb);
+                player.name=="猪猪侠";
+                player.update();
+            }, player,rl);
+        }
+    },
+            },
+            "五灵觉醒":{
+               tonglingSkill:true,
+               nobracket:true,
+               init:function(player){
+                  if(!player.storage.已通灵)player.storage.已通灵=0;
+                  game.addGlobalSkill("tongling五灵觉醒");
+                  game.addGlobalSkill("tongling五灵觉醒_card");
+                  game.addGlobalSkill("tongling五灵觉醒_juexing");
+               },
+            },
+            "tongling五灵觉醒":{
+                trigger:{
+                   global:["dieAfter"],
+                },
+                forceDie:true,
+                forced:true,
+                direct:true,
+                silent: true,
+                filter:function(event,player){
+                   return player.storage.已通灵<2&&lib.character[player.name][3].includes('五灵觉醒');
+                },
+                content:function(){
+                   'step 0'
+                   player.gl_changeMp(1,'cl_tongling').forceDie=true;
+                },
+                subSkill:{   
+                   card:{
+                     trigger:{
+                       global:"useCard",
+                     },
+                     filter:function(event,player){
+                       return (get.suit(event.card)=="club"||get.type(event.card)=="equip"||get.nature(event.card)=="ice"||get.nature(event.card)=="fire"||get.tag(event.card,"fireDamage")||!event.card.nature)&&player.storage.已通灵<2&&lib.character[player.name][3].includes('五灵觉醒');
+                     },
+                     forceDie:true,
+                     forced:true,
+                     direct:true,
+                     silent: true,
+                     content:function(){
+                   'step 0'
+                   if(get.type(trigger.card)=="equip")game.wulingjuexing.jin=true;
+                   if(get.suit(trigger.card)=="club")game.wulingjuexing.mu=true;
+                   if(get.nature(trigger.card)=="ice")game.wulingjuexing.shui=true;
+                   if(get.nature(trigger.card)=="fire"||get.tag(event.card,"fireDamage"))game.wulingjuexing.huo=true;
+                   if(!trigger.card.nature)game.wulingjuexing.tu=true;
+                   if(game.wulingjuexing.jin&&game.wulingjuexing.mu&&game.wulingjuexing.shui&&game.wulingjuexing.huo&&game.wulingjuexing.tu){
+                   player.gl_changeMp(1,'cl_tongling').forceDie=true;
+                   game.wulingjuexing.jin=false;
+                   game.wulingjuexing.mu=false;
+                   game.wulingjuexing.shui=false;
+                   game.wulingjuexing.huo=false;
+                   game.wulingjuexing.tu=false;                   
+                   }
+                },
+                     sourceSkill:'tongling五灵觉醒',
+                     sub:true,
+                   },  
+                   juexing:{
+                     trigger:{
+                   player:"gl_changeMpAfter",                       },
+                     forceDie:true,
+                     forced:true,
+                     direct:true,
+                     silent: true,
+                     filter:function(event,player){
+                   return event.type=='cl_tongling'&&player.gl_getMp('cl_tongling')>=player.gl_getMaxMp('cl_tongling')&&player.storage.已通灵<2&&lib.character[player.name][3].includes('五灵觉醒');
+                },
+                     content:function(){
+                      var effect2 = function(player){
+                     if(!player.storage.tongling五灵觉醒)player.storage.tongling五灵觉醒=1;
+                    else player.storage.tongling五灵觉醒++;
+                    game.removeGlobalSkill("tongling五灵觉醒_qianghua");
+                    game.addGlobalSkill("tongling五灵觉醒_qianghua");
+                     if(player.maxHp<=12)player.maxHp=12;
+                     player.update();
+                     player.recover(player.maxHp-player.hp);
+                      }
+                      player.tongling("五灵王","错乱时空/五灵王通灵.mp4",false,effect2).forceDie=true;
+                },
+                       sourceSkill:'tongling五灵觉醒',
+                       sub:true,
+                   },
+                   qianghua:{
+                      trigger:{
+                          player:"phaseDrawBegin",
+                      },
+                      filter:function(event,player){
+                        return player.storage.tongling五灵觉醒;
+                      },
+                      forced:true,
+                      direct:true,
+                      silent: true,
+                      content:function(){
+                          if(player.storage.tongling五灵觉醒)trigger.num+=(player.storage.tongling五灵觉醒*2);
+                      },
+                      sourceSkill:'tongling五灵觉醒',
+                      sub:true,
+                   }
+                }
+            },
+            "五灵之力":{
+                trigger:{
+                    global:["playercontrol","chooseToUseBegin","chooseToRespondBegin","chooseToDiscardBegin","chooseToCompareBegin","chooseButtonBegin","chooseCardBegin","discardPlayerCardBegin","phaseBegin","phaseEnd","phaseAfter","useSkillBegin","orderingDiscardBegin"],
+                },
+                forced:true,
+                nobracket:true,
+                filter:function(event,player){
+                    var list=["寒冷","冻结","束缚","燃烧"]
+                    for(var i of list)if(player.hasSkill(i))return true;
+                    return false;
+                },
+                content:function(){
+                   var list=["寒冷","冻结","束缚","燃烧"]
+                    for(var i of list){
+                       player.removeSkill(i);
+                       delete player.storage[i];
+                    }
+                },
+                group:["五灵之力_damage"],
+                subSkill:{
+                    damage:{
+                        trigger:{
+                           player:"damageBegin3",
+                        },
+                        forced:true,
+                        content:function(){
+                            trigger.num-=1;
+                        },
+                        sourceSkill:"五灵之力",
+                        sub:true,
+                    },
+                }
+            },
+            "上古神威":{
+                usable:1,
+                nobracket:true,
+                enable:"phaseUse",
+                filterTarget:function (card,player,target){
+           return player!=target;
+            },
+                async content(event,trigger,player){
+                  var target = event.target;
+                  target.damage(1)._triggered=null;
+                  target.damage(1,'thunder');
+                  target.damage(1,'ice');
+                  target.damage(1,'fire');
+                  target.damage(1);
+                  var next = target.damage(2,"thunder|ice|fire");
+                  next._triggered=null;
+                  await next;
+                },
+                ai:{
+                    order:42,
+                    result:{
+                        target:-14,
+                    },
                 },
             },
             "斩落众神头颅的那片废墟":{
@@ -71928,7 +72631,7 @@ player.removeSkill('葱游兵技能一');
         "step 0"
     if(player.storage.J剑雨滂沱==player)player.storage.J剑雨滂沱=player.getNext();               
         "step 1"
-        player.storage.J剑雨滂沱.chooseToRespond({name:'shan'});                   
+        player.storage.J剑雨滂沱.chooseToRespond({name:'shan'}).set("filterCard", (card, player2) => get.name(card) === "shan" && lib.filter.cardRespondable(card, player2));;                   
         "step 2"
         if(result.bool==false){
             var next=player.storage.J剑雨滂沱;
@@ -74542,6 +75245,13 @@ player.removeSkill('葱游兵技能一');
             "罪鸽子":"<span class='blood_pulse_flow'>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp傲慢<br>七宗罪鸽子精●</br></span>",
             "休比":"休比",
             "全典开·休比":"『全典开』·休比",
+            "铁拳虎":"铁拳虎",
+            "火焰鹤":"火焰鹤",
+            "冰封鹿":"冰封鹿",
+            "石甲熊":"石甲熊",
+            "神木猿":"神木猿",
+            "猪猪侠":"猪猪侠",
+            "五灵王":"<span class='qicai'>五灵王</span>",
             "勿忘我":"勿忘我",
             "tengyun":"腾云",
             "zhanyi":"战意值",
@@ -77389,6 +78099,8 @@ player.removeSkill('葱游兵技能一');
             "地球降临_info":`<a class='cl_tongling' onclick=\"javascript:window.cl_tongling();\">通灵技（18）</a>，，有角色体力上限变化时+1，有角色武将牌变化时+2。<br><li>通灵强化：你获得技能${get.poptip('天罡')}，你使用黑色牌指定其他角色时弃置其一张牌。`,
             "尘世涤荡":"尘世涤荡",
             "尘世涤荡_info":`锁定技，<br>①出牌阶段开始时，你选择所有其他角色武将牌上一个技能（可以选择状态技），将这些技能储存在“地球”之中（这些技能无效，你受到伤害时归还这些技能）<br>②你的回合开始时，你销毁“地球”中所储存的技能并摸等量的牌`,
+            "滚出地球":"滚出地球",
+            "滚出地球_info":`瞬发技，你选择一名符合某些特定条件的角色，令其立即死亡并移出游戏。若在联机模式下，还可以选择是否将操控那名角色的玩家踢出房间并加入房主的黑名单。（此技能会持续更新）`,
             "神圣祝福":"神圣祝福",
             "神圣祝福_info":`每层增加一点体力上限、造成的伤害量、摸牌量、回复量，防御距离、进攻距离、手牌上限。`,
             "无源恩赐":"无源恩赐",
@@ -77450,7 +78162,62 @@ player.removeSkill('葱游兵技能一');
             "解析":"解析",
             "解析_info":`<a class='cl_tongling' onclick=\"javascript:window.cl_tongling();\">通灵技（18）</a>，有角色使用【南蛮入侵】、【万箭齐发】、【五谷丰登】、【桃园结义】时+2，你使用技能后+3。<br><li>通灵强化：技能${get.poptip('来玩游戏吧')}可使用次数+1。`,
             "战斗演算":"『构筑』对未知用战斗演算启动",
-            "战斗演算_info":`锁定技，你通灵后，你随机获得X个场上其他角色的一个技能（X为场上角色数量）`,
+            "战斗演算_info":`锁定技，你通灵后，你随机获得X个场上其他角色的一个技能（X为场上角色数量-1）`,
+            "铁虎重破拳":"铁虎重破拳",
+            "铁虎重破拳_info":`出牌阶段限1次，你可以将三张装备牌当作一张伤害为2的【杀】使用，此【杀】需要额外打出一张【闪】才能响应，每打出一张【闪】此【杀】伤害-1。`,
+            "金灵之力":"金灵之力",
+            "金灵之力_info":`锁定技，每回合限3次，你使用或打出装备牌时摸一张牌，你的基本牌在类型上均视为装备牌。`,
+            "火鹤天坠":"火鹤天坠",
+            "火鹤天坠_info":`出牌阶段限1次，你可以流失一点体力并摸“火”标记等量的牌，然后清空此标记并令一名角色对你使用一张造成火焰伤害的【决斗】，此【决斗】造成的伤害为双方在决斗中打出的杀的数量且至少为2。`,
+            "火灵之力":"火灵之力",
+            "火灵之力_info":`锁定技，你的所有牌均附带火焰属性，当你使用或打出红色牌时，获得一个“火”标记，每层此标记为你提供一点进攻距离和防御距离。你的回合结束时，若你拥有“火”标记，你流失一点体力并摸三张牌，然后移去所有“火”标记。`,
+            "寒鹿冰刺":"寒鹿冰刺",
+            "寒鹿冰刺_info":`出牌阶段限1次，你可以弃置任意张牌使等量名其他角色陷入持续2回合的<a class='cl_hanleng' onclick=\"javascript:window.cl_hanleng();\">寒冷</a>，若你以此法弃置的牌数不低于3，则改为持续3回合。`,
+            "水灵之力":"水灵之力",
+            "水灵之力_info":`锁定技，你的【杀】均视为【冰杀】，你造成冰属性伤害时为对方附加持续2回合的<a class='cl_hanleng' onclick=\"javascript:window.cl_hanleng();\">寒冷</a>。`,
+            "蛮熊震怒":"蛮熊震怒",
+            "蛮熊震怒_info":`出牌阶段限1次，你可以将两张♠️牌当做一张【南蛮入侵】使用，此【南蛮入侵】的伤害为你的已损失体力值。`,
+            "土灵之力":"土灵之力",
+            "土灵之力_info":`锁定技，你的牌和造成的伤害均视为无属性，你受到无属性伤害时获得一点护甲。`,
+            "木藤缠绕":"木藤缠绕",
+            "木藤缠绕_info":`出牌阶段限1次，你可以令【木灵之力】的阴阳进行转换，使场上所有横置角色陷入持续3回合的<a class='cl_shufu' onclick=\"javascript:window.cl_shufu();\">束缚</a>状态。`,
+            "木灵之力":"木灵之力",
+            "木灵之力_info":`锁定技，转换技，当你使用阴阳效果对应牌名的牌时，此技能才发生转换。<br>阴：你的♠️牌均视为【顺手牵羊】<br>阳：你的♣️牌均视为【铁索连环】`,
+            "五灵怪兽_faq":"五灵怪兽",
+            "五灵怪兽_faq_info":`${get.poptip({
+        id: "铁拳虎",
+        name: "铁拳虎",
+        type: "character",
+        dialog: "characterDialog",
+    })}、${get.poptip({
+        id: "神木猿",
+        name: "神木猿",
+        type: "character",
+        dialog: "characterDialog",
+    })}、${get.poptip({
+        id: "冰封鹿",
+        name: "冰封鹿",
+        type: "character",
+        dialog: "characterDialog",
+    })}、${get.poptip({
+        id: "火焰鹤",
+        name: "火焰鹤",
+        type: "character",
+        dialog: "characterDialog",
+    })}、${get.poptip({
+        id: "石甲熊",
+        name: "石甲熊",
+        type: "character",
+        dialog: "characterDialog",
+    })}`,
+            "五灵锁":"五灵锁",
+            "五灵锁_info":`出牌阶段限1次，你可以变成${get.poptip('五灵怪兽_faq')}中的其中一个。`,
+            "五灵觉醒":"五灵觉醒",
+            "五灵觉醒_info":`<a class='cl_tongling' onclick=\"javascript:window.cl_tongling();\">通灵技（10）</a>，当场上累积以下五种的牌被使用一遍后+1：装备牌、冰属性牌、无属性牌、♣️牌、火属性牌。<br><li>通灵强化：技能${get.poptip('五灵锁')}效果更改为${get.poptip('五灵之力')}，摸牌阶段摸牌量+2，若你通灵后的体力上限仍低于12，将体力上限调整至12并回满体力值。`,
+            "五灵之力":"五灵之力",
+            "五灵之力_info":`锁定技，你时刻解除自身的<a class='cl_ranshao' onclick=\"javascript:window.cl_ranshao();\">燃烧</a>、<a class='cl_hanleng' onclick=\"javascript:window.cl_hanleng();\">寒冷</a>、冻结、<a class='cl_shufu' onclick=\"javascript:window.cl_shufu();\">束缚</a>状态，你受到的所有伤害-1。`,
+            "上古神威":"上古神威",
+            "上古神威_info":`出牌阶段限1次，你可以对一名其他角色分别造成1点火焰伤害、冰冻伤害、雷电伤害、神圣伤害、普通伤害，然后再造成2点视为同时拥有火焰、雷电、冰冻三种属性的神圣伤害`,
             "母神压迫":"",
             "母神压迫_info":"",
             "卡拉登场":"",
@@ -77645,7 +78412,7 @@ player.removeSkill('葱游兵技能一');
   };
     if(lib.device||lib.node){
         //比赛将池
-        game.bisaijiangchi=["SP哥莫拉","龙骑士黑魔术少女","界黑岩射手","拉弥亚","巴图","SP尼克","传承艾瑞珂","提丰","界华法琳","黍","左乐","玛恩纳","瑕光","仙人·漩涡鸣人","霞露零","月亮伊布","火神蛾","杨戬","Herobrine","特莉波卡","雷吉奇卡斯","乌尔比安","源·天将士","蕾缪安","SP惊蛰","SP星熊","无敌","伏妖","法纳斯","望","新SP陈","耶芙娜","SP傀影","刻俄柏","SP推进之王","cl_关银屏","cl_吕玲绮","SP神荀彧","cl_神赵云","cl_孙策","璀璨圣龙","夜刀神十香","诱宵美九","镜野七罪","本条二亚","魔科比","慢直升机","凋灵","塑心","潘多拉","SP史尔特尔","山中队员","庄方宜","雷德","魔赵云","嗔高览","骑拉帝纳-别种形态","魔沙福林","疑麦克斯","女帝","昆仑","无限未来","疑巴顿","小叶子","星熊","SP姆西斯哈","幸福蛋","cl_神钟会","卡拉","洛世琦","SP提丰","疾光玛恩纳","提雷克","兰德斯","罪鸽子","孙悟空","传承赵云","觉醒骑士","休比"];
+        game.bisaijiangchi=["SP哥莫拉","龙骑士黑魔术少女","界黑岩射手","拉弥亚","巴图","SP尼克","传承艾瑞珂","提丰","界华法琳","黍","左乐","玛恩纳","瑕光","仙人·漩涡鸣人","霞露零","月亮伊布","火神蛾","杨戬","Herobrine","特莉波卡","雷吉奇卡斯","乌尔比安","源·天将士","蕾缪安","SP惊蛰","SP星熊","无敌","伏妖","法纳斯","望","新SP陈","耶芙娜","SP傀影","刻俄柏","SP推进之王","cl_关银屏","cl_吕玲绮","SP神荀彧","cl_神赵云","cl_孙策","璀璨圣龙","夜刀神十香","诱宵美九","镜野七罪","本条二亚","魔科比","慢直升机","凋灵","塑心","潘多拉","SP史尔特尔","山中队员","庄方宜","雷德","魔赵云","嗔高览","骑拉帝纳-别种形态","魔沙福林","疑麦克斯","女帝","昆仑","无限未来","疑巴顿","小叶子","星熊","SP姆西斯哈","幸福蛋","cl_神钟会","卡拉","洛世琦","SP提丰","疾光玛恩纳","提雷克","兰德斯","罪鸽子","孙悟空","传承赵云","觉醒骑士","休比","猪猪侠"];
         for(var name in 错乱时空.character){
             if(!错乱时空.character[name][4])错乱时空.character[name][4]=[];
             var currentSkinIndex = 0;
@@ -84925,7 +85692,7 @@ var 法术={
                 modTarget:true,
                 async content(event,trigger,player){
                    var target=event.target;
-                   const {result:{bool}} = await target.chooseToRespond({name:'shan'});
+                   const {result:{bool}} = await target.chooseToRespond({name:'shan'}).set("filterCard", (card, player2) => get.name(card) === "shan" && lib.filter.cardRespondable(card, player2));;
                    if(!bool){
                        target.hp=0;
                        target.soulhp=0;
