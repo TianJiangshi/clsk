@@ -675,7 +675,11 @@ export function initGouzhu(lib, game, ui, get, ai, _status, datasrc) {
 			mp = {
 				gl_magic: mp
 			};
-		} 
+		} else if(typeof mp!='object') {
+			mp = {
+				gl_magic: 0
+			};
+		}
 		if (owner) {
 			mp = game.checkMod(owner, card, mp, 'gl_gouzhuMp', owner);
 		}
@@ -813,6 +817,11 @@ export function initGouzhu(lib, game, ui, get, ai, _status, datasrc) {
 						delay: false,
 						content: lib.skill.gl_gouzhu.contentx,
 					};
+					game.broadcastAll(function(player) {
+				if (lib.config.show_phase_prompt) {
+					player.popup('回魔阶段', null, false);
+				}
+			}, player);
 					return lib.skill.gl_gouzhu_backup_backup;
 				}
 				return {

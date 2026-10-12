@@ -817,7 +817,10 @@ export function initGouzhu(lib, game, ui, get, ai, _status, datasrc) {
 						delay: false,
 						content: lib.skill.gl_gouzhu.contentx,
 					};
-					return lib.skill.gl_gouzhu_backup_backup;
+					var gb=lib.skill.gl_gouzhu_backup_backup;
+					game.broadcastAll(function(player,gb) {
+				return gb;
+			}, player,gb);
 				}
 				return {
 					chooseButton: {
