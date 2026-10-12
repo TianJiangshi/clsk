@@ -320,3 +320,112 @@ blood_pulse_flow {
   50% { filter: drop-shadow(0 0 3px #ffffff) drop-shadow(0 0 6px #e53935); }
   100% { filter: drop-shadow(0 0 1px #ffffff) drop-shadow(0 0 2px #c62828); }
 }
+
+/* 王冠源树·生命树 标题样式 */
+.tree-crown-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #D4C298; /* 主体古金色文字 */
+    /* 文字描边 */
+    -webkit-text-stroke: 1px #78B89A;
+    /* 多层发光+阴影 */
+    text-shadow: 
+        0 0 8px #9F8B5F80,  /* 古金外辉光 */
+        2px 2px 3px #12151C; /* 深色投影 */
+}
+
+/*朔*/
+.shuo {
+  --fire-1: #fffbe6;
+  --fire-2: #ffe066;
+  --fire-3: #ffb300;
+  --fire-4: #ff6a00;
+  --fire-5: #ff2200;
+  --fire-6: #c40000;
+  --fire-7: #6b0000;
+
+  position: relative;
+  color: #fff;
+  font-weight: 900;
+
+  text-shadow:
+    0 0 1px #000,
+    0 0 2px var(--fire-1),
+    0 0 3px var(--fire-1),
+    0 0 5px var(--fire-2),
+    0 0 8px var(--fire-3),
+    0 0 12px var(--fire-3),
+    0 0 18px var(--fire-4),
+    0 0 26px var(--fire-4),
+    0 0 36px var(--fire-5),
+    0 0 50px var(--fire-5),
+    0 0 70px var(--fire-6),
+    0 0 100px var(--fire-7),
+    0 0 1px #000;
+
+  animation: shuo-flicker 1.6s ease-in-out infinite;
+  will-change: filter, text-shadow;
+}
+
+.shuo::before {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  color: transparent;
+  text-shadow:
+    0 0 20px var(--fire-3),
+    0 0 40px var(--fire-4),
+    0 0 80px var(--fire-5),
+    0 0 140px var(--fire-6);
+  filter: blur(6px);
+  opacity: .9;
+  pointer-events: none;
+  animation: shuo-flicker 1.6s ease-in-out infinite reverse;
+}
+
+@keyframes shuo-flicker {
+  0%, 100% { filter: brightness(1) saturate(1); }
+  8%       { filter: brightness(1.35) saturate(1.3); }
+  16%      { filter: brightness(.92) saturate(1); }
+  25%      { filter: brightness(1.25) saturate(1.2); }
+  38%      { filter: brightness(1) saturate(1); }
+  52%      { filter: brightness(1.4) saturate(1.35); }
+  64%      { filter: brightness(.9) saturate(.95); }
+  76%      { filter: brightness(1.2) saturate(1.15); }
+  88%      { filter: brightness(1.05) saturate(1); }
+}
+
+.shuo--glow {
+  filter:
+    drop-shadow(0 0 3px var(--fire-1))
+    drop-shadow(0 0 8px var(--fire-3))
+    drop-shadow(0 0 18px var(--fire-4))
+    drop-shadow(0 0 34px var(--fire-5))
+    drop-shadow(0 0 60px var(--fire-6));
+}
+
+.shuo--gradient {
+  background: linear-gradient(
+    180deg,
+    #fffbe6 0%,
+    #ffe066 25%,
+    #ffb300 45%,
+    #ff6a00 68%,
+    #ff2200 88%,
+    #c40000 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter:
+    drop-shadow(0 0 3px #fffbe6)
+    drop-shadow(0 0 10px #ffb300)
+    drop-shadow(0 0 24px #ff6a00)
+    drop-shadow(0 0 48px #ff2200);
+    animation-duration: 6.1s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shuo,
+  .shuo::before { animation: none; }
+}
